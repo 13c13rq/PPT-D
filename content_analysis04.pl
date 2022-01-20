@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-#ok
+#push ok
 use v5.14;
 use strict;
 use warnings;
@@ -128,16 +128,22 @@ read_details;
 
 	my @objects;
 	my $objects;
+	
 	my $objects_ref;
 	my $values_ref;
+	
 	my $current_grouping 	= undef;
 	my $irrelevance 		= undef;
+	
 	my $test_counter 		= undef;
 	$test_counter= 0;
+	
 	my $active_time 		= undef;
 	$active_time = 1; #on by default ...
+	
 	my $grouping_displayed 	= undef;
 	$grouping_displayed = 0;
+	
 	my $irrelevance_count	=undef;
 	$irrelevance_count=0;
 
@@ -451,6 +457,7 @@ match_groupings;
 	my $inconclusive = undef;
 	my $priority_count = undef;
 	my @active_groupings;  # contains all active groupings.
+	
 	sub find_largest_element {
 		$countI			= 0;
 		$query=		scalar(@findings);
@@ -594,7 +601,61 @@ match_groupings;
 	
 	
 	
-	sub check_ {
+	sub check_adjective {
+		$priority_count = 0;
+		$countI			= 1;
+		$query=		scalar(@findings)-1;
+		while ($query > 0) {
+			$query_elements = scalar((@{$findings[$countI]}))-1;
+			$countIII = scalar((@{$findings[$countI]}))-1;
+			my $temp_name = undef;
+			print "query:$query\n\n";
+			print "$query_elements\n";
+			
+			$temp_name = ($countI -1);
+			
+			unless ($query_elements ==0){
+				
+				my $query_findingI = $findings[$countI][$countIII] {"adjective"};
+				my $query_findingII = $findings[$countI][$countIII] {"high_relevance"};
+				
+				my $current_grouping = $g_l[$temp_name];
+				my $current_grouping_val = $g_l_val[$temp_name];
+				
+				unless ($current_grouping_val = $g_l_val[$temp_name] == 0) {
+					
+					if ($query_findingI > 0 or $query_findingII > 0){
+						
+						print "normal: ", $query_findingI, ", high: ", $query_findingII, ", location: $current_grouping $current_grouping_val ", $countI, $countIII, "\n";
+						if ($priority_count==0) {
+							
+							 @active_groupings =();
+							 push (@active_groupings, $countI);
+							 
+							}
+						else {
+							
+							push (@active_groupings, $countI);
+							
+							}
+						$priority_count++;
+						
+						
+						
+					
+					}
+				}
+					
+			};
+			
+			$countI++;	
+			$temp_name = ($countI -1);;
+			$query--;
+		};
+		$countI			= 0;
+	};
+	
+	sub check_total {
 		$priority_count = 0;
 		$countI			= 1;
 		$query=		scalar(@findings)-1;
@@ -647,6 +708,7 @@ match_groupings;
 		};
 		$countI			= 0;
 	};
+	
 	
 	sub check_element {
 		$countI			= 0;
@@ -986,6 +1048,7 @@ sub assesment {
 	#reuse parts of the assesment in dead_trigger.pl and adapt them to the new analysis structure.
 	
 };
+
 assesment;
 #analysis;
 print"\n";
