@@ -196,8 +196,8 @@ sub create_groupingA {
 	[" idlib ",		"$Aword[1]",	"${$Asig_ref}[4]",	"${$Afunc_ref}[4]",	"${$Astat_ref}[8]",	"$Atime[0]", "null"],	 	
 	[" aleppo ",	"$Aword[1]",	"${$Asig_ref}[4]",	"${$Afunc_ref}[4]",	"${$Astat_ref}[8]",	"$Atime[0]", "null"],	 
 	[" kurds ",		"$Aword[1]",	"${$Asig_ref}[8]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[7]",	"$Atime[0]", "null"],
-	[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:03-2019", $Apool_2 [$Arand_three]],
-	[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[11]","04:2019:01-2021", $Apool_3 [$Arand_three]],
+	[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:03:2019", $Apool_2 [$Arand_three]],
+	[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[11]","04:2019:01:2021", $Apool_3 [$Arand_three]],
 	[" baghdadi ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[6]",	"${$Astat_ref}[2]",	"01:2017:10-2019", $Apool_2 [$Arand_three]],
 	[" baghdadi ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[6]",	"${$Astat_ref}[6]",	"11:2019:01-2021", $Apool_3 [$Arand_three]],
 	[" the caliphate ","$Aword[1]", "${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:04-2019", $Apool_2 [$Arand_three]],
@@ -235,6 +235,7 @@ sub create_groupingA {
 	@north_korea = (
 	["rival nations","North Korea","2", $Apool_1 [$Arand_three], "null"],
 	[" north korea ","$Aword[1]","${$Asig_ref}[1]",		"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
+	[" noko ",		"$Aword[1]","${$Asig_ref}[1]",		"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
 	[" north korean ","$Aword[2]","${$Asig_ref}[2]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
 	[" north koreans ","$Aword[1]","${$Asig_ref}[6]",	"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
 	[" Pyongyang ",	"$Aword[1]",	"${$Asig_ref}[4]",	"${$Afunc_ref}[2]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],	
