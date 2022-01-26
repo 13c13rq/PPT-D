@@ -438,8 +438,10 @@ match_groupings;
 	my $complaint_result 	= undef;
 	my $grouping_count 		= undef;
 	my $discard_active		= undef;
+	my $discard_filter_active	= undef;
 	
 	$discard_active = 0;
+	$discard_filter_active = 0;
 
 
 	my $element_match 		= undef;
@@ -458,265 +460,15 @@ match_groupings;
 	my $priority_count = undef;
 	my @active_groupings;  # contains all active groupings.
 	
-	sub find_largest_element {
-		$countI			= 0;
-		$query=		scalar(@findings);
-		while ($query > 0) {
-			$query_elements = scalar((@{$findings[$countI]}))-1;
-			$countIII = scalar((@{$findings[$countI]}))-1;
-			
-			#print "query:$query\n\n";
-				while ($countIII > 0) {
-
-					unless ($findings[$countI][$countIII] {"standard_source"} eq "undef"){
-						
-						my $query_finding = $findings[$countI][$countIII] {$query_object};
-						
-						
-						if ($query_finding eq $query_request){
-							#print "query triggered: $query_finding $query_elements\n";
-							$query_result = 1;
-							#print "$query_result\n";
-							$query_count++;
-						};
-						
-						
-					};
-					$countIII--;	
-				};
-			
-			$countI++;	
-			$query--;
-		};
-		$countI			= 0;
-	};
-	
-	sub check_priority {
-		$priority_count = 0;
-		$countI			= 1;
-		$query=		scalar(@findings)-1;
-		while ($query > 0) {
-			$query_elements = scalar((@{$findings[$countI]}))-1;
-			$countIII = scalar((@{$findings[$countI]}))-1;
-			my $temp_name = undef;
-			print "query:$query\n\n";
-			print "$query_elements\n";
-			
-			$temp_name = ($countI -1);
-			
-			unless ($query_elements ==0){
-				
-				my $query_findingI = $findings[$countI][$countIII] {"normal_relevance"};
-				my $query_findingII = $findings[$countI][$countIII] {"high_relevance"};
-				
-				my $current_grouping = $g_l[$temp_name];
-				my $current_grouping_val = $g_l_val[$temp_name];
-				
-				unless ($current_grouping_val = $g_l_val[$temp_name] == 0) {
-					
-					if ($query_findingI > 0 or $query_findingII > 0){
-						
-						print "normal: ", $query_findingI, ", high: ", $query_findingII, ", location: $current_grouping $current_grouping_val ", $countI, $countIII, "\n";
-						if ($priority_count==0) {
-							
-							 @active_groupings =();
-							 push (@active_groupings, $countI);
-							 
-							}
-						else {
-							
-							push (@active_groupings, $countI);
-							
-							}
-						$priority_count++;
-						
-						
-						
-					
-					}
-				}
-					
-			};
-			
-			$countI++;	
-			$temp_name = ($countI -1);;
-			$query--;
-		};
-		$countI			= 0;
-	};
-	
-	sub check_correlation {
-		$priority_count = 0;
-		$countI			= 1;
-		$query=		scalar(@findings)-1;
-		while ($query > 0) {
-			$query_elements = scalar((@{$findings[$countI]}))-1;
-			$countIII = scalar((@{$findings[$countI]}))-1;
-			my $temp_name = undef;
-			print "query:$query\n\n";
-			print "$query_elements\n";
-			
-			$temp_name = ($countI -1);
-			
-			unless ($query_elements ==0){
-				
-				my $query_findingI = $findings[$countI][$countIII] {"normal_relevance"};
-				my $query_findingII = $findings[$countI][$countIII] {"high_relevance"};
-				
-				my $current_grouping = $g_l[$temp_name];
-				my $current_grouping_val = $g_l_val[$temp_name];
-				
-				unless ($current_grouping_val = $g_l_val[$temp_name] == 0) {
-					
-					if ($query_findingI > 0 or $query_findingII > 0){
-						
-						print "normal: ", $query_findingI, ", high: ", $query_findingII, ", location: $current_grouping $current_grouping_val ", $countI, $countIII, "\n";
-						if ($priority_count==0) {
-							
-							 @active_groupings =();
-							 push (@active_groupings, $countI);
-							 
-							}
-						else {
-							
-							push (@active_groupings, $countI);
-							
-							}
-						$priority_count++;
-						
-						
-						
-					
-					}
-				}
-					
-			};
-			
-			$countI++;	
-			$temp_name = ($countI -1);;
-			$query--;
-		};
-		$countI			= 0;
-	};
-	
-	
-	
-	sub check_adjective {
-		$priority_count = 0;
-		$countI			= 1;
-		$query=		scalar(@findings)-1;
-		while ($query > 0) {
-			$query_elements = scalar((@{$findings[$countI]}))-1;
-			$countIII = scalar((@{$findings[$countI]}))-1;
-			my $temp_name = undef;
-			print "query:$query\n\n";
-			print "$query_elements\n";
-			
-			$temp_name = ($countI -1);
-			
-			unless ($query_elements ==0){
-				
-				my $query_findingI = $findings[$countI][$countIII] {"adjective"};
-				my $query_findingII = $findings[$countI][$countIII] {"high_relevance"};
-				
-				my $current_grouping = $g_l[$temp_name];
-				my $current_grouping_val = $g_l_val[$temp_name];
-				
-				unless ($current_grouping_val = $g_l_val[$temp_name] == 0) {
-					
-					if ($query_findingI > 0 or $query_findingII > 0){
-						
-						print "normal: ", $query_findingI, ", high: ", $query_findingII, ", location: $current_grouping $current_grouping_val ", $countI, $countIII, "\n";
-						if ($priority_count==0) {
-							
-							 @active_groupings =();
-							 push (@active_groupings, $countI);
-							 
-							}
-						else {
-							
-							push (@active_groupings, $countI);
-							
-							}
-						$priority_count++;
-						
-						
-						
-					
-					}
-				}
-					
-			};
-			
-			$countI++;	
-			$temp_name = ($countI -1);;
-			$query--;
-		};
-		$countI			= 0;
-	};
-	
-	sub check_total {
-		$priority_count = 0;
-		$countI			= 1;
-		$query=		scalar(@findings)-1;
-		while ($query > 0) {
-			$query_elements = scalar((@{$findings[$countI]}))-1;
-			$countIII = scalar((@{$findings[$countI]}))-1;
-			my $temp_name = undef;
-			print "query:$query\n\n";
-			print "$query_elements\n";
-			
-			$temp_name = ($countI -1);
-			
-			unless ($query_elements ==0){
-				
-				my $query_findingI = $findings[$countI][$countIII] {"normal_relevance"};
-				my $query_findingII = $findings[$countI][$countIII] {"high_relevance"};
-				
-				my $current_grouping = $g_l[$temp_name];
-				my $current_grouping_val = $g_l_val[$temp_name];
-				
-				unless ($current_grouping_val = $g_l_val[$temp_name] == 0) {
-					
-					if ($query_findingI > 0 or $query_findingII > 0){
-						
-						print "normal: ", $query_findingI, ", high: ", $query_findingII, ", location: $current_grouping $current_grouping_val ", $countI, $countIII, "\n";
-						if ($priority_count==0) {
-							
-							 @active_groupings =();
-							 push (@active_groupings, $countI);
-							 
-							}
-						else {
-							
-							push (@active_groupings, $countI);
-							
-							}
-						$priority_count++;
-						
-						
-						
-					
-					}
-				}
-					
-			};
-			
-			$countI++;	
-			$temp_name = ($countI -1);;
-			$query--;
-		};
-		$countI			= 0;
-	};
-	
-	
 	sub check_element {
 		$countI			= 0;
 		$query=		scalar(@findings);
+		$query_result = 0;
 		while ($query > 0) {
 			$query_elements = scalar((@{$findings[$countI]}))-1;
 			$countIII = scalar((@{$findings[$countI]}))-1;
 			#print "query:$query\n\n";
+
 			while ($countIII >0) {
 				my $query_finding = $findings[$countI][$countIII] {$query_object};
 				if ($query_finding eq $query_request){
@@ -724,7 +476,7 @@ match_groupings;
 					$query_result = 1;
 					#print "$query_result\n";
 					$query_count++;
-					};
+				};
 				$countIII--;
 			};
 			$countI++;	
@@ -913,14 +665,26 @@ match_groupings;
 
 #};
 
+my $countII 	= 0;
+$results 	= 0;
+	
+sub printdebug {
+	print "\n\n###discard-sort###\n";
+	print "query_elements: $query_elements\n";
+	print "irrelevance count: $irrelevance_count\n";
+	print "zero results: $results\n";
+	print "query result: $query_result\n";
+	print "query count: $query_count\n";
+	print "grouping_count: $grouping_count\n";
+	print "irrel_count: $irrelevance_count\n";
+	print "###-###\n\n";
+};
 
 sub standard_analysis {
 	#outputs essential values such as the number of significant elements in the respective groupings
 	#analysis on results:
 
 	$countI			= 0;
-	my $countII 	= 0;
-	my $results 	= 0;
 	$grouping_count = 0;
 	$discard_result = scalar(@{$findings[0]});
 
@@ -943,73 +707,364 @@ sub standard_analysis {
 	};
 
 	#test for presence of links:
+	
+	$query_object = "object";
+	$query_request = "irrelevant";
+	$query_count = 0;
+	check_element;
+	my $irrelevance_count = $query_count;
+	
 	$query_object = "sig";
 	$query_request = "link";
 	$query_count = 0;
-	check_element;
-	if ($query_result==1 && $grouping_count > 0 ) {
-
-		if ($results =! $query_elements) { 
-			print "\ndiscard is inactive!\n";
-			print $Hf1 "\ndiscard is inactive!\n";
-			$discard_active = 0;
-		}
-		else{
-			print "\nexternal link found - will discard unless further findings present.\n";
-			print $Hf1 "\nexternal link found - will discard unless further findings present.\n";
+	check_element;	
+	
+	# checking for discard matches 
+	
+	if ($query_result==1) {
+		if ($grouping_count == 0) {
+			print "\nlink found - discard is active!\n";
 			$discard_active = 1;
+			printdebug;
+		}
+		elsif($grouping_count > 0 && $query_count < $irrelevance_count) {
+			print "\nlink + possibly irrelevant match found - discard_filter is active!";
+			$discard_filter_active = 1;
+			printdebug;
+		}
+		else {
+			print "\nlink + relevant match found - discard is inactive!";
+			$discard_active = 0;
+			printdebug;
 		};
 	}
-	elsif ($query_result==1 && $grouping_count == 0) {
-			print "\ndiscard is active!3\n";
-			$discard_active = 1;
+	elsif ($query_count > $irrelevance_count) {
+			print "\n possibly irrelevant match found - discard_filter is active!";
+			$discard_filter_active = 1;
+			printdebug;
 	}
-	elsif($results > 0) {
-			print "\ndiscard is active!4 $query_result==1 && $grouping_count\n";
-			$discard_active = 1;
+	else {
+			print "\nno zero - discard is inactive!";
+			$discard_active = 0;
+			printdebug;
 	};
+	
 	
 	add_values;
 	
-	
-
-
-	};
+};
 
 standard_analysis;
 
 #my %grouping_totals = ("timesensitive" => $temp_active, );
 #my %high_relevance_incidence = ("timesensitive" => $temp_active, );
+my @filter_elements = undef;
+
+sub find_largest_element {
+	$countI			= 0;
+	$query=		scalar(@findings);
+	while ($query > 0) {
+		$query_elements = scalar((@{$findings[$countI]}))-1;
+		$countIII = scalar((@{$findings[$countI]}))-1;
+		
+		#print "query:$query\n\n";
+			while ($countIII > 0) {
+
+				unless ($findings[$countI][$countIII] {"standard_source"} eq "undef"){
+					
+					my $query_finding = $findings[$countI][$countIII] {$query_object};
+					
+					
+					if ($query_finding eq $query_request){
+						#print "query triggered: $query_finding $query_elements\n";
+						$query_result = 1;
+						#print "$query_result\n";
+						$query_count++;
+					};
+					
+					
+				};
+				$countIII--;	
+			};
+		
+		$countI++;	
+		$query--;
+	};
+	$countI			= 0;
+	};
+
+	#########
+	#FILTERS#
+	#########
+
+#available vlaues::
+
+	#'total' => 12,
+	#'escalated_source' => 'Stepford2',
+	#'adjective' => 0,
+	#'modval' => '2.49333333333333',
+	#'unique_source' => 'null',
+	#'concrete' => 0,
+	#'normal_relevance' => 4,
+	#'abstract' => 0,
+	#'standard_source' => 'Dogman2',
+	#'name' => 4,
+	#'high_relevance' => 2,
+	#'incidence' => 3
+#
+
+#filter I *completed	
+my $temp_name = undef;
+sub check_priority {
+	
+	$priority_count = 0;
+	$countI			= 1;
+	$query=		scalar(@findings)-1;
+	
+	while ($query > 0) {
+		$query_elements = scalar((@{$findings[$countI]}))-1;
+		$countIII = scalar((@{$findings[$countI]}))-1;
+
+		
+		print "query:$query\n\n";
+		print "$query_elements\n";
+		$temp_name = ($countI -1);
+		unless ($query_elements ==0){
+			
+			my $query_findingI = $findings[$countI][$countIII] {"normal_relevance"};
+			my $query_findingII = $findings[$countI][$countIII] {"high_relevance"};
+			
+			my $current_grouping = $g_l[$temp_name];
+			my $current_grouping_val = $g_l_val[$temp_name];
+			
+			unless ($current_grouping_val = $g_l_val[$temp_name] == 0) {
+#					#here a more strict filter could be implemented by only allowing hig relevance values to count
+				if ($query_findingI > 0 or $query_findingII > 0){
+					print "normal: ", $query_findingI, ", high: ", $query_findingII, ", location: $current_grouping $current_grouping_val ", $countI, $countIII, "\n";
+					if ($priority_count==0) {
+						 @filter_elements =();
+						 push (@filter_elements, $countI);
+						}
+					else {
+						push (@filter_elements, $countI);
+						}
+					$priority_count++;
+				}
+			}	
+		};
+		$countI++;	
+		$temp_name = ($countI -1);
+		$query--;
+	};
+	
+#		#changing active groupings if necessary
+	if ($priority_count > 0) {
+		@active_groupings =();
+		@active_groupings = @filter_elements;
+	};
+	
+	$countI			= 0;
+	
+};
+
+#filter II *incomplete
+
+
+	#'adjective' => 0,
+	#'unique_source' => 'null',
+	#'concrete' => 0,
+	#'abstract' => 0,
+	#'name' => 4,
+
+
+my $sigword_count = undef;
+my $sigword = undef;
+sub  check_sigword  {
+	
+	$sigword_count 	= 0;
+	$sigword			= 0;
+	$query				= scalar(@active_groupings)-1;
+	
+	while ($query >= 0) {
+		
+		
+		my $active_temp = ($active_groupings[$countI] -1);
+		my $export_temp = ($active_groupings[$countI]);
+		
+		$countIII = scalar((@{$findings[$export_temp]}))-1;
+		
+		print "grouping: $export_temp - element: $countIII\n";
+		my $sigwordI	= $findings[$export_temp][$countIII] {"adjective"};
+		my $sigwordII	= $findings[$export_temp][$countIII] {"concrete"};
+		my $sigwordIII	= $findings[$export_temp][$countIII] {"abstract"};
+		my $sigwordIV	= $findings[$export_temp][$countIII] {"modval"};
+		
+		
+		
+		my $designation =$g_l [$active_temp];
+		
+		print "designation: $designation - adjective:$sigwordI - concrete:$sigwordII abstract: $sigwordIII modval: $sigwordIV\n\n"; 
+		
+		#if ($correlation > 0){
+			#if ($correlation_count==0) {
+				#@filter_elements =();
+				#push (@filter_elements, $export_temp);
+			#}
+			#else {
+				#push (@filter_elements, $export_temp);
+			#};
+			#$correlation_count++;
+		#};
+		
+		$countI++;	
+		$query--;
+		
+	};
+	
+#	#changing active groupings if necessary
+	#if ($correlation_count > 0) {
+		#@active_groupings =();
+		#@active_groupings = @filter_elements;
+	#};
+	
+	$countI			= 0;
+};
+
+		
+#filter III *completed
+my $correlation_count = undef;
+my $correlation = undef;
+sub check_correlation {
+	
+	$correlation_count 	= 0;
+	$countI				= 0;
+	$query				= scalar(@active_groupings)-1;
+	
+	while ($query >= 0) {
+		
+		#$temp_name = ($countI);
+		my $active_temp = ($active_groupings[$countI] -1);
+		my $export_temp = ($active_groupings[$countI]);
+		$correlation = $mentioned_groupings_count {$g_l [$active_temp]};
+		my $designation =$g_l [$active_temp];
+		print "query:$query - temp:$active_temp -corr: $correlation designation: $designation\n\n"; 
+		
+		if ($correlation > 0){
+			if ($correlation_count==0) {
+				@filter_elements =();
+				push (@filter_elements, $export_temp);
+			}
+			else {
+				push (@filter_elements, $export_temp);
+			};
+			$correlation_count++;
+		};
+		$countI++;	
+		$query--;
+	};
+	
+#	#changing active groupings if necessary
+	if ($correlation_count > 0) {
+		@active_groupings =();
+		@active_groupings = @filter_elements;
+	};
+	
+	$countI			= 0;
+};
+	
+#filter IV *incomplete
+sub check_total {
+	
+	$priority_count = 0;
+	$countI			= 1;
+	$query=		scalar(@findings)-1;
+	while ($query > 0) {
+		$query_elements = scalar((@{$findings[$countI]}))-1;
+		$countIII = scalar((@{$findings[$countI]}))-1;
+		my $temp_name = undef;
+		print "query:$query\n\n";
+		print "$query_elements\n";
+		
+		$temp_name = ($countI -1);
+		
+		unless ($query_elements ==0){
+			
+			my $query_findingI = $findings[$countI][$countIII] {"normal_relevance"};
+			my $query_findingII = $findings[$countI][$countIII] {"high_relevance"};
+			
+			my $current_grouping = $g_l[$temp_name];
+			my $current_grouping_val = $g_l_val[$temp_name];
+			
+			unless ($current_grouping_val = $g_l_val[$temp_name] == 0) {
+				
+				if ($query_findingI > 0 or $query_findingII > 0){
+					
+					print "normal: ", $query_findingI, ", high: ", $query_findingII, ", location: $current_grouping $current_grouping_val ", $countI, $countIII, "\n";
+					if ($priority_count==0) {
+						
+						 @active_groupings =();
+						 push (@active_groupings, $countI);
+						 
+						}
+					else {
+						
+						push (@active_groupings, $countI);
+						
+						}
+					$priority_count++;
+					
+					
+					
+				
+				}
+			}
+				
+		};
+		
+		$countI++;	
+		$temp_name = ($countI -1);;
+		$query--;
+	};
+	$countI			= 0;
+};
+	
 
 
 sub assesment {
 	
-	check_priority;
-	print "priority count: $priority_count\n";
-	#		available values:
-	
-	        #'adjective' => 0,
-            #'high_relevance' => 2,
-            #'unique_source' => 'null',
-            #'total' => 12,
-            #'standard_source' => 'Dogman2',
-            #'escalated_source' => 'Stepford2',
-            #'name' => 4,
-            #'abstract' => 0,
-            #'normal_relevance' => 4,
-            #'concrete' => 0
+	#	available values:
 
-	
-	if ($discard_active == 1) {
+        #'adjective' => 0,
+		#'high_relevance' => 2,
+		#'unique_source' => 'null',
+		#'total' => 12,
+		#'standard_source' => 'Dogman2',
+		#'escalated_source' => 'Stepford2',
+		#'name' => 4,
+		#'abstract' => 0,
+		#'normal_relevance' => 4,
+		#'concrete' => 0
+
+	if ($discard_active == 1 && $discard_filter_active == 0) {
 		
 	print "Tweet has been discarded!\n";
 	print $Hf1 "Tweet has been discarded!\n";
 
 	}
-	else {};
+	else {
+			@filter_elements = @active_groupings;
+			check_priority;
+			print "priority count: $priority_count\n";
+			check_correlation;
+			print "correlation_count: $correlation_count\n";
+			check_sigword;
+			#check_correltarion
+
+		};
 
 	print "\nactive groupings:";
 	print $Hf1 "\nactive groupings:";
+	
 	foreach my $currnent_grouping (@active_groupings) {
 		
 		unless ($currnent_grouping == 0) {
@@ -1029,6 +1084,9 @@ sub assesment {
 				
 				};
 			
+			#filter correlation:
+			print "mentioned: ", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "\n";
+			
 			#conclusive loop 2 - select grouping with highest sig value.
 			
 			#conclusive loop 3 - select grouping with adjectives or abstract nouns.
@@ -1042,9 +1100,7 @@ sub assesment {
 		};
 		
 	};
-	print "\n";	
-	
-	
+	print "\n";
 	#reuse parts of the assesment in dead_trigger.pl and adapt them to the new analysis structure.
 	
 };
@@ -1053,13 +1109,15 @@ assesment;
 #analysis;
 print"\n";
 print Dumper @findings;
-print"active:\n";
+#print"active:\n";
 print Dumper @active_groupings;
 print"mentioned:\n";
-print Dumper @mentioned_groupings;
-#print Dumper %mentioned_groupings_count ;
-#print "test\n";
-#print Dumper %grouping_positions;
+#print Dumper @mentioned_groupings;
+print Dumper %mentioned_groupings_count ;
+print "test\n";
+print Dumper %grouping_positions;
+print "filter\n";
+print Dumper @filter_elements;
 #print Dumper @g_l;
 #print Dumper @g_l_val;
 
