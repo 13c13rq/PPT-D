@@ -153,8 +153,6 @@ sub create_groupingB {
 	[" islamic state ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"01:2017:03:2019",	"null"],
 	[" islamic state ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[11]",	"04:2019:01:2021",	"null"],
 	[" taliban ",			"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
-	[" isis ", 				"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"01:2017:03:2019",	"null"],
-	[" isis ", 				"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[11]",	"04:2019:01:2021",	"null"],
 	[" baghdadi ",			"$Bword[1]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[2]",		"01:2017:10:2019",	"null"],
 	[" baghdadi ",			"$Bword[1]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[6]",		"11:2019:01:2021",	"null"],
 	[" the caliphate ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[3]",	"${$Bstat_ref}[2]",		"01:2017:04:2019",	"null"],
