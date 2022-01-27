@@ -867,6 +867,67 @@ sub check_priority {
 	
 };
 
+sub add_priority {
+	
+	$priority_count = 0;
+	$countI			= 1;
+	$query=		scalar(@findings)-1;
+	
+	while ($query > 0) {
+		$query_elements = scalar((@{$findings[$countI]}))-1;
+		$countIII = scalar((@{$findings[$countI]}))-1;
+
+		
+		print "query:$query\n\n";
+		print "$query_elements\n";
+		$temp_name = ($countI -1);
+		unless ($query_elements ==0){
+			
+			my $query_findingI = $findings[$countI][$countIII] {"normal_relevance"};
+			my $query_findingII = $findings[$countI][$countIII] {"high_relevance"};
+			
+			my $current_grouping = $g_l[$temp_name];
+			my $current_grouping_val = $g_l_val[$temp_name];
+			
+			unless ($current_grouping_val = $g_l_val[$temp_name] == 0) {
+#					#here a more strict filter could be implemented by only allowing hig relevance values to count
+				if ($query_findingI > 0 or $query_findingII > 0){
+					print "normal: ", $query_findingI, ", high: ", $query_findingII, ", location: $current_grouping $current_grouping_val ", $countI, $countIII, "\n";
+					unless  (grep( /^$countI$/, @active_groupings)){
+						if ($priority_count==0) {
+							 @filter_elements =();
+							push (@filter_elements, $countI);
+						}
+						else {
+							push (@filter_elements, $countI);
+						};
+					}
+					$priority_count++;
+				}
+			}	
+		};
+		$countI++;	
+		$temp_name = ($countI -1);
+		$query--;
+	};
+	
+#		#changing active groupings if necessary
+	if ($priority_count > 0) {
+		my $active_findings_temp = scalar(@active_groupings);
+		if($active_findings_temp > 0){
+			push (@active_groupings, @filter_elements);
+			}
+		else{
+			@active_groupings =();
+			@active_groupings = @filter_elements;
+		}
+		
+	};
+	
+	$countI			= 0;
+	
+};
+
 #filter II *incomplete
 
 
@@ -1053,10 +1114,10 @@ sub assesment {
 	}
 	else {
 			@filter_elements = @active_groupings;
-			check_priority;
-			print "priority count: $priority_count\n";
 			check_correlation;
 			print "correlation_count: $correlation_count\n";
+			add_priority;
+			print "priority count: $priority_count\n";
 			check_sigword;
 			#check_correltarion
 
