@@ -893,14 +893,15 @@ sub add_priority {
 #					#here a more strict filter could be implemented by only allowing hig relevance values to count
 				if ($query_findingI > 0 or $query_findingII > 0){
 					print "normal: ", $query_findingI, ", high: ", $query_findingII, ", location: $current_grouping $current_grouping_val ", $countI, $countIII, "\n";
-					unless  (grep( /^$countI$/, @active_groupings)){
-						if ($priority_count==0) {
-							 @filter_elements =();
-							push (@filter_elements, $countI);
-						}
-						else {
-							push (@filter_elements, $countI);
-						};
+					unless  (grep( /^$countI$/, @filter_elements)){
+						push (@filter_elements, $countI);
+						#if ($priority_count==0) {
+							 #@filter_elements =();
+							#push (@filter_elements, $countI);
+						#}
+						#else {
+							#push (@filter_elements, $countI);
+						#};
 					}
 					$priority_count++;
 				}
@@ -911,18 +912,18 @@ sub add_priority {
 		$query--;
 	};
 	
-#		#changing active groupings if necessary
-	if ($priority_count > 0) {
-		my $active_findings_temp = scalar(@active_groupings);
-		if($active_findings_temp > 0){
-			push (@active_groupings, @filter_elements);
-			}
-		else{
-			@active_groupings =();
-			@active_groupings = @filter_elements;
-		}
+	#changing active groupings if necessary (inactive in this one)
+	#if ($priority_count > 0) {
+		#my $active_findings_temp = scalar(@active_groupings);
+		#if($active_findings_temp > 0){
+			#push (@active_groupings, @filter_elements);
+			#}
+		#else{
+			#@active_groupings =();
+			#@active_groupings = @filter_elements;
+		#}
 		
-	};
+	#};
 	
 	$countI			= 0;
 	
@@ -1032,6 +1033,48 @@ sub check_correlation {
 	
 	$countI			= 0;
 };
+
+sub add_correlation {
+	
+	$correlation_count 	= 0;
+	$countI				= 0;
+	$query				= scalar(@active_groupings)-1;
+	
+	while ($query >= 0) {
+		
+		#$temp_name = ($countI);
+		my $active_temp = ($active_groupings[$countI] -1);
+		my $export_temp = ($active_groupings[$countI]);
+		$correlation = $mentioned_groupings_count {$g_l [$active_temp]};
+		my $designation =$g_l [$active_temp];
+		print "query:$query - temp:$active_temp -corr: $correlation designation: $designation\n\n"; 
+		
+		if ($correlation > 0){
+			unless  (grep( /^$export_temp$/, @filter_elements)){
+				push (@filter_elements, $export_temp);
+				#if ($correlation_count==0) {
+					#@filter_elements =();
+					#push (@filter_elements, $export_temp);
+				#}
+				#else {
+					#push (@filter_elements, $export_temp);
+				#};
+				
+			};
+			$correlation_count++;
+		};
+		$countI++;	
+		$query--;
+	};
+	
+#	#changing active groupings if necessary (inactive in this one)
+	#if ($correlation_count > 0) {
+		#@active_groupings =();
+		#@active_groupings = @filter_elements;
+	#};
+	
+	$countI			= 0;
+};
 	
 #filter IV *incomplete
 sub check_total {
@@ -1113,11 +1156,15 @@ sub assesment {
 
 	}
 	else {
-			@filter_elements = @active_groupings;
-			check_correlation;
-			print "correlation_count: $correlation_count\n";
+			@filter_elements =();
 			add_priority;
-			print "priority count: $priority_count\n";
+			add_correlation;
+			@active_groupings=();
+			@active_groupings = @filter_elements; 
+			#check_correlation;
+			#print "correlation_count: $correlation_count\n";
+			#add_priority;
+			#print "priority count: $priority_count\n";
 			check_sigword;
 			#check_correltarion
 
@@ -1169,8 +1216,8 @@ sub assesment {
 assesment;
 #analysis;
 print"\n";
-print Dumper @findings;
-#print"active:\n";
+#print Dumper @findings;
+print"active:\n";
 print Dumper @active_groupings;
 print"mentioned:\n";
 #print Dumper @mentioned_groupings;
