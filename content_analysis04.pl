@@ -556,10 +556,15 @@ match_groupings;
 							
 							$query_total_sub = $findings[$countI][$valueadder] {"sig"} + $findings[$countI][$valueadder] {"func"} + $findings[$countI][$valueadder] {"stat"};
 							
+							if ($findings[$countI][$valueadder] {"timesensitive"} == 1) {
+								if ($query_total_sub >= 4 ) {
+									$query_timesensitivity_sub++
+								};
+							};
 							
-							if ($findings[$countI][$valueadder] {"timesensitive"} == 1) {$query_timesensitivity_sub++};
 							if ($findings[$countI][$valueadder] {"wordtype"} eq "adjective") {$query_adj_sub++};
 							if ($findings[$countI][$valueadder] {"wordtype"} eq "name") {$query_name_sub++};
+							
 							if ($findings[$countI][$valueadder] {"wordtype"} eq "concrete noun" or $findings[$countI][$valueadder] {"wordtype"} eq "plural concrete noun") {$query_concrete_sub++};
 							if ($findings[$countI][$valueadder] {"wordtype"} eq "abstract noun" or $findings[$countI][$valueadder] {"wordtype"} eq "plural abstract noun") {$query_abstract_sub++};
 							if ($findings[$countI][$valueadder] {"wordtype"} eq "name") {$query_name_sub++};
@@ -900,13 +905,6 @@ sub add_priority {
 					print "normal: ", $query_findingI, ", high: ", $query_findingII, ", location: $current_grouping $current_grouping_val ", $countI, $countIII, "\n";
 					unless  (grep( /^$countI$/, @filter_elements)){
 						push (@filter_elements, $countI);
-						#if ($priority_count==0) {
-							 #@filter_elements =();
-							#push (@filter_elements, $countI);
-						#}
-						#else {
-							#push (@filter_elements, $countI);
-						#};
 					}
 					$priority_count++;
 				}
@@ -917,33 +915,11 @@ sub add_priority {
 		$query--;
 	};
 	
-	#changing active groupings if necessary (inactive in this one)
-	#if ($priority_count > 0) {
-		#my $active_findings_temp = scalar(@active_groupings);
-		#if($active_findings_temp > 0){
-			#push (@active_groupings, @filter_elements);
-			#}
-		#else{
-			#@active_groupings =();
-			#@active_groupings = @filter_elements;
-		#}
-		
-	#};
-	
 	$countI			= 0;
 	
 };
 
 #filter II *incomplete
-
-
-	#'adjective' => 0,
-	#'unique_source' => 'null',
-	#'concrete' => 0,
-	#'abstract' => 0,
-	#'name' => 4,
-
-
 my $sigword_count = undef;
 my $sigword = undef;
 
@@ -957,7 +933,7 @@ sub  check_sigword  {
 		
 		my $active_temp = ($active_groupings[$countI] -1);
 		my $export_temp = ($active_groupings[$countI]);
-		my $designation =$g_l [$active_temp];
+		my $designation = $g_l [$active_temp];
 		$countIII = scalar((@{$findings[$export_temp]}))-1;
 		
 		print "grouping: $designation - element: $countIII\n";
@@ -974,22 +950,24 @@ sub  check_sigword  {
 			#};
 		#};
 		
-		print "\ndesignation: $designation - adjective:$adjective_temp - concrete:$concrete_temp - abstract: $abstract_temp - escalated_source: $escalated_temp - unique_source:$unique_temp - timesensitivity: $time_temp -- modval: $modval_temp\n"; 
+		#print "\ndesignation: $designation - adjective:$adjective_temp - concrete:$concrete_temp - abstract: $abstract_temp - escalated_source: $escalated_temp - unique_source:$unique_temp - timesensitivity: $time_temp -- modval: $modval_temp\n"; 
 		
-		if ($adjective_temp  > 0 or $concrete_temp > 0 or $abstract_temp > 0){
+		if ($adjective_temp  >= 2 or $concrete_temp >= 2 or $abstract_temp >= 2){
 			print "sigword check testing \n";
 			unless  (grep( /^$export_temp$/, @filter_elements)){
 				push (@filter_elements, $export_temp);
 				print "sigword check triggered \n";
 			};
 		};
-		if ($escalated_temp ne 'undef' or $unique_temp ne 'undef'){
+		
+		if (defined($escalated_temp) or $unique_temp ne 'null'){
 			print "source check testing \n";
 			unless  (grep( /^$export_temp$/, @filter_elements)){
 				push (@filter_elements, $export_temp);
 				print "source check triggered \n";
 			};
 		};
+		
 		if ($time_temp > 0){
 			print "timesensitivity check testing \n";
 			unless  (grep( /^$export_temp$/, @filter_elements)){
@@ -999,7 +977,6 @@ sub  check_sigword  {
 		};
 		$countI++;	
 		$query--;
-		
 	};
 	
 #	#changing active groupings if necessary
@@ -1040,17 +1017,18 @@ sub check_correlation {
 			};
 			$correlation_count++;
 		};
+		
 		$countI++;	
 		$query--;
 	};
 	
-#	#changing active groupings if necessary
+	#changing active groupings if necessary
 	if ($correlation_count > 0) {
 		@active_groupings =();
 		@active_groupings = @filter_elements;
 	};
+	$countI				= 0;
 	
-	$countI			= 0;
 };
 
 sub add_correlation {
@@ -1071,28 +1049,16 @@ sub add_correlation {
 		if ($correlation > 0){
 			unless  (grep( /^$export_temp$/, @filter_elements)){
 				push (@filter_elements, $export_temp);
-				#if ($correlation_count==0) {
-					#@filter_elements =();
-					#push (@filter_elements, $export_temp);
-				#}
-				#else {
-					#push (@filter_elements, $export_temp);
-				#};
-				
 			};
 			$correlation_count++;
 		};
+		
 		$countI++;	
 		$query--;
 	};
 	
-#	#changing active groupings if necessary (inactive in this one)
-	#if ($correlation_count > 0) {
-		#@active_groupings =();
-		#@active_groupings = @filter_elements;
-	#};
-	
 	$countI			= 0;
+	
 };
 	
 #filter IV *incomplete
@@ -1176,11 +1142,12 @@ sub assesment {
 	}
 	else {
 			@filter_elements =();
-			add_priority;
-			add_correlation;
+			#add_priority;
+			#add_correlation;
+			
+			check_sigword;
 			@active_groupings=();
 			@active_groupings = @filter_elements; 
-			check_sigword
 			#check_correlation;
 			#print "correlation_count: $correlation_count\n";
 			#add_priority;
@@ -1188,54 +1155,82 @@ sub assesment {
 			#check_correltarion
 
 		};
-
-	print "\nactive groupings:";
-	print $Hf1 "\nactive groupings:\n";
+	print "\nrelevant groupings:\n";
+	print $Hf1 "\nrelevant groupings:";
 	
 	foreach my $currnent_grouping (@active_groupings) {
 		
 		unless ($currnent_grouping == 0) {
 			
-
-			print  " ", $g_l [($currnent_grouping -1)];
-			
-			#conclusive loop 1 - test for high priority and significance.
+			print  " ", $g_l [($currnent_grouping -1)], ": ";
+			print $Hf1 " ", $g_l [($currnent_grouping -1)], ": ";
+			#filter high_priority:
 			if ($g_l_val [($currnent_grouping -1)] == 1)	{
-				
-				print " (high priority),"
-				
+				print "high_priority, ";
+				print $Hf1 "high_priority, ";
 				}
-			else	{
+		#	#filter correlation:
+			my $temp_mention = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};
+			if ($temp_mention > 0 ){			
+				print "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
+				print $Hf1 "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
+			};	
+					
+		#	#elements in finding array haah
+			my $temp_grouping_scalar	= (scalar((@{$findings[$currnent_grouping]})))-1;
+		#	#words
+			my $adjective_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"adjective"};
+			my $concrete_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"concrete"};
+			my $abstract_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"abstract"};
+			if ($adjective_temp > 0 or $concrete_temp >= 2 or $abstract_temp >= 2){
+				my @relevant_words_temp;
+				if ($adjective_temp > 0){push (@relevant_words_temp, "adjective ");};
+				if ($concrete_temp >= 2){push (@relevant_words_temp, "concrete noun ");};
+				if ($abstract_temp >= 2){push (@relevant_words_temp, "abstract noun ");};
+				print "relevant wordtype ( @relevant_words_temp", "), ";
+				print $Hf1 "relevant wordtype ( @relevant_words_temp", "), ";
+			};
+		#	#sources
+			my $escalated_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"escalated_source"};
+			my $unique_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"unique_source"};
+			if (defined($escalated_temp) or $unique_temp ne 'null'){
+				my @relevant_words_temp;
+				if (defined($escalated_temp)) {push (@relevant_words_temp, "$escalated_temp -> escalated ");};
+				if ($unique_temp ne 'null')  {push (@relevant_words_temp, "$unique_temp -> unique");};
 				
-				print",";
-				
-				};
-			
-			#filter correlation:
-			print "mentioned: ", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "\n";
-			
-			#conclusive loop 2 - select grouping with highest sig value.
-			
-			#conclusive loop 3 - select grouping with adjectives or abstract nouns.
-			
-			#conclusive loop 4 - select grouping with highest total value
-			
-			
-			
+				print "relevant source: ( @relevant_words_temp", "), ";
+				print $Hf1 "relevant source: ( @relevant_words_temp", "), ";
+			};
+		#	#time
+			my $time_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"timesensitivity"};
+			if ($time_temp > 0){
+				print "timesensitive, ";
+			};	
+			my $modval_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"modval"};
+			print "modval: $modval_temp, ";
+			print  "\n";
+			print $Hf1 "\n";
 			
 			#my %current_findings = ("timesensitive" => $temp_active,
+			
+			#my $highest = max values %height;
+			#print "$highest\n";
+			
 		};
+		print "\nloop done\n";
 		
 	};
 	print "\n";
 	#reuse parts of the assesment in dead_trigger.pl and adapt them to the new analysis structure.
+	
+	#create an array that final result for each  loop is pushed to, elements are named with number in findings array indexing content (sources), then sort by size and use largest value.
 	
 };
 
 assesment;
 #analysis;
 print"\n";
-print Dumper @findings;
+#print Dumper @findings;
 print"active:\n";
 print Dumper @active_groupings;
 print"mentioned:\n";
