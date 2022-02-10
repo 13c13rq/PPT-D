@@ -1118,7 +1118,7 @@ sub check_total {
 };
 	
 
-
+my %test_groupings;
 sub assesment {
 	
 	#	available values:
@@ -1160,23 +1160,34 @@ sub assesment {
 	
 	foreach my $currnent_grouping (@active_groupings) {
 		
+		my $loop_result = undef;
+		my $loop_sum 	= undef;
+		$loop_sum		= 0;
+		$loop_result	= 0;
+		
 		unless ($currnent_grouping == 0) {
 			
 			print  " ", $g_l [($currnent_grouping -1)], ": ";
 			print $Hf1 " ", $g_l [($currnent_grouping -1)], ": ";
+			
 			#filter high_priority:
 			if ($g_l_val [($currnent_grouping -1)] == 1)	{
 				print "high_priority, ";
 				print $Hf1 "high_priority, ";
-				}
+				$loop_sum++;
+				#needs refinement!
+			};
 		#	#filter correlation:
 			my $temp_mention = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};
-			if ($temp_mention > 0 ){			
+			if ($temp_mention > 0 ){	
+				my $mention_count_temp = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};		
 				print "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
 				print $Hf1 "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
+				#$loop_sum = ($loop_sum + $mention_count_temp);
+				$loop_sum++;
 			};	
 					
-		#	#elements in finding array haah
+		#	#elements in finding  hash array
 			my $temp_grouping_scalar	= (scalar((@{$findings[$currnent_grouping]})))-1;
 		#	#words
 			my $adjective_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"adjective"};
@@ -1184,43 +1195,55 @@ sub assesment {
 			my $abstract_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"abstract"};
 			if ($adjective_temp > 0 or $concrete_temp >= 2 or $abstract_temp >= 2){
 				my @relevant_words_temp;
-				if ($adjective_temp > 0){push (@relevant_words_temp, "adjective ");};
-				if ($concrete_temp >= 2){push (@relevant_words_temp, "concrete noun ");};
-				if ($abstract_temp >= 2){push (@relevant_words_temp, "abstract noun ");};
+				if ($adjective_temp > 0){
+					push (@relevant_words_temp, "adjective ");
+					$loop_sum++;
+				};
+				if ($concrete_temp >= 2){
+					push (@relevant_words_temp, "concrete noun ");	
+					$loop_sum++;
+				};
+				if ($abstract_temp >= 2){
+					push (@relevant_words_temp, "abstract noun ");
+					$loop_sum++;
+				};
 				print "relevant wordtype ( @relevant_words_temp", "), ";
 				print $Hf1 "relevant wordtype ( @relevant_words_temp", "), ";
 			};
+			
 		#	#sources
 			my $escalated_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"escalated_source"};
 			my $unique_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"unique_source"};
 			if (defined($escalated_temp) or $unique_temp ne 'null'){
 				my @relevant_words_temp;
-				if (defined($escalated_temp)) {push (@relevant_words_temp, "$escalated_temp -> escalated ");};
-				if ($unique_temp ne 'null')  {push (@relevant_words_temp, "$unique_temp -> unique");};
-				
+				if (defined($escalated_temp)) {push (@relevant_words_temp, "$escalated_temp -> escalated ");
+					$loop_sum++;
+				};
+				if ($unique_temp ne 'null')  {push (@relevant_words_temp, "$unique_temp -> unique");	
+					$loop_sum++;
+				};
 				print "relevant source: ( @relevant_words_temp", "), ";
 				print $Hf1 "relevant source: ( @relevant_words_temp", "), ";
 			};
+			
 		#	#time
 			my $time_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"timesensitivity"};
 			if ($time_temp > 0){
-				print "timesensitive, ";
+				print "timesensitive, ";	$loop_sum++;
 			};	
+			
+		#	#results
 			my $modval_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"modval"};
 			print "modval: $modval_temp, ";
 			print  "\n";
 			print $Hf1 "\n";
-			
-			#my %current_findings = ("timesensitive" => $temp_active,
-			
-			#my $highest = max values %height;
-			#print "$highest\n";
-			
+			$loop_result = $loop_sum*$modval_temp;
+			$test_groupings {$loop_result} = $currnent_grouping;
 		};
-		print "\nloop done\n";
-		
+	#	#finishing
+		print "loop done - result: $loop_result ($loop_sum);\n\n";
 	};
-	print "\n";
+	
 	#reuse parts of the assesment in dead_trigger.pl and adapt them to the new analysis structure.
 	
 	#create an array that final result for each  loop is pushed to, elements are named with number in findings array indexing content (sources), then sort by size and use largest value.
@@ -1228,6 +1251,22 @@ sub assesment {
 };
 
 assesment;
+
+my $highest_loop_result = max keys %test_groupings;
+
+my $required = $test_groupings{$highest_loop_result};
+
+my $highest_grouping_name = $g_l [($required -1)];
+
+print "Grouping $highest_grouping_name is dominant!\n";
+my $highest_grouping_scalar	= (scalar((@{$findings[$required]})))-1;
+
+my $escalated	= $findings[$required][$highest_grouping_scalar] {"escalated_source"};
+my $unique		= $findings[$required][$highest_grouping_scalar] {"unique_source"};
+print "Active Image source:\n";
+if (defined($escalated)) {print"escalated source:$escalated\n";};
+if ($unique ne 'null')  {print"unique source:$unique\n";};
+
 #analysis;
 print"\n";
 #print Dumper @findings;
@@ -1235,11 +1274,12 @@ print"active:\n";
 print Dumper @active_groupings;
 print"mentioned:\n";
 #print Dumper @mentioned_groupings;
-print Dumper %mentioned_groupings_count ;
+print Dumper %mentioned_groupings_count;
 print "test\n";
 print Dumper %grouping_positions;
 print "filter\n";
 print Dumper @filter_elements;
+print Dumper %test_groupings;
 #print Dumper @g_l;
 #print Dumper @g_l_val;
 
