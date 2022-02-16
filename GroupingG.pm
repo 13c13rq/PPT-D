@@ -143,7 +143,7 @@ sub create_groupingG {
 	
 # primary grouping #
 	@climate_change = (
-	["primary grouping","climate_change","2", $Gpool_1 [$Grand_two], "null"],
+	["primary grouping","climate_change","1", $Gpool_1 [$Grand_two], "null"],
 	[" climate change ",			"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 	[" global warming ",			"$Gword[3]",	"${$Gsig_ref}[12]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 	[" environment ",				"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
@@ -152,7 +152,7 @@ sub create_groupingG {
 	);
 	
 	@energy_industry = (
-	["primary grouping","energy_industry","2", $Gpool_1 [$Grand_two], "null"],
+	["primary grouping","energy_industry","1", $Gpool_1 [$Grand_two], "null"],
 	[" opec ",						"$Gword[1]",	"${$Gsig_ref}[4]",	"${$Gfunc_ref}[3]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
 	[" oil ",						"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
 	[" coal ",						"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
@@ -179,7 +179,7 @@ sub create_groupingG {
 	);
 
 	@pollution = (
-	["primary grouping","pollution","2", $Gpool_1 [$Grand_two],	"null"],
+	["primary grouping","pollution","1", $Gpool_1 [$Grand_two],	"null"],
 	[" automobile industry ",		"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 	[" energy industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 	[" Steel Industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
@@ -189,7 +189,7 @@ sub create_groupingG {
 	);
 	
 	@natural_catastrophes = (
-	["primary grouping","natural_catastrophes","2", $Gpool_2 [2],	"null"],
+	["primary grouping","natural_catastrophes","1", $Gpool_2 [2],	"null"],
 	[" hurricane",					"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
 	[" earthquake ",				"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
 	[" category 3 ",				"$Gword[9]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[9]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
