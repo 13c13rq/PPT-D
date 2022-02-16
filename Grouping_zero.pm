@@ -5,6 +5,7 @@ use warnings;
 use Exporter qw(import);
 our @EXPORT_OK = qw( create_grouping_zero_v create_grouping_zero_o ); 
 our $catval = undef;
+use Data::Dumper qw(Dumper);
 ##############
 # Grouping zero_ #
 ##############	
@@ -384,6 +385,7 @@ sub create_grouping_zero_v{
 	our $zero_context_val_ref	=  	\@zero_context;	
 		
 	our @values_zero = ($irrelevant_val_ref, $insult_val_ref, $boast_val_ref, $complaint_val_ref, $zero_context_val_ref);
+	#print Dumper @values_zero;
 };
 sub create_grouping_zero_o{
 	$zero_sig_ref 	= \@zero_sig;
@@ -400,7 +402,7 @@ sub create_grouping_zero_o{
 	our @objects_zero = ($irrelevant_ref, $insult_ref, $boast_ref, $complaint_ref, $zero_context_ref);
 };
 	
-
+#create_grouping_zero_v;
 
 1;
 END
