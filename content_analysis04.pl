@@ -1,9 +1,7 @@
 #!/usr/bin/env perl
-#push ok
 use v5.14;
 use strict;
 use warnings;
-use Lingua::EN::Opinion;
 use List::Util qw( max );
 use Statistics::Lite qw( mean );
 use List::Util qw( min max sum0 );
@@ -18,7 +16,6 @@ use Cwd  qw(abs_path);
 use Data::Dumper qw(Dumper);
 use Switch;
 
-
 #custom modules
 use lib dirname(dirname abs_path $0) . '$home/active_state/modules/PPT_D/modules';
 use Grouping_zero qw( create_grouping_zero_v create_grouping_zero_o );
@@ -31,10 +28,8 @@ use GroupingF qw( create_groupingFv create_groupingFo );
 use GroupingG qw( create_groupingGv create_groupingGo );
 use GroupingH qw( create_groupingHv create_groupingHo );
 
-
 my $home	= File::HomeDir->my_home;
 my $Config 	= Config::Tiny->new;
-
 
 # getting tweet file
 my $tweet	= "$home/active_state/Analysis_Data/Twitter/trumptweet.txt"; 
@@ -44,23 +39,18 @@ open(my $fh, '<:encoding(UTF-8)', $tweet)
   or die "Could not open file '$tweet' $!";
 my $tweet_txt = <$fh>;
 
-
-# floating scalars
-my $tweetcount	= undef;
-my $new_tweet 	= undef;
-
-
-my $Hf 			= undef;
-my $Hf0 		= undef;
-my $Hf1 		= undef;
-my $Hf2 		= undef;
-
+# filehandles
+my (
+	$Hf	,
+	$Hf0	,
+	$Hf1	,
+	$Hf2	,	
+	) = undef;
 
 # counting scalars
 my $dread_result 	=0;
 my $boast_result 	=0;
 my $insult_result 	=0;
-
 
 my $svg_txt1="/active_state/Analysis_Data/Twitter/textVI.txt";
 open( $Hf, '>', "$home/$svg_txt1")
@@ -104,7 +94,6 @@ sub read_details {
 read_details;
 
 #cleaning tweet
-
 	#print $Hf0  "stripping obstructive characters\n";
 	print "\nstripping obstructive characters\n";
 	$tweet_txt =~ tr/!?&'"#()[]{}-–”“~*;,:.%@=/ /;
@@ -112,84 +101,73 @@ read_details;
 	print "lower case all\n";
 	$tweet_txt = lc $tweet_txt;
 	close $Hf0;
-	my $countI =undef;
 	
-	$countI = 0;
-	my @evaluation 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
-	my @findings 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
-	
-	#foreach my $vlaues0 (@findings){
-		#$weight_distr {$findings[$countI]} = $g_l_val[$countI];
-		#$countI++;
-		#}
 #setting up findings array
-	my @finding_data = ("word", "wordtype", "sig", "func", "stat", "relevant_time", "unique_source");
-# preliminary analysis
-
+my @evaluation 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
+my @findings 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
+my @finding_data = ("word", "wordtype", "sig", "func", "stat", "relevant_time", "unique_source");
 	my @objects;
 	my $objects;
-	
 	my $objects_ref;
 	my $values_ref;
 	
-	my $current_grouping 	= undef;
-	my $irrelevance 		= undef;
+my (	
+	$current_grouping	,
+	$irrelevance	,
+	$active_time	,
+	$grouping_displayed	,
+	$countI	,
+	$standard_incidence_count	,
+		$test_counter	,
+		$irrelevance_count	,
+		$insult_count	,
+		$complaint_count	,
+		$boast_count	,
+	) = undef;
 	
-	my $test_counter 		= undef;
-	$test_counter= 0;
-	
-	my $active_time 		= undef;
-	$active_time = 1; #on by default ...
-	
-	my $grouping_displayed 	= undef;
-	$grouping_displayed 	= 0;
-	
-	my $irrelevance_count	= undef;
-	my $insult_count 		= undef;
-	my $boast_count 		= undef;
-	my $complaint_count 	= undef;
-	my $standard_incidence_count = undef;
-	$irrelevance_count		= 0;
-	$insult_count 			= 0;
-	$boast_count 			= 0;
-	$complaint_count 		= 0;
-	$standard_incidence_count = 0;
-	
-	my @g_l = ('A'..'H');
-	my @g_l_val = (0,1,0,1,0,0,1,1);
-	my @g_c_val = (0,0,0,0,0,0,1,0);
-	
-	#the modifyers are a cosmetic feature.
-	my @modifyers = (0, 1.51, 1.81, 1.59, 1.78, 1.57, 1.54, 1.91, 1.87); #8;
-	my @zero_modifyers = (1.7, 1.5, 1.1, 1.3, 1.0);
-	
-	my %weight_distr;
-	my %grouping_positions;
-	
-	my $countnow = 0;
-	foreach my $vlaues (@g_l_val){
-		$weight_distr {$g_l[$countnow]} = $g_l_val[$countnow];
-		$countnow++;
-		}
-	$countnow = 1;
-	foreach my $vlaues0 (@g_l){
-		$grouping_positions {$g_l[$countnow-1]} = $countnow;
-		$countnow++;
-		}
-	$countnow = 0;
+$active_time 				= 1; #on by default ...
+$grouping_displayed 		= 0;
+$test_counter				= 0;
+$irrelevance_count			= 0;
+$insult_count 				= 0;
+$boast_count 				= 0;
+$complaint_count 			= 0;
+$standard_incidence_count 	= 0;
 
-	my @mentioned_groupings;  # contains all groupings that were mentioned in grouping Zero.
-	my %mentioned_groupings_count;
-	
-	$countnow = 1;
-	foreach my $vlaues1 (@g_l){
-		$mentioned_groupings_count {$g_l[$countnow-1]} = 0;
-		$countnow++;
-		}
-	$countnow = 0;
+my @g_l = ('A'..'H');
+my @g_l_val = (0,1,0,1,0,0,1,1); #high priority groupings
+my @g_c_val = (0,0,0,0,0,0,1,0); #special priority for climate grouping
 
+my @modifyers = (0, 1.51, 1.81, 1.59, 1.78, 1.57, 1.54, 1.91, 1.87); #8;
+my @zero_modifyers = (1.7, 1.5, 1.1, 1.3, 1.0);
 
-my %grouping_incidence;
+my %weight_distr;
+my %grouping_positions;
+
+#initializing mutidimensional hash array
+my $countnow = 0;
+foreach my $vlaues (@g_l_val){
+	$weight_distr {$g_l[$countnow]} = $g_l_val[$countnow];
+	$countnow++;
+	}
+$countnow = 1;
+foreach my $vlaues0 (@g_l){
+	$grouping_positions {$g_l[$countnow-1]} = $countnow;
+	$countnow++;
+	}
+$countnow = 0;
+
+my @mentioned_groupings;  # contains all groupings that were mentioned in grouping Zero.
+my %mentioned_groupings_count;
+
+$countnow = 1;
+foreach my $vlaues1 (@g_l){
+	$mentioned_groupings_count {$g_l[$countnow-1]} = 0;
+	$countnow++;
+	}
+$countnow = 0;
+
+my %grouping_incidence; #counter for number of findings per grouping - may be redundant.
 
 
 sub standard_test {
@@ -247,7 +225,6 @@ sub standard_test {
 					};
 				};
 				
-				
 				#if currently relevant, saving findings hash into mutidimensional array 
 				if ($active_time == 1) {	
 					if ($grouping_displayed == 0){
@@ -301,7 +278,7 @@ sub standard_test {
 					}
 					else {
 					$standard_incidence_count++;
-					print "incidence_count active!\n"
+					#print "incidence_count active!\n"
 					}
 					
 					if($test_counter==0) {
@@ -327,8 +304,8 @@ sub standard_test {
 				#incase of inactive timeperiod
 				else {
 					if ($grouping_displayed == 0){
-						print "\n\n $current_grouping \n";
-						print $Hf1 "\n\n $current_grouping \n";
+						print "\n\n Grouping_$current_grouping \n";
+						print $Hf1 "\n\n Grouping_$current_grouping \n";
 						$grouping_displayed =1;	
 						
 					};
@@ -341,7 +318,7 @@ sub standard_test {
 		};
 	};
 	$test_counter++;
-	print "\ngrouping incidence =$standard_incidence_count\n";
+	#print "\ngrouping incidence =$standard_incidence_count\n";
 };
 
 my $active_mod = undef;
@@ -449,54 +426,24 @@ sub match_groupings {
 		create_groupingHv;
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
-		print $Hf1 "\n";
-		print "\n";
+		
+	print $Hf1 "\n";
+	print "\n";
 };
 
 match_groupings;
 
-
-#running content analysis
-
-
-# setting result vlaues for content modifyer...
-
-my $dominant_dread			= undef; #primary relevant grouping number from 1 - 8
-my $result_Grouping_Zero0	= undef; #irrelevant;
-my $result_Grouping_Zero1	= undef; #$insult;
-my $result_Grouping_Zero2	= undef; #$boast;
-my $result_Grouping_Zero3	= undef; #$complaint;
-my $result_GroupingA	= undef; #$atomic_dread; -1.8
-my $result_GroupingB	= undef; #$divine_dread; -1.8
-my $result_GroupingC	= undef; #$econ_dread;	 -1.6
-my $result_GroupingD	= undef; #health_dread;	 -1.8
-my $result_GroupingE	= undef; #$existential_dread_result; -1.8
-my $result_GroupingF	= undef; #$institutional_dread_result; -1.8
-my $result_GroupingG	= undef; #$eco_dread_result;-1.9
-my $result_GroupingH	= undef; #$fasho_dread_result; -1.8
-my $discard_result		= undef; #discard 
-my $result_Grouping_zero= undef;
-#my $dread_result		= undef;#total of all finding incidents (not including Grouping_Zero);
-my $elements			= undef;
-my $results				= undef;
-my $complaint_result 	= undef;
-my $grouping_count 		= undef;
-my $discard_active		= undef;
-my $discard_filter_active	= undef;
-
-$discard_active = 0;
-$discard_filter_active = 0;
-
-
-my $element_match 		= undef;
-my $match_count 		= undef;
-my $query_elements 		= undef;	
-my $query_object		= undef;
-my $query_request 		= undef;
-my $query_result 		= undef;
-my $query_count 		= undef;
+#variables for 'check_element' sub
+my (
+	$query_elements	,
+	$query_object	,
+	$query_request	,
+	$query_result 	,
+	$query_count	,
+	)	= undef;
 
 my $countIII 			=undef;
+
 my @finding_total = (0);
 my $finding_total_ref = \@finding_total;
 my $query 				= undef;
@@ -530,31 +477,35 @@ sub check_element {
 };
 
 
-my $query_total		= undef;
-my $query_total_sub	= undef;
-my $query_adj_sub	= undef;
-my $query_adj		= undef;
-my $query_name_sub	= undef;
-my $query_name		= undef;
-my $query_concrete_sub	= undef;
-my $query_concrete		= undef;
-my $query_abstract_sub	= undef;
-my $query_abstract		= undef;
-my $query_high_relevance_sub	= undef;
-my $query_high_relevance		= undef;
-my $query_normal_relevance_sub	= undef;
-my $query_normal_relevance		= undef;
-my $query_finding_wieght		= undef;
-my $query_timesensitivity		= undef;
-my $query_timesensitivity_sub	= undef;
-my $unique_source		= undef;
-my $standard_source		= undef;
-my $escalated_source 	= undef;
-my $chosen_standard_source		= undef;
-my $chosen_unique_source		= undef;
-my $chosen_escalated_source		= undef;
-my $incidence_counter			= undef;
-my $modval_part					= undef;
+my (
+	$query_total,
+	$query_total_sub,
+	$query_adj		,
+	$query_adj_sub	,
+	$query_name		,
+	$query_name_sub	,
+	$query_concrete		,
+	$query_concrete_sub	,
+	$query_abstract		,
+	$query_abstract_sub	,
+	$query_high_relevance		,
+	$query_high_relevance_sub	,
+	$query_normal_relevance		,
+	$query_normal_relevance_sub	,
+	
+	$query_finding_wieght	,
+	$query_timesensitivity	,
+	$query_timesensitivity_sub	,
+	
+	$unique_source	,
+	$chosen_unique_source	,
+	$standard_source	,
+	$chosen_standard_source		,
+	$escalated_source 	,
+	$chosen_escalated_source	,
+	
+	$incidence_counter	,
+	$modval_part	) = undef;
 
 sub add_values {
 	$countI			= 1;
@@ -620,18 +571,18 @@ sub add_values {
 						$standard_source	= $findings[$countI][$valueadder] {"standard_source"};
 						$escalated_source 	= $findings[$countI][$valueadder] {"escalated_source"};
 						$unique_source		= $findings[$countI][$valueadder] {"unique_source"};
-						print "test: $escalated_source  \n";
+						#print "test: $escalated_source  \n";
 						unless ($standard_source eq "undef"){
 							
 							# print "$standard_source\n";
 							if ($query_finding_wieght == 0 or $query_finding_wieght < $query_total_sub) {
 								$chosen_standard_source		= $standard_source;
 								if ($escalated_source eq "null"){ 
-									print "$escalated_source eq null\n";
+									#print "$escalated_source eq null\n";
 									$chosen_escalated_source	= undef;	
 								}
 								else {
-									print "$escalated_source ne null\n";
+									#print "$escalated_source ne null\n";
 									$chosen_escalated_source	= $escalated_source;									
 								};
 								if($unique_source ne "undef") {
@@ -691,8 +642,21 @@ sub add_values {
 	$countI			= 0;
 };
 
-my $countII 	= 0;
-$results 	= 0;
+
+
+my (
+	$grouping_count	,
+		$discard_active	,
+		$discard_filter_active	,
+		$discard_result	,
+	$results,	
+	) = undef;
+
+
+my $countII 			= 0;
+$discard_active 		= 0;
+$discard_filter_active 	= 0;
+$results 				= 0;
 	
 sub printdebug {
 	print "\n\n###discard-sort###\n";
@@ -721,7 +685,8 @@ sub standard_analysis {
 			unless ($countI ==0) {
 				push @active_groupings, $countI;
 				};
-			$grouping_count++};
+			$grouping_count++
+			};
 		$countI++;	
 	};
 	
@@ -769,11 +734,12 @@ sub standard_analysis {
 			$discard_active = 0;
 			printdebug;
 	};
-
-	add_values;
+	
+	add_values;	
+	
 };
 
-my @filter_elements = undef;
+my @filter_elements;
 my %test_groupings;
 sub assesment {
 	if ($discard_active == 1 && $discard_filter_active == 0) {
@@ -907,67 +873,89 @@ my $highest_grouping_scalar	= (scalar((@{$findings[$required]})))-1;
 my $standard	= $findings[$required][$highest_grouping_scalar] {"standard_source"};
 my $escalated	= $findings[$required][$highest_grouping_scalar] {"escalated_source"};
 my $unique		= $findings[$required][$highest_grouping_scalar] {"unique_source"};
+
 print "Active Image source:\n";
 
 if (defined($escalated)) {print"escalated source:$escalated\n";};
 if ($unique ne 'null')  {print"unique source:$unique\n";};
 print"standard source:$standard\n";
-#debug - show array contents
 
-#analysis;
-#print"\n";
-#print Dumper @findings;
-#print"active:\n";
-#print Dumper @active_groupings;
-#print"mentioned:\n";
-#print Dumper @mentioned_groupings;
-#print Dumper %mentioned_groupings_count;
-#print "test\n";
-#print Dumper %grouping_positions;
-#print "filter\n";
-#print Dumper @filter_elements;
-#print Dumper %test_groupings;
-#print Dumper @g_l;
-#print Dumper @g_l_val;
-#print "\n\n output incidence:\n";
-#print Dumper %grouping_incidence;
+#debug - show array contents
+	#print"\n";
+	#print Dumper @findings;
+	#print"active:\n";
+	#print Dumper @active_groupings;
+	#print"mentioned:\n";
+	#print Dumper @mentioned_groupings;
+	#print Dumper %mentioned_groupings_count;
+	#print "test\n";
+	#print Dumper %grouping_positions;
+	#print "filter\n";
+	#print Dumper @filter_elements;
+	#print Dumper %test_groupings;
+	#print Dumper @g_l;
+	#print Dumper @g_l_val;
+	#print "\n\n output incidence:\n";
+	#print Dumper %grouping_incidence;
+#
+
 
 
 #Output:
 	#Contentmodifyer
 	#Dominant Dread
+
+
+#potential export values
+
+#my $dominant_dread		= undef; #primary relevant grouping number from 1 - 8
+#my $result_Grouping_Zero0	= undef; #irrelevant;
+#my $result_Grouping_Zero1	= undef; #$insult;
+#my $result_Grouping_Zero2	= undef; #$boast;
+#my $result_Grouping_Zero3	= undef; #$complaint;
+#my $result_GroupingA	= undef; #$atomic_dread; -1.8
+#my $result_GroupingB	= undef; #$divine_dread; -1.8
+#my $result_GroupingC	= undef; #$econ_dread;	 -1.6
+#my $result_GroupingD	= undef; #health_dread;	 -1.8
+#my $result_GroupingE	= undef; #$existential_dread_result; -1.8
+#my $result_GroupingF	= undef; #$institutional_dread_result; -1.8
+#my $result_GroupingG	= undef; #$eco_dread_result;-1.9
+#my $result_GroupingH	= undef; #$fasho_dread_result; -1.8
+#my $dread_result		= undef;#total of all finding incidents (not including Grouping_Zero);
+#my $complaint_result 	= undef;
+#my $result_Grouping_zero= undef;
+
 	
-	
-sub write_eval {
-# declaring configuartion file
-	$Config	= Config::Tiny->read("$home/active_state/Analysis_Data/Twitter/evaluation.conf");
+#sub write_eval {
+## declaring configuartion file
+	#$Config	= Config::Tiny->read("$home/active_state/Analysis_Data/Twitter/evaluation.conf");
 		
-# writing dominantdread
-	$Config->{content}->{dominant_dread}= $dominant_dread;
+## writing dominantdread
+	#$Config->{content}->{dominant_dread}= $dominant_dread;
 	
-# writing result vlaues for content modifyer...
-	$Config->{content}->{discard}				=$discard_result;	#Zero0
-	$Config->{content}->{insult}				=$insult_result;	#Zero1
-	$Config->{content}->{boast}					=$boast_result;		#Zero2
-	$Config->{content}->{complaint}				=$complaint_result;	#Zero3
+## writing result vlaues for content modifyer...
+	#$Config->{content}->{discard}				=$discard_result;	#Zero0
+	#$Config->{content}->{insult}				=$insult_result;	#Zero1
+	#$Config->{content}->{boast}					=$boast_result;		#Zero2
+	#$Config->{content}->{complaint}				=$complaint_result;	#Zero3
 	
-	$Config->{content}->{dread}					= #dominant_dread
+	#$Config->{content}->{dread}					= #dominant_dread
 	
-	$Config->{content}->{grouping_A}			=$result_GroupingA;
-	$Config->{content}->{grouping_B}			=$result_GroupingB;
-	$Config->{content}->{grouping_C}			=$result_GroupingC;
-	$Config->{content}->{grouping_D}			=$result_GroupingD;
-	$Config->{content}->{grouping_E}			=$result_GroupingE;
-	$Config->{content}->{grouping_F}			=$result_GroupingF;
-	$Config->{content}->{grouping_G}			=$result_GroupingG;
-	$Config->{content}->{grouping_H}			=$result_GroupingH;
-	$Config->{content}->{grouping_Zero}			=$result_Grouping_zero;
+	#$Config->{content}->{grouping_A}			=$result_GroupingA;
+	#$Config->{content}->{grouping_B}			=$result_GroupingB;
+	#$Config->{content}->{grouping_C}			=$result_GroupingC;
+	#$Config->{content}->{grouping_D}			=$result_GroupingD;
+	#$Config->{content}->{grouping_E}			=$result_GroupingE;
+	#$Config->{content}->{grouping_F}			=$result_GroupingF;
+	#$Config->{content}->{grouping_G}			=$result_GroupingG;
+	#$Config->{content}->{grouping_H}			=$result_GroupingH;
+	#$Config->{content}->{grouping_Zero}			=$result_Grouping_zero;
 	
-# writing total number of dread findings
-	$Config->{content}->{dread}					=$dread_result;
+## writing total number of dread findings
+	#$Config->{content}->{dread}					=$dread_result;
 	
-	$Config->write("$home/active_state/Analysis_Data/Twitter/evaluation.conf");			
-};
+	#$Config->write("$home/active_state/Analysis_Data/Twitter/evaluation.conf");			
+#};
 	
 
 ##2# preliminary analysis
