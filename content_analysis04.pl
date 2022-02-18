@@ -16,6 +16,17 @@ use Cwd  qw(abs_path);
 use Data::Dumper qw(Dumper);
 use Switch;
 
+my $home	= File::HomeDir->my_home;
+my $Config 	= Config::Tiny->new;
+
+
+$Config	= Config::Tiny->read("$home/PPT-D/asset_paths.conf");
+		
+	# reading path strings
+	my $status_path		= $Config->{paths}->{status};
+	my $modules_path 	= $Config->{paths}->{modules};
+	my $em_path 		= $Config->{paths}->{em};
+# add all other necessary paths 
 #custom modules
 use lib dirname(dirname abs_path $0) . '$home/active_state/modules/PPT_D/modules';
 use Grouping_zero qw( create_grouping_zero_v create_grouping_zero_o );
@@ -28,8 +39,7 @@ use GroupingF qw( create_groupingFv create_groupingFo );
 use GroupingG qw( create_groupingGv create_groupingGo );
 use GroupingH qw( create_groupingHv create_groupingHo );
 
-my $home	= File::HomeDir->my_home;
-my $Config 	= Config::Tiny->new;
+
 
 # getting tweet file
 my $tweet	= "$home/active_state/Analysis_Data/Twitter/trumptweet.txt"; 
@@ -85,8 +95,8 @@ open( $Hf1, '>', "$svg_txt3")
 my @current_time = undef;
 	#reading tweetstatus
 sub read_details {
-		# declaring configuartion file
-		$Config	= Config::Tiny->read("$home/active_state/Analysis_Data/Twitter/tweetstatus.conf");
+		# declaring configuartion file ->
+		$Config	= Config::Tiny->read("$home/$status_path");
 		
 		# reading essential vaulues
 		@current_time =split /-/,$Config->{class}->{month};
@@ -106,6 +116,7 @@ read_details;
 my @evaluation 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
 my @findings 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
 my @finding_data = ("word", "wordtype", "sig", "func", "stat", "relevant_time", "unique_source");
+
 	my @objects;
 	my $objects;
 	my $objects_ref;
@@ -879,6 +890,26 @@ print "Active Image source:\n";
 if (defined($escalated)) {print"escalated source:$escalated\n";};
 if ($unique ne 'null')  {print"unique source:$unique\n";};
 print"standard source:$standard\n";
+
+#reading em values -> active_state/Analysis_Data/Twitter/evaluation.conf"
+$Config	= Config::Tiny->read("$home/$em_path");
+
+	# reading em values
+		my $anger		= $Config->{emotion}->{anger};
+		my $anticipation= $Config->{emotion}->{anticipation};
+		my $disgust		= $Config->{emotion}->{disgust};
+		my $fear		= $Config->{emotion}->{fear};
+		my $joy			= $Config->{emotion}->{joy};
+		my $sadness		= $Config->{emotion}->{sadness};
+		my $surprise	= $Config->{emotion}->{surprise};
+		my $trust		= $Config->{emotion}->{trust};
+		
+	# reading disposition values
+		my $mean		= $Config->{neutrality}->{disposition_mean};
+		my $sum			= $Config->{neutrality}->{disposition_sum};
+		my $sentence_total = $Config->{neutrality}->{sentence_total};
+
+
 
 #debug - show array contents
 	#print"\n";
