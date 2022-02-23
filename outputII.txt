@@ -1,6 +1,6 @@
-push on reference is experimental at content_analysis04.pl line 267.
-push on reference is experimental at content_analysis04.pl line 647.
-push on reference is experimental at content_analysis04.pl line 648.
+push on reference is experimental at content_analysis04.pl line 268.
+push on reference is experimental at content_analysis04.pl line 645.
+push on reference is experimental at content_analysis04.pl line 646.
 
 content_analysis1.pl
 
@@ -35,6 +35,10 @@ lower case all
 	divisive content: ' CORRUPT' 
 	divisive content: ' SQUAD ' 
 
+ Grouping_G 
+
+	climate_change: ' ENVIRONMENT ' 
+
  Grouping_H 
 
 	UK (Brexit): ' BORIS J ' 
@@ -49,7 +53,7 @@ irrelevance count: 2
 zero results: 3
 query result: 1
 query count: 1
-grouping_count: 4
+grouping_count: 5
 irrel_count: 2
 ###-###
 
@@ -58,384 +62,40 @@ query:2, mod: 1.81
 query:5, mod: 1.57
 query:5, mod: 1.57
 query:5, mod: 1.57
+query:7, mod: 1.91
 query:8, mod: 1.87
 query:8, mod: 1.87
 query:8, mod: 1.87
-query:8
 
-3
-query:7
+relevant groupings:
+ A: modval: 0.503333333333333, 
+loop done - result: 0.0503333333333333 (0);
 
-3
-normal: 1, high: 1, location: B  23
-query:6
+minor incidence noted 
+ B: high_priority, timesensitive, modval: 2.41333333333333, 
+loop done - result: 4.82666666666667 (2);
 
-0
-query:5
+ E: correlated (3), relevant wordtype ( adjective ), relevant source: ( Godzilla2 -> escalated ), timesensitive, modval: 3.66333333333333, 
+loop done - result: 4.88444444444444 (4);
 
-0
-query:4
+ G: high_priority, modval: 5.73, 
+loop done - result: 5.73 (1);
 
-5
-query:3
+ H: high_priority, relevant source: ( Stepford2 -> escalated ), modval: 2.49333333333333, 
+loop done - result: 1.66222222222222 (2);
 
-0
-query:2
-
-0
-query:1
-
-5
-normal: 4, high: 2, location: H  85
-query:3 - temp:0 -corr: 0 designation: A
-
-query:2 - temp:1 -corr: 0 designation: B
-
-query:1 - temp:4 -corr: 3 designation: E
-
-query:0 - temp:7 -corr: 0 designation: H
-
-grouping: B - element: 3
-Use of uninitialized value $escalated_temp in concatenation (.) or string at content_analysis04.pl line 977.
-
-designation: B - adjective:0 - concrete:0 - abstract: 0 - escalated_source:  - unique_source:null - timesensitivity: 1 -- modval: 2.41333333333333
-Use of uninitialized value $escalated_temp in string ne at content_analysis04.pl line 986.
-source check testing 
-timesensitivity check testing 
-grouping: H - element: 5
-
-designation: H - adjective:0 - concrete:0 - abstract: 0 - escalated_source: Stepford2 - unique_source:null - timesensitivity: 0 -- modval: 2.49333333333333
-source check testing 
-grouping: E - element: 5
-
-designation: E - adjective:1 - concrete:0 - abstract: 1 - escalated_source: Godzilla2 - unique_source:null - timesensitivity: 1 -- modval: 3.66333333333333
-sigword check testing 
-source check testing 
-timesensitivity check testing 
-
-active groupings: B (high priority),mentioned: 0
- H (high priority),mentioned: 0
- E,mentioned: 3
-
-
-$VAR1 = [
-          'Grouping_zero',
-          {
-            'unique_source' => undef,
-            'wordtype' => 'salutation',
-            'relevant_time' => 'null',
-            'sig' => 'joyfull event',
-            'word' => ' congratulations ',
-            'stat' => 'null',
-            'timesensitive' => 0,
-            'standard_source' => undef,
-            'object' => 'irrelevant',
-            'relevance' => '1',
-            'func' => 'null',
-            'escalated_source' => undef
-          },
-          {
-            'relevance' => '1',
-            'object' => 'irrelevant',
-            'escalated_source' => undef,
-            'func' => 'null',
-            'relevant_time' => 'null',
-            'sig' => 'link',
-            'word' => ' https ',
-            'wordtype' => 'null',
-            'unique_source' => undef,
-            'standard_source' => undef,
-            'timesensitive' => 0,
-            'stat' => 'null'
-          },
-          {
-            'unique_source' => undef,
-            'wordtype' => 'plural abstract noun',
-            'relevant_time' => 'null',
-            'sig' => 'general complaint',
-            'word' => ' lie ',
-            'stat' => 'E',
-            'timesensitive' => 0,
-            'standard_source' => undef,
-            'relevance' => '1',
-            'object' => 'complaint',
-            'func' => 'null',
-            'escalated_source' => undef
-          },
-          {
-            'standard_source' => undef,
-            'stat' => 'E',
-            'timesensitive' => 0,
-            'relevant_time' => 'null',
-            'word' => ' corrupt',
-            'sig' => 'general complaint',
-            'unique_source' => undef,
-            'wordtype' => 'adjective',
-            'escalated_source' => undef,
-            'func' => 'null',
-            'relevance' => '1',
-            'object' => 'complaint'
-          },
-          {
-            'standard_source' => undef,
-            'stat' => 'E',
-            'timesensitive' => 1,
-            'word' => ' squad ',
-            'relevant_time' => '07:2019:09:2019',
-            'sig' => 'personal complaint',
-            'unique_source' => undef,
-            'wordtype' => 'name',
-            'escalated_source' => undef,
-            'func' => 'null',
-            'relevance' => '1',
-            'object' => 'complaint'
-          }
-        ];
-$VAR2 = [
-          'GroupingA',
-          {
-            'stat' => 0,
-            'timesensitive' => 1,
-            'standard_source' => 'Watchmen2',
-            'wordtype' => 'name',
-            'unique_source' => 'Watchmen2',
-            'word' => ' isis ',
-            'relevant_time' => '04:2019:01:2021',
-            'sig' => 1,
-            'func' => 0,
-            'escalated_source' => 'null',
-            'relevance' => 1,
-            'object' => 'the Syrian civil war'
-          },
-          'summarised values',
-          {
-            'adjective' => 0,
-            'modval' => '0.503333333333333',
-            'standard_source' => 'Watchmen2',
-            'unique_source' => 'Watchmen2',
-            'name' => 2,
-            'concrete' => 0,
-            'normal_relevance' => 0,
-            'incidence' => 1,
-            'escalated_source' => undef,
-            'total' => 1,
-            'high_relevance' => 0,
-            'abstract' => 0,
-            'timesensitivity' => 1
-          }
-        ];
-$VAR3 = [
-          'GroupingB',
-          {
-            'standard_source' => 'Looming1',
-            'timesensitive' => 1,
-            'stat' => 0,
-            'sig' => 1,
-            'relevant_time' => '04:2019:01:2021',
-            'word' => ' isis ',
-            'unique_source' => 'null',
-            'wordtype' => 'name',
-            'escalated_source' => 'null',
-            'func' => 3,
-            'relevance' => 1,
-            'object' => 'terrorist organizations'
-          },
-          'summarised values',
-          {
-            'concrete' => 0,
-            'normal_relevance' => 1,
-            'name' => 2,
-            'unique_source' => 'null',
-            'standard_source' => 'Looming1',
-            'modval' => '2.41333333333333',
-            'adjective' => 0,
-            'timesensitivity' => 1,
-            'abstract' => 0,
-            'total' => 4,
-            'high_relevance' => 1,
-            'escalated_source' => undef,
-            'incidence' => 1
-          }
-        ];
-$VAR4 = [
-          'GroupingC'
-        ];
-$VAR5 = [
-          'GroupingD'
-        ];
-$VAR6 = [
-          'GroupingE',
-          {
-            'standard_source' => 'Shin1',
-            'stat' => 3,
-            'timesensitive' => 0,
-            'relevant_time' => 'null',
-            'word' => ' lie ',
-            'sig' => 3,
-            'unique_source' => 'null',
-            'wordtype' => 'plural abstract noun',
-            'escalated_source' => 'Godzilla2',
-            'func' => 3,
-            'object' => 'divisive content',
-            'relevance' => 1
-          },
-          {
-            'wordtype' => 'adjective',
-            'unique_source' => 'null',
-            'word' => ' corrupt',
-            'relevant_time' => 'null',
-            'sig' => 2,
-            'timesensitive' => 0,
-            'stat' => 3,
-            'standard_source' => 'Shin1',
-            'object' => 'divisive content',
-            'relevance' => 1,
-            'func' => 2,
-            'escalated_source' => 'Godzilla2'
-          },
-          {
-            'timesensitive' => 1,
-            'stat' => 3,
-            'standard_source' => 'Shin1',
-            'unique_source' => 'null',
-            'wordtype' => 'name',
-            'relevant_time' => '07:2019:09:2019',
-            'word' => ' squad ',
-            'sig' => 1,
-            'func' => 1,
-            'escalated_source' => 'Godzilla2',
-            'object' => 'divisive content',
-            'relevance' => 1
-          },
-          'summarised values',
-          {
-            'timesensitivity' => 1,
-            'abstract' => 1,
-            'incidence' => 3,
-            'total' => 21,
-            'high_relevance' => 5,
-            'escalated_source' => 'Godzilla2',
-            'unique_source' => 'null',
-            'name' => 2,
-            'normal_relevance' => 7,
-            'concrete' => 0,
-            'adjective' => 1,
-            'standard_source' => 'Shin1',
-            'modval' => '3.66333333333333'
-          }
-        ];
-$VAR7 = [
-          'GroupingF'
-        ];
-$VAR8 = [
-          'GroupingG'
-        ];
-$VAR9 = [
-          'GroupingH',
-          {
-            'func' => 2,
-            'escalated_source' => 'Stepford2',
-            'relevance' => 1,
-            'object' => 'UK (Brexit)',
-            'stat' => 3,
-            'timesensitive' => 0,
-            'standard_source' => 'Dogman2',
-            'wordtype' => 'name',
-            'unique_source' => 'null',
-            'relevant_time' => 'null',
-            'sig' => 1,
-            'word' => ' boris j '
-          },
-          {
-            'timesensitive' => 0,
-            'stat' => 3,
-            'standard_source' => 'Dogman2',
-            'unique_source' => 'null',
-            'wordtype' => 'name',
-            'word' => ' theresa may ',
-            'relevant_time' => 'null',
-            'sig' => 1,
-            'func' => 2,
-            'escalated_source' => 'Stepford2',
-            'object' => 'UK (Brexit)',
-            'relevance' => 1
-          },
-          {
-            'word' => ' friend ',
-            'relevant_time' => 'null',
-            'sig' => '2',
-            'unique_source' => 'null',
-            'wordtype' => 'concrete noun',
-            'standard_source' => 'Stepford2',
-            'timesensitive' => 0,
-            'stat' => '3',
-            'object' => 'context',
-            'relevance' => 2,
-            'escalated_source' => undef,
-            'func' => '2'
-          },
-          'summarised values',
-          {
-            'timesensitivity' => 0,
-            'abstract' => 0,
-            'incidence' => 3,
-            'total' => 12,
-            'high_relevance' => 2,
-            'escalated_source' => 'Stepford2',
-            'unique_source' => 'null',
-            'name' => 4,
-            'normal_relevance' => 4,
-            'concrete' => 0,
-            'adjective' => 0,
-            'standard_source' => 'Dogman2',
-            'modval' => '2.49333333333333'
-          }
-        ];
-active:
-$VAR1 = 2;
-$VAR2 = 8;
-$VAR3 = 5;
-mentioned:
-$VAR1 = 'B';
-$VAR2 = 0;
-$VAR3 = 'C';
-$VAR4 = 0;
-$VAR5 = 'A';
-$VAR6 = 0;
-$VAR7 = 'E';
-$VAR8 = 3;
-$VAR9 = 'G';
-$VAR10 = 0;
-$VAR11 = 'D';
-$VAR12 = 0;
-$VAR13 = 'H';
-$VAR14 = 0;
-$VAR15 = 'F';
-$VAR16 = 0;
-test
-$VAR1 = 'C';
-$VAR2 = 3;
-$VAR3 = 'B';
-$VAR4 = 2;
-$VAR5 = 'A';
-$VAR6 = 1;
-$VAR7 = 'G';
-$VAR8 = 7;
-$VAR9 = 'E';
-$VAR10 = 5;
-$VAR11 = 'H';
-$VAR12 = 8;
-$VAR13 = 'F';
-$VAR14 = 6;
-$VAR15 = 'D';
-$VAR16 = 4;
-filter
-$VAR1 = 2;
-$VAR2 = 8;
-$VAR3 = 5;
+Grouping G is dominant!
+Active Image source:
+standard source:Inconvinient2
+insult: 0
+boast: 0
+complaint: 3
+incidence total:21.0333333333333 
+divisor_incidence:5 
+content_modifyer:4.20666666666667 
 
 
 ------------------
 (program exited with code: 0)
 Press return to continue
-^A
+  
