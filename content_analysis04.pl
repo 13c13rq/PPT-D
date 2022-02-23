@@ -19,16 +19,15 @@ use Switch;
 my $home	= File::HomeDir->my_home;
 my $Config 	= Config::Tiny->new;
 
-
+# reading path strings
 $Config	= Config::Tiny->read("$home/PPT-D/asset_paths.conf");
-		
-	# reading path strings
 	my $status_path		= $Config->{paths}->{status};
 	my $modules_path 	= $Config->{paths}->{modules};
 	my $em_path 		= $Config->{paths}->{em};
-# add all other necessary paths 
+	my $text_data		= $Config->{paths}->{text_data};
+
 #custom modules
-use lib dirname(dirname abs_path $0) . '$home/active_state/modules/PPT_D/modules';
+use lib dirname(dirname abs_path $0) . '$home/$modules_path';
 use Grouping_zero qw( create_grouping_zero_v create_grouping_zero_o );
 use GroupingA qw( create_groupingAv create_groupingAo );
 use GroupingB qw( create_groupingBv create_groupingBo );
@@ -42,7 +41,7 @@ use GroupingH qw( create_groupingHv create_groupingHo );
 
 
 # getting tweet file
-my $tweet	= "$home/active_state/Analysis_Data/Twitter/trumptweet.txt"; 
+my $tweet	= "$home/$text_data/trumptweet.txt"; 
 
 my $row			= undef;
 open(my $fh, '<:encoding(UTF-8)', $tweet)
@@ -62,7 +61,7 @@ my $dread_result 	=0;
 my $boast_result 	=0;
 my $insult_result 	=0;
 
-my $svg_txt1="/active_state/Analysis_Data/Twitter/textVI.txt";
+my $svg_txt1="$text_data/textVI.txt";
 open( $Hf, '>', "$home/$svg_txt1")
 or die "Could not open file ' textfile VI'";
 binmode $Hf, ':encoding(UTF-8)';
@@ -82,11 +81,11 @@ print color('reset');
 
 #opening filehandles for report
 	#declaration file
-my $svg_txt2="/active_state/Analysis_Data/Twitter/textVII.txt";
+my $svg_txt2="$text_data/textVII.txt";
 open( $Hf0, '>', "$home/$svg_txt2")
 or die "Could not open file ' textfile VII'";
 	#Analysis file
-my $svg_txt3= "$home/active_state/Analysis_Data/Twitter/textX.txt";
+my $svg_txt3= "$home/$text_data/textX.txt";
 open( $Hf1, '>', "$svg_txt3")
   or die "Could not open file '$svg_txt3' $!";
 #print $Hf1
@@ -147,10 +146,10 @@ $standard_incidence_count 	= 0;
 
 my @g_l = ('A'..'H');
 my @g_l_val = (0,1,0,1,0,0,1,1); #high priority groupings
-my @g_c_val = (0,0,0,0,0,0,1,0); #special priority for climate grouping
+my @g_c_val = (0,0,0,0,0,0,0,0); #special priority for climate grouping - if needed - seems to be unnecessary
 
 my @modifyers = (0, 1.51, 1.81, 1.59, 1.78, 1.57, 1.54, 1.91, 1.87); #8;
-my @zero_modifyers = (1.7, 1.5, 1.1, 1.3, 1.0);
+my @zero_modifyers = (1.57, 1.41, 1.31); # insult, complaint, boast
 
 my %weight_distr;
 my %grouping_positions;
@@ -661,6 +660,10 @@ my (
 		$discard_filter_active	,
 		$discard_result	,
 	$results,	
+	$divisor_incidence,
+	$incidendce_total,
+	$minor_divisor_incidence,
+	$minor_incidendce_total,
 	) = undef;
 
 
@@ -668,6 +671,10 @@ my $countII 			= 0;
 $discard_active 		= 0;
 $discard_filter_active 	= 0;
 $results 				= 0;
+$divisor_incidence		= 0;
+$incidendce_total		= 0;
+$minor_divisor_incidence= 0;
+$minor_incidendce_total = 0;
 	
 sub printdebug {
 	print "\n\n###discard-sort###\n";
@@ -867,6 +874,17 @@ sub assesment {
 			};
 	#	#	#finishing
 			print "loop done - result: $loop_result ($loop_sum);\n\n";
+			if ($loop_result > 0) {
+				if ($loop_result > 1) {
+					$divisor_incidence++;
+					$incidendce_total=$incidendce_total+$loop_result;
+				}
+				else {
+					$minor_divisor_incidence++;
+					$minor_incidendce_total = $minor_incidendce_total+$loop_result;
+					print "minor incidence noted \n";
+				};
+			};
 		};
 	};	
 };
@@ -891,6 +909,52 @@ if (defined($escalated)) {print"escalated source:$escalated\n";};
 if ($unique ne 'null')  {print"unique source:$unique\n";};
 print"standard source:$standard\n";
 
+#@zero_modifyers = (1.57, 1.41, 1.31); # insult, complaint, boast
+my $content_modifyer = undef;
+
+if ($divisor_incidence > 1) {
+	
+	if ($insult_count > 0) {
+		$divisor_incidence++;
+		$incidendce_total= $incidendce_total + ($insult_count*$zero_modifyers[0]);
+	};
+	if ($boast_count > 0) {
+			$divisor_incidence++;
+			$incidendce_total= $incidendce_total + ($boast_count*$zero_modifyers[1]);
+	};
+	if ($complaint_count > 0) {
+			$divisor_incidence++;
+			$incidendce_total= $incidendce_total + ($complaint_count*$zero_modifyers[2]);
+	};
+	
+	$content_modifyer = $incidendce_total/$divisor_incidence;
+	}
+else {
+	
+	if ($insult_count > 0) {
+		$minor_divisor_incidence++;
+		$minor_incidendce_total= $minor_incidendce_total + ($insult_count*$zero_modifyers[0]);
+	};
+	if ($boast_count > 0) {
+			$minor_divisor_incidence++;
+			$minor_incidendce_total= $minor_incidendce_total + ($boast_count*$zero_modifyers[1]);
+	};
+	if ($complaint_count > 0) {
+			$minor_divisor_incidence++;
+			$minor_incidendce_total= $minor_incidendce_total + ($complaint_count*$zero_modifyers[2]);
+	};
+	$content_modifyer = $minor_incidendce_total/$minor_divisor_incidence;
+};
+
+#debug
+print"insult: $insult_count\n";
+print"boast: $boast_count\n";
+print"complaint: $complaint_count\n";
+print"incidence total:$incidendce_total \n";
+print"divisor_incidence:$divisor_incidence \n";
+print"content_modifyer:$content_modifyer \n";
+
+
 #reading em values -> active_state/Analysis_Data/Twitter/evaluation.conf"
 $Config	= Config::Tiny->read("$home/$em_path");
 
@@ -910,6 +974,13 @@ $Config	= Config::Tiny->read("$home/$em_path");
 		my $sentence_total = $Config->{neutrality}->{sentence_total};
 
 
+
+	# emotional eval sums
+		my $positive_em = ($joy + $trust + $surprise + $anticipation);
+		my $negative_em = ($anger + $disgust + $sadness + $fear);
+		my $em_total 	= $negative_em + $positive_em;
+		
+###   # $ultra_mean = ((((($prime_em_sett*$content_modifyer) + ($sec_em_sett * $mean_intent))*$content_modifyer) + $content_sum)/ 10);
 
 #debug - show array contents
 	#print"\n";
@@ -1041,25 +1112,7 @@ $Config	= Config::Tiny->read("$home/$em_path");
 
 
 
-$Config	= Config::Tiny->read("$home/active_state/Analysis_Data/Twitter/evaluation.conf");	
 
-	# writing detected content values
-#$Config->{content}->{discard}	=$discard_result;
-#$Config->{content}->{complaint}	=$complaint_result;
-#$Config->{content}->{boast}		=$boast_result;
-#$Config->{content}->{insult}	=$insult_result;
-#$Config->{content}->{divine_dread}	=$divine_dread_result;
-#$Config->{content}->{various_dread}	=$various_dread_result;
-#$Config->{content}->{atomic_dread}	=$atomic_dread_result;
-#$Config->{content}->{econ_dread}	=$econ_dread_result;
-
-#$Config->{content}->{existential_dread}	=$existential_dread_result;
-#$Config->{content}->{institutional_dread}	=$institutional_dread_result;
-
-#$Config->{content}->{eco_dread}		=$eco_dread_result;
-#$Config->{content}->{dread}			=$dread_result;
-
-$Config->write("$home/active_state/Analysis_Data/Twitter/evaluation.conf");	
 
 #END
 close $Hf1;
