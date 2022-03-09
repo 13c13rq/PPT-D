@@ -25,9 +25,10 @@ $Config	= Config::Tiny->read("$home/PPT-D/asset_paths.conf");
 	my $modules_path 	= $Config->{paths}->{modules};
 	my $em_path 		= $Config->{paths}->{em};
 	my $text_data		= $Config->{paths}->{text_data};
+	my $source_path		= $Config->{paths}->{source_path};
 
 #custom modules
-use lib dirname(dirname abs_path $0) . '$home/$modules_path';
+use lib dirname(dirname abs_path $0) . '/PPT-D';
 use Grouping_zero qw( create_grouping_zero_v create_grouping_zero_o );
 use GroupingA qw( create_groupingAv create_groupingAo );
 use GroupingB qw( create_groupingBv create_groupingBo );
@@ -66,7 +67,7 @@ open( $Hf, '>', "$home/$svg_txt1")
 or die "Could not open file ' textfile VI'";
 binmode $Hf, ':encoding(UTF-8)';
 		
-print"\ncontent_analysis1.pl\n";	
+print"\ncontent_analysis04.pl\n";	
 #print $Hf "\ncontent_analysis1.pl\n";
 close $Hf;
 
@@ -199,6 +200,11 @@ sub standard_test {
 			$temp_active	= 0;	
 			my $active_word = ${$objects}[$countI][0];
 			#looking for match
+			
+			# additional ifclause required here that testst first character in string and if it is empty space and a noun or name, uses it as an aditional matching option - if define match word twice...
+			# if ($active_word =~ m/$active_word/){};
+			
+			
 			if ( $tweet_txt =~ m/$active_word/) {
 				
 				#testing if relevant time period is defined
@@ -238,18 +244,17 @@ sub standard_test {
 				#if currently relevant, saving findings hash into mutidimensional array 
 				if ($active_time == 1) {	
 					if ($grouping_displayed == 0){
-						print "\n\n Grouping_$current_grouping \n";
-						print $Hf1 "\n\n $current_grouping \n";
+						print "\n\n Grouping_$current_grouping \n\n";
+						print $Hf1 "\n\n Grouping_$current_grouping \n\n";
 						$grouping_displayed =1;
 					};
 
 					#writing results to file
-					print "\n";
 					 print "	${$objects}[0][1]:";
 					print $Hf1  "	${$objects}[0][1]:";
 					 print color('bold white');
-					 print uc " '$active_word' ";
-					print  $Hf1 uc" '$active_word' ";
+					 print uc " '$active_word' \n";
+					print  $Hf1 uc" '$active_word' \n";
 					 print color('reset');
 					
 					#creating findings hash
@@ -314,13 +319,13 @@ sub standard_test {
 				#incase of inactive timeperiod
 				else {
 					if ($grouping_displayed == 0){
-						print "\n\n Grouping_$current_grouping \n";
-						print $Hf1 "\n\n Grouping_$current_grouping \n";
+						print "\n\n Grouping_$current_grouping \n\n";
+						print $Hf1 "\n\n Grouping_$current_grouping \n\n";
 						$grouping_displayed =1;	
 						
 					};
-					print "\n	",${$objects}[0][1],": '",uc $active_word,"' [inactive]";
-					print $Hf1 "\n	",${$objects}[0][1],": '",uc $active_word,"' [inactive]";
+					print "	",${$objects}[0][1],": '",uc $active_word,"' [inactive]\n";
+					print $Hf1 "	",${$objects}[0][1],": '",uc $active_word,"' [inactive]\n";
 				};
 			};
 			$countII=0;
@@ -452,11 +457,11 @@ my (
 	$query_count	,
 	)	= undef;
 
-my $countIII 			=undef;
+my $countIII = undef;
 
 my @finding_total = (0);
 my $finding_total_ref = \@finding_total;
-my $query 				= undef;
+my $query 		 = undef;
 my $inconclusive = undef;
 my $priority_count = undef;
 my @active_groupings;  # contains all active groupings.
@@ -488,7 +493,7 @@ sub check_element {
 
 
 my (
-	$query_total,
+	$query_total	,
 	$query_total_sub,
 	$query_adj		,
 	$query_adj_sub	,
@@ -502,20 +507,20 @@ my (
 	$query_high_relevance_sub	,
 	$query_normal_relevance		,
 	$query_normal_relevance_sub	,
-	
-	$query_finding_wieght	,
-	$query_timesensitivity	,
-	$query_timesensitivity_sub	,
-	
+		$query_finding_wieght	,
+		$query_timesensitivity	,
+		$query_timesensitivity_sub	,
 	$unique_source	,
 	$chosen_unique_source	,
 	$standard_source	,
 	$chosen_standard_source		,
 	$escalated_source 	,
 	$chosen_escalated_source	,
-	
-	$incidence_counter	,
-	$modval_part	) = undef;
+		$incidence_counter	,
+		$modval_part	,
+		$context	,
+		$direct_match	,
+	) = undef;
 
 sub add_values {
 	$countI			= 1;
@@ -532,10 +537,10 @@ sub add_values {
 					push @finding_total, $addone;
 					$addone++;
 				};
-				my $valueadder = 1;
-				$query_adj 		=0;
-				$query_total	=0;
-				$query_name		=0;
+				my $valueadder	= 1;
+				$query_adj 		= 0;
+				$query_total	= 0;
+				$query_name		= 0;
 				$query_concrete	= 0;
 				$query_abstract	= 0;
 				$query_high_relevance	= 0;
@@ -544,6 +549,8 @@ sub add_values {
 				$incidence_counter		= 0;
 				$modval_part			= 0;
 				$query_timesensitivity	= 0;
+				$context	= 0;
+				$direct_match 	= 0;
 				while ($valueadder <= $countIII) {
 					
 					$query_total_sub= 0;
@@ -557,59 +564,65 @@ sub add_values {
 					$incidence_counter++;
 					
 					#excluding context
-					unless ($findings[$countI][$valueadder] {"relevance"} == 2){
-						$query_total_sub = $findings[$countI][$valueadder] {"sig"} + $findings[$countI][$valueadder] {"func"} + $findings[$countI][$valueadder] {"stat"};
-			
-						if ($findings[$countI][$valueadder] {"timesensitive"} == 1) {
-							if ($query_total_sub >= 4 ) {
-								$query_timesensitivity_sub++
+					
+					if ($findings[$countI][$valueadder] {"relevance"} == 2){
+						$context = 1;
+						}
+					else {
+						$direct_match = 1;
+					};
+					
+					$query_total_sub = $findings[$countI][$valueadder] {"sig"} + $findings[$countI][$valueadder] {"func"} + $findings[$countI][$valueadder] {"stat"};
+		
+					if ($findings[$countI][$valueadder] {"timesensitive"} == 1) {
+						if ($query_total_sub >= 4 ) {
+							$query_timesensitivity_sub++
+						};
+					};
+					
+					if ($findings[$countI][$valueadder] {"wordtype"} eq "adjective") {$query_adj_sub++};
+					if ($findings[$countI][$valueadder] {"wordtype"} eq "name") {$query_name_sub++};
+					if ($findings[$countI][$valueadder] {"wordtype"} eq "concrete noun" or $findings[$countI][$valueadder] {"wordtype"} eq "plural concrete noun") {$query_concrete_sub++};
+					if ($findings[$countI][$valueadder] {"wordtype"} eq "abstract noun" or $findings[$countI][$valueadder] {"wordtype"} eq "plural abstract noun") {$query_abstract_sub++};
+					if ($findings[$countI][$valueadder] {"wordtype"} eq "name") {$query_name_sub++};
+					
+					my @temp_queryvals=( $findings[$countI][$valueadder] {"sig"} , $findings[$countI][$valueadder] {"func"} , $findings[$countI][$valueadder] {"stat"} );
+					foreach my $testvalues (@temp_queryvals) {
+						if ($testvalues > 2) {$query_high_relevance_sub++};
+						if ($testvalues > 1) {$query_normal_relevance_sub++};
+					};
+					
+					$standard_source	= $findings[$countI][$valueadder] {"standard_source"};
+					$escalated_source 	= $findings[$countI][$valueadder] {"escalated_source"};
+					$unique_source		= $findings[$countI][$valueadder] {"unique_source"};
+					#print "test: $escalated_source  \n";
+					unless ($standard_source eq "undef"){
+						
+						# print "$standard_source\n";
+						if ($query_finding_wieght == 0 or $query_finding_wieght < $query_total_sub) {
+							$chosen_standard_source		= $standard_source;
+							if ($escalated_source eq "null"){ 
+								#print "$escalated_source eq null\n";
+								$chosen_escalated_source	= undef;	
+							}
+							else {
+								#print "$escalated_source ne null\n";
+								$chosen_escalated_source	= $escalated_source;									
 							};
-						};
-						
-						if ($findings[$countI][$valueadder] {"wordtype"} eq "adjective") {$query_adj_sub++};
-						if ($findings[$countI][$valueadder] {"wordtype"} eq "name") {$query_name_sub++};
-						if ($findings[$countI][$valueadder] {"wordtype"} eq "concrete noun" or $findings[$countI][$valueadder] {"wordtype"} eq "plural concrete noun") {$query_concrete_sub++};
-						if ($findings[$countI][$valueadder] {"wordtype"} eq "abstract noun" or $findings[$countI][$valueadder] {"wordtype"} eq "plural abstract noun") {$query_abstract_sub++};
-						if ($findings[$countI][$valueadder] {"wordtype"} eq "name") {$query_name_sub++};
-						
-						my @temp_queryvals=( $findings[$countI][$valueadder] {"sig"} , $findings[$countI][$valueadder] {"func"} , $findings[$countI][$valueadder] {"stat"} );
-						foreach my $testvalues (@temp_queryvals) {
-							if ($testvalues > 2) {$query_high_relevance_sub++};
-							if ($testvalues > 1) {$query_normal_relevance_sub++};
-						};
-						
-						$standard_source	= $findings[$countI][$valueadder] {"standard_source"};
-						$escalated_source 	= $findings[$countI][$valueadder] {"escalated_source"};
-						$unique_source		= $findings[$countI][$valueadder] {"unique_source"};
-						#print "test: $escalated_source  \n";
-						unless ($standard_source eq "undef"){
-							
-							# print "$standard_source\n";
-							if ($query_finding_wieght == 0 or $query_finding_wieght < $query_total_sub) {
+							if($unique_source ne "undef") {
+								$chosen_unique_source = $unique_source;
+							};
+						}
+						elsif ($query_finding_wieght == $query_total_sub) {
+							my $random_choice = int(rand(2));
+							if ($random_choice == 0) {
 								$chosen_standard_source		= $standard_source;
-								if ($escalated_source eq "null"){ 
-									#print "$escalated_source eq null\n";
-									$chosen_escalated_source	= undef;	
-								}
-								else {
-									#print "$escalated_source ne null\n";
-									$chosen_escalated_source	= $escalated_source;									
-								};
-								if($unique_source ne "undef") {
+								$chosen_escalated_source	= $escalated_source;
+								if($unique_source ne undef) {
 									$chosen_unique_source = $unique_source;
 								};
 							}
-							elsif ($query_finding_wieght == $query_total_sub) {
-								my $random_choice = int(rand(2));
-								if ($random_choice == 0) {
-									$chosen_standard_source		= $standard_source;
-									$chosen_escalated_source	= $escalated_source;
-									if($unique_source ne undef) {
-										$chosen_unique_source = $unique_source;
-									};
-								}
-								else {};
-							};
+							else {};
 						};
 					};
 					
@@ -641,9 +654,14 @@ sub add_values {
 					$current_findings {"standard_source"} 	=	$chosen_standard_source;
 					$current_findings {"escalated_source"} 	=	$chosen_escalated_source;
 					$current_findings {"unique_source"} 	=	$chosen_unique_source;
+					$current_findings {"context"} 			=	$context;
+					$current_findings {"direct_match"} 		=	$direct_match;
+					
 				};
+				
 				push($findings[$countI], "summarised values");
 				push($findings[$countI], $current_findings_ref);
+				
 			};	
 		$countI++;
 		$query--;
@@ -660,10 +678,10 @@ my (
 		$discard_filter_active	,
 		$discard_result	,
 	$results,	
-	$divisor_incidence,
-	$incidendce_total,
-	$minor_divisor_incidence,
-	$minor_incidendce_total,
+	$divisor_incidence	,
+	$incidendce_total	,
+	$minor_divisor_incidence	,
+	$minor_incidendce_total	,
 	) = undef;
 
 
@@ -673,7 +691,7 @@ $discard_filter_active 	= 0;
 $results 				= 0;
 $divisor_incidence		= 0;
 $incidendce_total		= 0;
-$minor_divisor_incidence= 0;
+$minor_divisor_incidence = 0;
 $minor_incidendce_total = 0;
 	
 sub printdebug {
@@ -687,6 +705,31 @@ sub printdebug {
 	print "irrel_count: $irrelevance_count\n";
 	print "###-###\n\n";
 };
+
+#printdebug;
+#reading em values -> active_state/Analysis_Data/Twitter/evaluation.conf"
+$Config	= Config::Tiny->read("$home/$em_path");
+
+	# reading em values
+		my $anger		= $Config->{emotion}->{anger};
+		my $anticipation= $Config->{emotion}->{anticipation};
+		my $disgust		= $Config->{emotion}->{disgust};
+		my $fear		= $Config->{emotion}->{fear};
+		my $joy			= $Config->{emotion}->{joy};
+		my $sadness		= $Config->{emotion}->{sadness};
+		my $surprise	= $Config->{emotion}->{surprise};
+		my $trust		= $Config->{emotion}->{trust};
+		
+	# reading disposition values
+		my $mean		= $Config->{neutrality}->{disposition_mean};
+		my $sum			= $Config->{neutrality}->{disposition_sum};
+		my $sentence_total = $Config->{neutrality}->{sentence_total};
+
+	# emotional eval sums
+		my $positive_em = ($joy + $trust + $surprise + $anticipation);
+		my $negative_em = ($anger + $disgust + $sadness + $fear);
+		my $em_total 	= $negative_em + $positive_em;
+
 
 sub standard_analysis {
 	#outputs essential values such as the number of significant elements in the respective groupings
@@ -708,7 +751,7 @@ sub standard_analysis {
 		$countI++;	
 	};
 	
-	if ($discard_result > 0) {
+	if ($discard_result > 1) {
 		$grouping_count--;
 	};
 
@@ -759,6 +802,15 @@ sub standard_analysis {
 
 my @filter_elements;
 my %test_groupings;
+my ($context_on	,
+	$context_off	,
+	$context_discard	,
+	)= undef;
+
+$context_on  = 0;
+$context_off = 0;
+$context_discard = 0;
+
 sub assesment {
 	if ($discard_active == 1 && $discard_filter_active == 0) {
 		
@@ -769,120 +821,167 @@ sub assesment {
 	}
 	else {
 			
-		print "\nrelevant groupings:\n";
-		print $Hf1 "\nrelevant groupings:";
+
 		
+		foreach my $filter_grouping (@active_groupings) {
+			
+			my $temp_grouping_scalar	= (scalar((@{$findings[$filter_grouping]})))-1;
+			
+			my $finding_context			= $findings[$filter_grouping][$temp_grouping_scalar] {"context"};
+			my $finding_direct_match	= $findings[$filter_grouping][$temp_grouping_scalar] {"direct_match"};
+			
+			if ( $finding_context == 1 && $finding_direct_match == 0 ){
+				$context_on = 1;
+				}
+			else {
+				$context_off = 1;
+			};
+		};
+		
+		if ( $context_on == 1 && $context_off == 0 ){
+			
+			my $negative_content = $insult_count + $boast_count + $complaint_count;
+			if ($discard_filter_active == 0 && $em_total >= 1) {
+				if($negative_content>0) {
+					$context_discard = 0;
+					print "viable context -> match validated!\n";
+					print $Hf1 "viable context -> match validated!\n";
+					}
+				else {
+					print "context not valid. match discarded!\n";
+					print $Hf1 "context not valid -> match discarded!\n";
+					$context_discard = 1;
+					$grouping_count = 0;
+					};
+				}
+			else{
+				print "context not valid -> match discarded!\n";
+				print $Hf1 "context not valid -> match discarded!\n";
+				$context_discard = 1;
+				$grouping_count = 0;
+			};
+		};
+		unless ($grouping_count<=0){
+			print "\nrelevant groupings:\n";
+			print $Hf1 "\nrelevant groupings:\n";
+		};
 		foreach my $currnent_grouping (@active_groupings) {
 			
-			my $loop_result = undef;
-			my $loop_sum 	= undef;
-			$loop_sum		= 0;
-			$loop_result	= 0;
-			unless ($currnent_grouping == 0) {
-				#
-				print  " ", $g_l [($currnent_grouping -1)], ": ";
-				print $Hf1 " ", $g_l [($currnent_grouping -1)], ": ";
-				#
-				my $temp_grouping_scalar	= (scalar((@{$findings[$currnent_grouping]})))-1;
-				
-	#	#	#	#filter high_priority:
-				my $normal_relevance_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"normal_relevance"};
-				my $high_relevance_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"high_relevance"};
-				if ($normal_relevance_temp > 0 or $high_relevance_temp > 0){
-					if ($g_l_val [($currnent_grouping -1)] == 1)	{
-						print "high_priority, ";
-						print $Hf1 "high_priority, ";
+			
+			unless ($context_discard ==1) {		
+				my $loop_result = undef;
+				my $loop_sum 	= undef;
+				$loop_sum		= 0;
+				$loop_result	= 0;
+				unless ($currnent_grouping == 0) {
+					#
+					print  " ", $g_l [($currnent_grouping -1)], ": ";
+					print $Hf1 " ", $g_l [($currnent_grouping -1)], ": ";
+					#
+					my $temp_grouping_scalar	= (scalar((@{$findings[$currnent_grouping]})))-1;
+					
+		#	#	#	#filter high_priority:
+					my $normal_relevance_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"normal_relevance"};
+					my $high_relevance_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"high_relevance"};
+					if ($normal_relevance_temp > 0 or $high_relevance_temp > 0){
+						if ($g_l_val [($currnent_grouping -1)] == 1)	{
+							print "high_priority, ";
+							print $Hf1 "high_priority, ";
+							$loop_sum++;
+						};
+					};
+					
+		#	#	#	#filter climate_priority (this one tends to be undervalued):
+					if ($normal_relevance_temp > 0 or $high_relevance_temp > 0){
+						if ($g_c_val [($currnent_grouping -1)] == 1)	{
+							print "climate_priority, ";
+							print $Hf1 "climate_priority, ";
+							$loop_sum++;
+						};
+					};
+					
+		#	#	#	#filter correlation:
+					my $temp_mention = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};
+					if ($temp_mention > 0 ){	
+						my $mention_count_temp = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};		
+						print "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
+						print $Hf1 "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
+						#$loop_sum = ($loop_sum + $mention_count_temp);
 						$loop_sum++;
 					};
+					
+		#	#	#	#word filter
+					my $adjective_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"adjective"};
+					my $concrete_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"concrete"};
+					my $abstract_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"abstract"};
+					if ($adjective_temp > 0 or $concrete_temp >= 2 or $abstract_temp >= 2){
+						my @relevant_words_temp;
+						if ($adjective_temp > 0){
+							push (@relevant_words_temp, "adjective ");
+							$loop_sum++;
+						};
+						if ($concrete_temp >= 2){
+							push (@relevant_words_temp, "concrete noun ");	
+							$loop_sum++;
+						};
+						if ($abstract_temp >= 2){
+							push (@relevant_words_temp, "abstract noun ");
+							$loop_sum++;
+						};
+						print "relevant wordtype ( @relevant_words_temp", "), ";
+						print $Hf1 "relevant wordtype ( @relevant_words_temp", "), ";
+					};
+					
+		#	#	#	#source filter
+					my $escalated_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"escalated_source"};
+					my $unique_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"unique_source"};
+	
+					if (defined($escalated_temp) or $unique_temp ne 'null'){
+						my @relevant_words_temp;
+						if (defined($escalated_temp)) {push (@relevant_words_temp, "$escalated_temp -> ++ ");
+							$loop_sum++;
+						};
+						if ($unique_temp ne 'null')  {push (@relevant_words_temp, "$unique_temp -> +++");	
+							$loop_sum++;
+						};
+						print "relevant source: ( @relevant_words_temp", "), ";
+						print $Hf1 "relevant source: ( @relevant_words_temp", "), ";
+					};
+					
+		#	#	#	#time filter
+					my $time_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"timesensitivity"};
+					if ($time_temp > 0){
+						print "timesensitive, ";	$loop_sum++;
+					};	
+					
+		#	#	#	#finalizing results
+					my $modval_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"modval"};
+					my $incidence_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"incidence"}; 
+					print "modval: $modval_temp, ";
+					print  "\n";
+					print $Hf1 "modval: $modval_temp, ";
+					print $Hf1 "\n";
+					if ($loop_sum == 0) {
+						$loop_result = $modval_temp /10;
+						}
+					else{
+						$loop_result = ($loop_sum*$modval_temp)/$incidence_temp;
+					};
+					$test_groupings {$loop_result} = $currnent_grouping;
 				};
-				
-	#	#	#	#filter climate_priority (this one tends to be undervalued):
-				if ($normal_relevance_temp > 0 or $high_relevance_temp > 0){
-					if ($g_c_val [($currnent_grouping -1)] == 1)	{
-						print "climate_priority, ";
-						print $Hf1 "climate_priority, ";
-						$loop_sum++;
-					};
-				};
-				
-	#	#	#	#filter correlation:
-				my $temp_mention = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};
-				if ($temp_mention > 0 ){	
-					my $mention_count_temp = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};		
-					print "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
-					print $Hf1 "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
-					#$loop_sum = ($loop_sum + $mention_count_temp);
-					$loop_sum++;
-				};
-				
-	#	#	#	#word filter
-				my $adjective_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"adjective"};
-				my $concrete_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"concrete"};
-				my $abstract_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"abstract"};
-				if ($adjective_temp > 0 or $concrete_temp >= 2 or $abstract_temp >= 2){
-					my @relevant_words_temp;
-					if ($adjective_temp > 0){
-						push (@relevant_words_temp, "adjective ");
-						$loop_sum++;
-					};
-					if ($concrete_temp >= 2){
-						push (@relevant_words_temp, "concrete noun ");	
-						$loop_sum++;
-					};
-					if ($abstract_temp >= 2){
-						push (@relevant_words_temp, "abstract noun ");
-						$loop_sum++;
-					};
-					print "relevant wordtype ( @relevant_words_temp", "), ";
-					print $Hf1 "relevant wordtype ( @relevant_words_temp", "), ";
-				};
-				
-	#	#	#	#source filter
-				my $escalated_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"escalated_source"};
-				my $unique_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"unique_source"};
-				if (defined($escalated_temp) or $unique_temp ne 'null'){
-					my @relevant_words_temp;
-					if (defined($escalated_temp)) {push (@relevant_words_temp, "$escalated_temp -> escalated ");
-						$loop_sum++;
-					};
-					if ($unique_temp ne 'null')  {push (@relevant_words_temp, "$unique_temp -> unique");	
-						$loop_sum++;
-					};
-					print "relevant source: ( @relevant_words_temp", "), ";
-					print $Hf1 "relevant source: ( @relevant_words_temp", "), ";
-				};
-				
-	#	#	#	#time filter
-				my $time_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"timesensitivity"};
-				if ($time_temp > 0){
-					print "timesensitive, ";	$loop_sum++;
-				};	
-				
-	#	#	#	#finalizing results
-				my $modval_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"modval"};
-				my $incidence_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"incidence"}; 
-				print "modval: $modval_temp, ";
-				print  "\n";
-				print $Hf1 "\n";
-				if ($loop_sum == 0) {
-					$loop_result = $modval_temp /10;
+		#	#	#finishing
+				print "loop done - result: $loop_result ($loop_sum);\n\n";
+				print $Hf1 "loop done - result: $loop_result ($loop_sum);\n\n";
+				if ($loop_result > 0) {
+					if ($loop_result > 1) {
+						$divisor_incidence++;
+						$incidendce_total=$incidendce_total+$loop_result;
 					}
-				else{
-					$loop_result = ($loop_sum*$modval_temp)/$incidence_temp;
-				};
-				$test_groupings {$loop_result} = $currnent_grouping;
-			};
-	#	#	#finishing
-			print "loop done - result: $loop_result ($loop_sum);\n\n";
-			if ($loop_result > 0) {
-				if ($loop_result > 1) {
-					$divisor_incidence++;
-					$incidendce_total=$incidendce_total+$loop_result;
-				}
-				else {
-					$minor_divisor_incidence++;
-					$minor_incidendce_total = $minor_incidendce_total+$loop_result;
-					print "minor incidence noted \n";
+					else {
+						$minor_divisor_incidence++;
+						$minor_incidendce_total = $minor_incidendce_total+$loop_result;
+						print "minor incidence noted \n";
+					};
 				};
 			};
 		};
@@ -892,95 +991,159 @@ sub assesment {
 #running subroutines
 standard_analysis;
 assesment;
-my $highest_loop_result = max keys %test_groupings;
-my $required = $test_groupings{$highest_loop_result};
-my $highest_grouping_name = $g_l [($required -1)];
+my ($highest_loop_result	,
+	$required	,
+	$highest_grouping_name	,
+	$highest_grouping_scalar	,
+	$dominant_value	,
+	) = undef;
+$dominant_value	= 0;
 
-print "Grouping $highest_grouping_name is dominant!\n";
-my $highest_grouping_scalar	= (scalar((@{$findings[$required]})))-1;
+my @dominant_grouping_vals = (3,1,4,2,5,7,6,3); #high priority groupings
 
-my $standard	= $findings[$required][$highest_grouping_scalar] {"standard_source"};
-my $escalated	= $findings[$required][$highest_grouping_scalar] {"escalated_source"};
-my $unique		= $findings[$required][$highest_grouping_scalar] {"unique_source"};
+unless ($grouping_count<=0) {
+	$highest_loop_result = max keys %test_groupings;
+	$required = $test_groupings{$highest_loop_result};
+	$highest_grouping_name = $g_l [($required -1)];
+	
+	$dominant_value	= $dominant_grouping_vals [($required -1)];
+	
+	print "Grouping $highest_grouping_name is dominant!\n";
+	print $Hf1 "Grouping $highest_grouping_name is dominant!\n";
+	$highest_grouping_scalar	= (scalar((@{$findings[$required]})))-1;
+};
 
-print "Active Image source:\n";
+##reading em values -> active_state/Analysis_Data/Twitter/evaluation.conf"
+#$Config	= Config::Tiny->read("$home/$em_path");
 
-if (defined($escalated)) {print"escalated source:$escalated\n";};
-if ($unique ne 'null')  {print"unique source:$unique\n";};
-print"standard source:$standard\n";
+	## reading em values
+		#my $anger		= $Config->{emotion}->{anger};
+		#my $anticipation= $Config->{emotion}->{anticipation};
+		#my $disgust		= $Config->{emotion}->{disgust};
+		#my $fear		= $Config->{emotion}->{fear};
+		#my $joy			= $Config->{emotion}->{joy};
+		#my $sadness		= $Config->{emotion}->{sadness};
+		#my $surprise	= $Config->{emotion}->{surprise};
+		#my $trust		= $Config->{emotion}->{trust};
+		
+	## reading disposition values
+		#my $mean		= $Config->{neutrality}->{disposition_mean};
+		#my $sum			= $Config->{neutrality}->{disposition_sum};
+		#my $sentence_total = $Config->{neutrality}->{sentence_total};
 
-#@zero_modifyers = (1.57, 1.41, 1.31); # insult, complaint, boast
-my $content_modifyer = undef;
+	## emotional eval sums
+		#my $positive_em = ($joy + $trust + $surprise + $anticipation);
+		#my $negative_em = ($anger + $disgust + $sadness + $fear);
+		#my $em_total 	= $negative_em + $positive_em;
+		
+my @emotions = ($anger, $anticipation, $disgust, $fear, $joy, $sadness, $surprise, $trust);
+
+my ($emotion_incidence	,
+	$content_modifyer	,
+	$mean_intent	,
+	$ultra_mean	,
+	) = undef;
+
+foreach my $emotion_test (@emotions) {
+	unless ($emotion_test == 0) {
+		$emotion_incidence++;
+		};
+	};
 
 if ($divisor_incidence > 1) {
-	
 	if ($insult_count > 0) {
 		$divisor_incidence++;
 		$incidendce_total= $incidendce_total + ($insult_count*$zero_modifyers[0]);
-	};
+		};
 	if ($boast_count > 0) {
-			$divisor_incidence++;
-			$incidendce_total= $incidendce_total + ($boast_count*$zero_modifyers[1]);
-	};
+		$divisor_incidence++;
+		$incidendce_total= $incidendce_total + ($boast_count*$zero_modifyers[1]);
+		};
 	if ($complaint_count > 0) {
-			$divisor_incidence++;
-			$incidendce_total= $incidendce_total + ($complaint_count*$zero_modifyers[2]);
-	};
-	
+		$divisor_incidence++;
+		$incidendce_total= $incidendce_total + ($complaint_count*$zero_modifyers[2]);
+		};
 	$content_modifyer = $incidendce_total/$divisor_incidence;
 	}
+elsif(($insult_count + $boast_count +$complaint_count)==0) {
+	$content_modifyer = 1.01;
+	}
 else {
-	
 	if ($insult_count > 0) {
 		$minor_divisor_incidence++;
 		$minor_incidendce_total= $minor_incidendce_total + ($insult_count*$zero_modifyers[0]);
-	};
+		};
 	if ($boast_count > 0) {
-			$minor_divisor_incidence++;
-			$minor_incidendce_total= $minor_incidendce_total + ($boast_count*$zero_modifyers[1]);
-	};
+		$minor_divisor_incidence++;
+		$minor_incidendce_total= $minor_incidendce_total + ($boast_count*$zero_modifyers[1]);
+		};
 	if ($complaint_count > 0) {
-			$minor_divisor_incidence++;
-			$minor_incidendce_total= $minor_incidendce_total + ($complaint_count*$zero_modifyers[2]);
-	};
+		$minor_divisor_incidence++;
+		$minor_incidendce_total= $minor_incidendce_total + ($complaint_count*$zero_modifyers[2]);
+		};
 	$content_modifyer = $minor_incidendce_total/$minor_divisor_incidence;
+	};
+
+if ($emotion_incidence == 0) {
+	$ultra_mean = ($content_modifyer)
+	}
+else {
+	$ultra_mean = ($content_modifyer+($em_total/$emotion_incidence));
+	};
+
+my ($standard	,
+	$escalated	,
+	$unique	,
+	$active_source	,
+	)= undef;
+
+unless ($grouping_count<=0) {
+	$standard	= $findings[$required][$highest_grouping_scalar] {"standard_source"};
+	$escalated	= $findings[$required][$highest_grouping_scalar] {"escalated_source"};
+	$unique		= $findings[$required][$highest_grouping_scalar] {"unique_source"};
+	$active_source = undef;
+	
+	print "Active Image source:\n";
+	
+	if ($ultra_mean > 0.2) {
+		if ($unique ne 'null')  {
+			print"unique source:$unique\n";
+			$active_source = $unique;
+			}
+		elsif (defined($escalated)) {
+			print"escalated source:$escalated\n";
+			$active_source=$escalated;
+			}
+		else {
+			print"standard source:$standard\n";
+			$active_source=$standard;
+			};
+		}
+	else {
+		print"standard source:$standard\n";
+		$active_source=$standard;
+	};
+	
+	print "active source: $active_source\n";
 };
 
-#debug
+#debug - show generated values
 print"insult: $insult_count\n";
 print"boast: $boast_count\n";
 print"complaint: $complaint_count\n";
-print"incidence total:$incidendce_total \n";
-print"divisor_incidence:$divisor_incidence \n";
-print"content_modifyer:$content_modifyer \n";
 
-
-#reading em values -> active_state/Analysis_Data/Twitter/evaluation.conf"
-$Config	= Config::Tiny->read("$home/$em_path");
-
-	# reading em values
-		my $anger		= $Config->{emotion}->{anger};
-		my $anticipation= $Config->{emotion}->{anticipation};
-		my $disgust		= $Config->{emotion}->{disgust};
-		my $fear		= $Config->{emotion}->{fear};
-		my $joy			= $Config->{emotion}->{joy};
-		my $sadness		= $Config->{emotion}->{sadness};
-		my $surprise	= $Config->{emotion}->{surprise};
-		my $trust		= $Config->{emotion}->{trust};
-		
-	# reading disposition values
-		my $mean		= $Config->{neutrality}->{disposition_mean};
-		my $sum			= $Config->{neutrality}->{disposition_sum};
-		my $sentence_total = $Config->{neutrality}->{sentence_total};
-
-
-
-	# emotional eval sums
-		my $positive_em = ($joy + $trust + $surprise + $anticipation);
-		my $negative_em = ($anger + $disgust + $sadness + $fear);
-		my $em_total 	= $negative_em + $positive_em;
-		
-###   # $ultra_mean = ((((($prime_em_sett*$content_modifyer) + ($sec_em_sett * $mean_intent))*$content_modifyer) + $content_sum)/ 10);
+print "incidence total:$incidendce_total \n";
+print "divisor incidence:$divisor_incidence \n";
+print "content modifyer:$content_modifyer, final modifyer: $ultra_mean\n";
+print "discard:$discard_active, strict discard filter: $discard_filter_active \n";
+print "dread accumulation type: $dominant_value \n";
+print "groupingcount: $grouping_count\n";
+print $Hf1 "\n\n::DEBUG VALUES::\n";
+print $Hf1 "	incidence total:$incidendce_total \n";
+print $Hf1 "	divisor incidence:$divisor_incidence \n";
+print $Hf1 "	content modifyer:$content_modifyer, final modifyer: $ultra_mean\n";
+print $Hf1 "	discard:$discard_active, strict discard filter: $discard_filter_active \n";
+print $Hf1 "	dread accumulation type: $dominant_value \n";
 
 #debug - show array contents
 	#print"\n";
@@ -1000,115 +1163,52 @@ $Config	= Config::Tiny->read("$home/$em_path");
 	#print "\n\n output incidence:\n";
 	#print Dumper %grouping_incidence;
 #
-
-
-
-#Output:
-	#Contentmodifyer
-	#Dominant Dread
-
-
-#potential export values
-
-#my $dominant_dread		= undef; #primary relevant grouping number from 1 - 8
-#my $result_Grouping_Zero0	= undef; #irrelevant;
-#my $result_Grouping_Zero1	= undef; #$insult;
-#my $result_Grouping_Zero2	= undef; #$boast;
-#my $result_Grouping_Zero3	= undef; #$complaint;
-#my $result_GroupingA	= undef; #$atomic_dread; -1.8
-#my $result_GroupingB	= undef; #$divine_dread; -1.8
-#my $result_GroupingC	= undef; #$econ_dread;	 -1.6
-#my $result_GroupingD	= undef; #health_dread;	 -1.8
-#my $result_GroupingE	= undef; #$existential_dread_result; -1.8
-#my $result_GroupingF	= undef; #$institutional_dread_result; -1.8
-#my $result_GroupingG	= undef; #$eco_dread_result;-1.9
-#my $result_GroupingH	= undef; #$fasho_dread_result; -1.8
-#my $dread_result		= undef;#total of all finding incidents (not including Grouping_Zero);
-#my $complaint_result 	= undef;
-#my $result_Grouping_zero= undef;
-
+	#my $dominant_dread0	= $Config->{content}->{dominant_dread};	
+sub export_values {
 	
-#sub write_eval {
-## declaring configuartion file
-	#$Config	= Config::Tiny->read("$home/active_state/Analysis_Data/Twitter/evaluation.conf");
-		
-## writing dominantdread
-	#$Config->{content}->{dominant_dread}= $dominant_dread;
+#config file
+	$Config	= Config::Tiny->read("$home/$em_path");
 	
-## writing result vlaues for content modifyer...
-	#$Config->{content}->{discard}				=$discard_result;	#Zero0
-	#$Config->{content}->{insult}				=$insult_result;	#Zero1
-	#$Config->{content}->{boast}					=$boast_result;		#Zero2
-	#$Config->{content}->{complaint}				=$complaint_result;	#Zero3
+#names
+	unless ($grouping_count<=0) {
+		$Config->{class}->{dread}	= $highest_grouping_name;	
+	};
 	
-	#$Config->{content}->{dread}					= #dominant_dread
+#values		
+	$Config->{content}->{discard}	= $discard_active;	
+	$Config->{content}->{insult}	= $insult_count;	
+	$Config->{content}->{boast}		= $boast_count;		
+	$Config->{content}->{complaint}	= $complaint_count;	
+	$Config->{content}->{dread}		= $grouping_count;
+	$Config->{content}->{dominant_dread} = $dominant_value;
 	
-	#$Config->{content}->{grouping_A}			=$result_GroupingA;
-	#$Config->{content}->{grouping_B}			=$result_GroupingB;
-	#$Config->{content}->{grouping_C}			=$result_GroupingC;
-	#$Config->{content}->{grouping_D}			=$result_GroupingD;
-	#$Config->{content}->{grouping_E}			=$result_GroupingE;
-	#$Config->{content}->{grouping_F}			=$result_GroupingF;
-	#$Config->{content}->{grouping_G}			=$result_GroupingG;
-	#$Config->{content}->{grouping_H}			=$result_GroupingH;
-	#$Config->{content}->{grouping_Zero}			=$result_Grouping_zero;
+#modifyers
+	$Config->{neutrality}->{inversion_neg1}		= $ultra_mean;
+	$Config->{neutrality}->{inversion_neg2}		= $ultra_mean;
+	$Config->{neutrality}->{inversion_pos1}		= $ultra_mean;
+	$Config->{neutrality}->{inversion_pos2}		= $ultra_mean;
+	$Config->{neutrality}->{ultra_mean}		= $ultra_mean;
 	
-## writing total number of dread findings
-	#$Config->{content}->{dread}					=$dread_result;
-	
-	#$Config->write("$home/active_state/Analysis_Data/Twitter/evaluation.conf");			
-#};
-	
+#write to file
+	$Config->write("$home/$em_path");
+			
+};
 
-##2# preliminary analysis
+export_values;
 
-	#print "\n	preliminary analysis:\n";
-	#print $Hf1 "\n	Grouping_zero - preliminary analysis:\n";
-	
-	#print "#\n\n Grouping_zero \n";
-	#use Grouping_zero qw( create_grouping_zero_v create_grouping_zero_o );
-	
-	#while ($complaint_words > (-1)) {
-		#if ( $tweet_txt =~ m/$complaint[$complaint_words]/) {	
-			#print "	found match: ··";
-			#print $Hf1  "	found match: ··";
-			#print color('bold white');
-			#print uc " '$complaint[$complaint_words]' \n";
-			#print  $Hf1 uc" '$complaint[$complaint_words]' \n";
-			#print color('reset');
-			#$complaint_result	= ($complaint_result +1);
-		#}
-		#else {};
-		#$complaint_words = ($complaint_words - 1);
-	#};	
-	
-	
-## summarising results
-	#if ($complaint_result > 1)		{
-		#print color('bold white');#yellow
-		#print"	$complaint_result ";
-		#print $Hf1 "	$complaint_result ";
-		#print color('reset');
-		#print " matches for complaint found!\n";
-		#print $Hf1 " matches for complaint found!\n";
-		#}
-	#elsif ($complaint_result == 1)	{
-		#print color('bold white');#yellow
-		#print"	$complaint_result ";
-		#print $Hf1 "	$complaint_result ";
-		#print color('reset');
-		#print " match for complaint found!\n";
-		#print $Hf1 " match for complaint found!\n";
-		#}
-	#else {
-		#print "	no match found!\n	#\n	#\n"; # ...
-		#print $Hf1 " no match found!\n	#\n	#\n"; # ...
-		#};	
+sub export_source_path {
+#config file
+	$Config	= Config::Tiny->read("$home/$status_path");
+#value
+unless ($grouping_count<=0) {
+	$Config->{tweet}->{source} = "$source_path/$active_source";
+}
+#write to file
+	$Config->write("$home/$status_path");
 
+};
+export_source_path;
 
-
-	
-# declaring configuartion file
 
 
 
