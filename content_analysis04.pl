@@ -933,20 +933,20 @@ sub assesment {
 					};
 					
 		#	#	#	#source filter
-					my $escalated_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"escalated_source"};
-					my $unique_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"unique_source"};
+					#my $escalated_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"escalated_source"};
+					#my $unique_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"unique_source"};
 	
-					if (defined($escalated_temp) or $unique_temp ne 'null'){
-						my @relevant_words_temp;
-						if (defined($escalated_temp)) {push (@relevant_words_temp, "$escalated_temp -> ++ ");
-							$loop_sum++;
-						};
-						if ($unique_temp ne 'null')  {push (@relevant_words_temp, "$unique_temp -> +++");	
-							$loop_sum++;
-						};
-						print "relevant source: ( @relevant_words_temp", "), ";
-						print $Hf1 "relevant source: ( @relevant_words_temp", "), ";
-					};
+					#if (defined($escalated_temp) or $unique_temp ne 'null'){
+						#my @relevant_words_temp;
+						#if (defined($escalated_temp)) {push (@relevant_words_temp, "$escalated_temp -> ++ ");
+							#$loop_sum++;
+						#};
+						#if ($unique_temp ne 'null')  {push (@relevant_words_temp, "$unique_temp -> +++");	
+							#$loop_sum++;
+						#};
+						#print "relevant source: ( @relevant_words_temp", "), ";
+						#print $Hf1 "relevant source: ( @relevant_words_temp", "), ";
+					#};
 					
 		#	#	#	#time filter
 					my $time_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"timesensitivity"};
@@ -1105,7 +1105,7 @@ unless ($grouping_count<=0) {
 	
 	print "Active Image source:\n";
 	
-	if ($ultra_mean > 0.2) {
+	if ($ultra_mean > 3) {
 		if ($unique ne 'null')  {
 			print"unique source:$unique\n";
 			$active_source = $unique;
