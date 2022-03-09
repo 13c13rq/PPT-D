@@ -946,7 +946,7 @@ sub assesment {
 						};
 						print "relevant source: ( @relevant_words_temp", "), ";
 						print $Hf1 "relevant source: ( @relevant_words_temp", "), ";
-					#};
+					};
 					
 		#	#	#	#time filter
 					my $time_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"timesensitivity"};
