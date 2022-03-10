@@ -220,7 +220,7 @@ use Data::Dumper qw(Dumper);
 	our $Erand_four 		= int(rand(4));
 	our $Erand_three 		= int(rand(3));
 	our $Erand_two 			= int(rand(2));
-	our @Epool_1 = ("Out1", "Out2", "Lovecraft_Country1"); #/surgery scene, teacup on tv scene "Out2"
+	our @Epool_1 = ("Out1", "Lovecraft_Country1", "Dogman2",); #/surgery scene, teacup on tv scene "Out2"
 	
 	our @Epool_2 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
 	our @Epool_3 = ("Dogman1", "Dogman2", "Dogman3"); #/opening dog scene - breakin anticipation scene - beach scene
@@ -248,8 +248,8 @@ sub create_groupingE {
 	[" racist ",		"$Eword[3]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[25]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 	[" alien ",			"$Eword[3]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[24]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 	[" aliens ",		"$Eword[3]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[24]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-	[" sanctuary ",		"$Eword[3]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[28]",	"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_3 [2]],
-	[" heartland ",		"$Eword[1]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_3 [2]],
+	[" sanctuary ",		"$Eword[3]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[28]",	"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_2 [2]],
+	[" heartland ",		"$Eword[1]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_2 [2]],
 	[" suburb",			"$Eword[3]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_2 [$Erand_three]],
 	[" send her back ",	"$Eword[7]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[33]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 	[" send back ",		"$Eword[7]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[33]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
@@ -301,7 +301,7 @@ sub create_groupingE {
 	);	
 	
 	@Econtext = (
-	["division, racism, context & election denial ","context","1", $Epool_4 [$Erand_two], "null"],
+	["division, racism, context & election denial ","context","1", $Epool_4 [$Erand_three], "null"],
 	[" rigged ",		"$Eword[2]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[31]",	"${$Estat_ref}[1]",		"$Etime[2]",	"null"],
 	[" stolen ",		"$Eword[2]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[31]",	"${$Estat_ref}[1]",		"$Etime[2]",	"null"], #date!!
 	[" fraud ",			"$Eword[3]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[31]",	"${$Estat_ref}[1]",		"$Etime[2]",	"null"],
