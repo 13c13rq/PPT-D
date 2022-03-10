@@ -193,7 +193,7 @@ use Data::Dumper qw(Dumper);
 	our $Drand_three 		= int(rand(3));
 	our $Drand_two 			= int(rand(2));
 	our @Dpool_1 = ("Requiem1", "Requiem2");
-	our @Dpool_2 = ("Cure2", "Cure3", "Cure4");
+	our @Dpool_2 = ("Cure2", "Cure3");
 	our @Dpool_3 = ("Covenant1", "Covenant2", "Covenant3");
 	
 sub create_groupingD {
@@ -221,7 +221,7 @@ sub create_groupingD {
 	);
 	
 	@healthcare = (
-	["healthcare, covid & Opioids","healthcare","1",$Dpool_2 [$Drand_three], "null"],
+	["healthcare, covid & Opioids","healthcare","1",$Dpool_2 [$Drand_two], "null"],
 	[" health insurance ","$Dword[3]",	"${$Dsig_ref}[27]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
 	[" healthcare ",	"$Dword[3]",	"${$Dsig_ref}[27]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
 	[" obamacare ",		"$Dword[1]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
