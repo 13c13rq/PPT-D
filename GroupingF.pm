@@ -186,7 +186,7 @@ use Data::Dumper qw(Dumper);
 	our @Fpool_5 = ("Shin2", "Host1"); #/american abominations in full view
 	our @Fpool_6 = ("Castle_Rock1", "Clemency1", "Out2"); #/execution theartres
 	our @Fpool_7 = ("Lovecraft_Country1", "Lovecraft_Country2"); #/sundown chase scene - tunnel curse by cop scene
-	our @Fpool_8 = ("World_WarZ1", "World_WarZ2"); #/zombie wall
+	our @Fpool_8 = ("World_War_Z1", "World_War_Z2"); #/zombie wall
 
 sub create_groupingF {
 	
