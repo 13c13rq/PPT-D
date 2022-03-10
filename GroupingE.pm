@@ -220,11 +220,16 @@ use Data::Dumper qw(Dumper);
 	our $Erand_four 		= int(rand(4));
 	our $Erand_three 		= int(rand(3));
 	our $Erand_two 			= int(rand(2));
-	our @Epool_1 = ("Out1", "Out2"); #/surgery scene, teacup on tv scene
+	our @Epool_1 = ("Out1", "Out2", "Lovecraft_Country1"); #/surgery scene, teacup on tv scene "Out2"
+	
 	our @Epool_2 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
-	our @Epool_3 = ("Dogman1", "Dogman2", "Lovecraft_Country1"); #/opening dog scene - breakin anticipation scene - beach scene
+	our @Epool_3 = ("Dogman1", "Dogman2", "Dogman3"); #/opening dog scene - breakin anticipation scene - beach scene
+	
+	our @Epool_23 = ("Stepford2", "Dogman2", "Stepford1"); #/opening scene - facade room scene - supermarket scene
+	our @Epool_32 = ("Dogman1", "Stepford3", "Dogman3"); #/opening dog scene - breakin anticipation scene - beach scene
+	
 	our @Epool_4 = ("Godzilla1", "Shin1", "Godzilla2");
-	our @Epool_5 = ("Shin2", "Host1");
+	our @Epool_5 = ("Shin2", "Dogman1");
 
 sub create_groupingE {
 	
@@ -234,7 +239,7 @@ sub create_groupingE {
 # division, racism, context & election denial #
 	# racist content
 	@racist_content = (
-	["division, racism, context & election denial ","racist content","1", $Epool_1 [$Erand_two], "null"],
+	["division, racism, context & election denial ","racist content","1", $Epool_1 [$Erand_three], "null"],
 	[" white supremacy ","$Eword[9]",	"${$Esig_ref}[20]",	"${$Efunc_ref}[22]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 	[" floyd ",			"$Eword[1]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[24]",	"${$Estat_ref}[9]",		"$Etime[0]",	"null"],
 	[" black lives matter","$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[4]",		"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
@@ -254,7 +259,7 @@ sub create_groupingE {
 
 	# devisive content
 	@divisive_content = (
-	["division, racism, context & election denial ","divisive content","1", $Epool_4 [$Erand_two], $Epool_4 [2]],
+	["division, racism, context & election denial ","divisive content","1", $Epool_23 [$Erand_three], $Epool_32 [$Erand_three]],
 	[" fake media ",	"$Eword[1]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
 	[" fake news ",		"$Eword[1]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
 	[" lie ",			"$Eword[4]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
@@ -339,10 +344,10 @@ sub create_groupingEo{
 	our $Econtext_ref 		= \@Econtext;
 	
 	our @objectsE = ($racist_content_ref, $divisive_content_ref, $election_denial_ref, $Econtext_ref);
-	#print Dumper @objectsE;
+	print Dumper @objectsE;
 };
 	
-#create_groupingEo
+create_groupingEo
 
 1;
 END
