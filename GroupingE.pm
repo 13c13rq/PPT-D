@@ -344,10 +344,10 @@ sub create_groupingEo{
 	our $Econtext_ref 		= \@Econtext;
 	
 	our @objectsE = ($racist_content_ref, $divisive_content_ref, $election_denial_ref, $Econtext_ref);
-	print Dumper @objectsE;
+	#print Dumper @objectsE;
 };
 	
-create_groupingEo
+#create_groupingEo
 
 1;
 END
