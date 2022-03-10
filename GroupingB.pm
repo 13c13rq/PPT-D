@@ -103,7 +103,7 @@ use Data::Dumper qw(Dumper);
 	);
 	our @Btime =	(
 		"null", 					#[0]			
-		"ongoing" 					#[1]
+		"null" 					#[1]
 	);	
 
 
