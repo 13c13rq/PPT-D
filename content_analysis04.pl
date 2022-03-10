@@ -149,7 +149,7 @@ my @g_l = ('A'..'H');
 my @g_l_val = (0,1,0,1,0,0,1,1); #high priority groupings
 my @g_c_val = (0,0,0,0,0,0,0,0); #special priority for climate grouping - if needed - seems to be unnecessary
 
-my @modifyers = (0, 1.51, 1.81, 1.59, 1.78, 1.57, 1.54, 1.91, 1.87); #8;
+my @modifyers = (0, 1.51, 1.81, 1.69, 1.78, 1.57, 1.54, 1.91, 1.87); #8;
 my @zero_modifyers = (1.57, 1.41, 1.31); # insult, complaint, boast
 
 my %weight_distr;
@@ -771,27 +771,32 @@ sub standard_analysis {
 	if ($query_result==1) {
 		if ($grouping_count == 0) {
 			print "\nlink found - discard is active!\n";
+			print  $Hf1 "\nlink found - discard is active!\n";
 			$discard_active = 1;
 			printdebug;
 		}
 		elsif($grouping_count > 0 && $query_count < $irrelevance_count) {
 			print "\nlink + possibly irrelevant match found - discard_filter is active!";
+			print  $Hf1 "\nlink + possibly irrelevant match found - discard_filter is active!";
 			$discard_filter_active = 1;
 			printdebug;
 		}
 		else {
 			print "\nlink + relevant match found - discard is inactive!";
+			print  $Hf1 "\nlink + relevant match found - discard is inactive!";
 			$discard_active = 0;
 			printdebug;
 		};
 	}
 	elsif ($query_count > $irrelevance_count) {
 			print "\n possibly irrelevant match found - discard_filter is active!";
+			print  $Hf1 "\n possibly irrelevant match found - discard_filter is active!";
 			$discard_filter_active = 1;
 			printdebug;
 	}
 	else {
-			print "\nno zero - discard is inactive!";
+			print "\n0 - discard is inactive!";
+			print  $Hf1 "\n0 - discard is inactive!";
 			$discard_active = 0;
 			printdebug;
 	};
@@ -1125,6 +1130,7 @@ unless ($grouping_count<=0) {
 	};
 	
 	print "active source: $active_source\n";
+	print $Hf1 "active source: $active_source\n";
 };
 
 #debug - show generated values
