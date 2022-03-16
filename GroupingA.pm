@@ -197,11 +197,11 @@ sub create_groupingA {
 	[" aleppo ",	"$Aword[1]",	"${$Asig_ref}[4]",	"${$Afunc_ref}[4]",	"${$Astat_ref}[8]",	"$Atime[0]", "null"],	 
 	[" kurds ",		"$Aword[1]",	"${$Asig_ref}[8]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[7]",	"$Atime[0]", "null"],
 	[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:03:2019", $Apool_2 [$Arand_three]],
-	[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[11]","04:2019:01:2021", $Apool_3 [$Arand_three]],
+	[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[11]","04:2019:01:2021", "null"],
 	[" baghdadi ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[6]",	"${$Astat_ref}[2]",	"01:2017:10-2019", $Apool_2 [$Arand_three]],
-	[" baghdadi ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[6]",	"${$Astat_ref}[6]",	"11:2019:01-2021", $Apool_3 [$Arand_three]],
+	[" baghdadi ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[6]",	"${$Astat_ref}[6]",	"11:2019:01-2021", "null"],
 	[" the caliphate ","$Aword[1]", "${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:04-2019", $Apool_2 [$Arand_three]],
-	[" the caliphate ","$Aword[1]", "${$Asig_ref}[7]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[11]","04:2019:01-2021", $Apool_3 [$Arand_three]],
+	[" the caliphate ","$Aword[1]", "${$Asig_ref}[7]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[11]","04:2019:01-2021", "null"],
 	);
 	#
 	
