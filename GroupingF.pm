@@ -156,7 +156,7 @@ use Data::Dumper qw(Dumper);
 	);
 	our @Ftime =	(
 		"null", 					#[0]			
-		"ongoing", 					#[1]
+		"null", 					#[1]
 		"01:2020:01:2021",			#[2] #the pandemic
 		"01:2017:01:2020"			#[3] #before pandemic
 	);	
@@ -229,6 +229,7 @@ sub create_groupingF {
 	[" criminal ",		"$Fword[5]",	"${$Fsig_ref}[3]",	"${$Ffunc_ref}[13]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" crime ",			"$Fword[3]",	"${$Fsig_ref}[10]",	"${$Ffunc_ref}[5]",		"${$Fstat_ref}[5]",		"$Ftime[0]",	"null"],
 	[" gang",			"$Fword[5]",	"${$Fsig_ref}[4]",	"${$Ffunc_ref}[15]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
+	[" ms-13 ",			"$Fword[5]",	"${$Fsig_ref}[4]",	"${$Ffunc_ref}[15]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" mob ",			"$Fword[5]",	"${$Fsig_ref}[4]",	"${$Ffunc_ref}[16]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" murder",			"$Fword[5]",	"${$Fsig_ref}[3]",	"${$Ffunc_ref}[5]",		"${$Fstat_ref}[10]",	"$Ftime[0]",	"null"],
 	[" drug lord ",		"$Fword[5]",	"${$Fsig_ref}[3]",	"${$Ffunc_ref}[13]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
