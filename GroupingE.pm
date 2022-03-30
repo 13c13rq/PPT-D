@@ -199,7 +199,7 @@ use Data::Dumper qw(Dumper);
 	);
 	our @Etime =	(
 		"null", 					#[0]			
-		"ongoing", 					#[1]
+		"null", 					#[1]
 		"11:2020:012021",			#[2] #post election
 		"01:2017:10:2020",			#[3] #pre election
 		"01:2021:01:2021",			#[4] #capitol riot
