@@ -112,7 +112,7 @@ use Data::Dumper qw(Dumper);
 	);
 	our @Gtime =	(
 		"null", 					#[0]			
-		"ongoing", 					#[1]
+		"null", 					#[1]
 		"03:2020:01:2021",			#[2] # covid crash and post crash period
 		"01:2017:03:2020"			#[3] # pre covid crash
 	);	
@@ -164,6 +164,7 @@ sub create_groupingG {
 	[" keystone ",					"$Gword[1]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
 	[" drilling ",					"$Gword[8]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
 	[" energy companies ",			"$Gword[3]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[3]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
+	[" energy freedom ",			"$Gword[3]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
 	[" miner",						"$Gword[6]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
 	#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
 	);
@@ -211,7 +212,7 @@ sub create_groupingG {
 	
 #rhetoric and context	
 	@rhetoric = (
-	["rhetoric and context","misinformation","1", $Gpool_1 [2],	"null"],
+	["rhetoric and context","misinformation","1", $Gpool_1 [1],	"null"],
 	[" energy independence ",		"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
 	[" energy jobs ",				"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
 	[" clean water  ",				"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
