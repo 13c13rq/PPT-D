@@ -124,7 +124,7 @@ use Data::Dumper qw(Dumper);
 	our $Brand_two 	= int(rand(2));
 	our $Bone		= 1;
 	
-	our @Bpool_1 = ("WTC", "Looming1", "Looming2", "Inconvinient1"); #forshadowing - planning - executing - ground zero (floding)
+	our @Bpool_1 = ("Looming1", "Looming2", "Inconvinient1"); #forshadowing - planning - executing - ground zero (floding)"WTC",
 	our @Bpool_2 = ("Wolverine1", "Terminator1", "Inconvinient1"); #abstract / diffuse / nuclear -> explicit in last source
 
 sub create_groupingB {
@@ -133,7 +133,7 @@ sub create_groupingB {
 	# 0 match		1 Bwordtype	 2 signification	3 function			4 status			5 Btimeperiod
 	# September 11 trauma & other terroist attacs
 	@terrorist_attacks = (
-	["international_terrorism","terrorist_attacks","1", $Bpool_1 [$Brand_four],	"null"],
+	["international_terrorism","terrorist_attacks","1", $Bpool_1 [$Brand_three],	"null"],
 	[" 9 11 ",				"$Bword[3]",	"${$Bsig_ref}[7]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[5]",		"$Btime[0]",	"null"],
 	[" september 11th ", 	"$Bword[3]",	"${$Bsig_ref}[7]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[5]",		"$Btime[0]",	"null"],
 	[" world trade center ","$Bword[1]",	"${$Bsig_ref}[1]",	"${$Bfunc_ref}[3]",	"${$Bstat_ref}[8]",		"$Btime[0]",	"null"],
@@ -142,7 +142,7 @@ sub create_groupingB {
 	
 	# terrorist organizations
 	@terrorist_organizations = (
-	["international_terrorism","terrorist organizations","1", $Bpool_1 [$Brand_four],	"null"],
+	["international_terrorism","terrorist organizations","1", $Bpool_1 [$Brand_three],	"null"],
 	[" al qaeda ",			"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
 	[" al qa ida ",			"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
 	[" al shabaab ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
@@ -171,7 +171,7 @@ sub create_groupingB {
 	
 #context and islamophobia
 	@islamophobia = (
-	["context and islamophobia","islamophobia","2", $Bpool_1 [$Brand_four], "null"],
+	["context and islamophobia","islamophobia","1", $Bpool_1 [$Brand_three], "null"],
 	[" middle east ",		"$Bword[3]",	"${$Bsig_ref}[4]",	"${$Bfunc_ref}[0]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
 	[" middle easterner ",	"$Bword[3]",	"${$Bsig_ref}[5]",	"${$Bfunc_ref}[2]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
 	[" middle easterners ",	"$Bword[4]",	"${$Bsig_ref}[5]",	"${$Bfunc_ref}[2]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
@@ -180,7 +180,7 @@ sub create_groupingB {
 	);
 	
 	@terror_related_rhetoric = (
-	["context and islamophobia","terror_related_rhetoric","2", $Bpool_1 [$Brand_four],	"null"],
+	["context and islamophobia","terror_related_rhetoric","1", $Bpool_1 [$Brand_three],	"null"],
 	[" extremist ",			"$Bword[3]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[12]",	"$Btime[1]",	"null"],
 	[" extremists ", 		"$Bword[4]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[12]",	"$Btime[1]",	"null"],
 	[" terror ",			"$Bword[3]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[10]",	"$Btime[1]",	"null"],
@@ -191,7 +191,7 @@ sub create_groupingB {
 	);
 	
 	@context = (
-	["context and islamophobia","context","2", $Bpool_1 [$Brand_four],	"null"],
+	["context and islamophobia","context","2", $Bpool_1 [$Brand_three],	"null"],
 	[" bombing ",			"$Bword[3]",	"${$Bsig_ref}[9]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
 	[" islamic ",			"$Bword[2]",	"${$Bsig_ref}[10]",	"${$Bfunc_ref}[2]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
 	);
