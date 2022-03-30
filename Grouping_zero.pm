@@ -328,7 +328,7 @@ sub create_grouping_zero {
 	[" camala harris ",		"$zero_word[1]",	"${$zero_sig_ref}[18]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[5]",	"$zero_time[0]"],
 	[" fauci ",				"$zero_word[1]",	"${$zero_sig_ref}[18]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[4]",	"$zero_time[0]"],
 	[" cdc ",				"$zero_word[1]",	"${$zero_sig_ref}[5]",	"${$zero_func_ref}[0]","${$grouping_ref}[4]",	"$zero_time[6]"],
-	[" who ",				"$zero_word[1]",	"${$zero_sig_ref}[5]",	"${$zero_func_ref}[0]","${$grouping_ref}[4]",	"$zero_time[6]"],
+	[" the who ",				"$zero_word[1]",	"${$zero_sig_ref}[5]",	"${$zero_func_ref}[0]","${$grouping_ref}[4]",	"$zero_time[6]"],
 	[" world health organization ","$zero_word[1]",	"${$zero_sig_ref}[5]",	"${$zero_func_ref}[0]","${$grouping_ref}[4]",	"$zero_time[6]"],
 	[" black lives matter",	"$zero_word[9]",	"${$zero_sig_ref}[19]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[5]",	"$zero_time[0]"],
 	[" blm ",				"$zero_word[7]",	"${$zero_sig_ref}[19]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[5]",	"$zero_time[0]"],
