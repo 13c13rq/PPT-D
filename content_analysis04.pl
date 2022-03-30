@@ -47,8 +47,9 @@ my $tweet	= "$home/$text_data/trumptweet.txt";
 my $row			= undef;
 open(my $fh, '<:encoding(UTF-8)', $tweet)
   or die "Could not open file '$tweet' $!";
-my $tweet_txt = <$fh>;
-
+my $tweet_txt_0 = <$fh>;
+my $tweet_txt = undef;
+my $space = " ";
 # filehandles
 my (
 	$Hf	,
@@ -105,12 +106,16 @@ read_details;
 
 #cleaning tweet
 	#print $Hf0  "stripping obstructive characters\n";
+	$tweet_txt = join("", " ", $tweet_txt_0, " ");
+	$tweet_txt  =~ s/\R//g;print ">$tweet_txt< \n";
 	print "\nstripping obstructive characters\n";
 	$tweet_txt =~ tr/!?&'"#()[]{}-–”“~*;,:.%@=/ /;
 	#print $Hf0  "upper case all\n";
 	print "lower case all\n";
 	$tweet_txt = lc $tweet_txt;
+	
 	close $Hf0;
+	
 	
 #setting up findings array
 my @evaluation 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
@@ -324,8 +329,8 @@ sub standard_test {
 						$grouping_displayed =1;	
 						
 					};
-					print "	",${$objects}[0][1],": '",uc $active_word,"' [inactive]\n";
-					print $Hf1 "	",${$objects}[0][1],": '",uc $active_word,"' [inactive]\n";
+					print "	",${$objects}[0][1],": '",uc $active_word,"' [0]\n";
+					print $Hf1 "	",${$objects}[0][1],": '",uc $active_word,"' [0]\n";
 				};
 			};
 			$countII=0;
@@ -444,6 +449,7 @@ sub match_groupings {
 		
 	print $Hf1 "\n";
 	print "\n";
+	$active_mod = 1;
 };
 
 match_groupings;
@@ -656,6 +662,7 @@ sub add_values {
 					$current_findings {"unique_source"} 	=	$chosen_unique_source;
 					$current_findings {"context"} 			=	$context;
 					$current_findings {"direct_match"} 		=	$direct_match;
+					$current_findings {"mod"} 				=	$active_mod;
 					
 				};
 				
@@ -680,12 +687,15 @@ my (
 	$results,	
 	$divisor_incidence	,
 	$incidendce_total	,
+	$sum_total	,
 	$minor_divisor_incidence	,
 	$minor_incidendce_total	,
+	$minor_sum_total	,
 	) = undef;
 
 
 my $countII 			= 0;
+$sum_total				= 0;
 $discard_active 		= 0;
 $discard_filter_active 	= 0;
 $results 				= 0;
@@ -753,6 +763,7 @@ sub standard_analysis {
 	
 	if ($discard_result > 1) {
 		$grouping_count--;
+		print "reducing grouping_count by one \n";
 	};
 
 	#test for presence of links:
@@ -825,9 +836,7 @@ sub assesment {
 	#what export cenario takes place here? Setting relevant variables must occur.
 	}
 	else {
-			
 
-		
 		foreach my $filter_grouping (@active_groupings) {
 			
 			my $temp_grouping_scalar	= (scalar((@{$findings[$filter_grouping]})))-1;
@@ -849,19 +858,19 @@ sub assesment {
 			if ($discard_filter_active == 0 && $em_total >= 1) {
 				if($negative_content>0) {
 					$context_discard = 0;
-					print "viable context -> match validated!\n";
-					print $Hf1 "viable context -> match validated!\n";
+					print "\nviable context -> match validated!\n";
+					print $Hf1 "\nviable context -> match validated!\n";
 					}
 				else {
-					print "context not valid. match discarded!\n";
-					print $Hf1 "context not valid -> match discarded!\n";
+					print "\ncontext not valid. match discarded!\n";
+					print $Hf1 "\ncontext not valid -> match discarded!\n";
 					$context_discard = 1;
 					$grouping_count = 0;
 					};
 				}
 			else{
-				print "context not valid -> match discarded!\n";
-				print $Hf1 "context not valid -> match discarded!\n";
+				print "\ncontext not valid -> match discarded!\n";
+				print $Hf1 "\ncontext not valid -> match discarded!\n";
 				$context_discard = 1;
 				$grouping_count = 0;
 			};
@@ -876,6 +885,7 @@ sub assesment {
 			unless ($context_discard ==1) {		
 				my $loop_result = undef;
 				my $loop_sum 	= undef;
+				my $simple_loop_result =undef;
 				$loop_sum		= 0;
 				$loop_result	= 0;
 				unless ($currnent_grouping == 0) {
@@ -943,10 +953,12 @@ sub assesment {
 	
 					if (defined($escalated_temp) or $unique_temp ne 'null'){
 						my @relevant_words_temp;
-						if (defined($escalated_temp)) {push (@relevant_words_temp, "$escalated_temp -> ++ ");
+						#if (defined($escalated_temp)) {push (@relevant_words_temp, "$escalated_temp -> ++ ");
+						if (defined($escalated_temp)) {push (@relevant_words_temp, " ++ ");
 							$loop_sum++;
 						};
-						if ($unique_temp ne 'null')  {push (@relevant_words_temp, "$unique_temp -> +++");	
+						#if ($unique_temp ne 'null')  {push (@relevant_words_temp, "$unique_temp -> +++");	
+						if ($unique_temp ne 'null')  {push (@relevant_words_temp, " +++ ");	
 							$loop_sum++;
 						};
 						print "relevant source: ( @relevant_words_temp", "), ";
@@ -960,6 +972,7 @@ sub assesment {
 					};	
 					
 		#	#	#	#finalizing results
+					my $modifyer		= $findings[$currnent_grouping][$temp_grouping_scalar] {"mod"};
 					my $modval_temp		= $findings[$currnent_grouping][$temp_grouping_scalar] {"modval"};
 					my $incidence_temp	= $findings[$currnent_grouping][$temp_grouping_scalar] {"incidence"}; 
 					print "modval: $modval_temp, ";
@@ -967,34 +980,57 @@ sub assesment {
 					print $Hf1 "modval: $modval_temp, ";
 					print $Hf1 "\n";
 					if ($loop_sum == 0) {
-						$loop_result = $modval_temp /10;
+						$loop_result = 1 + $modval_temp /10;
+						#$loop_result = 1;
+						$simple_loop_result = 0;
 						}
 					else{
-						$loop_result = ($loop_sum*$modval_temp)/$incidence_temp;
+						$loop_result = ($loop_sum*$modval_temp)/$incidence_temp;						
+						#print "it: $loop_result = ($loop_sum*$modval_temp)/$incidence_temp\n";
+						$simple_loop_result =$incidence_temp*$modifyer;
+						#print "st: $simple_loop_result =$incidence_temp*$modifyer\n";
+						#$loop_result = ($loop_sum*$modval_temp);
 					};
 					$test_groupings {$loop_result} = $currnent_grouping;
 				};
 		#	#	#finishing
 				print "loop done - result: $loop_result ($loop_sum);\n\n";
 				print $Hf1 "loop done - result: $loop_result ($loop_sum);\n\n";
+				
 				if ($loop_result > 0) {
-					if ($loop_result > 1) {
+					if ($loop_result >= 1) {
 						$divisor_incidence++;
-						$incidendce_total=$incidendce_total+$loop_result;
+						
+						$sum_total = $sum_total + $simple_loop_result;
+						
+						$incidendce_total = $incidendce_total+$loop_result;
 					}
 					else {
 						$minor_divisor_incidence++;
+						
+						$sum_total = $sum_total + $simple_loop_result;
+						
 						$minor_incidendce_total = $minor_incidendce_total+$loop_result;
 						print "minor incidence noted \n";
 					};
 				};
+				
+				#may be mistake! see if tests show different vaules
+				#if ($loop_result > 0) {
+						#$divisor_incidence++;
+						#$sum_total = $sum_total + $simple_loop_result;
+						#$incidendce_total = $incidendce_total+$loop_result;
+						##print "## test - it: $incidendce_total st: $sum_total\n\n";
+				#};
 			};
 		};
 	};	
 };
 
+
+
 #running subroutines
-standard_analysis;
+standard_analysis;print "## $grouping_count\n";
 assesment;
 my ($highest_loop_result	,
 	$required	,
@@ -1007,6 +1043,7 @@ $dominant_value	= 0;
 my @dominant_grouping_vals = (3,1,4,2,5,7,6,3); #high priority groupings
 
 unless ($grouping_count<=0) {
+	print "required!\n";
 	$highest_loop_result = max keys %test_groupings;
 	$required = $test_groupings{$highest_loop_result};
 	$highest_grouping_name = $g_l [($required -1)];
@@ -1055,20 +1092,29 @@ foreach my $emotion_test (@emotions) {
 		};
 	};
 
-if ($divisor_incidence > 1) {
+if ($divisor_incidence >= 1) {
 	if ($insult_count > 0) {
 		$divisor_incidence++;
 		$incidendce_total= $incidendce_total + ($insult_count*$zero_modifyers[0]);
+		$sum_total = $sum_total + ($insult_count*$zero_modifyers[0]);
 		};
 	if ($boast_count > 0) {
 		$divisor_incidence++;
 		$incidendce_total= $incidendce_total + ($boast_count*$zero_modifyers[1]);
+		$sum_total = $sum_total + ($boast_count*$zero_modifyers[1]);
 		};
 	if ($complaint_count > 0) {
 		$divisor_incidence++;
 		$incidendce_total= $incidendce_total + ($complaint_count*$zero_modifyers[2]);
+		$sum_total = $sum_total + ($complaint_count*$zero_modifyers[2]);
 		};
-	$content_modifyer = $incidendce_total/$divisor_incidence;
+	$content_modifyer = $incidendce_total/$divisor_incidence-1;
+	if ($content_modifyer < 0) {
+		$content_modifyer = 0;
+		print "negative content modifyer. resett to 0.\n";
+		};
+	print"p inc: $content_modifyer = $incidendce_total/$divisor_incidence -1\n";
+	#$content_modifyer = $incidendce_total;
 	}
 elsif(($insult_count + $boast_count +$complaint_count)==0) {
 	$content_modifyer = 1.01;
@@ -1077,23 +1123,83 @@ else {
 	if ($insult_count > 0) {
 		$minor_divisor_incidence++;
 		$minor_incidendce_total= $minor_incidendce_total + ($insult_count*$zero_modifyers[0]);
+		$sum_total = $sum_total + ($insult_count*$zero_modifyers[0]);
+		$active_mod = $zero_modifyers[0];
 		};
 	if ($boast_count > 0) {
 		$minor_divisor_incidence++;
 		$minor_incidendce_total= $minor_incidendce_total + ($boast_count*$zero_modifyers[1]);
+		$sum_total = $sum_total + ($boast_count*$zero_modifyers[1]);
+		$active_mod = $zero_modifyers[1];
 		};
 	if ($complaint_count > 0) {
 		$minor_divisor_incidence++;
 		$minor_incidendce_total= $minor_incidendce_total + ($complaint_count*$zero_modifyers[2]);
+		$sum_total = $sum_total + ($complaint_count*$zero_modifyers[2]);
+		$active_mod = $zero_modifyers[2];
 		};
-	$content_modifyer = $minor_incidendce_total/$minor_divisor_incidence;
+	$content_modifyer = $minor_incidendce_total/$minor_divisor_incidence-1;
+	if ($content_modifyer < 0) {
+		$content_modifyer = 0;
+		print "negative content modifyer. resett to 0.\n";
+		};
+	print"s inc: $content_modifyer = $minor_incidendce_total/$minor_divisor_incidence-1\n";
 	};
 
+my @em_totals = ($positive_em, $negative_em);
+my $prime_em_sett = max @em_totals;
+my $sec_em_sett = min @em_totals;
+
+unless ($grouping_count<=0) {
+$active_mod	= $findings[$required][$highest_grouping_scalar] {"mod"};
+#print "active_mod = $active_mod\n"
+};
+
+		#$ultra_mean = ((((($prime_em_sett*$content_modifyer) + ($sec_em_sett * $mean_intent))*$content_modifyer) + $content_sum)/ 10);
+
+
 if ($emotion_incidence == 0) {
-	$ultra_mean = ($content_modifyer)
+	print "\nmodifyer: $content_modifyer \n";
+	print $Hf1 "\nmodifyer: $content_modifyer \n";
+	#$ultra_mean = (($content_modifyer * $active_mod)+$sum_total) / 10;
+	#$ultra_mean = ($content_modifyer * $active_mod) / 10;
+	#$ultra_mean = ($content_modifyer) / 10;
+	$ultra_mean = ($content_modifyer);
+	
+	#print "$ultra_mean = ($content_modifyer)\n";
+	#print $Hf1 "$ultra_mean = ($content_modifyer)\n";
+	#print "$ultra_mean = ($content_modifyer) / 10 \n";
+	#print $Hf1 "$ultra_mean = ($content_modifyer) / 10 \n";
+	
+	#print "$ultra_mean = ($sum_total * $active_mod) / 10 \n";
+	#print $Hf1 "$ultra_mean = ($sum_total * $active_mod) / 10 \n";
+	#print "total_modifyer: $ultra_mean \n\n";
+	#print $Hf1 "total_modifyer: $ultra_mean \n";
+
 	}
 else {
-	$ultra_mean = ($content_modifyer+($em_total/$emotion_incidence));
+	#$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) + $sum_total)/10;
+	print "\nmodifyer: $content_modifyer \n";
+	print $Hf1 "\nmodifyer: $content_modifyer \n";
+	
+	#$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett)*$content_modifyer + $sum_total)/10;
+	#$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) + $content_modifyer)/10;#
+	$ultra_mean = ($em_total * $content_modifyer)/8;
+	#$ultra_mean = ($content_modifyer);
+	
+	#print "$ultra_mean = ($content_modifyer)\n";
+	#print $Hf1 "$ultra_mean = ($content_modifyer)\n";
+	#print "$ultra_mean = ($em_total * $content_modifyer)/10\n";
+	#print $Hf1 "$ultra_mean = ($em_total * $content_modifyer)/10\n";
+	#print "$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) + $content_modifyer)/10\n";
+	#print $Hf1 "$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) + $sum_total)/10\n";
+	
+	#print "total_modifyer: $ultra_mean \n\n";
+	#print $Hf1 "total_modifyer: $ultra_mean \n";
+	
+	#$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett)/$emotion_incidence + $content_modifyer*$active_mod)/10;
+	#print "\nmodifyer = ((($prime_em_sett*$active_mod) + $sec_em_sett)/$emotion_incidence + $content_modifyer*$active_mod)/10\n";
+	#print $Hf1 "\nmodifyer = ((($prime_em_sett*$active_mod) + $sec_em_sett)/$emotion_incidence + $content_modifyer*$active_mod)/10\n";
 	};
 
 my ($standard	,
@@ -1137,17 +1243,17 @@ unless ($grouping_count<=0) {
 print"insult: $insult_count\n";
 print"boast: $boast_count\n";
 print"complaint: $complaint_count\n";
-
+print"em incidence and total: $emotion_incidence, $em_total\n";
 print "incidence total:$incidendce_total \n";
 print "divisor incidence:$divisor_incidence \n";
-print "content modifyer:$content_modifyer, final modifyer: $ultra_mean\n";
+#print "content modifyer:$content_modifyer, final modifyer: $ultra_mean\n";
 print "discard:$discard_active, strict discard filter: $discard_filter_active \n";
 print "dread accumulation type: $dominant_value \n";
 print "groupingcount: $grouping_count\n";
 print $Hf1 "\n\n::DEBUG VALUES::\n";
 print $Hf1 "	incidence total:$incidendce_total \n";
 print $Hf1 "	divisor incidence:$divisor_incidence \n";
-print $Hf1 "	content modifyer:$content_modifyer, final modifyer: $ultra_mean\n";
+#print $Hf1 "	content modifyer:$content_modifyer, final modifyer: $ultra_mean\n";
 print $Hf1 "	discard:$discard_active, strict discard filter: $discard_filter_active \n";
 print $Hf1 "	dread accumulation type: $dominant_value \n";
 
@@ -1168,6 +1274,7 @@ print $Hf1 "	dread accumulation type: $dominant_value \n";
 	#print Dumper @g_l_val;
 	#print "\n\n output incidence:\n";
 	#print Dumper %grouping_incidence;
+	print Dumper @emotions;
 #
 	#my $dominant_dread0	= $Config->{content}->{dominant_dread};	
 sub export_values {
