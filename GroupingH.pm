@@ -91,7 +91,7 @@ use Data::Dumper qw(Dumper);
 	
 	our @Htime =	(
 		"null", 					#[0]			
-		"ongoing", 					#[1]
+		"null", 					#[1]
 		"03:2020:01:2021",			#[2] # covid crash and post crash period
 		"01:2017:03:2020"			#[3] # pre covid crash
 	);	
@@ -116,7 +116,7 @@ use Data::Dumper qw(Dumper);
 	our @Hpool_1 = ("Dogman1", "Dogman2", "Dogman3"); #/dog opening - ?? - beach burial
 	our @Hpool_2 = ("Godzilla1", "Shin1", "Godzilla2"); #/godzilla suspense scenes
 	our @Hpool_3 = ("Shin2", "Host1"); #/american abominations in full view
-	our @Hpool_4 = ("Castle_Rock1", "Clemency1", "Out2"); #/execution theartres
+	our @Hpool_4 = ("Castle_Rock1", "Clemency1", "Out1"); #/execution theartres
 	our @Hpool_5 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
 
 sub create_groupingH {
@@ -143,7 +143,7 @@ sub create_groupingH {
 	);
 	
 	@uk = (
-	["populists, dictators and atrocities","UK (Brexit)","1",$Hpool_1 [$Hrand_two], $Hpool_5 [1]],
+	["populists, dictators and atrocities","UK (Brexit)","1",$Hpool_1 [$Hrand_three], $Hpool_5 [1]],
 	[" brexit ",					"$Hword[7]",	"${$Hsig_ref}[5]",	"${$Hfunc_ref}[6]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
 	[" boris johnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
 	[" borisjohnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
@@ -157,7 +157,7 @@ sub create_groupingH {
 	);
 	
 	@populist_leaders= (
-	["populists, dictators and atrocities","populist leaders","1", $Hpool_1 [$Hrand_two]],
+	["populists, dictators and atrocities","populist leaders","1", $Hpool_1 [$Hrand_three]],
 	[" boris johnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
 	[" borisjohnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
 	[" Boris j ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
@@ -171,7 +171,7 @@ sub create_groupingH {
 	);
 	
 	@populists = (
-	["populists, dictators and atrocities","gop populists","1", $Hpool_1 [$Hrand_two], $Hpool_5 [1]],
+	["populists, dictators and atrocities","gop populists","1", $Hpool_1 [$Hrand_three], $Hpool_5 [1]],
 	[" rondesantisfl ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
 	[" desantis ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
 	[" repmattgaetz ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
