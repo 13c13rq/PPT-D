@@ -173,7 +173,7 @@ use Data::Dumper qw(Dumper);
 	);
 	our @Dtime =	(
 		"null", 					#[0]			
-		"ongoing", 					#[1]
+		"null", 					#[1]
 		"01:2020:01:2021",			#[2] #the pandemic
 		"01:2017:01:2020"			#[3] #before pandemic
 	);	
@@ -242,7 +242,7 @@ sub create_groupingD {
 	@pandemic = (
 	["healthcare, covid & Opioids","pandemic","1",$Dpool_3 [$Drand_three], "null"],
 	[" cdc ",			"$Dword[1]",	"${$Dsig_ref}[5]",	"${$Dfunc_ref}[18]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
-	[" who ",			"$Dword[1]",	"${$Dsig_ref}[5]",	"${$Dfunc_ref}[17]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
+	[" the who ",			"$Dword[1]",	"${$Dsig_ref}[5]",	"${$Dfunc_ref}[17]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
 	[" world health organization ","$Dword[1]","${$Dsig_ref}[5]","${$Dfunc_ref}[17]","${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
 	[" covid ",			"$Dword[1]",	"${$Dsig_ref}[15]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[2]",		"$Dtime[2]",	"null"],
 	[" coronavirus ",	"$Dword[1]",	"${$Dsig_ref}[15]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[2]",		"$Dtime[2]",	"null"],
