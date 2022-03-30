@@ -121,7 +121,7 @@ use Data::Dumper qw(Dumper);
 	
 	our @Atime =	(
 		"null",
-	 	"ongoing" 
+	 	"null" 
 	 );	
 
 
@@ -233,7 +233,7 @@ sub create_groupingA {
 	#Cuba / Venezuela
 	# North Korea
 	@north_korea = (
-	["rival nations","North Korea","2", $Apool_1 [$Arand_three], "null"],
+	["rival nations","North Korea","1", $Apool_1 [$Arand_three], "null"],
 	[" north korea ","$Aword[1]","${$Asig_ref}[1]",		"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
 	[" noko ",		"$Aword[1]","${$Asig_ref}[1]",		"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
 	[" north korean ","$Aword[2]","${$Asig_ref}[2]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
@@ -244,7 +244,7 @@ sub create_groupingA {
 	);
 	# China
 	@china= (
-	["rival nations","China","2", $Apool_1 [$Arand_two], "null"],
+	["rival nations","China","1", $Apool_1 [$Arand_two], "null"],
 	[" china ",		"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
 	[" chinese ",	"$Aword[2]",	"${$Asig_ref}[2]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
 	[" beijing ",	"$Aword[1]",	"${$Asig_ref}[4]",	"${$Afunc_ref}[2]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],	
@@ -255,7 +255,7 @@ sub create_groupingA {
 	);
 	#Russia
 	@russia= (
-	["rival nations","Russia","2", $Apool_1 [$Arand_two], "null"],
+	["rival nations","Russia","1", $Apool_1 [$Arand_two], "null"],
 	[" russia ",	"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
 	[" russian ",	"$Aword[2]",	"${$Asig_ref}[2]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
 	[" russians ",	"$Aword[1]",	"${$Asig_ref}[6]",	"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
@@ -264,7 +264,7 @@ sub create_groupingA {
 	);
 	#Iran
 	@iran = (
-	["rival nations","Iran","2", $Apool_1 [$Arand_two], "null"],
+	["rival nations","Iran","1", $Apool_1 [$Arand_two], "null"],
 	[" iran ",		"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[9]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
 	[" soleimani ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[10]","${$Astat_ref}[6]",	"01:2020:01:2021", "null"],
 	[" iranian ",	"$Aword[2]",	"${$Asig_ref}[2]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
@@ -302,20 +302,20 @@ sub create_groupingA {
 	);
 #context and rhetoric
 	@conflict_rhetoric = (
-	["context and rhetoric","conflict rhetoric","2", $Apool_3 [$Arand_three], "null"],
+	["context and rhetoric","conflict rhetoric","1", $Apool_3 [$Arand_three], "null"],
 	[" make america strong again ","$Aword[7]","${$Asig_ref}[1]","${$Afunc_ref}[0]","${$Astat_ref}[0]","$Atime[0]", "null"],
 	[" makeamericastrongagain ",  "$Aword[7]","${$Asig_ref}[1]","${$Afunc_ref}[0]","${$Astat_ref}[0]","$Atime[0]", "null"],
 	[" provocation ","$Aword[3]","${$Asig_ref}[12]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
 	[" retribution ","$Aword[3]","${$Asig_ref}[12]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", $Apool_2 [$Arand_three]],
-	[" attack ",	"$Aword[3]",	"${$Asig_ref}[12]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", $Apool_2 [$Arand_three]],
-	[" conflict ",	"$Aword[3]",	"${$Asig_ref}[12]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", $Apool_2 [$Arand_three]],
 	[" bombing ",	"$Aword[3]",	"${$Asig_ref}[12]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", $Apool_2 [$Arand_three]],
 	[" the strike ","$Aword[3]",	"${$Asig_ref}[12]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", $Apool_2 [$Arand_three]],
-	[" defense ",	"$Aword[3]",	"${$Asig_ref}[14]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
 	);
 	
 	@Acontext = (
 	["context and rhetoric","context","2", $Apool_1 [$Arand_three], "null"],
+	[" attack ",	"$Aword[3]",	"${$Asig_ref}[12]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", $Apool_2 [$Arand_three]],
+	[" conflict ",	"$Aword[3]",	"${$Asig_ref}[12]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", $Apool_2 [$Arand_three]],
+	[" defense ",	"$Aword[3]",	"${$Asig_ref}[14]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
 	[" israel ",	"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[7]",	"$Atime[0]", "null"],
 	[" netanyahu ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[14]","${$Astat_ref}[5]",	"$Atime[0]", "null"],
 	[" Israeli ",	"$Aword[2]",	"${$Asig_ref}[2]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
