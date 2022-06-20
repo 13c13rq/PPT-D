@@ -1039,8 +1039,8 @@ my ($highest_loop_result	,
 	$dominant_value	,
 	) = undef;
 $dominant_value	= 0;
-
-my @dominant_grouping_vals = (3,1,4,2,5,7,6,3); #high priority groupings
+							#(a,b,c,d,e,f,g,h);
+my @dominant_grouping_vals = (0,1,2,3,4,5,6,7); #high priority groupings
 
 unless ($grouping_count<=0) {
 	print "required!\n";
@@ -1050,8 +1050,8 @@ unless ($grouping_count<=0) {
 	
 	$dominant_value	= $dominant_grouping_vals [($required -1)];
 	
-	print "Grouping $highest_grouping_name is dominant!\n";
-	print $Hf1 "Grouping $highest_grouping_name is dominant!\n";
+	print "Grouping $highest_grouping_name is dominant! [$dominant_value]\n";
+	print $Hf1 "Grouping $highest_grouping_name is dominant! [$dominant_value]\n ";
 	$highest_grouping_scalar	= (scalar((@{$findings[$required]})))-1;
 };
 
@@ -1164,7 +1164,7 @@ if ($emotion_incidence == 0) {
 	#$ultra_mean = (($content_modifyer * $active_mod)+$sum_total) / 10;
 	#$ultra_mean = ($content_modifyer * $active_mod) / 10;
 	#$ultra_mean = ($content_modifyer) / 10;
-	$ultra_mean = ($content_modifyer);
+	$ultra_mean = ($active_mod*$content_modifyer);
 	
 	#print "$ultra_mean = ($content_modifyer)\n";
 	#print $Hf1 "$ultra_mean = ($content_modifyer)\n";
@@ -1184,7 +1184,7 @@ else {
 	
 	#$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett)*$content_modifyer + $sum_total)/10;
 	#$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) + $content_modifyer)/10;#
-	$ultra_mean = ($em_total * $content_modifyer)/8;
+	$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) * $content_modifyer)/8;
 	#$ultra_mean = ($content_modifyer);
 	
 	#print "$ultra_mean = ($content_modifyer)\n";
@@ -1257,6 +1257,10 @@ print $Hf1 "	divisor incidence:$divisor_incidence \n";
 print $Hf1 "	discard:$discard_active, strict discard filter: $discard_filter_active \n";
 print $Hf1 "	dread accumulation type: $dominant_value \n";
 
+#defining output file for findings dump:
+my $finding_text = "$text_data/finding_text_I.txt";
+open( $Hf2, '>', "$home/$finding_text")
+or die "Could not open file ' finding_text_I.txt'";
 #debug - show array contents
 	#print"\n";
 	#print Dumper @findings;
@@ -1274,6 +1278,37 @@ print $Hf1 "	dread accumulation type: $dominant_value \n";
 	#print Dumper @g_l_val;
 	#print "\n\n output incidence:\n";
 	#print Dumper %grouping_incidence;
+	my $findings_text = Dumper @findings;
+	print $Hf2 $findings_text;
+	close $Hf2;
+	
+	#open(my $fh11, '<:encoding(UTF-8)', $filename11)
+	#or die "Could not open file '$filename11' $!";
+	#$finding_lines++ while (<$fh11>);
+	
+	my $finding_lines = undef;
+	
+	open(my  $Hf3, '<:encoding(UTF-8)', "$home/$finding_text")
+	or die "Could not open file ' finding_text.txt'";
+	
+	my $finding_text_final = "$text_data/finding_text.txt";
+	open(my $Hf4, '>', "$home/$finding_text_final")
+	or die "Could not open file ' finding_text.txt'";
+	
+	while (my $finding_line = <$Hf3>) {
+		if ($finding_line =~'          ') {
+			$finding_line =~s/          /········· /;
+			#$finding_line =~s/          / ·· /;
+			print $Hf4 $finding_line;
+			}
+		elsif ($finding_line =~'        ') {
+			$finding_line =~ s/        /······· /;
+			#$finding_line =~ s/        / · /;
+			print $Hf4 $finding_line;
+		}
+		else {print $Hf4 $finding_line;};
+	};
+	
 	print Dumper @emotions;
 #
 	#my $dominant_dread0	= $Config->{content}->{dominant_dread};	
