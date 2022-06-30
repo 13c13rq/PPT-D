@@ -1239,6 +1239,16 @@ unless ($grouping_count<=0) {
 	print $Hf1 "active source: $active_source\n";
 };
 
+my $image_test = $em_total *  $ultra_mean;
+my $image_promt = undef;
+$image_promt = 0;
+if ($image_test <= 0.5) {
+	print "\nfinding too miniscule, image promt inhibited.\n";
+	print $Hf1 "\nfinding too miniscule, image promt inhibited.\n";
+	$image_promt = 1;
+	};
+
+
 #debug - show generated values
 print"insult: $insult_count\n";
 print"boast: $boast_count\n";
@@ -1250,6 +1260,7 @@ print "divisor incidence:$divisor_incidence \n";
 print "discard:$discard_active, strict discard filter: $discard_filter_active \n";
 print "dread accumulation type: $dominant_value \n";
 print "groupingcount: $grouping_count\n";
+print "Image Prompt: $image_promt\n";
 print $Hf1 "\n\n::DEBUG VALUES::\n";
 print $Hf1 "	incidence total:$incidendce_total \n";
 print $Hf1 "	divisor incidence:$divisor_incidence \n";
@@ -1329,6 +1340,8 @@ sub export_values {
 	$Config->{content}->{complaint}	= $complaint_count;	
 	$Config->{content}->{dread}		= $grouping_count;
 	$Config->{content}->{dominant_dread} = $dominant_value;
+	
+	$Config->{content}->{image_promt} = $image_promt;
 	
 #modifyers
 	$Config->{neutrality}->{inversion_neg1}		= $ultra_mean;
