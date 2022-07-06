@@ -1207,7 +1207,9 @@ my ($standard	,
 	$unique	,
 	$active_source	,
 	)= undef;
-
+my $image_test = $em_total *  $ultra_mean;
+my $image_promt = undef;
+$image_promt = 0;
 unless ($grouping_count<=0) {
 	$standard	= $findings[$required][$highest_grouping_scalar] {"standard_source"};
 	$escalated	= $findings[$required][$highest_grouping_scalar] {"escalated_source"};
@@ -1237,16 +1239,18 @@ unless ($grouping_count<=0) {
 	
 	print "active source: $active_source\n";
 	print $Hf1 "active source: $active_source\n";
+	
+	#setting image promt
+	$image_promt = 1;
+	if ($image_test <= 0.5) {
+		print "\nfinding too miniscule, image promt inhibited.\n";
+		print $Hf1 "\nfinding too miniscule, image promt inhibited.\n";
+		$image_promt = 0;
+	};
+
 };
 
-my $image_test = $em_total *  $ultra_mean;
-my $image_promt = undef;
-$image_promt = 0;
-if ($image_test <= 0.5) {
-	print "\nfinding too miniscule, image promt inhibited.\n";
-	print $Hf1 "\nfinding too miniscule, image promt inhibited.\n";
-	$image_promt = 1;
-	};
+
 
 
 #debug - show generated values
