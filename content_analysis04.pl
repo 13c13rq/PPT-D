@@ -452,6 +452,31 @@ sub match_groupings {
 	$active_mod = 1;
 };
 
+sub grouping_objects {
+	
+	#Grouping Zero - insult, boast, complaint and irrelevancy signifyers
+		create_grouping_zero_o;
+	#GroupingA - War and conflict signifyers
+		create_groupingAo;
+	#GroupingB - War and armed conflicts signifyers
+		create_groupingBo;
+	#GroupingC - War and armed conflicts signifyers
+		create_groupingCo;
+	#GroupingD - War and armed conflicts signifyers
+		create_groupingDo;
+	#GroupingE - War and armed conflicts signifyers
+		create_groupingEo;
+	#GroupingF - War and armed conflicts signifyers
+		create_groupingFo;
+	#GroupingG - War and armed conflicts signifyers
+		create_groupingGo;
+	#GroupingH - War and armed conflicts signifyers
+		create_groupingHo;
+		
+	print "writing objects \n";
+
+};
+
 match_groupings;
 
 #variables for 'check_element' sub
@@ -879,6 +904,38 @@ sub assesment {
 			print "\nrelevant groupings:\n";
 			print $Hf1 "\nrelevant groupings:\n";
 		};
+		
+		
+		#testing for correlated groupings
+		
+		my $correlation_AB = undef;
+		my $correlation_EFH = undef;
+		my $correlation_EFH_counter = undef;
+		
+		$correlation_AB = 0;
+		$correlation_EFH = 0;
+		$correlation_EFH_counter = 0;
+		
+		if (scalar((@{$findings[1]})) && scalar((@{$findings[2]})) > 1) {
+			$correlation_AB = 1;
+		};
+		
+		if (scalar((@{$findings[5]})) > 1) {
+			$correlation_EFH_counter ++;
+		};
+		if (scalar((@{$findings[6]})) > 1) {
+			$correlation_EFH_counter ++;
+		};
+		if (scalar((@{$findings[8]})) > 1) {
+			$correlation_EFH_counter ++;
+		};
+		if ($correlation_EFH_counter > 1) {
+			$correlation_EFH = 1;
+			};
+		
+		print "grouping correlation: AB = $correlation_AB, EFH = $correlation_EFH \n";
+		
+		
 		foreach my $currnent_grouping (@active_groupings) {
 			
 			
@@ -915,14 +972,37 @@ sub assesment {
 						};
 					};
 					
-		#	#	#	#filter correlation:
+		#	#	#	#filter correlation (GroupingE is nerfed):
+					my $filter_grouping	= $findings[$currnent_grouping][0];
+					
+					#AB filter
+					if ($correlation_AB == 1) {
+						if ($filter_grouping eq "GroupingA" or $filter_grouping eq "GroupingB") {
+							print "linked groupings (A,B), ";
+							print $Hf1 "linked groupings (A+B), ";
+							$loop_sum++;
+							};
+						};
+					#EFH filter
+					if ($correlation_EFH == 1) {
+						if ($filter_grouping eq "GroupingF" or $filter_grouping eq "GroupingH") {
+							print "linked groupings (E,F,H), ";
+							print $Hf1 "linked groupings (E,F,H), ";
+							$loop_sum++;
+							};
+						};
+					
 					my $temp_mention = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};
+					
+					#context links
 					if ($temp_mention > 0 ){	
 						my $mention_count_temp = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};		
-						print "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
-						print $Hf1 "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
 						#$loop_sum = ($loop_sum + $mention_count_temp);
-						$loop_sum++;
+						unless ($filter_grouping eq "GroupingE") {
+							print "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
+							print $Hf1 "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
+							$loop_sum++;
+						};
 					};
 					
 		#	#	#	#word filter
@@ -1250,14 +1330,11 @@ unless ($grouping_count<=0) {
 
 };
 
-
-
-
 #debug - show generated values
-print"insult: $insult_count\n";
-print"boast: $boast_count\n";
-print"complaint: $complaint_count\n";
-print"em incidence and total: $emotion_incidence, $em_total\n";
+print "insult: $insult_count\n";
+print "boast: $boast_count\n";
+print "complaint: $complaint_count\n";
+print "em incidence and total: $emotion_incidence, $em_total\n";
 print "incidence total:$incidendce_total \n";
 print "divisor incidence:$divisor_incidence \n";
 #print "content modifyer:$content_modifyer, final modifyer: $ultra_mean\n";
@@ -1276,9 +1353,12 @@ print $Hf1 "	dread accumulation type: $dominant_value \n";
 my $finding_text = "$text_data/finding_text_I.txt";
 open( $Hf2, '>', "$home/$finding_text")
 or die "Could not open file ' finding_text_I.txt'";
+
+#grouping_objects;
+
 #debug - show array contents
 	#print"\n";
-	#print Dumper @findings;
+	print Dumper @findings;
 	#print"active:\n";
 	#print Dumper @active_groupings;
 	#print"mentioned:\n";
@@ -1328,7 +1408,7 @@ or die "Could not open file ' finding_text_I.txt'";
 #
 	#my $dominant_dread0	= $Config->{content}->{dominant_dread};	
 sub export_values {
-	
+
 #config file
 	$Config	= Config::Tiny->read("$home/$em_path");
 	
