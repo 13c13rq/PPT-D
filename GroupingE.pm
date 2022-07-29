@@ -218,6 +218,7 @@ use Data::Dumper qw(Dumper);
 	our @Econtext			= undef;	
 	
 	our $Erand_four 		= int(rand(4));
+	our $Erand_five 		= int(rand(5));
 	our $Erand_three 		= int(rand(3));
 	our $Erand_two 			= int(rand(2));
 	our @Epool_1 = ("Out1", "Lovecraft_Country1", "Dogman2",); #/surgery scene, teacup on tv scene "Out2"
@@ -225,11 +226,12 @@ use Data::Dumper qw(Dumper);
 	our @Epool_2 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
 	our @Epool_3 = ("Dogman1", "Dogman2", "Dogman3"); #/opening dog scene - breakin anticipation scene - beach scene
 	
-	our @Epool_23 = ("Stepford2", "Dogman2", "Stepford1"); #/opening scene - facade room scene - supermarket scene
-	our @Epool_32 = ("Dogman1", "Stepford3", "Dogman3"); #/opening dog scene - breakin anticipation scene - beach scene
+	our @Epool_23 = ("Stepford3", "Dogman2", "Stepford1", "Godzilla1"); #/opening scene - supermarket scene - supermarket scene
+	our @Epool_32 = ("Dogman1", "Stepford2", "Dogman3", "Shin2"); #/opening dog scene - facade room scene -  #breakin anticipation scene - beach scene
 	
 	our @Epool_4 = ("Godzilla1", "Shin1", "Godzilla2");
 	our @Epool_5 = ("Shin2", "Dogman1");
+	our @Epool_6 = ("Requiem1", "Stepford1", "Jarhead2", "Dogman3", "Jarhead4");
 
 sub create_groupingE {
 	
@@ -259,7 +261,7 @@ sub create_groupingE {
 
 	# devisive content
 	@divisive_content = (
-	["division, racism, context & election denial ","divisive content","1", $Epool_23 [$Erand_three], $Epool_32 [$Erand_three]],
+	["division, racism, context & election denial ","divisive content","1", $Epool_23 [$Erand_four], $Epool_32 [$Erand_four]],
 	[" fake media ",	"$Eword[1]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
 	[" fake news ",		"$Eword[1]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
 	[" lie ",			"$Eword[4]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
@@ -267,10 +269,10 @@ sub create_groupingE {
 	[" corrupt",		"$Eword[2]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[8]",		"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
 	[" anarchy ",		"$Eword[3]",	"${$Esig_ref}[22]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
 	[" antifa ",		"$Eword[1]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
-	[" maga ",			"$Eword[7]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_2 [$Erand_three]],
-	[" make america great again ",	"$Eword[7]","${$Esig_ref}[14]","${$Efunc_ref}[15]","${$Estat_ref}[2]",	"$Etime[0]",	$Epool_2 [$Erand_three]],
-	[" makeamericagreatagain ",		"$Eword[7]","${$Esig_ref}[14]","${$Efunc_ref}[15]","${$Estat_ref}[2]",	"$Etime[0]",	$Epool_2 [$Erand_three]],
-	[" american dream ","$Eword[7]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[18]",	"$Etime[0]",	$Epool_2 [$Erand_three]],
+	[" maga ",			"$Eword[7]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_6 [$Erand_five]],
+	[" make america great again ",	"$Eword[7]","${$Esig_ref}[14]","${$Efunc_ref}[15]","${$Estat_ref}[2]",	"$Etime[0]",	$Epool_6 [$Erand_five]],
+	[" makeamericagreatagain ",		"$Eword[7]","${$Esig_ref}[14]","${$Efunc_ref}[15]","${$Estat_ref}[2]",	"$Etime[0]",	$Epool_6 [$Erand_five]],
+	[" american dream ","$Eword[7]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[18]",	"$Etime[0]",	$Epool_6 [0]],
 	[" radical left ",	"$Eword[3]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
 	[" Castro ",		"$Eword[1]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[18]",	"$Etime[0]",	"null"],
 	[" socialist ",		"$Eword[2]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
