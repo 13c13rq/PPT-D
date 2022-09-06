@@ -221,12 +221,12 @@ use Data::Dumper qw(Dumper);
 	our $Erand_five 		= int(rand(5));
 	our $Erand_three 		= int(rand(3));
 	our $Erand_two 			= int(rand(2));
-	our @Epool_1 = ("Out1", "Lovecraft_Country1", "Dogman2",); #/surgery scene, teacup on tv scene "Out2"
+	our @Epool_1 = ("Out2", "Lovecraft_Country1", "Dogman2",); #/surgery scene, teacup on tv scene "Out2"
 	
 	our @Epool_2 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
 	our @Epool_3 = ("Dogman1", "Dogman2", "Dogman3"); #/opening dog scene - breakin anticipation scene - beach scene
 	
-	our @Epool_23 = ("Stepford3", "Dogman2", "Stepford1", "Godzilla1"); #/opening scene - supermarket scene - supermarket scene
+	our @Epool_23 = ("Shin1", "Dogman2", "Stepford1", "Godzilla1"); #/opening scene - supermarket scene - supermarket scene
 	our @Epool_32 = ("Dogman1", "Stepford2", "Dogman3", "Shin2"); #/opening dog scene - facade room scene -  #breakin anticipation scene - beach scene
 	
 	our @Epool_4 = ("Godzilla1", "Shin1", "Godzilla2");
@@ -269,7 +269,7 @@ sub create_groupingE {
 	[" corrupt",		"$Eword[2]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[8]",		"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
 	[" anarchy ",		"$Eword[3]",	"${$Esig_ref}[22]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
 	[" antifa ",		"$Eword[1]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[27]",	"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
-	[" maga ",			"$Eword[7]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_6 [$Erand_five]],
+	[" maga ",			"$Eword[7]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 	[" make america great again ",	"$Eword[7]","${$Esig_ref}[14]","${$Efunc_ref}[15]","${$Estat_ref}[2]",	"$Etime[0]",	$Epool_6 [$Erand_five]],
 	[" makeamericagreatagain ",		"$Eword[7]","${$Esig_ref}[14]","${$Efunc_ref}[15]","${$Estat_ref}[2]",	"$Etime[0]",	$Epool_6 [$Erand_five]],
 	[" american dream ","$Eword[7]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[18]",	"$Etime[0]",	$Epool_6 [0]],
