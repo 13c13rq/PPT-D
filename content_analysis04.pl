@@ -154,7 +154,7 @@ my @g_l = ('A'..'H');
 my @g_l_val = (0,1,0,1,0,0,1,1); #high priority groupings
 my @g_c_val = (0,0,0,0,0,0,0,0); #special priority for climate grouping - if needed - seems to be unnecessary
 
-my @modifyers = (0, 1.51, 1.81, 1.69, 1.78, 1.57, 1.54, 1.91, 1.87); #8;
+my @modifyers = (0, 1.51, 1.81, 1.76, 1.84, 1.57, 1.51, 1.91, 1.87); #8;
 my @zero_modifyers = (1.57, 1.41, 1.31); # insult, complaint, boast
 
 my %weight_distr;
@@ -552,6 +552,7 @@ my (
 		$context	,
 		$direct_match	,
 	) = undef;
+$chosen_unique_source ="null";
 
 sub add_values {
 	$countI			= 1;
@@ -626,9 +627,9 @@ sub add_values {
 					$standard_source	= $findings[$countI][$valueadder] {"standard_source"};
 					$escalated_source 	= $findings[$countI][$valueadder] {"escalated_source"};
 					$unique_source		= $findings[$countI][$valueadder] {"unique_source"};
+					if($unique_source		eq "undef"){$unique_source="null"};
 					#print "test: $escalated_source  \n";
 					unless ($standard_source eq "undef"){
-						
 						# print "$standard_source\n";
 						if ($query_finding_wieght == 0 or $query_finding_wieght < $query_total_sub) {
 							$chosen_standard_source		= $standard_source;
@@ -638,23 +639,31 @@ sub add_values {
 							}
 							else {
 								#print "$escalated_source ne null\n";
-								$chosen_escalated_source	= $escalated_source;									
+								$chosen_escalated_source	= $escalated_source;	
+							
 							};
-							if($unique_source ne "undef") {
+							if($unique_source ne "null") {
+								#print "unique source present\n";
 								$chosen_unique_source = $unique_source;
-							};
+							};	
 						}
 						elsif ($query_finding_wieght == $query_total_sub) {
 							my $random_choice = int(rand(2));
 							if ($random_choice == 0) {
 								$chosen_standard_source		= $standard_source;
 								$chosen_escalated_source	= $escalated_source;
-								if($unique_source ne undef) {
-									$chosen_unique_source = $unique_source;
-								};
+					
 							}
 							else {};
+							if($unique_source ne "null") {
+								#print "unique source present\n";
+								$chosen_unique_source = $unique_source;
+							};	
 						};
+						#if($unique_source ne "null") {
+							##print "unique source present\n";
+							#$chosen_unique_source = $unique_source;
+						#};
 					};
 					
 					$query_total	=	$query_total+$query_total_sub;
@@ -688,7 +697,7 @@ sub add_values {
 					$current_findings {"context"} 			=	$context;
 					$current_findings {"direct_match"} 		=	$direct_match;
 					$current_findings {"mod"} 				=	$active_mod;
-					
+					#print "$chosen_unique_source;\n"
 				};
 				
 				push($findings[$countI], "summarised values");
@@ -981,6 +990,7 @@ sub assesment {
 							print "linked groupings (A,B), ";
 							print $Hf1 "linked groupings (A+B), ";
 							$loop_sum++;
+							$loop_sum++;
 							};
 						};
 					#EFH filter
@@ -998,11 +1008,11 @@ sub assesment {
 					if ($temp_mention > 0 ){	
 						my $mention_count_temp = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};		
 						#$loop_sum = ($loop_sum + $mention_count_temp);
-						unless ($filter_grouping eq "GroupingE") {
+						#unless ($filter_grouping eq "GroupingE") {
 							print "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
 							print $Hf1 "correlated (", $mentioned_groupings_count {$g_l [($currnent_grouping -1)]}, "), ";
 							$loop_sum++;
-						};
+						#};
 					};
 					
 		#	#	#	#word filter
@@ -1038,7 +1048,8 @@ sub assesment {
 							$loop_sum++;
 						};
 						#if ($unique_temp ne 'null')  {push (@relevant_words_temp, "$unique_temp -> +++");	
-						if ($unique_temp ne 'null')  {push (@relevant_words_temp, " +++ ");	
+						if ($unique_temp ne 'null')  {
+							push (@relevant_words_temp, " +++ ");	
 							$loop_sum++;
 						};
 						print "relevant source: ( @relevant_words_temp", "), ";
@@ -1299,6 +1310,7 @@ unless ($grouping_count<=0) {
 	print "Active Image source:\n";
 	
 	if ($ultra_mean > 3) {
+		
 		if ($unique ne 'null')  {
 			print"unique source:$unique\n";
 			$active_source = $unique;
@@ -1311,10 +1323,27 @@ unless ($grouping_count<=0) {
 			print"standard source:$standard\n";
 			$active_source=$standard;
 			};
+			
 		}
-	else {
+	
+	elsif ($ultra_mean > 2) {
+		
+		if ($unique ne 'null')  {
+			print"unique source:$unique\n";
+			$active_source = $unique;
+		}
+		else {
 		print"standard source:$standard\n";
 		$active_source=$standard;
+		};
+		
+	}
+	
+	else {
+		
+		print"standard source:$standard\n";
+		$active_source=$standard;
+		
 	};
 	
 	print "active source: $active_source\n";
