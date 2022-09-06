@@ -181,13 +181,16 @@ use Data::Dumper qw(Dumper);
 	our $Frand_two 			= int(rand(2));
 	our @Fpool_1 = ("Out1", "Out2", "Stepford2"); #/surgery scene, teacup on tv scene
 	our @Fpool_2 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
-	our @Fpool_3 = ("Dogman1", "Dogman2", "Dogman3"); #/dog opening - ?? - beach burial
-	our @Fpool_4 = ("Godzilla1", "Shin1", "Godzilla2"); #/godzilla suspense scenes
-	our @Fpool_5 = ("Shin2", "Host1"); #/american abominations in full view
-	our @Fpool_6 = ("Castle_Rock1", "Clemency1", "Out2"); #/execution theartres
+	our @Fpool_3 = ("Dogman1", "Shin2", "Dogman3", "Under_The_Skin5"); #/dog opening - ?? - beach burial
+	our @Fpool_4 = ("Godzilla1", "Dogman1", "Godzilla2",); #/godzilla suspense scenes
+	our @Fpool_5 = ("Shin2", "Dogman1"); #/american abominations in full view
+	#our @Fpool_6 = ("Castle_Rock1", "Clemency1", "Out2", "Dogman2"); #/execution theartres
+	our @Fpool_6 = ("Castle_Rock1", "Clemency1", "Under_The_Skin3", "Out2", "Dogman2"); #/execution theartres
 	our @Fpool_7 = ("Lovecraft_Country1", "Lovecraft_Country2"); #/sundown chase scene - tunnel curse by cop scene
-	our @Fpool_8 = ("World_War_Z1", "World_War_Z2"); #/zombie wall
-
+	our @Fpool_8 = ("World_War_Z1", "World_War_Z2","Under_The_Skin2"); #/zombie wall
+	our @Fpool_9 = ("Dogman2", "Stepford2", "Under_The_Skin3", "Out2", "Cure2"); #
+	our @Fpool_10 = ("Stepford2", "Dogman2", "Requiem1", "Under_The_Skin4"); #
+	our @Fpool_11 = ("Under_The_Skin1", "Under_The_Skin2", "Under_The_Skin3", "Under_The_Skin4", "Under_The_Skin5"); #
 sub create_groupingF {
 	
 	
@@ -195,7 +198,7 @@ sub create_groupingF {
 # guns & domestic terrorism #
 	# guncontol
 	@gun_control = (
-	["gun_control & domestic terrorism","guncontol","1", $Fpool_3 [2],	"null"],
+	["gun_control & domestic terrorism","guncontol","1", $Fpool_3 [$Frand_four],	"null"],
 	[" 2nd a ",			"$Fword[1]",	"${$Fsig_ref}[12]",	"${$Ffunc_ref}[9]",		"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" 2nd amendment ",	"$Fword[1]",	"${$Fsig_ref}[12]",	"${$Ffunc_ref}[9]",		"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" second amendment ","$Fword[1]",	"${$Fsig_ref}[12]",	"${$Ffunc_ref}[9]",		"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
@@ -205,8 +208,8 @@ sub create_groupingF {
 	
 	# domestic terrorism
 	@domestic_terrorism = (
-	["gun_control & domestic terrorism","domestic_terrorism","1", $Fpool_3 [1],	"null"], ### dog man scene
-	[" stopthesteal ",	"$Fword[7]",	"${$Fsig_ref}[14]",	"${$Ffunc_ref}[1]",		"${$Fstat_ref}[9]",		"01:2021:01:2021",	"null"],
+	["gun_control & domestic terrorism","domestic_terrorism","1", $Fpool_3 [$Frand_three],	"null"], ### dog man scene
+	[" stopthesteal ",	"$Fword[7]",	"${$Fsig_ref}[14]",	"${$Ffunc_ref}[1]",		"${$Fstat_ref}[9]",		"01:2021:02:2021",	"null"],
 	[" January 6th ",	"$Fword[5]",	"${$Fsig_ref}[6]",	"${$Ffunc_ref}[1]",		"${$Fstat_ref}[9]",		"$Ftime[0]",	"null"],
 	[" shooter ",		"$Fword[5]",	"${$Fsig_ref}[3]",	"${$Ffunc_ref}[10]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" shooting ",		"$Fword[5]",	"${$Fsig_ref}[15]",	"${$Ffunc_ref}[1]",		"${$Fstat_ref}[9]",		"$Ftime[0]",	"null"],
@@ -225,7 +228,7 @@ sub create_groupingF {
 # crime, prosecution and imprisonment #
 	# crime
 	@crime = (
-	["crime, prosecution & institutional violence", "crime", "1", $Fpool_4 [$Frand_two],	"null"],
+	["crime, prosecution & institutional violence", "crime", "1", $Fpool_4 [$Frand_three],	$Fpool_4[2]],
 	[" criminal ",		"$Fword[5]",	"${$Fsig_ref}[3]",	"${$Ffunc_ref}[13]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" crime ",			"$Fword[3]",	"${$Fsig_ref}[10]",	"${$Ffunc_ref}[5]",		"${$Fstat_ref}[5]",		"$Ftime[0]",	"null"],
 	[" gang",			"$Fword[5]",	"${$Fsig_ref}[4]",	"${$Ffunc_ref}[15]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
@@ -241,11 +244,11 @@ sub create_groupingF {
 	);
 	
 	@prosecution = (
-	["crime, prosecution & institutional violence", "prosecution", "1", $Fpool_6 [$Frand_two],	$Fpool_2[$Frand_three]],
+	["crime, prosecution & institutional violence", "prosecution", "1", $Fpool_6 [$Frand_three],	$Fpool_4 [$Frand_three]],
 	[" supreme court ",	"$Fword[5]",	"${$Fsig_ref}[16]",	"${$Ffunc_ref}[19]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" kavanaugh ",		"$Fword[1]",	"${$Fsig_ref}[3]",	"${$Ffunc_ref}[19]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
-	[" execution ",		"$Fword[3]",	"${$Fsig_ref}[15]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[10]",	"$Ftime[0]",	"null"],
-	[" death penalty ",	"$Fword[5]",	"${$Fsig_ref}[15]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[10]",	"$Ftime[0]",	"null"],
+	[" execution ",		"$Fword[3]",	"${$Fsig_ref}[15]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[10]",	"$Ftime[0]",	$Fpool_6 [$Frand_two]],
+	[" death penalty ",	"$Fword[5]",	"${$Fsig_ref}[15]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[10]",	"$Ftime[0]",	$Fpool_6 [$Frand_two]],
 	[" scotus ",		"$Fword[1]",	"${$Fsig_ref}[16]",	"${$Ffunc_ref}[19]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" neil gorsuch ",	"$Fword[1]",	"${$Fsig_ref}[3]",	"${$Ffunc_ref}[19]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" barrett ",		"$Fword[1]",	"${$Fsig_ref}[3]",	"${$Ffunc_ref}[19]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
@@ -257,7 +260,7 @@ sub create_groupingF {
 	);
 	
 	@institutional_violence = (
-	["crime, prosecution & institutional violence", "institutional violence", "1", $Fpool_7 [$Frand_two],	$Fpool_1 [$Frand_three]],
+	["crime, prosecution & institutional violence", "institutional violence", "1", $Fpool_9 [$Frand_three],	$Fpool_3 [$Frand_four]],
 	[" law and order ",	"$Fword[9]",	"${$Fsig_ref}[14]",	"${$Ffunc_ref}[21]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" law & order ",	"$Fword[9]",	"${$Fsig_ref}[14]",	"${$Ffunc_ref}[21]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" portland ",		"$Fword[1]",	"${$Fsig_ref}[7]",	"${$Ffunc_ref}[11]",	"${$Fstat_ref}[9]",		"$Ftime[0]",	"null"],
@@ -275,27 +278,27 @@ sub create_groupingF {
 # guns & domestic terrorism #
 	# border control, immigration and context
 	@border_control = (
-	["border control, immigration and context", "border control", "1", $Fpool_8 [$Frand_two], $Fpool_2[$Frand_three]],
-	[" wall ",			"$Fword[5]",	"${$Fsig_ref}[2]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
-	[" steel slat ",	"$Fword[5]",	"${$Fsig_ref}[2]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
-	[" steel slats ",	"$Fword[5]",	"${$Fsig_ref}[2]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
+	["border control, immigration and context", "border control", "1", $Fpool_10 [$Frand_four], $Fpool_8 [$Frand_three]],
+	[" wall ",			"$Fword[5]",	"${$Fsig_ref}[2]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	$Fpool_8 [$Frand_three]],
+	[" steel slat ",	"$Fword[5]",	"${$Fsig_ref}[2]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	$Fpool_8 [$Frand_three]],
+	[" steel slats ",	"$Fword[5]",	"${$Fsig_ref}[2]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	$Fpool_8 [$Frand_three]],
 	[" travel ban ",	"$Fword[3]",	"${$Fsig_ref}[12]",	"${$Ffunc_ref}[21]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" Smuggling ",		"$Fword[3]",	"${$Fsig_ref}[10]",	"${$Ffunc_ref}[5]",		"${$Fstat_ref}[15]",	"$Ftime[0]",	"null"],
 	[" trafficking ",	"$Fword[3]",	"${$Fsig_ref}[10]",	"${$Ffunc_ref}[5]",		"${$Fstat_ref}[15]",	"$Ftime[0]",	"null"],
 	[" southern border ","$Fword[5]",	"${$Fsig_ref}[7]",	"${$Ffunc_ref}[21]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
-	[" fence ",			"$Fword[5]",	"${$Fsig_ref}[2]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
+	[" fence ",			"$Fword[5]",	"${$Fsig_ref}[2]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	$Fpool_8 [$Frand_three]],
 	[" border patrol ",	"$Fword[5]",	"${$Fsig_ref}[16]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	[" caravans ",		"$Fword[6]",	"${$Fsig_ref}[4]",	"${$Ffunc_ref}[14]",	"${$Fstat_ref}[3]",		"$Ftime[0]",	"null"],
-	[" ice ",			"$Fword[1]",	"${$Fsig_ref}[16]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
-	[" ICEgov ",		"$Fword[1]",	"${$Fsig_ref}[16]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
+	[" ice ",			"$Fword[1]",	"${$Fsig_ref}[16]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[9]",		"$Ftime[0]",	$Fpool_11 [0]],
+	[" ICEgov ",		"$Fword[1]",	"${$Fsig_ref}[16]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[9]",		"$Ftime[0]",	$Fpool_11 [0]],
 	[" cbp ",			"$Fword[1]",	"${$Fsig_ref}[16]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 	#["  ",				"$Fword[0]",	"${$Fsig_ref}[0]",	"${$Ffunc_ref}[0]",		"${$Fstat_ref}[0]",		"$Ftime[0]",	"null"],
 	);
 	
 	
 	@immigration = (
-	["border control, immigration and context", "immigration", "1", $Fpool_1 [$Frand_two], $Fpool_2[$Frand_three]],
-	[" anchor babies ", "$Fword[9]",	"${$Fsig_ref}[4]",	"${$Ffunc_ref}[14]",	"${$Fstat_ref}[3]",		"$Ftime[0]",	"null"],
+	["border control, immigration and context", "immigration", "1", $Fpool_10 [$Frand_four], $Fpool_5[$Frand_two]],
+	[" anchor babies ", "$Fword[9]",	"${$Fsig_ref}[4]",	"${$Ffunc_ref}[14]",	"${$Fstat_ref}[3]",		"$Ftime[0]",	$Fpool_11 [0]],
 	[" refugee ",		"$Fword[5]",	"${$Fsig_ref}[3]",	"${$Ffunc_ref}[14]",	"${$Fstat_ref}[3]",		"$Ftime[0]",	"null"],
 	[" refugees ",		"$Fword[5]",	"${$Fsig_ref}[4]",	"${$Ffunc_ref}[14]",	"${$Fstat_ref}[3]",		"$Ftime[0]",	"null"],
 	[" birthright citizenship ","$Fword[9]","${$Fsig_ref}[12]","${$Ffunc_ref}[0]",	"${$Fstat_ref}[3]",		"$Ftime[0]",	"null"],
@@ -310,7 +313,7 @@ sub create_groupingF {
 	);
 	
 	@Fcontext = (
-	["border control, immigration and context", "context", "2", $Fpool_1 [$Frand_two],	$Fpool_2[$Frand_three]],
+	["border control, immigration and context", "context", "2", $Fpool_1 [$Frand_three],	$Fpool_4[$Frand_three]],
 	[" security ",,		"$Fword[4]",	"${$Fsig_ref}[18]",	"${$Ffunc_ref}[21]", 	"${$Fstat_ref}[1]",		"$Ftime[2]",	"null"],
 	[" not secure ",	"$Fword[2]",	"${$Fsig_ref}[18]",	"${$Ffunc_ref}[21]", 	"${$Fstat_ref}[1]",		"$Ftime[2]",	"null"],
 	[" fraud ",			"$Fword[3]",	"${$Fsig_ref}[17]",	"${$Ffunc_ref}[5]", 	"${$Fstat_ref}[1]",		"$Ftime[2]",	"null"],
