@@ -135,7 +135,7 @@ use Data::Dumper qw(Dumper);
 	our $Grand_four 		= int(rand(4));
 	our $Grand_three 		= int(rand(3));
 	our $Grand_two 			= int(rand(2));
-	our @Gpool_1 = ("Inconvinient2", "Silent_Running1", "Inconvinient1");
+	our @Gpool_1 = ("Inconvinient2", "Silent_Running1", "Silent_Running2", "Inconvinient1");
 	our @Gpool_2 = ("Inconvinient2",  "Silent_Running1", "The_Day_After_Tomorrow1");
 	
 sub create_groupingG {
@@ -143,7 +143,7 @@ sub create_groupingG {
 	
 # primary grouping #
 	@climate_change = (
-	["primary grouping","climate_change","1", $Gpool_1 [$Grand_two], "null"],
+	["primary grouping","climate_change","1", $Gpool_1 [$Grand_four], "null"],
 	[" climate change ",			"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 	[" global warming ",			"$Gword[3]",	"${$Gsig_ref}[12]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 	[" environment ",				"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
@@ -152,7 +152,7 @@ sub create_groupingG {
 	);
 	
 	@energy_industry = (
-	["primary grouping","energy_industry","1", $Gpool_1 [$Grand_two], "null"],
+	["primary grouping","energy_industry","1", $Gpool_1 [$Grand_four], "null"],
 	[" opec ",						"$Gword[1]",	"${$Gsig_ref}[4]",	"${$Gfunc_ref}[3]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
 	[" oil ",						"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
 	[" coal ",						"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
@@ -170,7 +170,7 @@ sub create_groupingG {
 	);
 	
 	@countermeasures= (
-	["primary grouping","countermeasures","1", $Gpool_1 [$Grand_two], "null"],
+	["primary grouping","countermeasures","1", $Gpool_1 [$Grand_four], "null"],
 	[" epa ",						"$Gword[1]",	"${$Gsig_ref}[4]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
 	[" paris accord ",				"$Gword[1]",	"${$Gsig_ref}[6]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
 	[" paris environmental accord ","$Gword[1]",	"${$Gsig_ref}[6]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
@@ -180,7 +180,7 @@ sub create_groupingG {
 	);
 
 	@pollution = (
-	["primary grouping","pollution","1", $Gpool_1 [$Grand_two],	"null"],
+	["primary grouping","pollution","1", $Gpool_1 [$Grand_three],	"null"],
 	[" automobile industry ",		"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 	[" energy industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 	[" Steel Industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
