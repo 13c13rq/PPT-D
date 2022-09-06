@@ -256,7 +256,7 @@ sub create_groupingD {
 	[" mask",			"$Dword[5]",	"${$Dsig_ref}[16]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
 	[" hospital",		"$Dword[5]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[11]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
 	[" test",			"$Dword[5]",	"${$Dsig_ref}[16]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"], #date!!
-	[" case",			"$Dword[5]",	"${$Dsig_ref}[15]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[2]",		"$Dtime[2]",	"null"],
+	#[" case",			"$Dword[5]",	"${$Dsig_ref}[15]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[2]",		"$Dtime[2]",	"null"],
 	[" patient ",		"$Dword[5]",	"${$Dsig_ref}[3]",	"${$Dfunc_ref}[14]",	"${$Dstat_ref}[3]",		"$Dtime[2]",	"null"], #date!!
 	[" patients ",		"$Dword[5]",	"${$Dsig_ref}[4]",	"${$Dfunc_ref}[14]",	"${$Dstat_ref}[3]",		"$Dtime[2]",	"null"], #date!!
 	#["  ",				"$Dword[0]",	"${$Dsig_ref}[0]",	"${$Dfunc_ref}[0]",		"${$Dstat_ref}[0]",		"$Dtime[0]",	"null"],
