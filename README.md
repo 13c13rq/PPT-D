@@ -1,29 +1,28 @@
 # PPT-Dread
-Precipitating dread
 https://leclerqs-abode.com/PPT-Dread
 
 With the project 'Precipitating Dread' I aim to alter the aggregate state of atmospheric dread that dissipated through the now deleted Twitter feed of former President Donald Trump and crystallize it into a visually intriguing and possibly psychoactive substance. 
 
-This is the content analysis module that I wrote specifically for this purpose. It accomplishes three processes; topic mapping, word processing and evaluation, using multi-dimensional arrays of hashes. There are 9 of these arrays in total. These are Grouping 0 and Grouping A … H; each grouping contains a general topic with a variable number of subtopic objects composed of words and their respective hash values. After matching them against the Tweet, the output of all groupings is gathered and then assessed further to determine the relevance and contextual background of the text imput.
+This repository contains the content analysis module that I wrote specifically for this purpose. It accomplishes three processes; topic mapping, word processing and evaluation, using multi-dimensional arrays of hashes. There are 9 of these arrays in total. These are Grouping 0 and Grouping A … H; each grouping contains a general topic with a variable number of subtopic objects composed of words and their respective hash values. After matching them against the Tweet, the output of all groupings is gathered and then assessed further to determine the relevance and contextual background of the text imput.
 
-##Grouping 0
+#Grouping 0
 
 This grouping sits apart from the rest since it does not contain arrays relevant to the recognition of atmospheric dread. Its purpose is to determine the presence of insults, boasts and complaints, as well as matches that may indicate irrelevance. These findings are later used for a more nuanced assessment of the results procured by the primary groupings.
 
-##Grouping A...H
+#Grouping A...H
 
 Each grouping contains an array of topics that in turn contain an array of words that are each associated with a hash of values. So, each grouping is, as mentioned before, a multidimensional array of hashes. Actually, the hashes themselves are also designed to have multiple possible values. A function, however, that is not currently used to a great extent.
 
 This is a general overview of the topics contained in each grouping:
 
-A: War, the military and the nuclear threat
-B: Terrorism, islamophobia and the 'war on terror'
-C: Economy, economic warfare, fiscal policy and employment
-D: Healthcare, the opiate crisis and the pandemic
-E: Racist and divisive content as well as election denial
-F: The justice system, institutional violence, crime, immigration, border and gun control. 
-G: Climate change, environmental issues and natural catastrophes
-H: Populists, dictators and atrocities
+A: War, the military and the nuclear threat </br>
+B: Terrorism, islamophobia and the 'war on terror'</br>
+C: Economy, economic warfare, fiscal policy and employment</br>
+D: Healthcare, the opiate crisis and the pandemic</br>
+E: Racist and divisive content as well as election denial</br>
+F: The justice system, institutional violence, crime, immigration, border and gun control. </br>
+G: Climate change, environmental issues and natural catastrophes</br>
+H: Populists, dictators and atrocities</br>
 
 #Assessment of Results
 
@@ -32,6 +31,8 @@ The words of each subtopic object are compared with the Tweet and, if there is a
 [ [ ( $prime_em_sett * $active_mod ) + $sec_em_sett ] * $content_modifyer ] / 8.
 
 $active_mod is the modifier of the dominant grouping. $prime_em_sett and $sec_em_sett are the two totals found during sentiment analysis, and the $content_modifyer value is the final value derived from all grouping modifiers together, divided by their respective match and filter incidence (as well as several other factors, such as grouping weighting and possible results from grouping 0). Finally, these are divided by eight because there are eight relevant groupings as well as eight primary emotions. 
+
+#
 
 This Project is my attempt at creating a holistic work of art, not so much an objective scientific examination. I am aware that there are many existing language analysis packages and libraries that I could have used. That I did not do so is due to my curiosity and because it made sense to me on a conceptual level.
 
