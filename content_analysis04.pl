@@ -39,8 +39,6 @@ use GroupingF qw( create_groupingFv create_groupingFo );
 use GroupingG qw( create_groupingGv create_groupingGo );
 use GroupingH qw( create_groupingHv create_groupingHo );
 
-
-
 # getting tweet file
 my $tweet	= "$home/$text_data/trumptweet.txt"; 
 
@@ -69,17 +67,12 @@ or die "Could not open file ' textfile VI'";
 binmode $Hf, ':encoding(UTF-8)';
 		
 print"\ncontent_analysis04.pl\n";	
-#print $Hf "\ncontent_analysis1.pl\n";
 close $Hf;
 
 #title
 print color('bold white');
 print"\n 	~ CONTENT ANALYSIS ~\n";
 print color('reset');
-
-####################################
-############ ANALYSIS ##############
-####################################
 
 #opening filehandles for report
 	#declaration file
@@ -92,7 +85,7 @@ open( $Hf1, '>', "$svg_txt3")
   or die "Could not open file '$svg_txt3' $!";
 #print $Hf1
 
-#0# pereparations
+# pereparations - finding out the time at which the tweet was posted.
 my @current_time = undef;
 	#reading tweetstatus
 sub read_details {
@@ -104,20 +97,16 @@ sub read_details {
 };
 read_details;
 
-#cleaning tweet
-	#print $Hf0  "stripping obstructive characters\n";
+#cleaning tweet, here special characters are removed and all capital letters are converted to lower case to facilitate comparison tith the grouping modules
 	$tweet_txt = join("", " ", $tweet_txt_0, " ");
 	$tweet_txt  =~ s/\R//g;print ">$tweet_txt< \n";
 	print "\nstripping obstructive characters\n";
 	$tweet_txt =~ tr/!?&'"#()[]{}-–”“~*;,:.%@=/ /;
-	#print $Hf0  "upper case all\n";
 	print "lower case all\n";
 	$tweet_txt = lc $tweet_txt;
-	
 	close $Hf0;
 	
-	
-#setting up findings array
+#setting up various findings arrays
 my @evaluation 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
 my @findings 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
 my @finding_data = ("word", "wordtype", "sig", "func", "stat", "relevant_time", "unique_source");
@@ -185,8 +174,9 @@ $countnow = 0;
 
 my %grouping_incidence; #counter for number of findings per grouping - may be redundant.
 
-
+#this subroutine matches the active grouping against the Tweet text.
 sub standard_test {
+
 	$grouping_displayed=0;
 	$standard_incidence_count = 0;
 	foreach $objects (@{$objects_ref}) {
@@ -206,7 +196,7 @@ sub standard_test {
 			my $active_word = ${$objects}[$countI][0];
 			#looking for match
 			
-			# additional ifclause required here that testst first character in string and if it is empty space and a noun or name, uses it as an aditional matching option - if define match word twice...
+			# additional ifclause required here that testst first character in string and if it is empty space and a noun or name, uses it as an aditional matching option - if defined match word twice...
 			# if ($active_word =~ m/$active_word/){};
 			
 			
@@ -339,14 +329,13 @@ sub standard_test {
 	};
 	$test_counter++;
 	#print "\ngrouping incidence =$standard_incidence_count\n";
-};
 
+};
 my $active_mod = undef;
 
 sub match_groupings {
 	
 	#Grouping Zero - insult, boast, complaint and irrelevancy signifyers
-		
 		$current_grouping = "zero";
 			#values not relevant here.
 		#$values_ref=\@Grouping_zero::values_zero;
@@ -359,7 +348,7 @@ sub match_groupings {
 		$grouping_incidence {'boast'} 		= $boast_count; 
 		$grouping_incidence {'complaint'} 	= $complaint_count; 
 		
-	#GroupingA - War and conflict signifyers
+	#GroupingA - War, the military and the nuclear threat
 		$active_mod = $modifyers[0];
 		$current_grouping = "A";
 			#objects not relevant here.
@@ -370,7 +359,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingB - War and armed conflicts signifyers
+	#GroupingB - Terrorism, islamophobia and the 'war on terror'
 		$active_mod = $modifyers[1];
 		$current_grouping = "B";
 			#objects not relevant here.
@@ -381,7 +370,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingC - War and armed conflicts signifyers
+	#GroupingC - Economy, economic warfare, fiscal policy and employment
 		$active_mod = $modifyers[2];
 		$current_grouping = "C";
 			#objects not relevant here.
@@ -392,7 +381,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingD - War and armed conflicts signifyers
+	#GroupingD - Healthcare, the opiate crisis and the pandemic
 		$active_mod = $modifyers[3];
 		$current_grouping = "D";
 			#objects not relevant here.
@@ -403,7 +392,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingE - War and armed conflicts signifyers
+	#GroupingE - Racist and divisive content as well as election denial
 		$active_mod = $modifyers[4];
 		$current_grouping = "E";
 			#objects not relevant here.
@@ -414,7 +403,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingF - War and armed conflicts signifyers
+	#GroupingF - The justice system, institutional violence, crime, immigration, border and gun control. 
 		$active_mod = $modifyers[5];
 		$current_grouping = "F";
 			#objects not relevant here.
@@ -425,7 +414,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingG - War and armed conflicts signifyers
+	#GroupingG - Climate change, environmental issues and natural catastrophes
 		$active_mod = $modifyers[6];
 		$current_grouping = "G";
 			#objects not relevant here.
@@ -436,7 +425,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingH - War and armed conflicts signifyers
+	#GroupingH - Populists, dictators and atrocities
 		$active_mod = $modifyers[7];
 		$current_grouping = "H";
 			#objects not relevant here.
@@ -450,27 +439,28 @@ sub match_groupings {
 	print $Hf1 "\n";
 	print "\n";
 	$active_mod = 1;
+
 };
 
 sub grouping_objects {
 	
 	#Grouping Zero - insult, boast, complaint and irrelevancy signifyers
 		create_grouping_zero_o;
-	#GroupingA - War and conflict signifyers
+	#GroupingA - War, the military and the nuclear threat
 		create_groupingAo;
-	#GroupingB - War and armed conflicts signifyers
+	#GroupingB - Terrorism, islamophobia and the 'war on terror'
 		create_groupingBo;
-	#GroupingC - War and armed conflicts signifyers
+	#GroupingC - Economy, economic warfare, fiscal policy and employment
 		create_groupingCo;
-	#GroupingD - War and armed conflicts signifyers
+	#GroupingD - Healthcare, the opiate crisis and the pandemic
 		create_groupingDo;
-	#GroupingE - War and armed conflicts signifyers
+	#GroupingE - Racist and divisive content as well as election denial
 		create_groupingEo;
-	#GroupingF - War and armed conflicts signifyers
+	#GroupingF - The justice system, institutional violence, crime, immigration, border and gun control. 
 		create_groupingFo;
-	#GroupingG - War and armed conflicts signifyers
+	#GroupingG - Climate change, environmental issues and natural catastrophes
 		create_groupingGo;
-	#GroupingH - War and armed conflicts signifyers
+	#GroupingH - Populists, dictators and atrocities
 		create_groupingHo;
 		
 	print "writing objects \n";
@@ -521,7 +511,6 @@ sub check_element {
 	};
 	$countI			= 0;
 };
-
 
 my (
 	$query_total	,
@@ -867,7 +856,7 @@ sub assesment {
 	print "Tweet has been discarded!\n";
 	print $Hf1 "Tweet has been discarded!\n";
 	
-	#what export cenario takes place here? Setting relevant variables must occur.
+	#what export scenario takes place here? Setting relevant variables must occur.
 	}
 	else {
 
@@ -928,7 +917,6 @@ sub assesment {
 		if (scalar((@{$findings[1]})) && scalar((@{$findings[2]})) > 1) {
 			$correlation_AB = 1;
 		};
-		
 		if (scalar((@{$findings[5]})) > 1) {
 			$correlation_EFH_counter ++;
 		};
@@ -940,13 +928,11 @@ sub assesment {
 		};
 		if ($correlation_EFH_counter > 1) {
 			$correlation_EFH = 1;
-			};
+		};
 		
 		print "grouping correlation: AB = $correlation_AB, EFH = $correlation_EFH \n";
 		
-		
 		foreach my $currnent_grouping (@active_groupings) {
-			
 			
 			unless ($context_discard ==1) {		
 				my $loop_result = undef;
@@ -1145,29 +1131,6 @@ unless ($grouping_count<=0) {
 	print $Hf1 "Grouping $highest_grouping_name is dominant! [$dominant_value]\n ";
 	$highest_grouping_scalar	= (scalar((@{$findings[$required]})))-1;
 };
-
-##reading em values -> active_state/Analysis_Data/Twitter/evaluation.conf"
-#$Config	= Config::Tiny->read("$home/$em_path");
-
-	## reading em values
-		#my $anger		= $Config->{emotion}->{anger};
-		#my $anticipation= $Config->{emotion}->{anticipation};
-		#my $disgust		= $Config->{emotion}->{disgust};
-		#my $fear		= $Config->{emotion}->{fear};
-		#my $joy			= $Config->{emotion}->{joy};
-		#my $sadness		= $Config->{emotion}->{sadness};
-		#my $surprise	= $Config->{emotion}->{surprise};
-		#my $trust		= $Config->{emotion}->{trust};
-		
-	## reading disposition values
-		#my $mean		= $Config->{neutrality}->{disposition_mean};
-		#my $sum			= $Config->{neutrality}->{disposition_sum};
-		#my $sentence_total = $Config->{neutrality}->{sentence_total};
-
-	## emotional eval sums
-		#my $positive_em = ($joy + $trust + $surprise + $anticipation);
-		#my $negative_em = ($anger + $disgust + $sadness + $fear);
-		#my $em_total 	= $negative_em + $positive_em;
 		
 my @emotions = ($anger, $anticipation, $disgust, $fear, $joy, $sadness, $surprise, $trust);
 
@@ -1246,51 +1209,15 @@ $active_mod	= $findings[$required][$highest_grouping_scalar] {"mod"};
 #print "active_mod = $active_mod\n"
 };
 
-		#$ultra_mean = ((((($prime_em_sett*$content_modifyer) + ($sec_em_sett * $mean_intent))*$content_modifyer) + $content_sum)/ 10);
-
-
 if ($emotion_incidence == 0) {
 	print "\nmodifyer: $content_modifyer \n";
 	print $Hf1 "\nmodifyer: $content_modifyer \n";
-	#$ultra_mean = (($content_modifyer * $active_mod)+$sum_total) / 10;
-	#$ultra_mean = ($content_modifyer * $active_mod) / 10;
-	#$ultra_mean = ($content_modifyer) / 10;
 	$ultra_mean = ($active_mod*$content_modifyer);
-	
-	#print "$ultra_mean = ($content_modifyer)\n";
-	#print $Hf1 "$ultra_mean = ($content_modifyer)\n";
-	#print "$ultra_mean = ($content_modifyer) / 10 \n";
-	#print $Hf1 "$ultra_mean = ($content_modifyer) / 10 \n";
-	
-	#print "$ultra_mean = ($sum_total * $active_mod) / 10 \n";
-	#print $Hf1 "$ultra_mean = ($sum_total * $active_mod) / 10 \n";
-	#print "total_modifyer: $ultra_mean \n\n";
-	#print $Hf1 "total_modifyer: $ultra_mean \n";
-
 	}
 else {
-	#$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) + $sum_total)/10;
 	print "\nmodifyer: $content_modifyer \n";
 	print $Hf1 "\nmodifyer: $content_modifyer \n";
-	
-	#$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett)*$content_modifyer + $sum_total)/10;
-	#$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) + $content_modifyer)/10;#
 	$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) * $content_modifyer)/8;
-	#$ultra_mean = ($content_modifyer);
-	
-	#print "$ultra_mean = ($content_modifyer)\n";
-	#print $Hf1 "$ultra_mean = ($content_modifyer)\n";
-	#print "$ultra_mean = ($em_total * $content_modifyer)/10\n";
-	#print $Hf1 "$ultra_mean = ($em_total * $content_modifyer)/10\n";
-	#print "$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) + $content_modifyer)/10\n";
-	#print $Hf1 "$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) + $sum_total)/10\n";
-	
-	#print "total_modifyer: $ultra_mean \n\n";
-	#print $Hf1 "total_modifyer: $ultra_mean \n";
-	
-	#$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett)/$emotion_incidence + $content_modifyer*$active_mod)/10;
-	#print "\nmodifyer = ((($prime_em_sett*$active_mod) + $sec_em_sett)/$emotion_incidence + $content_modifyer*$active_mod)/10\n";
-	#print $Hf1 "\nmodifyer = ((($prime_em_sett*$active_mod) + $sec_em_sett)/$emotion_incidence + $content_modifyer*$active_mod)/10\n";
 	};
 
 my ($standard	,
@@ -1349,7 +1276,7 @@ unless ($grouping_count<=0) {
 	print "active source: $active_source\n";
 	print $Hf1 "active source: $active_source\n";
 	
-	#setting image promt
+	#setting image prompt
 	$image_promt = 1;
 	if ($image_test <= 0.5) {
 		print "\nfinding too miniscule, image promt inhibited.\n";
@@ -1482,11 +1409,6 @@ unless ($grouping_count<=0) {
 
 };
 export_source_path;
-
-
-
-
-
 
 #END
 close $Hf1;
