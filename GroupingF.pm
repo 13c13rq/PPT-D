@@ -368,10 +368,8 @@ sub create_groupingFo{
 	
 	our @objectsF = ($gun_control_ref, $domestic_terrorism_ref, $crime_ref, $prosecution_ref, $institutional_violence_ref, $border_control_ref,	$immigration_ref, $Fcontext_ref);
 	#print Dumper @objectsF;
-
 };
 	
 #create_groupingFo
-
 1;
 END
