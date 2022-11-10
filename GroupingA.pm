@@ -13,7 +13,7 @@ use Data::Dumper qw(Dumper);
 	our @Aword =	(
 		"null",	#	#	#	#	#	#	#[0]
 		"name", #	#	#	#	#	#	#[1]
-		"adjective",# 	#	#	#	#	#[2]
+		"adjective",	# 	#	#	#	#[2]
 		"abstract noun",#	#	#	#	#[3]
 		"plural abstract noun",	#	#	#[4]
 		"concrete noun",#	#	#	#	#[5]
@@ -21,11 +21,11 @@ use Data::Dumper qw(Dumper);
 	);
 	
 	our @Asig =	(
-		"null",	#	#	#	#	#	#	#[0]
-		"country",	#	#	#	#	#	#[1]
-		"nationality",	#	#	#	#	#[2]
-		"territory",#	#	#	#	#	#[3]
-		"city",	#	#	#	#	#	#	#[4]
+		"null",	#[0]
+		"country",	#[1]
+		"nationality",	#[2]
+		"territory",	#[3]
+		"city",	#[4]
 		"person",	#	#	#	#	#	#[5]
 		"nationals",#	#	#	#	#	#[6]
 		"organization",	#	#	#	#	#[7]
@@ -52,7 +52,7 @@ use Data::Dumper qw(Dumper);
 		3,	#	#	#	#[11]
 		2,	#	#	#	#[12]	
 		3,	#	#	#	#[13]
-		3	#	#	#	#[13]
+		3	#	#	#	#[14]
 	);
 	
 	our @Afunc =	(
