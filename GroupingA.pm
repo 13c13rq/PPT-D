@@ -11,25 +11,25 @@ use Data::Dumper qw(Dumper);
 ##############	
 
 	our @Aword =	(
-		"null",			#	#	#	#	#[0]
-		"name", 		#	#	#	#	#[1]
-		"adjective", 	#	#	#	#	#[2]
+		"null",	#	#	#	#	#	#	#[0]
+		"name", #	#	#	#	#	#	#[1]
+		"adjective",# 	#	#	#	#	#[2]
 		"abstract noun",#	#	#	#	#[3]
 		"plural abstract noun",	#	#	#[4]
-		"concrete noun",	#	#	#	#[5]
+		"concrete noun",#	#	#	#	#[5]
 		"plural concrete noun","slogan"	#[6]
 	);
 	
 	our @Asig =	(
-		"null",			#	#	#	#	#[0]
-		"country",		#	#	#	#	#[1]
+		"null",	#	#	#	#	#	#	#[0]
+		"country",	#	#	#	#	#	#[1]
 		"nationality",	#	#	#	#	#[2]
-		"territory",	#	#	#	#	#[3]
-		"city",			#	#	#	#	#[4]
-		"person",		#	#	#	#	#[5]
-		"nationals",	#	#	#	#	#[6]
+		"territory",#	#	#	#	#	#[3]
+		"city",	#	#	#	#	#	#	#[4]
+		"person",	#	#	#	#	#	#[5]
+		"nationals",#	#	#	#	#	#[6]
 		"organization",	#	#	#	#	#[7]
-		"minority", 	#	#	#	#	#[8]
+		"minority", #	#	#	#	#	#[8]
 		"military weapon", 	#	#	#	#[9]
 		"banned weapon",#	#	#	#	#[10]
 		"nuclear weapon",	#	#	#	#[11]
@@ -56,21 +56,21 @@ use Data::Dumper qw(Dumper);
 	);
 	
 	our @Afunc =	(
-		"null",			#	#	#	#	#[0]
-		"war zone",		#	#	#	#	#[1]
-		"capital",		#	#	#	#	#[2]
+		"null",	#	#	#	#	#	#	#[0]
+		"war zone",	#	#	#	#	#	#[1]
+		"capital",	#	#	#	#	#	#[2]
 		"belligerent",	#	#	#	#	#[3]
-		"province",		#	#	#	#	#[4]
-		"dictator",		#	#	#	#	#[5]
-		"leader",		#	#	#	#	#[6]
+		"province",	#	#	#	#	#	#[4]
+		"dictator",	#	#	#	#	#	#[5]
+		"leader",	#	#	#	#	#	#[6]
 		"border zone",	#	#	#	#	#[7]
 		"atomic power",	#	#	#	#	#[8]
 		"aspiring atomic power",#	#	#[9]
-		"general",		#	#	#	#	#[10]
+		"general",	#	#	#	#	#	#[10]
 		"conventional weapon",	#	#	#[11]
-		"weapon of mass destruction",	#[12]
+		"weapon of mass destruction",#	#[12]
 		"nuclear armament",	#	#	#	#[13]
-		"president"						#[14]
+		"president"	#	#	#	#	#	#[14]
 	);
 	our @Afuncval= (
 		0,	#	#	#	#[0]
@@ -91,18 +91,18 @@ use Data::Dumper qw(Dumper);
 	);
 	
 	our @Astat =	(
-		"null", 		#	#	#	#	#[0]		
-		"unstable",		#	#	#	#	#[1]
+		"null", #	#	#	#	#	#	#[0]		
+		"unstable",	#	#	#	#	#	#[1]
 		"threatening",	#	#	#	#	#[2]
 		"threatened",	#	#	#	#	#[3]
-		"occupied",		#	#	#	#	#[4]
-		"governing",	#	#	#	#	#[5]
-		"deceased",		#	#	#	#	#[6]
-		"allied", 		#	#	#	#	#[7]
-		"contested",	#	#	#	#	#[8]
-		"deadly",		#	#	#	#	#[9]	
+		"occupied",	#	#	#	#	#	#[4]
+		"governing",#	#	#	#	#	#[5]
+		"deceased",	#	#	#	#	#	#[6]
+		"allied", 	#	#	#	#	#	#[7]
+		"contested",#	#	#	#	#	#[8]
+		"deadly",	#	#	#	#	#	#[9]	
 		"horrifying",	#	#	#	#	#[10]
-		"defeated"		#	#	#	#	#[11]
+		"defeated"	#	#	#	#	#	#[11]
 	);
 	our @Astatval=(
 		0, 	#	#	#	#[0]	
