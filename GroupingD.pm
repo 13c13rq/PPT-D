@@ -308,8 +308,7 @@ sub create_groupingDo{
 	#print Dumper @objectsD;
 
 };
+
 #create_groupingDo;
-#print $pandemic[0][3],"\n";
-#testind stuf
 1;
 END
