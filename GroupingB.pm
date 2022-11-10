@@ -69,7 +69,7 @@ use Data::Dumper qw(Dumper);
 		"2",						#[5]
 		"3",						#[6]
 		"3",						#[7]
-		"2",							#[8]
+		"2",						#[8]
 	);	
 	our @Bstat =	(
 		"null",						#[0]
@@ -103,7 +103,7 @@ use Data::Dumper qw(Dumper);
 	);
 	our @Btime =	(
 		"null", 					#[0]			
-		"null" 					#[1]
+		"null" 						#[1]
 	);	
 
 
