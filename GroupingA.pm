@@ -375,10 +375,6 @@ sub create_groupingAo{
 #print Dumper @objectsA;
 };
 
-#test
 #create_groupingAo;
-
-
-
 1;
 END
