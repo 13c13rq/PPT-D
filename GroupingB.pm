@@ -233,8 +233,6 @@ sub create_groupingBo{
 	#print Dumper @objectsB;
 };
 
-#test
 #create_groupingBo;
-
 1;
 END
