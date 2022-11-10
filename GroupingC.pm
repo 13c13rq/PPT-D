@@ -41,7 +41,7 @@ use Data::Dumper qw(Dumper);
 		"trade policy",				#[15]
 		"agreement",				#[16]
 		"economically productive activity",		#[17]
-		"economically unproductive activity",		#[18]
+		"economically unproductive activity",	#[18]
 		"nationality",				#[19]
 		"deregulation",				#[20]
 		
@@ -99,8 +99,8 @@ use Data::Dumper qw(Dumper);
 		"0",						#[9]
 		"3",						#[10]
 		"2",						#[11]
-		"3",							#[12]
-		"3",							#[13]
+		"3",						#[12]
+		"3",						#[13]
 		
 	);	
 	our @Cstat =	(
