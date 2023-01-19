@@ -56,7 +56,7 @@ use Data::Dumper qw(Dumper);
 	our @Hfuncval= (		
 		"0",						#[0]
 		"2",						#[1]
-		"3",						#[2]
+		"3",			#			#[2]
 		"3",						#[3]
 		"3",						#[4]
 		"2",						#[5]
@@ -102,7 +102,8 @@ use Data::Dumper qw(Dumper);
 	our $Hfunc_ref			= undef;
 	our $Hstat_ref			= undef;
 	
-	our @atrocity		= undef;
+	our @atrocity			= undef;
+	our @domestic_terrorism	= undef;
 	our @populist_leaders	= undef;
 	our @populists			= undef;
 	our @uk					= undef;
@@ -120,92 +121,116 @@ use Data::Dumper qw(Dumper);
 	our @Hpool_5 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
 
 sub create_groupingH {
-
-
-	# 0 match						1 wordtype	 2 signification	3 function			4 status			5 timeperiod
-	
-#" enemy ",
-#" victim ",
-#" victims ",
-#" war ", 
-
-#" thug ",
-#" thugs ",
-	
-# populists, dictators and atrocities #
+	#
 	@atrocity = (
-	["populists, dictators and atrocities","atrocity","1", $Hpool_3 [0]],
-	[" turkish consulate ",			"$Hword[5]",	"${$Hsig_ref}[3]",	"${$Hfunc_ref}[7]",	"${$Hstat_ref}[3]",	"$Htime[0]",	"null"],
-	[" king of saudi arabia ",		"$Hword[9]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[1]",	"10:2019:10:2019","null"],
-	[" crown prince of saudi arabia ","$Hword[9]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" beirut ",					"$Hword[1]",	"${$Hsig_ref}[1]",	"${$Hfunc_ref}[7]",	"${$Hstat_ref}[3]",	"07:2020:07:2020","null"],
-	#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
-	);
-	
-	@uk = (
-	["populists, dictators and atrocities","UK (Brexit)","1",$Hpool_1 [$Hrand_three], $Hpool_5 [1]],
-	[" brexit ",					"$Hword[7]",	"${$Hsig_ref}[5]",	"${$Hfunc_ref}[6]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" boris johnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
-	[" borisjohnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
-	[" boris j ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
-	[" theresa may ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
-	[" theresa_may ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
-	[" prime minister may ",		"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
-	[" prime minister theresa may ","$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
-	[" nigel_farage ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
-	#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
-	);
-	
-	@populist_leaders= (
-	["populists, dictators and atrocities","populist leaders","1", $Hpool_1 [$Hrand_three]],
-	[" boris johnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
-	[" borisjohnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
-	[" Boris j ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
-	[" giuseppe conte ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
-	[" giuseppeconteit ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
-	[" jair bolsonaro ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" jairbolsonaro  ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" netanyahu ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" joko widodo ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
-	);
-	
-	@populists = (
-	["populists, dictators and atrocities","gop populists","1", $Hpool_1 [$Hrand_three], $Hpool_5 [1]],
-	[" rondesantisfl ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" desantis ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" repmattgaetz ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" gaetz ",						"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" sen  cruz ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
-	[" ted cruz ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
-	[" SenHawleyPress ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
-	[" hawley ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
-	[" greene ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
-	#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
-	);
-	
-	@dictators	 = (
-	["populists, dictators and atrocities","dictators","1",$Hpool_1 [1]],
-	[" kim jong un ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[6]",	"$Htime[0]",	"null"],
-	[" chariman kim ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[6]",	"$Htime[0]",	"null"],
-	[" erdogan ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[6]",	"$Htime[0]",	"null"],
-	[" alsisiofficial ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" salman ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
-	[" mbs ",						"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[6]",	"$Htime[0]",	"null"],
-	#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
-
-	);
-
-	@Hcontext = (
-	["context","context","2",$Hpool_5 [1]],
-	[" friend ",					"$Hword[5]",	"${$Hsig_ref}[4]",	"${$Hfunc_ref}[5]",	"${$Hstat_ref}[8]",	"$Htime[0]",	"null"],
-	[" kushner ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[4]",	"${$Hstat_ref}[8]",	"$Htime[0]",	"null"],
-	[" ivanka ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[4]",	"${$Hstat_ref}[8]",	"$Htime[0]",	"null"],
-	#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["populists, dictators and atrocities","atrocity","1", $Hpool_3 [0]],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
+		[" turkish consulate ",			"$Hword[5]",	"${$Hsig_ref}[3]",	"${$Hfunc_ref}[7]",	"${$Hstat_ref}[3]",	"$Htime[0]",	"null"],
+		[" king of saudi arabia ",		"$Hword[9]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[1]",	"10:2019:10:2019","null"],
+		[" crown prince of saudi arabia ","$Hword[9]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" beirut ",					"$Hword[1]",	"${$Hsig_ref}[1]",	"${$Hfunc_ref}[7]",	"${$Hstat_ref}[3]",	"07:2020:07:2020","null"],
+		#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
 	);
 	#
-	##
+	@domestic_terrorism = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["gun_control & domestic terrorism","domestic_terrorism","1", $Hpool_3 [$Hrand_three],	"null"], ### dog man scene
+	#	
+	##	0 match				1 wordtype		 2 signification	3 function			4 status			5 timeperiod			+++ scenearray	
+		[" stopthesteal ",	"$Hword[7]",	"${$Hsig_ref}[14]",	"${$Hfunc_ref}[1]",		"${$Hstat_ref}[9]",		"01:2021:02:2021",	"null"],
+		[" January 6th ",	"$Hword[5]",	"${$Hsig_ref}[6]",	"${$Hfunc_ref}[1]",		"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
+		[" shooter ",		"$Hword[5]",	"${$Hsig_ref}[3]",	"${$Hfunc_ref}[10]",	"${$Hstat_ref}[2]",		"$Htime[0]",	"null"],
+		[" shooting ",		"$Hword[5]",	"${$Hsig_ref}[15]",	"${$Hfunc_ref}[1]",		"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
+		[" synagogue ",		"$Hword[5]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[11]",	"${$Hstat_ref}[0]",		"$Htime[0]",	"null"],
+		[" el paso ",		"$Hword[1]",	"${$Hsig_ref}[7]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[9]",		"08:2019:08:2019",	"null"],
+		[" pitsburg ",		"$Hword[1]",	"${$Hsig_ref}[7]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[9]",		"10:2018:10:2018",	"null"],
+		[" el paso ",		"$Hword[1]",	"${$Hsig_ref}[7]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
+		[" heyer ",			"$Hword[1]",	"${$Hsig_ref}[3]",	"${$Hfunc_ref}[8]",		"${$Hstat_ref}[17]",	"$Htime[0]",	"null"],
+		[" car attack",		"$Hword[5]",	"${$Hsig_ref}[15]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[1]",		"$Htime[0]",	"null"],
+		[" charlottesville ","$Hword[1]",	"${$Hsig_ref}[7]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[9]",		"08:2017:08:2017",	"null"],
+		[" kenosha ",		"$Hword[1]",	"${$Hsig_ref}[7]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
+		#["  ",				"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",		"${$Hstat_ref}[0]",		"$Htime[0]",	"null"],
+	);
+	#
+	@uk = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["populists, dictators and atrocities","UK (Brexit)","1",$Hpool_1 [$Hrand_three], $Hpool_5 [1]],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
+		[" brexit ",					"$Hword[7]",	"${$Hsig_ref}[5]",	"${$Hfunc_ref}[6]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" boris johnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
+		[" borisjohnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
+		[" boris j ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
+		[" theresa may ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
+		[" theresa_may ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
+		[" prime minister may ",		"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
+		[" prime minister theresa may ","$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[4]",	"$Htime[0]",	"null"],
+		[" nigel_farage ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
+		#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
+	);
+	#
+	@populist_leaders= (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["populists, dictators and atrocities","populist leaders","1", $Hpool_1 [$Hrand_three]],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
+		[" boris johnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
+		[" borisjohnson ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
+		[" Boris j ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
+		[" giuseppe conte ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
+		[" giuseppeconteit ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
+		[" jair bolsonaro ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" jairbolsonaro  ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" netanyahu ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" joko widodo ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[1]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
+	);
+	#
+	@populists = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["populists, dictators and atrocities","gop populists","1", $Hpool_1 [$Hrand_three], $Hpool_5 [1]],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
+		[" rondesantisfl ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" desantis ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" repmattgaetz ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" gaetz ",						"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" sen  cruz ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
+		[" ted cruz ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
+		[" SenHawleyPress ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
+		[" hawley ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[5]",	"$Htime[0]",	"null"],
+		[" greene ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[3]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
+		#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
+	);
+	#
+	@dictators	 = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["populists, dictators and atrocities","dictators","1",$Hpool_1 [1]],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
+		[" kim jong un ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[6]",	"$Htime[0]",	"null"],
+		[" chariman kim ",				"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[6]",	"$Htime[0]",	"null"],
+		[" erdogan ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[6]",	"$Htime[0]",	"null"],
+		[" alsisiofficial ",			"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" salman ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
+		[" mbs ",						"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[2]",	"${$Hstat_ref}[6]",	"$Htime[0]",	"null"],
+		#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
+	);
+	#
+	@Hcontext = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["context","context","2",$Hpool_5 [1]],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
+		[" friend ",					"$Hword[5]",	"${$Hsig_ref}[4]",	"${$Hfunc_ref}[5]",	"${$Hstat_ref}[8]",	"$Htime[0]",	"null"],
+		[" kushner ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[4]",	"${$Hstat_ref}[8]",	"$Htime[0]",	"null"],
+		[" ivanka ",					"$Hword[1]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[4]",	"${$Hstat_ref}[8]",	"$Htime[0]",	"null"],
+		#["  ",					"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",	"${$Hstat_ref}[0]",	"$Htime[0]",	"null"],
+	);
+	#
 };
 sub create_groupingHv{
 	
@@ -216,13 +241,14 @@ sub create_groupingHv{
 	create_groupingH;
 	
 	our $atrocity_val_ref 	=  	\@atrocity;
-	our $populist_leaders_val_ref 			=  	\@populist_leaders;
+	our $domestic_terrorism_val_ref	=	\@domestic_terrorism;
+	our $populist_leaders_val_ref	=  	\@populist_leaders;
 	our $populists_val_ref 		=  	\@populists;
 	our $uk_val_ref				=  	\@uk;
 	our $dictators_val_ref 		= 	\@dictators;
 	our $Hcontext_val_ref		=  	\@Hcontext;	
 		
-	our @valuesH = ($atrocity_val_ref, $populist_leaders_val_ref, $populists_val_ref, $uk_val_ref, $dictators_val_ref, $Hcontext_val_ref);
+	our @valuesH = ($atrocity_val_ref, $domestic_terrorism_val_ref, $populist_leaders_val_ref, $populists_val_ref, $uk_val_ref, $dictators_val_ref, $Hcontext_val_ref);
 };
 sub create_groupingHo{
 	$Hsig_ref 	= \@Hsig;
@@ -232,16 +258,17 @@ sub create_groupingHo{
 	create_groupingH;
 	
 	our $atrocity_ref 	=  	\@atrocity;
-	our $populist_leaders_ref 			=  	\@populist_leaders;
+	our $domestic_terrorism_ref	=	\@domestic_terrorism;
+	our $populist_leaders_ref 	=  	\@populist_leaders;
 	our $populists_ref 		=  	\@populists;
 	our $uk_ref				=  	\@uk;
 	our $dictators_ref 		= 	\@dictators;
 	our $Hcontext_ref		=  	\@Hcontext;
 	
-	our @objectsH = ($atrocity_ref, $populist_leaders_ref, $populists_ref, $uk_ref, $dictators_ref, $Hcontext_ref);
-	#print Dumper @objectsH;
+	our @objectsH = ($atrocity_ref, $domestic_terrorism_ref, $populist_leaders_ref, $populists_ref, $uk_ref, $dictators_ref, $Hcontext_ref);
+	print Dumper @objectsH;
 };
 	
-#create_groupingHo
+create_groupingHo;
 1;
 END

@@ -315,6 +315,7 @@ sub create_grouping_zero {
 	[" bernie ",			"$zero_word[1]",	"${$zero_sig_ref}[18]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[5]",	"$zero_time[0]"], 
 	[" clinton ",			"$zero_word[1]",	"${$zero_sig_ref}[18]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[5]",	"$zero_time[0]"],
 	[" comey ",				"$zero_word[1]",	"${$zero_sig_ref}[18]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[6]",	"$zero_time[0]"],
+	#[" Cohen ",					"$zero_word[0]",	"${$zero_sig_ref}[0]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[0]",	"$zero_time[0]"],
 	[" collusion ",			"$zero_word[3]",	"${$zero_sig_ref}[19]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[6]",	"$zero_time[0]"],
 	[" crooked hillary ",	"$zero_word[1]",	"${$zero_sig_ref}[18]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[5]",	"$zero_time[0]"], 
 	[" democrats ",			"$zero_word[1]",	"${$zero_sig_ref}[19]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[5]",	"$zero_time[0]"],
@@ -361,7 +362,7 @@ sub create_grouping_zero {
 	[" rigged ",			"$zero_word[2]",	"${$zero_sig_ref}[19]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[5]",	"$zero_time[2]"],
 	[" stolen ",			"$zero_word[2]",	"${$zero_sig_ref}[19]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[5]",	"$zero_time[2]"],
 	[" fraud ",				"$zero_word[3]",	"${$zero_sig_ref}[19]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[5]",	"$zero_time[2]"],
-	#["  ",					"$zero_word[0]",	"${$zero_sig_ref}[0]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[0]",	"$zero_time[0]"],
+	#[" Cohen ",					"$zero_word[0]",	"${$zero_sig_ref}[0]",	"${$zero_func_ref}[0]",	"${$grouping_ref}[0]",	"$zero_time[0]"],
 	);
 	
 	@zero_context = (

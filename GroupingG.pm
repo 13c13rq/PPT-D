@@ -139,98 +139,118 @@ use Data::Dumper qw(Dumper);
 	our @Gpool_2 = ("Inconvinient2",  "Silent_Running1", "The_Day_After_Tomorrow1");
 	
 sub create_groupingG {
-	# 0 match						1 wordtype	 	2 signification		3 function				4 status				5 timeperiod
-	
-# primary grouping #
+	#
 	@climate_change = (
-	["primary grouping","climate_change","1", $Gpool_1 [$Grand_four], "null"],
-	[" climate change ",			"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" global warming ",			"$Gword[3]",	"${$Gsig_ref}[12]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" environment ",				"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	[" carbon ",					"$Gword[5]",	"${$Gsig_ref}[13]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
-	#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
-	);
-	
-	@energy_industry = (
-	["primary grouping","energy_industry","1", $Gpool_1 [$Grand_four], "null"],
-	[" opec ",						"$Gword[1]",	"${$Gsig_ref}[4]",	"${$Gfunc_ref}[3]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
-	[" oil ",						"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
-	[" coal ",						"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
-	[" petroleum ",					"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
-	[" natural gas ",				"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
-	[" gasoline ",					"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
-	[" fracking ",					"$Gword[8]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
-	[" pipeline",					"$Gword[5]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
-	[" keystone ",					"$Gword[1]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
-	[" drilling ",					"$Gword[8]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
-	[" energy companies ",			"$Gword[3]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[3]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
-	[" energy freedom ",			"$Gword[3]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
-	[" miner",						"$Gword[6]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
-	#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
-	);
-	
-	@countermeasures= (
-	["primary grouping","countermeasures","1", $Gpool_1 [$Grand_four], "null"],
-	[" epa ",						"$Gword[1]",	"${$Gsig_ref}[4]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	[" paris accord ",				"$Gword[1]",	"${$Gsig_ref}[6]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	[" paris environmental accord ","$Gword[1]",	"${$Gsig_ref}[6]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	[" paris climate agreement ",	"$Gword[1]",	"${$Gsig_ref}[6]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	[" green new Deal ",			"$Gword[1]",	"${$Gsig_ref}[11]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
-	);
-
-	@pollution = (
-	["primary grouping","pollution","1", $Gpool_1 [$Grand_three],	"null"],
-	[" automobile industry ",		"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" energy industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" Steel Industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" emissions ",					"$Gword[6]",	"${$Gsig_ref}[12]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" pollution ",					"$Gword[3]",	"${$Gsig_ref}[12]",	"${$Gfunc_ref}[7]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
-	);
-	
-	@natural_catastrophes = (
-	["primary grouping","natural_catastrophes","1", $Gpool_2 [2],	"null"],
-	[" hurricane",					"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
-	[" earthquake ",				"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
-	[" category 3 ",				"$Gword[9]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[9]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
-	[" category 4 ",				"$Gword[9]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[9]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
-	[" category 5 ",				"$Gword[9]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[9]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
-	[" tornado ",					"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
-	[" rainfall ",					"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
-	#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
-	);
-
-	@environmental_destruction = (
-	["primary grouping","environmental_destruction","1", $Gpool_2 [1],	"null"],
-	[" forest",						"$Gword[5]",	"${$Gsig_ref}[2]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	[" national monument",			"$Gword[3]",	"${$Gsig_ref}[11]",	"${$Gfunc_ref}[10]",	"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	[" national park",				"$Gword[3]",	"${$Gsig_ref}[11]",	"${$Gfunc_ref}[10]",	"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	[" jairbolsonaro ",				"$Gword[1]",	"${$Gsig_ref}[5]",	"${$Gfunc_ref}[7]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" bolsonaro ",					"$Gword[1]",	"${$Gsig_ref}[5]",	"${$Gfunc_ref}[7]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	);
-	
-#rhetoric and context	
-	@rhetoric = (
-	["rhetoric and context","misinformation","1", $Gpool_1 [1],	"null"],
-	[" energy independence ",		"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
-	[" energy jobs ",				"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
-	[" clean water  ",				"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" clean coal ",				"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" clean air ",					"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" our own resources ",			"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
-	#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
-	);
-	
-	@Gcontext = (
-	["misinformation and context","context","2", $Gpool_2 [$Grand_three],	"null"],
-	[" rationing ",					"$Gword[8]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-	[" green ",						"$Gword[2]",	"${$Gsig_ref}[2]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	[" climate ",					"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
-	#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
+	##	cluster				object				rating		+ scenearray				++ scenearray	
+		["primary grouping","climate_change","1", $Gpool_1 [$Grand_four], "null"],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+		[" climate change ",			"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" global warming ",			"$Gword[3]",	"${$Gsig_ref}[12]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" environment ",				"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		[" carbon ",					"$Gword[5]",	"${$Gsig_ref}[13]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
+		#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
 	);
 	#
-	##
+	@energy_industry = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["primary grouping","energy_industry","1", $Gpool_1 [$Grand_four], "null"],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+		[" opec ",						"$Gword[1]",	"${$Gsig_ref}[4]",	"${$Gfunc_ref}[3]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
+		[" oil ",						"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
+		[" coal ",						"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
+		[" petroleum ",					"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
+		[" natural gas ",				"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
+		[" gasoline ",					"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
+		[" fracking ",					"$Gword[8]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
+		[" pipeline",					"$Gword[5]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
+		[" keystone ",					"$Gword[1]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
+		[" drilling ",					"$Gword[8]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
+		[" energy companies ",			"$Gword[3]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[3]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
+		[" energy freedom ",			"$Gword[3]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
+		[" miner",						"$Gword[6]",	"${$Gsig_ref}[3]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
+		#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
+	);
+	#
+	@countermeasures= (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["primary grouping","countermeasures","1", $Gpool_1 [$Grand_four], "null"],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+		[" epa ",						"$Gword[1]",	"${$Gsig_ref}[4]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		[" paris accord ",				"$Gword[1]",	"${$Gsig_ref}[6]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		[" paris environmental accord ","$Gword[1]",	"${$Gsig_ref}[6]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		[" paris climate agreement ",	"$Gword[1]",	"${$Gsig_ref}[6]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		[" green new Deal ",			"$Gword[1]",	"${$Gsig_ref}[11]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
+	);
+	#
+	@pollution = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["primary grouping","pollution","1", $Gpool_1 [$Grand_three],	"null"],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+		[" automobile industry ",		"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" energy industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" Steel Industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" emissions ",					"$Gword[6]",	"${$Gsig_ref}[12]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" pollution ",					"$Gword[3]",	"${$Gsig_ref}[12]",	"${$Gfunc_ref}[7]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
+	);
+	#
+	@natural_catastrophes = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["primary grouping","natural_catastrophes","1", $Gpool_2 [2],	"null"],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+		[" hurricane",					"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
+		[" earthquake ",				"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
+		[" category 3 ",				"$Gword[9]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[9]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
+		[" category 4 ",				"$Gword[9]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[9]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
+		[" category 5 ",				"$Gword[9]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[9]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
+		[" tornado ",					"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
+		[" rainfall ",					"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
+		#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
+	);
+	#
+	@environmental_destruction = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["primary grouping","environmental_destruction","1", $Gpool_2 [1],	"null"],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+		[" forest",						"$Gword[5]",	"${$Gsig_ref}[2]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		[" national monument",			"$Gword[3]",	"${$Gsig_ref}[11]",	"${$Gfunc_ref}[10]",	"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		[" national park",				"$Gword[3]",	"${$Gsig_ref}[11]",	"${$Gfunc_ref}[10]",	"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		[" jairbolsonaro ",				"$Gword[1]",	"${$Gsig_ref}[5]",	"${$Gfunc_ref}[7]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" bolsonaro ",					"$Gword[1]",	"${$Gsig_ref}[5]",	"${$Gfunc_ref}[7]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+	);
+	#
+	@rhetoric = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["rhetoric and context","misinformation","1", $Gpool_1 [1],	"null"],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+		[" energy independence ",		"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
+		[" energy jobs ",				"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
+		[" clean water  ",				"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" clean coal ",				"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" clean air ",					"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" our own resources ",			"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
+		#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
+	);
+	#
+	@Gcontext = (
+	##	cluster				object				rating		+ scenearray				++ scenearray
+		["misinformation and context","context","2", $Gpool_2 [$Grand_three],	"null"],
+	#	
+	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+		[" rationing ",					"$Gword[8]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" green ",						"$Gword[2]",	"${$Gsig_ref}[2]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		[" climate ",					"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
+		#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
+	);
+	#
 };
 
 sub create_groupingGv{
@@ -270,9 +290,9 @@ sub create_groupingGo{
 	our $Gcontext_ref 				=  	\@Gcontext;
 	
 	our @objectsG = ($climate_change_ref, $energy_industry_ref, $countermeasures_ref, $pollution_ref, $natural_catastrophes_ref, $environmental_destruction_ref, $rhetoric_ref, $Gcontext_ref,);
-	#print Dumper @objectsG;
+	print Dumper @objectsG;
 };
 	
-#create_groupingGo
+create_groupingGo;
 1;
 END
