@@ -38,7 +38,7 @@ use GroupingE qw( create_groupingEv create_groupingEo );
 use GroupingF qw( create_groupingFv create_groupingFo );
 use GroupingG qw( create_groupingGv create_groupingGo );
 use GroupingH qw( create_groupingHv create_groupingHo );
-
+use GroupingI qw( create_groupingIv create_groupingIo );
 # getting tweet file
 my $tweet	= "$home/$text_data/trumptweet.txt"; 
 
@@ -107,8 +107,8 @@ read_details;
 	close $Hf0;
 	
 #setting up various findings arrays
-my @evaluation 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
-my @findings 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"]);
+my @evaluation 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"],["GroupingI"]);
+my @findings 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"],["GroupingI"]);
 my @finding_data = ("word", "wordtype", "sig", "func", "stat", "relevant_time", "unique_source");
 
 	my @objects;
@@ -139,11 +139,11 @@ $boast_count 				= 0;
 $complaint_count 			= 0;
 $standard_incidence_count 	= 0;
 
-my @g_l = ('A'..'H');
+my @g_l = ('A'..'I');
 my @g_l_val = (0,1,0,1,0,0,1,1); #high priority groupings
 my @g_c_val = (0,0,0,0,0,0,0,0); #special priority for climate grouping - if needed - seems to be unnecessary
 
-my @modifyers = (0, 1.51, 1.81, 1.76, 1.84, 1.57, 1.51, 1.91, 1.87); #8;
+my @modifyers = (0, 1.51, 1.81, 1.76, 1.84, 1.71, 1.51, 1.91, 1.87, 1.57); #8;
 my @zero_modifyers = (1.57, 1.41, 1.31); # insult, complaint, boast
 
 my %weight_distr;
@@ -265,7 +265,7 @@ sub standard_test {
 					 #$grouping_zero_finding = \@{@{$objects}[$countI]};
 					
 					#pushing hach in to array
-					push($findings[$test_counter], $current_findings_ref);
+					push(@{$findings[$test_counter]}, $current_findings_ref);
 					$grouping_zero_result++;
 					
 					#checking for irrelevance value and setting grouping incidence;
@@ -348,7 +348,7 @@ sub match_groupings {
 		$grouping_incidence {'boast'} 		= $boast_count; 
 		$grouping_incidence {'complaint'} 	= $complaint_count; 
 		
-	#GroupingA - War, the military and the nuclear threat
+	#GroupingA - war, the military and the nuclear threat
 		$active_mod = $modifyers[0];
 		$current_grouping = "A";
 			#objects not relevant here.
@@ -359,7 +359,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingB - Terrorism, islamophobia and the 'war on terror'
+	#GroupingB - terrorism, islamophobia and the 'war on terror'
 		$active_mod = $modifyers[1];
 		$current_grouping = "B";
 			#objects not relevant here.
@@ -370,7 +370,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingC - Economy, economic warfare, fiscal policy and employment
+	#GroupingC - economy, economic warfare, fiscal policy and employment
 		$active_mod = $modifyers[2];
 		$current_grouping = "C";
 			#objects not relevant here.
@@ -381,7 +381,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingD - Healthcare, the opiate crisis and the pandemic
+	#GroupingD - healthcare, the opiate crisis and the pandemic
 		$active_mod = $modifyers[3];
 		$current_grouping = "D";
 			#objects not relevant here.
@@ -392,7 +392,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingE - Racist and divisive content as well as election denial
+	#GroupingE - racism, immigration, and border control
 		$active_mod = $modifyers[4];
 		$current_grouping = "E";
 			#objects not relevant here.
@@ -403,7 +403,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingF - The justice system, institutional violence, crime, immigration, border and gun control. 
+	#GroupingF - the justice system, institutional violence and gun control
 		$active_mod = $modifyers[5];
 		$current_grouping = "F";
 			#objects not relevant here.
@@ -414,7 +414,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingG - Climate change, environmental issues and natural catastrophes
+	#GroupingG - climate change, environmental issues and natural catastrophes
 		$active_mod = $modifyers[6];
 		$current_grouping = "G";
 			#objects not relevant here.
@@ -425,7 +425,7 @@ sub match_groupings {
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
-	#GroupingH - Populists, dictators and atrocities
+	#GroupingH - populists & dictators, domestic terrorism and atrocities
 		$active_mod = $modifyers[7];
 		$current_grouping = "H";
 			#objects not relevant here.
@@ -433,6 +433,17 @@ sub match_groupings {
 		$objects_ref=\@GroupingH::valuesH;
 			#create_groupingHo
 		create_groupingHv;
+		standard_test;
+		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
+		
+	#GroupingI - division, election denial and the January 6th insurrection
+		$active_mod = $modifyers[7];
+		$current_grouping = "I";
+			#objects not relevant here.
+		#$objects_ref=\@GroupingI::objectsI;
+		$objects_ref=\@GroupingI::valuesI;
+			#create_groupingIo
+		create_groupingIv;
 		standard_test;
 		$grouping_incidence {$current_grouping} = $standard_incidence_count; 
 		
@@ -446,23 +457,24 @@ sub grouping_objects {
 	
 	#Grouping Zero - insult, boast, complaint and irrelevancy signifyers
 		create_grouping_zero_o;
-	#GroupingA - War, the military and the nuclear threat
+	#GroupingA - war, the military and the nuclear threat
 		create_groupingAo;
-	#GroupingB - Terrorism, islamophobia and the 'war on terror'
+	#GroupingB - terrorism, islamophobia and the 'war on terror'
 		create_groupingBo;
-	#GroupingC - Economy, economic warfare, fiscal policy and employment
+	#GroupingC - economy, economic warfare, fiscal policy and employment
 		create_groupingCo;
-	#GroupingD - Healthcare, the opiate crisis and the pandemic
+	#GroupingD - healthcare, the opiate crisis and the pandemic
 		create_groupingDo;
-	#GroupingE - Racist and divisive content as well as election denial
+	#GroupingE - racism, immigration, and border control
 		create_groupingEo;
-	#GroupingF - The justice system, institutional violence, crime, immigration, border and gun control. 
+	#GroupingF - the justice system, institutional violence and gun control
 		create_groupingFo;
-	#GroupingG - Climate change, environmental issues and natural catastrophes
+	#GroupingG - climate change, environmental issues and natural catastrophes
 		create_groupingGo;
-	#GroupingH - Populists, dictators and atrocities
+	#GroupingH - populists & dictators, domestic terrorism and atrocities
 		create_groupingHo;
-		
+	#GroupingI - division, election denial and the January 6th insurrection
+		create_groupingIo;
 	print "writing objects \n";
 
 };
@@ -689,8 +701,8 @@ sub add_values {
 					#print "$chosen_unique_source;\n"
 				};
 				
-				push($findings[$countI], "summarised values");
-				push($findings[$countI], $current_findings_ref);
+				push(@{$findings[$countI]}, "summarised values");
+				push(@{$findings[$countI]}, $current_findings_ref);
 				
 			};	
 		$countI++;
@@ -914,7 +926,7 @@ sub assesment {
 		$correlation_EFH = 0;
 		$correlation_EFH_counter = 0;
 		
-		if (scalar((@{$findings[1]})) && scalar((@{$findings[2]})) > 1) {
+		if (scalar((@{$findings[1]})) > 1 && scalar((@{$findings[2]})) > 1) {
 			$correlation_AB = 1;
 		};
 		if (scalar((@{$findings[5]})) > 1) {

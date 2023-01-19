@@ -1,0 +1,391 @@
+push on reference is experimental at content_analysis04.pl line 267.
+push on reference is experimental at content_analysis04.pl line 642.
+push on reference is experimental at content_analysis04.pl line 643.
+
+content_analysis1.pl
+
+ 	~ CONTENT ANALYSIS ~
+
+stripping obstructive characters
+lower case all
+
+
+ Grouping_zero 
+
+	irrelevant: ' CONGRATULATIONS ' 
+	irrelevant: ' HTTPS ' 
+	complaint: ' LIE ' 	[E]
+	complaint: ' CORRUPT' 	[E]
+	complaint: ' SQUAD ' 	[E]
+
+ Grouping_A 
+
+	the Iraqi war & civil war: ' ISIS ' [inactive]
+	the Syrian civil war: ' ISIS ' [inactive]
+	the Syrian civil war: ' ISIS ' 
+
+ Grouping_B 
+
+	terrorist organizations: ' ISIS ' [inactive]
+	terrorist organizations: ' ISIS ' 
+
+ Grouping_E 
+
+	divisive content: ' LIE ' 
+	divisive content: ' CORRUPT' 
+	divisive content: ' SQUAD ' 
+
+ Grouping_H 
+
+	UK (Brexit): ' BORIS J ' 
+	UK (Brexit): ' THERESA MAY ' 
+	context: ' FRIEND ' 
+
+link + possibly irrelevant match found - discard_filter is active!
+
+###discard-sort###
+query_elements: 3
+irrelevance count: 2
+zero results: 3
+query result: 1
+query count: 1
+grouping_count: 4
+irrel_count: 2
+###-###
+
+query:1, mod: 1.51
+query:2, mod: 1.81
+query:5, mod: 1.57
+query:5, mod: 1.57
+query:5, mod: 1.57
+query:8, mod: 1.87
+query:8, mod: 1.87
+query:8, mod: 1.87
+query:3 - temp:0 -corr: 0 designation: A
+
+query:2 - temp:1 -corr: 0 designation: B
+
+query:1 - temp:4 -corr: 3 designation: E
+
+query:0 - temp:7 -corr: 0 designation: H
+
+correlation_count: 1
+grouping: 5 - element: 5
+designation: E - adjective:1 - concrete:0 abstract: 1 modval: 3.66333333333333
+
+
+active groupings: E,mentioned: 3
+
+
+$VAR1 = [
+          'Grouping_zero',
+          {
+            'word' => ' congratulations ',
+            'func' => 'null',
+            'wordtype' => 'salutation',
+            'relevance' => '1',
+            'escalated_source' => undef,
+            'stat' => 'null',
+            'unique_source' => undef,
+            'timesensitive' => 0,
+            'object' => 'irrelevant',
+            'standard_source' => undef,
+            'relevant_time' => 'null',
+            'sig' => 'joyfull event'
+          },
+          {
+            'sig' => 'link',
+            'relevant_time' => 'null',
+            'standard_source' => undef,
+            'object' => 'irrelevant',
+            'timesensitive' => 0,
+            'unique_source' => undef,
+            'stat' => 'null',
+            'escalated_source' => undef,
+            'func' => 'null',
+            'relevance' => '1',
+            'wordtype' => 'null',
+            'word' => ' https '
+          },
+          {
+            'timesensitive' => 0,
+            'stat' => 'E',
+            'unique_source' => undef,
+            'wordtype' => 'plural abstract noun',
+            'func' => 'null',
+            'relevance' => '1',
+            'escalated_source' => undef,
+            'word' => ' lie ',
+            'sig' => 'general complaint',
+            'relevant_time' => 'null',
+            'standard_source' => undef,
+            'object' => 'complaint'
+          },
+          {
+            'object' => 'complaint',
+            'standard_source' => undef,
+            'relevant_time' => 'null',
+            'sig' => 'general complaint',
+            'word' => ' corrupt',
+            'func' => 'null',
+            'wordtype' => 'adjective',
+            'relevance' => '1',
+            'escalated_source' => undef,
+            'stat' => 'E',
+            'unique_source' => undef,
+            'timesensitive' => 0
+          },
+          {
+            'sig' => 'personal complaint',
+            'relevant_time' => '07:2019:09:2019',
+            'standard_source' => undef,
+            'object' => 'complaint',
+            'timesensitive' => 1,
+            'unique_source' => undef,
+            'stat' => 'E',
+            'escalated_source' => undef,
+            'relevance' => '1',
+            'func' => 'null',
+            'wordtype' => 'name',
+            'word' => ' squad '
+          }
+        ];
+$VAR2 = [
+          'GroupingA',
+          {
+            'timesensitive' => 1,
+            'stat' => 0,
+            'unique_source' => 'Watchmen2',
+            'func' => 0,
+            'relevance' => 1,
+            'wordtype' => 'name',
+            'escalated_source' => 'null',
+            'word' => ' isis ',
+            'sig' => 1,
+            'relevant_time' => '04:2019:01:2021',
+            'standard_source' => 'Watchmen2',
+            'object' => 'the Syrian civil war'
+          },
+          'summarised values',
+          {
+            'modval' => '0.503333333333333',
+            'unique_source' => 'Watchmen2',
+            'high_relevance' => 0,
+            'adjective' => 0,
+            'abstract' => 0,
+            'escalated_source' => undef,
+            'name' => 2,
+            'normal_relevance' => 0,
+            'total' => 1,
+            'concrete' => 0,
+            'incidence' => 1,
+            'standard_source' => 'Watchmen2'
+          }
+        ];
+$VAR3 = [
+          'GroupingB',
+          {
+            'relevant_time' => '04:2019:01:2021',
+            'standard_source' => 'Looming1',
+            'object' => 'terrorist organizations',
+            'sig' => 1,
+            'escalated_source' => 'null',
+            'func' => 3,
+            'wordtype' => 'name',
+            'relevance' => 1,
+            'word' => ' isis ',
+            'timesensitive' => 1,
+            'unique_source' => 'null',
+            'stat' => 0
+          },
+          'summarised values',
+          {
+            'adjective' => 0,
+            'unique_source' => 'null',
+            'high_relevance' => 1,
+            'modval' => '2.41333333333333',
+            'escalated_source' => undef,
+            'abstract' => 0,
+            'concrete' => 0,
+            'total' => 4,
+            'normal_relevance' => 1,
+            'name' => 2,
+            'standard_source' => 'Looming1',
+            'incidence' => 1
+          }
+        ];
+$VAR4 = [
+          'GroupingC'
+        ];
+$VAR5 = [
+          'GroupingD'
+        ];
+$VAR6 = [
+          'GroupingE',
+          {
+            'timesensitive' => 0,
+            'unique_source' => 'null',
+            'stat' => 3,
+            'escalated_source' => 'Godzilla2',
+            'func' => 3,
+            'relevance' => 1,
+            'wordtype' => 'plural abstract noun',
+            'word' => ' lie ',
+            'sig' => 3,
+            'relevant_time' => 'null',
+            'standard_source' => 'Godzilla1',
+            'object' => 'divisive content'
+          },
+          {
+            'unique_source' => 'null',
+            'stat' => 3,
+            'timesensitive' => 0,
+            'word' => ' corrupt',
+            'escalated_source' => 'Godzilla2',
+            'func' => 2,
+            'wordtype' => 'adjective',
+            'relevance' => 1,
+            'sig' => 2,
+            'standard_source' => 'Godzilla1',
+            'object' => 'divisive content',
+            'relevant_time' => 'null'
+          },
+          {
+            'sig' => 1,
+            'relevant_time' => '07:2019:09:2019',
+            'standard_source' => 'Godzilla1',
+            'object' => 'divisive content',
+            'timesensitive' => 1,
+            'stat' => 3,
+            'unique_source' => 'null',
+            'func' => 1,
+            'wordtype' => 'name',
+            'relevance' => 1,
+            'escalated_source' => 'Godzilla2',
+            'word' => ' squad '
+          },
+          'summarised values',
+          {
+            'name' => 2,
+            'concrete' => 0,
+            'total' => 21,
+            'normal_relevance' => 7,
+            'incidence' => 3,
+            'standard_source' => 'Godzilla1',
+            'modval' => '3.66333333333333',
+            'adjective' => 1,
+            'unique_source' => 'null',
+            'high_relevance' => 5,
+            'escalated_source' => 'Godzilla2',
+            'abstract' => 1
+          }
+        ];
+$VAR7 = [
+          'GroupingF'
+        ];
+$VAR8 = [
+          'GroupingG'
+        ];
+$VAR9 = [
+          'GroupingH',
+          {
+            'word' => ' boris j ',
+            'escalated_source' => 'Stepford2',
+            'func' => 2,
+            'wordtype' => 'name',
+            'relevance' => 1,
+            'unique_source' => 'null',
+            'stat' => 3,
+            'timesensitive' => 0,
+            'standard_source' => 'Dogman1',
+            'object' => 'UK (Brexit)',
+            'relevant_time' => 'null',
+            'sig' => 1
+          },
+          {
+            'stat' => 3,
+            'unique_source' => 'null',
+            'timesensitive' => 0,
+            'word' => ' theresa may ',
+            'func' => 2,
+            'wordtype' => 'name',
+            'relevance' => 1,
+            'escalated_source' => 'Stepford2',
+            'sig' => 1,
+            'standard_source' => 'Dogman1',
+            'object' => 'UK (Brexit)',
+            'relevant_time' => 'null'
+          },
+          {
+            'relevance' => 2,
+            'func' => '2',
+            'wordtype' => 'concrete noun',
+            'escalated_source' => undef,
+            'word' => ' friend ',
+            'timesensitive' => 0,
+            'stat' => '3',
+            'unique_source' => 'null',
+            'relevant_time' => 'null',
+            'standard_source' => 'Stepford2',
+            'object' => 'context',
+            'sig' => '2'
+          },
+          'summarised values',
+          {
+            'incidence' => 3,
+            'standard_source' => 'Dogman1',
+            'name' => 4,
+            'concrete' => 0,
+            'total' => 12,
+            'normal_relevance' => 4,
+            'escalated_source' => 'Stepford2',
+            'abstract' => 0,
+            'modval' => '2.49333333333333',
+            'adjective' => 0,
+            'high_relevance' => 2,
+            'unique_source' => 'null'
+          }
+        ];
+$VAR1 = 5;
+mentioned:
+$VAR1 = 'B';
+$VAR2 = 0;
+$VAR3 = 'A';
+$VAR4 = 0;
+$VAR5 = 'F';
+$VAR6 = 0;
+$VAR7 = 'C';
+$VAR8 = 0;
+$VAR9 = 'G';
+$VAR10 = 0;
+$VAR11 = 'D';
+$VAR12 = 0;
+$VAR13 = 'H';
+$VAR14 = 0;
+$VAR15 = 'E';
+$VAR16 = 3;
+test
+$VAR1 = 'H';
+$VAR2 = 8;
+$VAR3 = 'E';
+$VAR4 = 5;
+$VAR5 = 'B';
+$VAR6 = 2;
+$VAR7 = 'A';
+$VAR8 = 1;
+$VAR9 = 'F';
+$VAR10 = 6;
+$VAR11 = 'C';
+$VAR12 = 3;
+$VAR13 = 'G';
+$VAR14 = 7;
+$VAR15 = 'D';
+$VAR16 = 4;
+filter
+$VAR1 = 5;
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+^A
