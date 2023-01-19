@@ -128,75 +128,83 @@ use Data::Dumper qw(Dumper);
 	our @Bpool_2 = ("Wolverine1", "Terminator1", "Inconvinient1"); #abstract / diffuse / nuclear -> explicit in last source
 
 sub create_groupingB {
-
-# international terrorism #
-	# 0 match		1 Bwordtype	 2 signification	3 function			4 status			5 Btimeperiod
-	# September 11 trauma & other terroist attacs
+	#
 	@terrorist_attacks = (
-	["international_terrorism","terrorist_attacks","1", $Bpool_1 [$Brand_three],	"null"],
-	[" 9 11 ",				"$Bword[3]",	"${$Bsig_ref}[7]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[5]",		"$Btime[0]",	"null"],
-	[" september 11th ", 	"$Bword[3]",	"${$Bsig_ref}[7]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[5]",		"$Btime[0]",	"null"],
-	[" world trade center ","$Bword[1]",	"${$Bsig_ref}[1]",	"${$Bfunc_ref}[3]",	"${$Bstat_ref}[8]",		"$Btime[0]",	"null"],
-	#["  ",					"$Dword[0]",	"${$Dsig_ref}[0]",	"${$Dfunc_ref}[0]",	"${$Dstat_ref}[0]",		"$Dtime[0]",	"null"],
+	##	cluster								object					rating	+ scenearray				++ scenearray	
+		["international_terrorism",			"terrorist_attacks",	"1", 	$Bpool_1 [$Brand_three],	"null"],
+	#	
+	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
+		[" 9 11 ",				"$Bword[3]",	"${$Bsig_ref}[7]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[5]",		"$Btime[0]",	"null"],
+		[" september 11th ", 	"$Bword[3]",	"${$Bsig_ref}[7]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[5]",		"$Btime[0]",	"null"],
+		[" world trade center ","$Bword[1]",	"${$Bsig_ref}[1]",	"${$Bfunc_ref}[3]",	"${$Bstat_ref}[8]",		"$Btime[0]",	"null"],
+		#["  ",					"$Dword[0]",	"${$Dsig_ref}[0]",	"${$Dfunc_ref}[0]",	"${$Dstat_ref}[0]",		"$Dtime[0]",	"null"],
 	);
-	
-	# terrorist organizations
+	#
 	@terrorist_organizations = (
-	["international_terrorism","terrorist organizations","1", $Bpool_1 [$Brand_three],	"null"],
-	[" al qaeda ",			"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
-	[" al qa ida ",			"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
-	[" al shabaab ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
-	[" isis ",				"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"01:2017:03:2019",	"null"],
-	[" isis ",				"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[11]",	"04:2019:01:2021",	"null"],
-	[" isil ",				"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"01:2017:03:2019",	"null"],
-	[" isil ",				"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[11]",	"04:2019:01:2021",	"null"],
-	[" islamic state ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"01:2017:03:2019",	"null"],
-	[" islamic state ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[11]",	"04:2019:01:2021",	"null"],
-	[" taliban ",			"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
-	[" baghdadi ",			"$Bword[1]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[2]",		"01:2017:10:2019",	"null"],
-	[" baghdadi ",			"$Bword[1]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[6]",		"11:2019:01:2021",	"null"],
-	[" the caliphate ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[3]",	"${$Bstat_ref}[2]",		"01:2017:04:2019",	"null"],
-	[" the caliphate ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[0]",	"${$Bstat_ref}[11]",	"04:2019:01:2021",	"null"],
+	##	cluster								object						rating	+ scenearray				++ scenearray	
+		["international_terrorism",			"terrorist organizations",	"1", 	$Bpool_1 [$Brand_three],	"null"],
+	#	
+	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
+		[" al qaeda ",			"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
+		[" al qa ida ",			"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
+		[" al shabaab ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
+		[" isis ",				"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"01:2017:03:2019",	"null"],
+		[" isis ",				"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[11]",	"04:2019:01:2021",	"null"],
+		[" isil ",				"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"01:2017:03:2019",	"null"],
+		[" isil ",				"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[11]",	"04:2019:01:2021",	"null"],
+		[" islamic state ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"01:2017:03:2019",	"null"],
+		[" islamic state ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[11]",	"04:2019:01:2021",	"null"],
+		[" taliban ",			"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
+		[" baghdadi ",			"$Bword[1]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[2]",		"01:2017:10:2019",	"null"],
+		[" baghdadi ",			"$Bword[1]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[6]",		"11:2019:01:2021",	"null"],
+		[" the caliphate ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[3]",	"${$Bstat_ref}[2]",		"01:2017:04:2019",	"null"],
+		[" the caliphate ",		"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[0]",	"${$Bstat_ref}[11]",	"04:2019:01:2021",	"null"],
 	);
 	#
-	
-	# Government reponse to terror
 	@war_on_Terror = (
-	["international_terrorism","war_on_Terror","1", $Bpool_2 [0],	"null"],
-	[" drone ",				"$Bword[5]",	"${$Bsig_ref}[8]",	"${$Bfunc_ref}[7]",	"${$Bstat_ref}[9]",		"$Btime[0]",	"null"],
-	[" drones ",			"$Bword[6]",	"${$Bsig_ref}[8]",	"${$Bfunc_ref}[7]",	"${$Bstat_ref}[9]",		"$Btime[0]",	"null"],
+	##	cluster								object				rating	+ scenearray	++ scenearray	
+		["international_terrorism",			"war_on_Terror",	"1", 	$Bpool_2 [0],	"null"],
+	#	
+	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
+		[" drone ",				"$Bword[5]",	"${$Bsig_ref}[8]",	"${$Bfunc_ref}[7]",	"${$Bstat_ref}[9]",		"$Btime[0]",	"null"],
+		[" drones ",			"$Bword[6]",	"${$Bsig_ref}[8]",	"${$Bfunc_ref}[7]",	"${$Bstat_ref}[9]",		"$Btime[0]",	"null"],
 	);
 	#
-	##
-	
-#context and islamophobia
 	@islamophobia = (
-	["context and islamophobia","islamophobia","1", $Bpool_1 [$Brand_three], "null"],
-	[" middle east ",		"$Bword[3]",	"${$Bsig_ref}[4]",	"${$Bfunc_ref}[0]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
-	[" middle easterner ",	"$Bword[3]",	"${$Bsig_ref}[5]",	"${$Bfunc_ref}[2]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
-	[" middle easterners ",	"$Bword[4]",	"${$Bsig_ref}[5]",	"${$Bfunc_ref}[2]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
-	[" radical islam ",		"$Bword[4]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[0]",	"${$Bstat_ref}[12]",	"$Btime[0]",	"null"],
+	##	cluster								object			rating	+ scenearray			++ scenearray	
+		["context and islamophobia",		"islamophobia",	"1", 	$Bpool_1 [$Brand_three], "null"],
+	#	
+	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
+		[" middle east ",		"$Bword[3]",	"${$Bsig_ref}[4]",	"${$Bfunc_ref}[0]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
+		[" middle easterner ",	"$Bword[3]",	"${$Bsig_ref}[5]",	"${$Bfunc_ref}[2]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
+		[" middle easterners ",	"$Bword[4]",	"${$Bsig_ref}[5]",	"${$Bfunc_ref}[2]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
+		[" radical islam ",		"$Bword[4]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[0]",	"${$Bstat_ref}[12]",	"$Btime[0]",	"null"],
 	#Muslim
 	);
-	
+	#
 	@terror_related_rhetoric = (
-	["context and islamophobia","terror_related_rhetoric","1", $Bpool_1 [$Brand_three],	"null"],
-	[" extremist ",			"$Bword[3]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[12]",	"$Btime[1]",	"null"],
-	[" extremists ", 		"$Bword[4]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[12]",	"$Btime[1]",	"null"],
-	[" terror ",			"$Bword[3]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[10]",	"$Btime[1]",	"null"],
-	[" terrorism ",			"$Bword[3]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[10]",	"$Btime[1]",	"null"],
-	[" terrorist ",			"$Bword[3]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[10]",	"$Btime[1]",	"null"],
-	[" terrorists ",		"$Bword[4]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[8]",	"${$Bstat_ref}[10]",	"$Btime[1]",	"null"],
-	[" jihad ",				"$Bword[4]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[12]",	"$Btime[1]",	"null"],
-	);
-	
-	@context = (
-	["context and islamophobia","context","2", $Bpool_1 [$Brand_three],	"null"],
-	[" bombing ",			"$Bword[3]",	"${$Bsig_ref}[9]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
-	[" islamic ",			"$Bword[2]",	"${$Bsig_ref}[10]",	"${$Bfunc_ref}[2]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
+	##	cluster								object						rating		+ scenearray				++ scenearray	
+		["context and islamophobia",		"terror_related_rhetoric",	"1", 		$Bpool_1 [$Brand_three],	"null"],
+	#	
+	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
+		[" extremist ",			"$Bword[3]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[12]",	"$Btime[1]",	"null"],
+		[" extremists ", 		"$Bword[4]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[12]",	"$Btime[1]",	"null"],
+		[" terror ",			"$Bword[3]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[10]",	"$Btime[1]",	"null"],
+		[" terrorism ",			"$Bword[3]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[10]",	"$Btime[1]",	"null"],
+		[" terrorist ",			"$Bword[3]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[10]",	"$Btime[1]",	"null"],
+		[" terrorists ",		"$Bword[4]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[8]",	"${$Bstat_ref}[10]",	"$Btime[1]",	"null"],
+		[" jihad ",				"$Bword[4]",	"${$Bsig_ref}[6]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[12]",	"$Btime[1]",	"null"],
 	);
 	#
-	##
+	@context = (
+	##	cluster								object					rating		+ scenearray				++ scenearray	
+		["context and islamophobia",		"context",				"2", 		$Bpool_1 [$Brand_three],	"null"],
+	#	
+	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
+		[" bombing ",			"$Bword[3]",	"${$Bsig_ref}[9]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
+		[" islamic ",			"$Bword[2]",	"${$Bsig_ref}[10]",	"${$Bfunc_ref}[2]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
+	);
+	#
 };
 sub create_groupingBv{
 	
@@ -230,9 +238,9 @@ sub create_groupingBo{
 	our $context_ref  						= \@context;	
 	
 	our @objectsB = ($terrorist_attacks_ref, $terrorist_organizations_ref, $war_on_Terror_ref, $islamophobia_ref, $terror_related_rhetoric_ref, $context_ref);
-	#print Dumper @objectsB;
+	print Dumper @objectsB;
 };
 
-#create_groupingBo;
+create_groupingBo;
 1;
 END
