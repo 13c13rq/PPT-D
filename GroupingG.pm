@@ -156,7 +156,7 @@ sub create_groupingG {
 	##	cluster				object				rating		+ scenearray				++ scenearray
 		["primary grouping","energy_industry","1", $Gpool_1 [$Grand_four], "null"],
 	#	
-	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+	##	0 match							1 wordtype		2 signification		3 function				4 status				5 timeperiod	+++ scenearray	
 		[" opec ",						"$Gword[1]",	"${$Gsig_ref}[4]",	"${$Gfunc_ref}[3]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
 		[" oil ",						"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],
 		[" coal ",						"$Gword[5]",	"${$Gsig_ref}[7]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[4]",		"$Gtime[0]",	"null"],

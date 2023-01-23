@@ -134,20 +134,20 @@ use Data::Dumper qw(Dumper);
 		"threatening",				#[2]
 		"threatened",				#[3]
 		"burdensome",				#[4]
-		"precarious",				#[6]
-		"perilous", 				#[7]
-		"devastating",				#[8]
-		"horrific",					#[9]
-		"traumatic",				#[10]
-		"adictive",					#[11]
-		"deadly",					#[12]
-		"helpful",					#[13]
-		"vital",					#[14]
-		"monopoly",					#[15]
-		"monopolized",				#[16]
-		"exploited",				#[17]
-		"useless",					#[18]
-		"deceased",					#[19]
+		"precarious",				#[5]
+		"perilous", 				#[6]
+		"devastating",				#[7]
+		"horrific",					#[8]
+		"traumatic",				#[9]
+		"adictive",					#[10]
+		"deadly",					#[11]
+		"helpful",					#[12]
+		"vital",					#[13]
+		"monopoly",					#[14]
+		"monopolized",				#[15]
+		"exploited",				#[16]
+		"useless",					#[17]
+		"deceased",					#[18]
 		);
 	our @Dstatval=(
 		0,							#[0] 
@@ -210,10 +210,10 @@ sub create_groupingD {
 		["null",				"opioids",			"1",		$Dpool_1 [0], 				"null"],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" opioid",				"$Dword[4]",	"${$Dsig_ref}[24]",	"${$Dfunc_ref}[7]",		"${$Dstat_ref}[11]",	"$Dtime[0]",	"null"],
-		[" fentanyl ",			"$Dword[3]",	"${$Dsig_ref}[24]",	"${$Dfunc_ref}[7]",		"${$Dstat_ref}[11]",	"$Dtime[0]",	"null"],
-		[" heroin ",			"$Dword[3]",	"${$Dsig_ref}[24]",	"${$Dfunc_ref}[7]",		"${$Dstat_ref}[11]",	"$Dtime[0]",	"null"],
-		[" drug abuse ",		"$Dword[4]",	"${$Dsig_ref}[25]",	"${$Dfunc_ref}[8]",		"${$Dstat_ref}[2]",		"$Dtime[0]",	"null"],
+		[" opioid",				"$Dword[4]",	"${$Dsig_ref}[24]",	"${$Dfunc_ref}[7]",		"${$Dstat_ref}[10]",	"$Dtime[0]",	"null"],
+		[" fentanyl ",			"$Dword[3]",	"${$Dsig_ref}[24]",	"${$Dfunc_ref}[7]",		"${$Dstat_ref}[10]",	"$Dtime[0]",	"null"],
+		[" heroin ",			"$Dword[3]",	"${$Dsig_ref}[24]",	"${$Dfunc_ref}[7]",		"${$Dstat_ref}[10]",	"$Dtime[0]",	"null"],
+		[" drug abuse ",		"$Dword[4]",	"${$Dsig_ref}[25]",	"${$Dfunc_ref}[8]",		"${$Dstat_ref}[11]",		"$Dtime[0]",	"null"],
 		[" takebackday ",		"$Dword[7]",	"${$Dsig_ref}[26]",	"${$Dfunc_ref}[9]",		"${$Dstat_ref}[12]",	"$Dtime[0]",	"null"],
 		#["  ",					"$Dword[0]",	"${$Dsig_ref}[0]",	"${$Dfunc_ref}[0]",		"${$Dstat_ref}[0]",		"$Dtime[0]",	"null"],
 	);
@@ -223,20 +223,20 @@ sub create_groupingD {
 		["null",				"healthcare",		"1",		$Dpool_2 [$Drand_two], 		"null"],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" health insurance ",	"$Dword[3]",	"${$Dsig_ref}[27]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
-		[" healthcare ",		"$Dword[3]",	"${$Dsig_ref}[27]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
-		[" obamacare ",			"$Dword[1]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
-		[" obama care ",		"$Dword[1]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
-		[" big pharma ",		"$Dword[3]",	"${$Dsig_ref}[12]",	"${$Dfunc_ref}[10]",	"${$Dstat_ref}[15]",	"$Dtime[0]",	"null"],
+		[" health insurance ",	"$Dword[3]",	"${$Dsig_ref}[27]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[5]",		"$Dtime[0]",	"null"],
+		[" healthcare ",		"$Dword[3]",	"${$Dsig_ref}[27]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[5]",		"$Dtime[0]",	"null"],
+		[" obamacare ",			"$Dword[1]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[3]",		"$Dtime[0]",	"null"],
+		[" obama care ",		"$Dword[1]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[3]",		"$Dtime[0]",	"null"],
+		[" big pharma ",		"$Dword[3]",	"${$Dsig_ref}[12]",	"${$Dfunc_ref}[10]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
 		[" prescription drug",	"$Dword[3]",	"${$Dsig_ref}[13]",	"${$Dfunc_ref}[13]",	"${$Dstat_ref}[15]",	"$Dtime[0]",	"null"],
-		[" Hospital",			"$Dword[3]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[11]",	"${$Dstat_ref}[17]",	"$Dtime[3]",	"null"], #date!!
-		[" novartis ",			"$Dword[1]",	"${$Dsig_ref}[12]",	"${$Dfunc_ref}[10]",	"${$Dstat_ref}[15]",	"$Dtime[0]",	"null"],
-		[" pfizer ",			"$Dword[1]",	"${$Dsig_ref}[12]",	"${$Dfunc_ref}[10]",	"${$Dstat_ref}[15]",	"$Dtime[0]",	"null"],
-		[" patient ",			"$Dword[5]",	"${$Dsig_ref}[3]",	"${$Dfunc_ref}[14]",	"${$Dstat_ref}[17]",	"$Dtime[3]",	"null"], #date!!
-		[" patients ",			"$Dword[5]",	"${$Dsig_ref}[4]",	"${$Dfunc_ref}[14]",	"${$Dstat_ref}[17]",	"$Dtime[3]",	"null"], #date!!
-		[" americanpatientsfirst ",	"$Dword[7]","${$Dsig_ref}[14]","${$Dfunc_ref}[16]",	"${$Dstat_ref}[17]",	"$Dtime[0]",	"null"],
-		[" Drug Companies ",	"$Dword[4]",	"${$Dsig_ref}[12]",	"${$Dfunc_ref}[10]",	"${$Dstat_ref}[15]",	"$Dtime[0]",	"null"],
-		[" drug price",			"$Dword[3]",	"${$Dsig_ref}[13]",	"${$Dfunc_ref}[6]",		"${$Dstat_ref}[17]",	"$Dtime[0]",	"null"],
+		[" hospital",			"$Dword[3]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[11]",	"${$Dstat_ref}[16]",	"$Dtime[3]",	"null"], #date!!
+		[" novartis ",			"$Dword[1]",	"${$Dsig_ref}[12]",	"${$Dfunc_ref}[10]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
+		[" pfizer ",			"$Dword[1]",	"${$Dsig_ref}[12]",	"${$Dfunc_ref}[10]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
+		[" patient ",			"$Dword[5]",	"${$Dsig_ref}[3]",	"${$Dfunc_ref}[14]",	"${$Dstat_ref}[16]",	"$Dtime[3]",	"null"], #date!!
+		[" patients ",			"$Dword[5]",	"${$Dsig_ref}[4]",	"${$Dfunc_ref}[14]",	"${$Dstat_ref}[16]",	"$Dtime[3]",	"null"], #date!!
+		[" americanpatientsfirst ",	"$Dword[7]","${$Dsig_ref}[14]","${$Dfunc_ref}[16]",		"${$Dstat_ref}[16]",	"$Dtime[0]",	"null"],
+		[" drug companies ",	"$Dword[4]",	"${$Dsig_ref}[12]",	"${$Dfunc_ref}[10]",	"${$Dstat_ref}[14]",	"$Dtime[0]",	"null"],
+		[" drug price",			"$Dword[3]",	"${$Dsig_ref}[13]",	"${$Dfunc_ref}[6]",		"${$Dstat_ref}[16]",	"$Dtime[0]",	"null"],
 		#["  ",					"$Dword[0]",	"${$Dsig_ref}[0]",	"${$Dfunc_ref}[0]",		"${$Dstat_ref}[0]",		"$Dtime[0]",	"null"],
 	);
 	#
@@ -245,21 +245,21 @@ sub create_groupingD {
 		["null",				"pandemic",			"1",		$Dpool_3 [$Drand_three], 	"null"],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" cdc ",				"$Dword[1]",	"${$Dsig_ref}[5]",	"${$Dfunc_ref}[18]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
-		[" the who ",			"$Dword[1]",	"${$Dsig_ref}[5]",	"${$Dfunc_ref}[17]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
-		[" world health organization ","$Dword[1]","${$Dsig_ref}[5]","${$Dfunc_ref}[17]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
+		[" cdc ",				"$Dword[1]",	"${$Dsig_ref}[5]",	"${$Dfunc_ref}[18]",	"${$Dstat_ref}[12]",	"$Dtime[2]",	"null"],
+		[" the who ",			"$Dword[1]",	"${$Dsig_ref}[5]",	"${$Dfunc_ref}[17]",	"${$Dstat_ref}[12]",	"$Dtime[2]",	"null"],
+		[" world health organization ","$Dword[1]","${$Dsig_ref}[5]","${$Dfunc_ref}[17]",	"${$Dstat_ref}[12]",	"$Dtime[2]",	"null"],
 		[" covid ",				"$Dword[1]",	"${$Dsig_ref}[15]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[2]",		"$Dtime[2]",	"null"],
 		[" coronavirus ",		"$Dword[1]",	"${$Dsig_ref}[15]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[2]",		"$Dtime[2]",	"null"],
-		[" covid drugs ",		"$Dword[4]",	"${$Dsig_ref}[13]",	"${$Dfunc_ref}[13]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
+		[" covid drugs ",		"$Dword[4]",	"${$Dsig_ref}[13]",	"${$Dfunc_ref}[13]",	"${$Dstat_ref}[12]",	"$Dtime[2]",	"null"],
 		[" virus ",				"$Dword[3]",	"${$Dsig_ref}[15]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[2]",		"$Dtime[2]",	"null"], #date!!
-		[" Walter Reed ",		"$Dword[1]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[11]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"], #date!!
-		[" hydroxychloroquine ","$Dword[1]",	"${$Dsig_ref}[13]",	"${$Dfunc_ref}[19]",	"${$Dstat_ref}[18]",	"$Dtime[2]",	"null"],
+		[" walter reed ",		"$Dword[1]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[11]",	"${$Dstat_ref}[12]",	"$Dtime[2]",	"null"], #date!!
+		[" hydroxychloroquine ","$Dword[1]",	"${$Dsig_ref}[13]",	"${$Dfunc_ref}[19]",	"${$Dstat_ref}[17]",	"$Dtime[2]",	"null"],
 		[" death rate ",		"$Dword[3]",	"${$Dsig_ref}[15]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[2]",		"$Dtime[2]",	"null"],
 		[" mortality rate ",	"$Dword[3]",	"${$Dsig_ref}[15]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[2]",		"$Dtime[2]",	"null"],
-		[" vaccine",			"$Dword[5]",	"${$Dsig_ref}[16]",	"${$Dfunc_ref}[13]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
-		[" mask",				"$Dword[5]",	"${$Dsig_ref}[16]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
-		[" hospital",			"$Dword[5]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[11]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"],
-		[" test",				"$Dword[5]",	"${$Dsig_ref}[16]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[13]",	"$Dtime[2]",	"null"], #date!!
+		[" vaccine",			"$Dword[5]",	"${$Dsig_ref}[16]",	"${$Dfunc_ref}[13]",	"${$Dstat_ref}[12]",	"$Dtime[2]",	"null"],
+		[" mask",				"$Dword[5]",	"${$Dsig_ref}[16]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[12]",	"$Dtime[2]",	"null"],
+		[" hospital",			"$Dword[5]",	"${$Dsig_ref}[11]",	"${$Dfunc_ref}[11]",	"${$Dstat_ref}[12]",	"$Dtime[2]",	"null"],
+		[" test",				"$Dword[5]",	"${$Dsig_ref}[16]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[12]",	"$Dtime[2]",	"null"], #date!!
 		[" patient ",			"$Dword[5]",	"${$Dsig_ref}[3]",	"${$Dfunc_ref}[14]",	"${$Dstat_ref}[3]",		"$Dtime[2]",	"null"], #date!!
 		[" patients ",			"$Dword[5]",	"${$Dsig_ref}[4]",	"${$Dfunc_ref}[14]",	"${$Dstat_ref}[3]",		"$Dtime[2]",	"null"], #date!!
 		#["  ",					"$Dword[0]",	"${$Dsig_ref}[0]",	"${$Dfunc_ref}[0]",		"${$Dstat_ref}[0]",		"$Dtime[0]",	"null"],

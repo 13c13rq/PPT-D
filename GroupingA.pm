@@ -210,10 +210,10 @@ sub create_groupingA {
 		["wars with indirect US involvement",	"the Russo-Ukrainian war",	"1", 		$Apool_1 [$Arand_two], 		"null"],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
-		[" ukraine ",	"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[1]",	"${$Astat_ref}[3]",	"$Atime[0]", "null"],
-		[" ukraineians ","$Aword[1]",	"${$Asig_ref}[6]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[3]",	"$Atime[0]", "null"],
-		[" ukraineian ",	"$Aword[2]",	"${$Asig_ref}[2]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
-		[" crimea ", 	"$Aword[1]",	"${$Asig_ref}[3]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[4]",	"$Atime[0]", "null"],	
+		[" ukraine ",	"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[1]",	"${$Astat_ref}[3]",	"$Atime[0]",	"null"],
+		[" ukraineians ","$Aword[1]",	"${$Asig_ref}[6]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[3]",	"$Atime[0]",	"null"],
+		[" ukraineian ","$Aword[2]",	"${$Asig_ref}[2]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]",	"null"],
+		[" crimea ", 	"$Aword[1]",	"${$Asig_ref}[3]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[4]",	"$Atime[0]",	"null"],	
 	);
 	#
 	@palestine = (

@@ -44,7 +44,7 @@ use Data::Dumper qw(Dumper);
 		"law",						#[18]
 		"weapon",					#[19]	
 		"act of violence",			#[20]
-		"perceived aberration",	#[21]
+		"perceived aberration",		#[21]
 		"societal status",			#[22]
 		"governmental procedure",	#[23]	
 		"chemical",					#[24]	
@@ -112,8 +112,8 @@ use Data::Dumper qw(Dumper);
 		"divisive media",			#[26]
 		"divisive expression",		#[27]
 		"shelter",					#[28]
-		"inequality",				#[30]
-		"belligerent",				#[31]
+		"inequality",				#[29]
+		"belligerent",				#[30]
 		"election denial",			#[31]		
 		"voting machine",			#[32]
 		"divisive insult",			#[33]
@@ -247,21 +247,19 @@ sub create_groupingE {
 		[" white supremacy ","$Eword[9]",	"${$Esig_ref}[20]",	"${$Efunc_ref}[22]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 		[" floyd ",			"$Eword[1]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[24]",	"${$Estat_ref}[9]",		"$Etime[0]",	"null"],
 		[" black lives matter","$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[4]",		"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" blm ",			"$Eword[7]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[4]",		"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" blm ",			"$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[4]",		"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		[" racism ",		"$Eword[3]",	"${$Esig_ref}[20]",	"${$Efunc_ref}[8]",		"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 		[" racist ",		"$Eword[3]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[25]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 		[" alien ",			"$Eword[3]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[24]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		[" aliens ",		"$Eword[3]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[24]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		[" sanctuary ",		"$Eword[3]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[28]",	"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_2 [2]],
-		[" heartland ",		"$Eword[1]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_2 [2]],
-		[" suburb",			"$Eword[3]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_2 [$Erand_three]],
+		[" heartland ",		"$Eword[1]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_2 [2]],
+		[" suburb",			"$Eword[3]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[29]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_2 [$Erand_three]],
 		[" send her back ",	"$Eword[7]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[33]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 		[" send back ",		"$Eword[7]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[33]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" kkk ",			"$Eword[1]",	"${$Esig_ref}[5]",	"${$Efunc_ref}[31]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" anchor babies ", "$Eword[7]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[33]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		#
-		[" critical race theory ",	"$Eword[0]","${$Esig_ref}[0]","${$Efunc_ref}[0]",	"${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" kanye ",			"$Eword[0]","${$Esig_ref}[0]","${$Efunc_ref}[0]",	"${$Estat_ref}[0]",		"$Etime[0]",	"null"],
+		[" kkk ",			"$Eword[1]",	"${$Esig_ref}[5]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
+		[" critical race theory ",	"$Eword[9]","${$Esig_ref}[21]","${$Efunc_ref}[4]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" kanye ",			"$Eword[1]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[25]",	"${$Estat_ref}[8]",				"$Etime[0]",	"null"],
 	#
 	);
 	@border_control = (
@@ -269,21 +267,20 @@ sub create_groupingE {
 		["null", 			"border control", 	"1", 		$Epool_10 [$Erand_three], 	$Epool_8 [$Erand_three]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" wall ",			"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[20]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
-		[" steel slat ",	"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[20]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
-		[" steel slats ",	"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[20]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
+		[" wall ",			"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
+		[" steel slat ",	"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
+		[" steel slats ",	"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
 		[" travel ban ",	"$Eword[3]",	"${$Esig_ref}[12]",	"${$Efunc_ref}[21]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" Smuggling ",		"$Eword[3]",	"${$Esig_ref}[10]",	"${$Efunc_ref}[5]",		"${$Estat_ref}[15]",	"$Etime[0]",	"null"],
-		[" trafficking ",	"$Eword[3]",	"${$Esig_ref}[10]",	"${$Efunc_ref}[5]",		"${$Estat_ref}[15]",	"$Etime[0]",	"null"],
-		[" southern border ","$Eword[5]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[21]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" fence ",			"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[20]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
-		[" border patrol ",	"$Eword[5]",	"${$Esig_ref}[16]",	"${$Efunc_ref}[20]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" caravans ",		"$Eword[6]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" ice ",			"$Eword[1]",	"${$Esig_ref}[16]",	"${$Efunc_ref}[20]",	"${$Estat_ref}[9]",		"$Etime[0]",	$Epool_11 [2]],
-		[" ICEgov ",		"$Eword[1]",	"${$Esig_ref}[16]",	"${$Efunc_ref}[20]",	"${$Estat_ref}[9]",		"$Etime[0]",	$Epool_11 [2]],
-		[" cbp ",			"$Eword[1]",	"${$Esig_ref}[16]",	"${$Efunc_ref}[20]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		#
-		[" deport",			"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",		"${$Estat_ref}[0]",		"$Etime[0]",	"null"],
+		[" Smuggling ",		"$Eword[3]",	"${$Esig_ref}[10]",	"${$Efunc_ref}[5]",		"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
+		[" trafficking ",	"$Eword[3]",	"${$Esig_ref}[10]",	"${$Efunc_ref}[5]",		"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
+		[" southern border ","$Eword[5]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
+		[" fence ",			"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
+		[" border patrol ",	"$Eword[5]",	"${$Esig_ref}[16]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
+		[" caravans ",		"$Eword[6]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" ice ",			"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[9]",		"$Etime[0]",	$Epool_11 [2]],
+		[" ICEgov ",		"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[9]",		"$Etime[0]",	$Epool_11 [2]],
+		[" cbp ",			"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
+		[" deport",			"$Eword[3]",	"${$Esig_ref}[23]",	"${$Efunc_ref}[8]",		"${$Estat_ref}[6]",		"$Etime[0]",	"null"],
 		#["  ",				"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",		"${$Estat_ref}[0]",		"$Etime[0]",	"null"],
 	#
 	);
@@ -293,17 +290,17 @@ sub create_groupingE {
 		["null",			"immigration", 		"1", 		$Epool_10 [$Erand_four], 	$Epool_5[$Erand_two]],
 	#
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" anchor babies ", "$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_11 [2]],
-		[" refugee ",		"$Eword[5]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" refugees ",		"$Eword[5]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" birthright citizenship ","$Eword[9]","${$Esig_ref}[12]","${$Efunc_ref}[0]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" immigrant",		"$Eword[5]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" immigration ",	"$Eword[3]",	"${$Esig_ref}[17]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" anchor babies ", "$Eword[9]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[33]",	"${$Estat_ref}[8]",		"$Etime[0]",	$Epool_11 [2]],
+		[" refugee ",		"$Eword[3]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" refugees ",		"$Eword[4]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" birthright citizenship ","$Eword[9]","${$Esig_ref}[14]","${$Efunc_ref}[19]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
+		[" immigrant",		"$Eword[3]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" immigration ",	"$Eword[3]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		[" alien",			"$Eword[4]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" caravan",		"$Eword[4]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" caravan",		"$Eword[4]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		[" migrant",		"$Eword[4]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" daca ",			"$Eword[3]",	"${$Esig_ref}[12]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" lottery ",		"$Eword[3]",	"${$Esig_ref}[12]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" daca ",			"$Eword[3]",	"${$Esig_ref}[20]",	"${$Efunc_ref}[1]",		"${$Estat_ref}[8]",		"$Etime[0]",	"null"],
+		[" lottery ",		"$Eword[3]",	"${$Esig_ref}[23]",	"${$Efunc_ref}[29]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		#["  ",				"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",		"${$Estat_ref}[0]",		"$Etime[0]",	"null"],
 	);
 	#
@@ -312,26 +309,26 @@ sub create_groupingE {
 		["null",			"context",			"1",		$Epool_4 [$Erand_three],	"null"],
 	#
 	## 0 match				1 wordtype	 	2 signification		3 function				4 status				5 timeperiod	+++ scenearray		
-		[" riot",			"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" protest",		"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" charlottesville ","$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" division ",		"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" hate ",			"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" activist",		"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" liberal",		"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" radical",		"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" native",			"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" black community ","$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" black america",	"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" hispanic ",		"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" black people ",	"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" black men ",		"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" black women ",	"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" black unemployment ","$Eword[0]","${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" black workers ",	"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" synagogue ",		"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		[" jewish ",		"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
-		#["  ",				"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",	"	${$Estat_ref}[0]",		"$Etime[0]",	"null"],
+		[" riot",			"$Eword[3]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[1]",	"${$Estat_ref}[9]",			"$Etime[0]",	"null"],
+		[" protest",		"$Eword[3]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[4]",	"${$Estat_ref}[3]",			"$Etime[0]",	"null"],
+		[" charlottesville ","$Eword[1]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[1]",	"${$Estat_ref}[9]",			"$Etime[0]",	"null"],
+		[" division ",		"$Eword[9]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[19]","${$Estat_ref}[16]",		"$Etime[0]",	"null"],
+		[" hate ",			"$Eword[3]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[16]",		"$Etime[0]",	"null"],
+		[" activist",		"$Eword[4]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[4]",	"${$Estat_ref}[3]",			"$Etime[0]",	"null"],
+		[" liberal",		"$Eword[2]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[4]",	"${$Estat_ref}[3]",			"$Etime[0]",	"null"],
+		[" radical",		"$Eword[2]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[4]",	"${$Estat_ref}[5]",			"$Etime[0]",	"null"],
+		[" native",			"$Eword[2]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[16]",		"$Etime[0]",	"null"],
+		[" black community ","$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[3]",			"$Etime[0]",	"null"],
+		[" black america",	"$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[3]",			"$Etime[0]",	"null"],
+		[" hispanic ",		"$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[3]",			"$Etime[0]",	"null"],
+		[" black people ",	"$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[16]",		"$Etime[0]",	"null"],
+		[" black men ",		"$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[16]",		"$Etime[0]",	"null"],
+		[" black women ",	"$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[16]",		"$Etime[0]",	"null"],
+		[" black unemployment ","$Eword[9]","${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[5]",			"$Etime[0]",	"null"],
+		[" black workers ",	"$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[16]",		"$Etime[0]",	"null"],
+		[" synagogue ",		"$Eword[5]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[23]","${$Estat_ref}[3]",			"$Etime[0]",	"null"],
+		[" jewish ",		"$Eword[2]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[3]",			"$Etime[0]",	"null"],
+		#["  ",				"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",		"${$Estat_ref}[0]",		"$Etime[0]",	"null"],
 	);	
 	#		
 };
@@ -368,6 +365,6 @@ sub create_groupingEo{
 	print Dumper @objectsE;
 };
 	
-create_groupingEv;
+create_groupingEo;
 1;
 END

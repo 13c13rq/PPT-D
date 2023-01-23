@@ -30,6 +30,7 @@ use Data::Dumper qw(Dumper);
 		"building",					#[3]
 		"relationship",				#[4]
 		"political paradigm shift",	#[5]
+		"act of violence",			#[6]
 	);
 	
 	our @Hsigval=(	
@@ -39,6 +40,7 @@ use Data::Dumper qw(Dumper);
 		"1",						#[3]
 		"2",						#[4]
 		"3",						#[5]
+		"3",						#[6]
 
 	);
 	
@@ -51,6 +53,8 @@ use Data::Dumper qw(Dumper);
 		"liked individual",			#[5]
 		"uk leaves eu",				#[6]
 		"crime scene",				#[7]
+		"perpetrator of violence",	#[8]
+		"murder victim",			#[9]
 	);
 	
 	our @Hfuncval= (		
@@ -62,6 +66,8 @@ use Data::Dumper qw(Dumper);
 		"2",						#[5]
 		"3",						#[6]
 		"3",						#[7]
+		"3",						#[8]
+		"3",						#[9]
 	);	
 	
 	our @Hstat =	(
@@ -74,6 +80,7 @@ use Data::Dumper qw(Dumper);
 		"dangerous",				#[6]
 		"corrupt",					#[7]
 		"problematic",				#[8]
+		"traumatic",				#[9]
 	);
 	
 	our @Hstatval=(
@@ -138,19 +145,16 @@ sub create_groupingH {
 	##	cluster				object				rating		+ scenearray				++ scenearray
 		["gun_control & domestic terrorism","domestic_terrorism","1", $Hpool_3 [$Hrand_three],	"null"], ### dog man scene
 	#	
-	##	0 match				1 wordtype		 2 signification	3 function			4 status			5 timeperiod			+++ scenearray	
-		[" stopthesteal ",	"$Hword[7]",	"${$Hsig_ref}[14]",	"${$Hfunc_ref}[1]",		"${$Hstat_ref}[9]",		"01:2021:02:2021",	"null"],
-		[" January 6th ",	"$Hword[5]",	"${$Hsig_ref}[6]",	"${$Hfunc_ref}[1]",		"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
-		[" shooter ",		"$Hword[5]",	"${$Hsig_ref}[3]",	"${$Hfunc_ref}[10]",	"${$Hstat_ref}[2]",		"$Htime[0]",	"null"],
-		[" shooting ",		"$Hword[5]",	"${$Hsig_ref}[15]",	"${$Hfunc_ref}[1]",		"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
-		[" synagogue ",		"$Hword[5]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[11]",	"${$Hstat_ref}[0]",		"$Htime[0]",	"null"],
-		[" el paso ",		"$Hword[1]",	"${$Hsig_ref}[7]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[9]",		"08:2019:08:2019",	"null"],
-		[" pitsburg ",		"$Hword[1]",	"${$Hsig_ref}[7]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[9]",		"10:2018:10:2018",	"null"],
-		[" el paso ",		"$Hword[1]",	"${$Hsig_ref}[7]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
-		[" heyer ",			"$Hword[1]",	"${$Hsig_ref}[3]",	"${$Hfunc_ref}[8]",		"${$Hstat_ref}[17]",	"$Htime[0]",	"null"],
-		[" car attack",		"$Hword[5]",	"${$Hsig_ref}[15]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[1]",		"$Htime[0]",	"null"],
-		[" charlottesville ","$Hword[1]",	"${$Hsig_ref}[7]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[9]",		"08:2017:08:2017",	"null"],
-		[" kenosha ",		"$Hword[1]",	"${$Hsig_ref}[7]",	"${$Hfunc_ref}[12]",	"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
+	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+		[" shooter ",		"$Hword[5]",	"${$Hsig_ref}[2]",	"${$Hfunc_ref}[8]",		"${$Hstat_ref}[1]",		"$Htime[0]",	"null"],
+		[" shooting ",		"$Hword[5]",	"${$Hsig_ref}[6]",	"${$Hfunc_ref}[7]",		"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
+		[" synagogue ",		"$Hword[5]",	"${$Hsig_ref}[3]",	"${$Hfunc_ref}[7]",		"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
+		[" el paso ",		"$Hword[1]",	"${$Hsig_ref}[6]",	"${$Hfunc_ref}[7]",		"${$Hstat_ref}[9]",		"08:2019:08:2019",	"null"],
+		[" pitsburg ",		"$Hword[1]",	"${$Hsig_ref}[6]",	"${$Hfunc_ref}[7]",		"${$Hstat_ref}[9]",		"10:2018:10:2018",	"null"],
+		[" heyer ",			"$Hword[1]",	"${$Hsig_ref}[3]",	"${$Hfunc_ref}[9]",		"${$Hstat_ref}[2]",		"$Htime[0]",	"null"],
+		[" car attack",		"$Hword[5]",	"${$Hsig_ref}[6]",	"${$Hfunc_ref}[7]",		"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
+		[" charlottesville ","$Hword[1]",	"${$Hsig_ref}[6]",	"${$Hfunc_ref}[7]",		"${$Hstat_ref}[9]",		"08:2017:08:2017",	"null"],
+		[" kenosha ",		"$Hword[1]",	"${$Hsig_ref}[6]",	"${$Hfunc_ref}[7]",		"${$Hstat_ref}[9]",		"$Htime[0]",	"null"],
 		#["  ",				"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",		"${$Hstat_ref}[0]",		"$Htime[0]",	"null"],
 	);
 	#

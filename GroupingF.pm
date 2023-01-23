@@ -265,11 +265,11 @@ sub create_groupingF {
 		["border control, immigration and context", "context", "2", $Fpool_1 [$Frand_three],	$Fpool_4[$Frand_three]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" security ",,		"$Fword[4]",	"${$Fsig_ref}[18]",	"${$Ffunc_ref}[21]", 	"${$Fstat_ref}[1]",		"$Ftime[2]",	"null"],
-		[" not secure ",	"$Fword[2]",	"${$Fsig_ref}[18]",	"${$Ffunc_ref}[21]", 	"${$Fstat_ref}[1]",		"$Ftime[2]",	"null"],
-		[" fraud ",			"$Fword[3]",	"${$Fsig_ref}[17]",	"${$Ffunc_ref}[5]", 	"${$Fstat_ref}[1]",		"$Ftime[2]",	"null"],
+		[" security ",,		"$Fword[4]",	"${$Fsig_ref}[18]",	"${$Ffunc_ref}[21]", 	"${$Fstat_ref}[1]",		"$Ftime[0]",	"null"],
 		[" border ",		"$Fword[4]",	"${$Fsig_ref}[7]",	"${ $Ffunc_ref}[21]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 		[" make america safe ","$Fword[7]","${$Fsig_ref}[14]",	"${$Ffunc_ref}[6]",		"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
+		[" makeamericasafeagain ","$Fword[7]","${$Fsig_ref}[14]","${$Ffunc_ref}[6]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
+		[" keep america safe ","$Fword[7]","${$Fsig_ref}[14]",	"${$Ffunc_ref}[6]",		"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 		[" illegal",		"$Fword[2]",	"${$Fsig_ref}[10]",	"${$Ffunc_ref}[5]",		"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 		[" justice ",		"$Fword[3]",	"${$Fsig_ref}[15]",	"${$Ffunc_ref}[19]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
 		[" court ",			"$Fword[3]",	"${$Fsig_ref}[15]",	"${$Ffunc_ref}[19]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],

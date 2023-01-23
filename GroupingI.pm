@@ -117,6 +117,7 @@ use Data::Dumper qw(Dumper);
 		"election denial",			#[31]		
 		"voting machine",			#[32]
 		"divisive insult",			#[33]
+		"deception",				#[34]
 	);
 	our @Ifuncval= (		
 		0,							#[0]
@@ -153,6 +154,7 @@ use Data::Dumper qw(Dumper);
 		3,							#[31]
 		3,							#[32]
 		3,							#[33]
+		3,							#[34]
 	);	
 	
 	our @Istat =	(
@@ -196,16 +198,16 @@ use Data::Dumper qw(Dumper);
 		3,							#[15]
 		3,							#[16]
 		2,							#[17]
-		0,							#[18]
+		3,							#[18]
 		3,							#[19]
 	);
 	our @Itime =	(
 		"null", 					#[0]			
 		"null", 					#[1]
 		"10:2020:02:2021",			#[2] #post election
-		"12:2016:11:2020",			#[3] #pre election
-		"12:2020:02:2021",			#[4] #capitol riot
-		"12:2019:02:2021",			#[5] #election period
+		"01:2017:11:2020",			#[3] #pre election
+		"01:2021:02:2021",			#[4] #capitol riot
+		"01:2020:02:2021",			#[5] #election period
 	);	
 	
 	
@@ -215,8 +217,9 @@ use Data::Dumper qw(Dumper);
 	our $Istat_ref			= undef;
 	
 	our @divisive_content 	= undef;
+	our @slogans			= undef;
 	our @Icontext			= undef;	
-	our @election_denial	= undef;
+	our @election_denial	= undef;	
 	our @jan6_insurection	= undef;
 	
 	our $Irand_four 		= int(rand(4));
@@ -242,19 +245,16 @@ sub create_groupingI {
 		["null",	"divisive content",		"1", 		$Ipool_23 [$Irand_four], 	$Ipool_32 [$Irand_four]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" fake media ",	"$Iword[1]",	"${$Isig_ref}[9]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" fake news ",		"$Iword[1]",	"${$Isig_ref}[9]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" lie ",			"$Iword[4]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
+		[" fake media ",	"$Iword[9]",	"${$Isig_ref}[14]",	"${$Ifunc_ref}[34]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
+		[" fake news ",		"$Iword[9]",	"${$Isig_ref}[14]",	"${$Ifunc_ref}[34]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
+		[" lie ",			"$Iword[3]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
 		[" lies ",			"$Iword[4]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" corrupt",		"$Iword[2]",	"${$Isig_ref}[11]",	"${$Ifunc_ref}[8]",		"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
+		[" corrupt",		"$Iword[2]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[34]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
 		[" anarchy ",		"$Iword[3]",	"${$Isig_ref}[22]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
 		[" antifa ",		"$Iword[1]",	"${$Isig_ref}[4]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" maga ",			"$Iword[7]",	"${$Isig_ref}[14]",	"${$Ifunc_ref}[15]",	"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
-		[" make america great again ",	"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	$Ipool_6 [$Irand_five]],
-		[" makeamericagreatagain ",		"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	$Ipool_6 [$Irand_five]],
 		[" american dream ","$Iword[7]",	"${$Isig_ref}[14]",	"${$Ifunc_ref}[15]",	"${$Istat_ref}[18]",	"$Itime[0]",	$Ipool_6 [0]],
 		[" radical left ",	"$Iword[3]",	"${$Isig_ref}[4]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" Castro ",		"$Iword[1]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[18]",	"$Itime[0]",	"null"],
+		[" Castro ",		"$Iword[1]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[25]",	"${$Istat_ref}[18]",	"$Itime[0]",	"null"],
 		[" socialist ",		"$Iword[2]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
 		[" socialism ",		"$Iword[3]",	"${$Isig_ref}[22]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
 		[" squad ",			"$Iword[1]",	"${$Isig_ref}[4]",	"${$Ifunc_ref}[3]",		"${$Istat_ref}[3]",		"07:2019:09:2019",	"null"],
@@ -264,7 +264,26 @@ sub create_groupingI {
 		[" aoc ",			"$Iword[1]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[3]",		"${$Istat_ref}[3]",		"$Itime[0]",	"null"],
 		[" Ben Shapiro ",	"$Iword[1]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[25]",	"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
 		[" tucker ",		"$Iword[1]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[25]",	"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
-		[" BreitbartNews ",	"$Iword[1]",	"${$Isig_ref}[5]",	"${$Ifunc_ref}[26]",	"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
+		[" BreitbartNews ",	"$Iword[1]",	"${$Isig_ref}[5]",	"${$Ifunc_ref}[15]",	"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
+		#["  ",				"$Iword[0]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[0]",		"${$Istat_ref}[0]",		"$Itime[0]",	"null"],
+	);
+	#
+	@slogans = (
+	##	cluster		object					rating		+ scenearray				++ scenearray
+		["null",	"campaign slogans",		"2", 		$Ipool_23 [$Irand_four], 	$Ipool_32 [$Irand_four]],
+	#	
+	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
+		[" maga ",			"$Iword[7]",	"${$Isig_ref}[14]",	"${$Ifunc_ref}[15]",	"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
+		[" make america great again ",	"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	"null"],
+		[" makeamericagreatagain ",		"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	"null"],
+		[" make america strong again ",	"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	"null"],
+		[" makeamericastrongagain ",	"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	"null"],
+		[" make america safe again ",	"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	"null"],
+		[" makeamericasafeagain  ",		"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	"null"],
+		[" keep america great ",		"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	"null"],
+		[" keepamericagreat ",			"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	"null"],
+		[" keep america safe ",			"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	"null"],
+		[" america first ",				"$Iword[7]","${$Isig_ref}[14]","${$Ifunc_ref}[15]","${$Istat_ref}[2]",	"$Itime[0]",	"null"],
 		#["  ",				"$Iword[0]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[0]",		"${$Istat_ref}[0]",		"$Itime[0]",	"null"],
 	);
 	#
@@ -273,19 +292,18 @@ sub create_groupingI {
 		["null",	"election denial",	"1", 	$Ipool_5 [$Irand_two],	"null"],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" election ",		"$Iword[5]",	"${$Isig_ref}[23]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[3]",		"$Itime[4]",	"null"],
+		[" election ",		"$Iword[5]",	"${$Isig_ref}[23]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[3]",		"$Itime[5]",	"null"],
 		[" dominion ",		"$Iword[1]",	"${$Isig_ref}[12]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[5]",	"null"],
 		[" stolen election ","$Iword[9]",	"${$Isig_ref}[14]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
 		[" vote",			"$Iword[5]",	"${$Isig_ref}[23]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[5]",	"null"],
 		[" ballot",			"$Iword[5]",	"${$Isig_ref}[23]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[5]",	"null"], #date!!
-		[" truth ",			"$Iword[3]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
-		[" certification ",	"$Iword[3]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" elector ",		"$Iword[5]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[3]",		"$Itime[0]",	"null"],
-		[" landslide ",		"$Iword[0]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" win ",			"$Iword[8]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" won ",			"$Iword[8]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" steal ",			"$Iword[8]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" stole",			"$Iword[8]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
+		[" certification ",	"$Iword[3]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
+		[" elector ",		"$Iword[5]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[3]",		"$Itime[2]",	"null"],
+		[" landslide ",		"$Iword[0]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
+		[" win ",			"$Iword[8]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
+		[" won ",			"$Iword[8]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
+		[" steal ",			"$Iword[8]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
+		[" stole",			"$Iword[8]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
 		#["  ",				"$Iword[0]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[0]",		"${$Istat_ref}[0]",		"$Itime[0]",	"null"],
 	);	
 	#
@@ -297,7 +315,6 @@ sub create_groupingI {
 		[" capitol ",		"$Iword[1]",	"${$Isig_ref}[20]",	"${$Ifunc_ref}[1]",		"${$Istat_ref}[9]",		"$Itime[2]",	"null"], #date!!
 		[" Ianuary 6th ",	"$Iword[5]",	"${$Isig_ref}[20]",	"${$Ifunc_ref}[1]",		"${$Istat_ref}[9]",		"$Itime[4]",	"null"],
 		[" stopthesteal ",	"$Iword[7]",	"${$Isig_ref}[14]",	"${$Ifunc_ref}[1]",		"${$Istat_ref}[9]",		"$Itime[2]",	"null"],
-		#
 		[" certification ",	"$Iword[5]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[19]",	"${$Istat_ref}[9]",		"$Itime[4]",	"null"],
 		[" pence ",			"$Iword[1]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[25]",	"${$Istat_ref}[9]",		"$Itime[4]",	"null"],
 		[" patriots",		"$Iword[4]",	"${$Isig_ref}[20]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[11]",	"$Itime[4]",	"null"],
@@ -313,20 +330,18 @@ sub create_groupingI {
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" rigged ",		"$Iword[2]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[2]",		"$Itime[2]",	"null"],
-		[" stolen ",		"$Iword[2]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[2]",		"$Itime[2]",	"null"], #date!!
 		[" fraud",			"$Iword[3]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[2]",		"$Itime[2]",	"null"],
-		#
-		[" mail ",			"$Iword[5]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[1]",		"$Itime[5]",	"null"],
+		[" truth ",			"$Iword[3]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
+		[" mail ",			"$Iword[5]",	"${$Isig_ref}[11]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[1]",		"$Itime[5]",	"null"],
+		[" irregular ",		"$Iword[2]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
+		[" inacurate ",		"$Iword[2]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
 		[" riot",			"$Iword[5]",	"${$Isig_ref}[20]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
 		[" protest",		"$Iword[5]",	"${$Isig_ref}[4]",	"${$Ifunc_ref}[4]",		"${$Istat_ref}[3]",		"$Itime[0]",	"null"],
-		[" division ",		"$Iword[3]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" hate ",			"$Iword[3]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
-		[" activist",		"$Iword[3]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[34]",	"${$Istat_ref}[3]",		"$Itime[0]",	"null"],
-		[" liberal",		"$Iword[2]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[34]",	"${$Istat_ref}[3]",		"$Itime[0]",	"null"],
-		[" radical",		"$Iword[2]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[34]",	"${$Istat_ref}[3]",		"$Itime[0]",	"null"],
-		[" irregular ",		"$Iword[2]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
-		[" inacurate ",		"$Iword[2]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[1]",		"$Itime[2]",	"null"],
-		[" truth ",			"$Iword[3]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[31]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
+		[" division ",		"$Iword[3]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
+		[" hate ",			"$Iword[3]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[27]",	"${$Istat_ref}[1]",		"$Itime[0]",	"null"],
+		[" activist",		"$Iword[3]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[4]",		"${$Istat_ref}[3]",		"$Itime[0]",	"null"],
+		[" liberal",		"$Iword[2]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[4]",		"${$Istat_ref}[3]",		"$Itime[0]",	"null"],
+		[" radical",		"$Iword[2]",	"${$Isig_ref}[21]",	"${$Ifunc_ref}[4]",		"${$Istat_ref}[3]",		"$Itime[0]",	"null"],
 		#[" ",				"$Iword[0]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[0]",	"	${$Istat_ref}[0]",		"$Itime[0]",	"null"],
 	);
 	#
@@ -340,10 +355,11 @@ sub create_groupingIv{
 	create_groupingI;
 	
 	our $divisive_content_val_ref	= \@divisive_content;
+	our $slogans_val_ref			= \@slogans;
 	our $election_denial_val_ref	= \@election_denial;
 	our $jan6_insurection_val_ref 	= \@jan6_insurection;
 	our $Icontext_val_ref			= \@Icontext;
-	our @valuesI = ($divisive_content_val_ref, $election_denial_val_ref, $jan6_insurection_val_ref, $Icontext_val_ref);
+	our @valuesI = ($divisive_content_val_ref, $slogans_val_ref, $election_denial_val_ref, $jan6_insurection_val_ref, $Icontext_val_ref);
 
 };
 
@@ -356,10 +372,11 @@ sub create_groupingIo{
 	create_groupingI;
 	
 	our $divisive_content_ref 	= \@divisive_content;
+	our $slogans_ref		= \@slogans;
 	our $election_denial_ref	= \@election_denial;
 	our $jan6_insurection_ref 	= \@jan6_insurection;
 	our $Icontext_ref 			= \@Icontext;
-	our @objectsI = ($divisive_content_ref, $election_denial_ref, $jan6_insurection_ref ,$Icontext_ref);
+	our @objectsI = ($divisive_content_ref, $slogans_ref, $election_denial_ref, $jan6_insurection_ref ,$Icontext_ref);
 	print Dumper @objectsI;
 };
 	
