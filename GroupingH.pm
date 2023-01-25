@@ -270,9 +270,9 @@ sub create_groupingHo{
 	our $Hcontext_ref		=  	\@Hcontext;
 	
 	our @objectsH = ($atrocity_ref, $domestic_terrorism_ref, $populist_leaders_ref, $populists_ref, $uk_ref, $dictators_ref, $Hcontext_ref);
-	print Dumper @objectsH;
+	#print Dumper @objectsH;
 };
 	
-create_groupingHo;
+#create_groupingHo;
 1;
 END

@@ -238,9 +238,9 @@ sub create_groupingBo{
 	our $context_ref  						= \@context;	
 	
 	our @objectsB = ($terrorist_attacks_ref, $terrorist_organizations_ref, $war_on_Terror_ref, $islamophobia_ref, $terror_related_rhetoric_ref, $context_ref);
-	print Dumper @objectsB;
+	#print Dumper @objectsB;
 };
 
-create_groupingBo;
+#create_groupingBo;
 1;
 END

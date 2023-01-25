@@ -390,9 +390,9 @@ sub create_groupingAo{
 	our $iraq_ref  = \@iraq;
 	
 	our @objectsA = ($iraq_ref, $afghanistan_ref, $syria_ref,  $ukraine_ref,  $palestine_ref,  $north_korea_ref,  $china_ref, $russia_ref,  $iran_ref,  $weapons_ref,  $nuclear_threat_ref,  $conflict_rhetoric_ref,	$Acontext_ref);
-print Dumper @objectsA;
+#print Dumper @objectsA;
 };
 
-create_groupingAo;
+#create_groupingAo;
 1;
 END

@@ -377,10 +377,10 @@ sub create_groupingIo{
 	our $jan6_insurection_ref 	= \@jan6_insurection;
 	our $Icontext_ref 			= \@Icontext;
 	our @objectsI = ($divisive_content_ref, $slogans_ref, $election_denial_ref, $jan6_insurection_ref ,$Icontext_ref);
-	print Dumper @objectsI;
+	#print Dumper @objectsI;
 };
 	
-create_groupingIo;
+#create_groupingIo;
 #create_groupingIv;
 1;
 END

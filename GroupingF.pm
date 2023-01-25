@@ -314,9 +314,9 @@ sub create_groupingFo{
 	our $Fcontext_ref  				= \@Fcontext;	
 	
 	our @objectsF = ($gun_control_ref, $crime_ref, $prosecution_ref, $institutional_violence_ref,  $Fcontext_ref);
-	print Dumper @objectsF;
+	#print Dumper @objectsF;
 };
 	
-create_groupingFo;
+#create_groupingFo;
 1;
 END

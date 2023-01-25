@@ -290,9 +290,9 @@ sub create_groupingGo{
 	our $Gcontext_ref 				=  	\@Gcontext;
 	
 	our @objectsG = ($climate_change_ref, $energy_industry_ref, $countermeasures_ref, $pollution_ref, $natural_catastrophes_ref, $environmental_destruction_ref, $rhetoric_ref, $Gcontext_ref,);
-	print Dumper @objectsG;
+	#print Dumper @objectsG;
 };
 	
-create_groupingGo;
+#create_groupingGo;
 1;
 END

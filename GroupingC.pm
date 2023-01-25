@@ -315,9 +315,9 @@ sub create_groupingCo{
 	our $Ccontext_ref			=  	\@Ccontext;	
 	
 	our @objectsC = ($Cchina_ref, $economic_warfare_ref, $inflation_ref, $economic_decline_ref, $fiscal_policy_ref, $economy_related_rhetoric_ref, $Ccontext_ref);
-	print Dumper @objectsC;
+	#print Dumper @objectsC;
 };
 	
-create_groupingCo;
+#create_groupingCo;
 1;
 END

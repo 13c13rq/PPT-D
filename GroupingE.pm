@@ -346,7 +346,7 @@ sub create_groupingEv{
 	our $immigration_val_ref  	= \@immigration;
 	our $Econtext_val_ref 		= \@Econtext;	
 	our @valuesE = ($racist_content_val_ref, $border_control_val_ref,	$immigration_val_ref, $Econtext_val_ref);
-	print Dumper @valuesE;
+	#print Dumper @valuesE;
 };
 
 sub create_groupingEo{
@@ -362,9 +362,9 @@ sub create_groupingEo{
 	our $immigration_ref  	= \@immigration;	
 	our $Econtext_ref 		= \@Econtext;
 	our @objectsE = ($racist_content_ref, $border_control_ref,	$immigration_ref, $Econtext_ref);
-	print Dumper @objectsE;
+	#print Dumper @objectsE;
 };
 	
-create_groupingEo;
+#create_groupingEo;
 1;
 END

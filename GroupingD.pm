@@ -307,10 +307,10 @@ sub create_groupingDo{
 	our $Dcontext_ref 		= \@Dcontext;
 	
 	our @objectsD = ($opioids_ref, $healthcare_ref, $pandemic_ref, $Dcontext_ref);
-	print Dumper @objectsD;
+	#print Dumper @objectsD;
 
 };
 
-create_groupingDo;
+#create_groupingDo;
 1;
 END
