@@ -265,6 +265,7 @@ sub create_groupingI {
 		[" Ben Shapiro ",	"$Iword[1]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[25]",	"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
 		[" tucker ",		"$Iword[1]",	"${$Isig_ref}[3]",	"${$Ifunc_ref}[25]",	"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
 		[" BreitbartNews ",	"$Iword[1]",	"${$Isig_ref}[5]",	"${$Ifunc_ref}[15]",	"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
+		[" charlottesville ","$Iword[1]",	"${$Isig_ref}[20]",	"${$Ifunc_ref}[1]",		"${$Istat_ref}[2]",		"$Itime[0]",	"null"],
 		#["  ",				"$Iword[0]",	"${$Isig_ref}[0]",	"${$Ifunc_ref}[0]",		"${$Istat_ref}[0]",		"$Itime[0]",	"null"],
 	);
 	#

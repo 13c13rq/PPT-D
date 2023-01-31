@@ -221,64 +221,110 @@ use Data::Dumper qw(Dumper);
 	our $Erand_five 		= int(rand(5));
 	our $Erand_three 		= int(rand(3));
 	our $Erand_two 			= int(rand(2));
-	our @Epool_1 =	("Out2", "Lovecraft_Country1", "Dogman2",); #/surgery scene, teacup on tv scene "Out2"
 	
-	our @Epool_2 =	("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
-	our @Epool_3 =	("Dogman1", "Dogman2", "Dogman3"); #/opening dog scene - breakin anticipation scene - beach scene
+#defining scene pools for this grouping	
+ #racism - ambient, overt, hateful.
+  #+
+	#/12yrs -mississipi sunsett, 12yrs -mississipi lichentree, stepford -opening scene, mississipi -empty cottonfield and cage
+	our @Epool_1 =	("12_Years_a_Slave4", "12_Years_a_Slave5", "Stepford1", "Mississipi_Burning2"); 
+  #++
+	#/out -hypnotic teacup, stepford -facade room, 12yrs -slaves labouring in cottonfield, dogman -decending the stairwell, black panther -killmonger at the museeum
+	our @Epool_2 =	("Out2", "Stepford2", "12_Years_a_Slave3", "Dogman2", "Black_Panther4");	
+  #+++
+	#/dogman -opening scene, out -surgery theatre, black panther -killmongers dream, 
+	our @Epool_3 =	("Dogman1", "Out1", "Black_Panther5"); 
+  #unique
+    #/green room -mangled hand, dogman -dead body on playground, stepford -closing scene
+	our @Epool_unique_1 =	("Green_Room4", "Dogman3", "Stepford3");
+
+ #digital facism - menacing, brutal, deadly.
+  #+
+	#/green room -discovery of murder, dogman -decending the stairwell
+	our @Epool_4 =	("Green_Room1", "Dogman2");
+  #++
+	#/green room -neonazi redlaces gathering, green room -redlaces at the door
+	our @Epool_5 =	("Green_Room2", "Green_Room3");
+  #+++
+	#/12yrs -patsey is left behind, dogman -opening scene, green room -mangled hand
+	our @Epool_6 =	("12_Years_a_Slave6", "Dogman1", "Green_Room4");
+  #unique
+	#/videodrome -newflesh hand merged with gun, green room -mangled hand
+	our @Epool_unique_2 =	("videodrome2", "Green_Room4");
+
+ #institutional rascism - banal, uncaring, violent.
+  #+
+	#/black panther -killmongers appartmentblock, under the skin -threshold of the forrest, 12yrs - capitol and dungeon, requiem for a dream -seaside peir onsett 
+	our @Epool_8 =	("Black_Panther1", "Under_The_Skin2", "12_Years_a_Slave2", "Dream1");
+  #++
+	#/under the skin -burning figure in the forest, no country for old men -opening scene, black panther -killmongers dream
+	our @Epool_9 =	("Under_The_Skin1", "Too_Old_Too_Die_Young1","Black_Panther5");
+  #+++
+	#/world war Z -zombies scaling wall, no country for old men -opening scene, under the skin -threshold of the forrest
+	our @Epool_10 =	("World_War_Z2", "Too_Old_Too_Die_Young1", "Under_The_Skin2");
+  #unique
+	#/uder the skin -child at the beach,
+	our @Epool_unique_3 =	("Under_The_Skin3");
+
+ #immigration - dreams, anxities and desires
+  #+
+  	#/under the skin -threshold of the forrest, black panther -killmongers dream, requiem for a dream -seaside peir onsett
+	our @Epool_11 =	("Under_The_Skin2", "Too_Old_Too_Die_Young1","Black_Panther5", "Dream1");
+  #++	
+  	#/under the skin -burning figure in the forest, dogman -decending the stairwell, requiem for a dream -seaside pier clearly visible
+	our @Epool_12 =	("Under_The_Skin1","Dogman2", "Dream2");
 	
-	our @Epool_23 =	("Shin1", "Dogman2", "Stepford1", "Godzilla1"); #/opening scene - supermarket scene - supermarket scene
-	our @Epool_32 =	("Dogman1", "Stepford2", "Dogman3", "Shin2"); #/opening dog scene - facade room scene -  #breakin anticipation scene - beach scene
+ #context
+	#/12yrs -mississipi sunsett, 12yrs -mississipi lichentree, under the skin -threshold of the forrest, 
+	our @Epool_13 =	("12_Years_a_Slave4", "12_Years_a_Slave5", "Under_The_Skin2"); 
 	
-	our @Epool_4 =	("Godzilla1", "Shin1", "Godzilla2");
-	our @Epool_5 =	("Shin2", "Dogman1");
-	our @Epool_6 =	("Requiem1", "Stepford1", "Jarhead2", "Dogman3", "Jarhead4");
-	our @Epool_8 =	("World_War_Z1", "World_War_Z2","Under_The_Skin2"); #/zombie wall
-	our @Epool_9 =	("Dogman2", "Stepford2", "Under_The_Skin3", "Out2", "Cure2"); #
-	our @Epool_10 =	("Stepford2", "Dogman2", "Requiem1"); #
-	our @Epool_11 =	("Under_The_Skin1", "Under_The_Skin2", "Under_The_Skin3",); #
-	
+#movie specific pools
+ #stepford wives
+	#/stepford -opening scene, stepford -facade room, stepford -closing scene,
+	our @Epool_movie1 =	("Stepford1", "Stepford2", "Stepford3");
+ #world war z
+	#/world war Z -zombies scaling wall, world war Z -zombies scaling wall
+	our @Epool_movie2 =	("World_War_Z2", "World_War_Z1",);
+
 sub create_groupingE {
 	#
 	@racist_content = (
 	##	cluster				object				rating		+ scenearray				++ scenearray	
-		["null",			"racist content",	"1", 		$Epool_1 [$Erand_three],	"null"],
+		["null",			"racist content",	"1", 		$Epool_1 [$Erand_four],	$Epool_2 [$Erand_five]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" white supremacy ","$Eword[9]",	"${$Esig_ref}[20]",	"${$Efunc_ref}[22]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" floyd ",			"$Eword[1]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[24]",	"${$Estat_ref}[9]",		"$Etime[0]",	"null"],
-		[" black lives matter","$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[4]",		"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" blm ",			"$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[4]",		"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" white supremacy ","$Eword[9]",	"${$Esig_ref}[20]",	"${$Efunc_ref}[22]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_5 [$Erand_two]],
+		[" floyd ",			"$Eword[1]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[24]",	"${$Estat_ref}[9]",		"$Etime[0]",	$Epool_3 [0]],
+		[" black lives matter","$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[4]",		"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_3 [$Erand_three]],
+		[" blm ",			"$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[4]",		"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_3 [$Erand_three]],
 		[" racism ",		"$Eword[3]",	"${$Esig_ref}[20]",	"${$Efunc_ref}[8]",		"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 		[" racist ",		"$Eword[3]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[25]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" alien ",			"$Eword[3]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[24]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" aliens ",		"$Eword[3]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[24]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" sanctuary ",		"$Eword[3]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[28]",	"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_2 [2]],
-		[" heartland ",		"$Eword[1]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_2 [2]],
-		[" suburb",			"$Eword[3]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[29]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_2 [$Erand_three]],
+		[" sanctuary ",		"$Eword[3]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[28]",	"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_3 [2]],
+		[" heartland ",		"$Eword[1]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_2 [1]],
+		[" suburb",			"$Eword[3]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[29]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_movie1 [$Erand_three]],
 		[" send her back ",	"$Eword[7]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[33]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 		[" send back ",		"$Eword[7]",	"${$Esig_ref}[9]",	"${$Efunc_ref}[33]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" kkk ",			"$Eword[1]",	"${$Esig_ref}[5]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" critical race theory ",	"$Eword[9]","${$Esig_ref}[21]","${$Efunc_ref}[4]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" kanye ",			"$Eword[1]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[25]",	"${$Estat_ref}[8]",				"$Etime[0]",	"null"],
+		[" kkk ",			"$Eword[1]",	"${$Esig_ref}[5]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_5 [$Erand_two]],
+		[" critical race theory ",	"$Eword[9]","${$Esig_ref}[21]","${$Efunc_ref}[4]",	"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_2 [3]],
+		[" kanye ",			"$Eword[1]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[25]",	"${$Estat_ref}[8]",		"$Etime[0]",	"null"],
 	#
 	);
 	@border_control = (
 	##	cluster				object				rating		+ scenearray				++ scenearray	
-		["null", 			"border control", 	"1", 		$Epool_10 [$Erand_three], 	$Epool_8 [$Erand_three]],
+		["null", 			"border control", 	"1", 		$Epool_8 [$Erand_three], 	$Epool_9 [$Erand_three]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" wall ",			"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
-		[" steel slat ",	"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
-		[" steel slats ",	"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
+		[" wall ",			"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_10 [$Erand_three]],
+		[" steel slat ",	"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_10 [$Erand_three]],
+		[" steel slats ",	"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_10 [$Erand_three]],
 		[" travel ban ",	"$Eword[3]",	"${$Esig_ref}[12]",	"${$Efunc_ref}[21]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 		[" Smuggling ",		"$Eword[3]",	"${$Esig_ref}[10]",	"${$Efunc_ref}[5]",		"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
 		[" trafficking ",	"$Eword[3]",	"${$Esig_ref}[10]",	"${$Efunc_ref}[5]",		"${$Estat_ref}[1]",		"$Etime[0]",	"null"],
-		[" southern border ","$Eword[5]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" fence ",			"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_8 [$Erand_three]],
-		[" border patrol ",	"$Eword[5]",	"${$Esig_ref}[16]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
-		[" caravans ",		"$Eword[6]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" ice ",			"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[9]",		"$Etime[0]",	$Epool_11 [2]],
-		[" ICEgov ",		"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[9]",		"$Etime[0]",	$Epool_11 [2]],
+		[" southern border ","$Eword[5]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_10 [1]],
+		[" fence ",			"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_10 [$Erand_three]],
+		[" border patrol ",	"$Eword[5]",	"${$Esig_ref}[16]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_10 [$Erand_three]],
+		[" caravans ",		"$Eword[6]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_11 [$Erand_three]],
+		[" ice ",			"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[9]",		"$Etime[0]",	@Epool_unique_3 [0]],
+		[" ICEgov ",		"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[9]",		"$Etime[0]",	@Epool_unique_3 [0]],
 		[" cbp ",			"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 		[" deport",			"$Eword[3]",	"${$Esig_ref}[23]",	"${$Efunc_ref}[8]",		"${$Estat_ref}[6]",		"$Etime[0]",	"null"],
 		#["  ",				"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",		"${$Estat_ref}[0]",		"$Etime[0]",	"null"],
@@ -287,16 +333,16 @@ sub create_groupingE {
 	#
 	@immigration = (
 	##	cluster				object				rating		+ scenearray				++ scenearray	
-		["null",			"immigration", 		"1", 		$Epool_10 [$Erand_four], 	$Epool_5[$Erand_two]],
+		["null",			"immigration", 		"1", 		$Epool_11 [$Erand_four], 	$Epool_12[$Erand_three]],
 	#
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
-		[" anchor babies ", "$Eword[9]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[33]",	"${$Estat_ref}[8]",		"$Etime[0]",	$Epool_11 [2]],
+		[" anchor babies ", "$Eword[9]",	"${$Esig_ref}[14]",	"${$Efunc_ref}[33]",	"${$Estat_ref}[8]",		"$Etime[0]",	$Epool_12[0]],
 		[" refugee ",		"$Eword[3]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		[" refugees ",		"$Eword[4]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		[" birthright citizenship ","$Eword[9]","${$Esig_ref}[14]","${$Efunc_ref}[19]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 		[" immigrant",		"$Eword[3]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		[" immigration ",	"$Eword[3]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
-		[" alien",			"$Eword[4]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
+		[" alien",			"$Eword[4]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_12[0]],
 		[" caravan",		"$Eword[4]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		[" migrant",		"$Eword[4]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[14]",	"${$Estat_ref}[3]",		"$Etime[0]",	"null"],
 		[" daca ",			"$Eword[3]",	"${$Esig_ref}[20]",	"${$Efunc_ref}[1]",		"${$Estat_ref}[8]",		"$Etime[0]",	"null"],
@@ -306,12 +352,11 @@ sub create_groupingE {
 	#
 	@Econtext = (
 	##	cluster				object				rating		+ scenearray				++ scenearray	
-		["null",			"context",			"1",		$Epool_4 [$Erand_three],	"null"],
+		["null",			"context",			"1",		$Epool_13 [$Erand_three],	"null"],
 	#
 	## 0 match				1 wordtype	 	2 signification		3 function				4 status				5 timeperiod	+++ scenearray		
 		[" riot",			"$Eword[3]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[1]",	"${$Estat_ref}[9]",			"$Etime[0]",	"null"],
 		[" protest",		"$Eword[3]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[4]",	"${$Estat_ref}[3]",			"$Etime[0]",	"null"],
-		[" charlottesville ","$Eword[1]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[1]",	"${$Estat_ref}[9]",			"$Etime[0]",	"null"],
 		[" division ",		"$Eword[9]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[19]","${$Estat_ref}[16]",		"$Etime[0]",	"null"],
 		[" hate ",			"$Eword[3]",	"${$Esig_ref}[21]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[16]",		"$Etime[0]",	"null"],
 		[" activist",		"$Eword[4]",	"${$Esig_ref}[3]",	"${$Efunc_ref}[4]",	"${$Estat_ref}[3]",			"$Etime[0]",	"null"],
@@ -328,6 +373,7 @@ sub create_groupingE {
 		[" black workers ",	"$Eword[9]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[16]",		"$Etime[0]",	"null"],
 		[" synagogue ",		"$Eword[5]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[23]","${$Estat_ref}[3]",			"$Etime[0]",	"null"],
 		[" jewish ",		"$Eword[2]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[2]",	"${$Estat_ref}[3]",			"$Etime[0]",	"null"],
+		[" charlottesville ","$Eword[1]",	"${$Esig_ref}[7]",	"${$Efunc_ref}[1]",	"${$Estat_ref}[9]",			"$Etime[0]",	"null"],
 		#["  ",				"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",		"${$Estat_ref}[0]",		"$Etime[0]",	"null"],
 	);	
 	#		
