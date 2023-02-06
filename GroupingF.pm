@@ -176,19 +176,79 @@ use Data::Dumper qw(Dumper);
 	our $Frand_four 		= int(rand(4));
 	our $Frand_three 		= int(rand(3));
 	our $Frand_two 			= int(rand(2));
-	our @Fpool_1 = ("Out1", "Out2", "Stepford2"); #/surgery scene, teacup on tv scene
-	our @Fpool_2 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
-	our @Fpool_3 = ("Dogman1", "Shin2", "Dogman3", "Under_The_Skin1"); #/dog opening - ?? - beach burial
-	our @Fpool_4 = ("Godzilla1", "Dogman1", "Godzilla2",); #/godzilla suspense scenes
-	our @Fpool_5 = ("Shin2", "Dogman1"); #/american abominations in full view
-	#our @Fpool_6 = ("Castle_Rock1", "Clemency1", "Out2", "Dogman2"); #/execution theartres
-	our @Fpool_6 = ("Castle_Rock1", "Clemency1", "Under_The_Skin1", "Out2", "Dogman2"); #/execution theartres
-	our @Fpool_7 = ("Lovecraft_Country1", "Lovecraft_Country2"); #/sundown chase scene - tunnel curse by cop scene
-	our @Fpool_8 = ("World_War_Z1", "World_War_Z2","Under_The_Skin2"); #/zombie wall
-	our @Fpool_9 = ("Dogman2", "Stepford2", "Under_The_Skin3", "Out2", "Cure2"); #
-	our @Fpool_10 = ("Stepford2", "Dogman2", "Requiem1"); #
-	our @Fpool_11 = ("Under_The_Skin1", "Under_The_Skin2", "Under_The_Skin3",); #
 	
+#
+	#our @Fpool_1 = ("Out1", "Out2", "Stepford2"); #/surgery scene, teacup on tv scene
+	#our @Fpool_2 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
+	#our @Fpool_3 = ("Dogman1", "Shin2", "Dogman3", "Under_The_Skin1"); #/dog opening - ?? - beach burial
+	#our @Fpool_4 = ("Godzilla1", "Dogman1", "Godzilla2",); #/godzilla suspense scenes
+	#our @Fpool_5 = ("Shin2", "Dogman1"); #/american abominations in full view
+	#our @Fpool_6 = ("Castle_Rock1", "Clemency1", "Under_The_Skin1", "Out2", "Dogman2"); #/execution theartres
+	#our @Fpool_7 = ("Lovecraft_Country1", "Lovecraft_Country2"); #/sundown chase scene - tunnel curse by cop scene
+	#our @Fpool_8 = ("World_War_Z1", "World_War_Z2","Under_The_Skin2"); #/zombie wall
+	#our @Fpool_9 = ("Dogman2", "Stepford2", "Under_The_Skin3", "Out2", "Cure2"); #
+	#our @Fpool_10 = ("Stepford2", "Dogman2", "Requiem1"); #
+	#our @Fpool_11 = ("Under_The_Skin1", "Under_The_Skin2", "Under_The_Skin3",); #
+#
+#	---> work in progress!!
+ #gun-control - profitable, reckless, deadly.
+  #+
+	#/
+	our @Fpool_1 =	(); 
+  #++
+	#/
+	our @Fpool_2 =	();	
+
+ #crime - divicive, intimidating, horrifying 
+  #+
+	#/
+	our @Fpool_3 =	();
+  #++
+	#/
+	our @Fpool_4 =	();
+
+
+ #prosecution - unbalanced, selfinterested, unjust 
+  #+
+	#/
+	our @Fpool_5 =	();
+  #++
+	#/
+	our @Fpool_6 =	();
+  #+++
+	#/
+	our @Fpool_7 =	();
+  #unique
+	#/
+	our @Fpool_unique_3 =	();
+
+ #institutional violence - dispassionate, brutal, deadly 
+  #+
+  	#/
+	our @Fpool_8 =	();
+  #++	
+  	#/
+	our @Fpool_9 =	();
+  #+++
+	#/
+	our @Fpool_10=	();
+  #unique
+	#/
+	our @Fpool_unique_4 =	();
+		
+ #context
+	#/
+	our @Fpool_11 =	(); 
+	
+#movie specific pools
+#
+ #stepford wives
+	#/stepford -opening scene, stepford -facade room, stepford -closing scene.
+	our @Epool_movie1 =	("Stepford1", "Stepford2", "Stepford3");
+ #dogman
+	#/dogman -opening scene, dogman -decending the stairwell, dogman -dead body on playground.
+	our @Fpool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
+
 sub create_groupingF {
 	#
 	@gun_control = (
