@@ -196,7 +196,7 @@ use Data::Dumper qw(Dumper);
 #	---> work in progress!!
  #gun-control - profitable, reckless, deadly.
   #+
-	#/videodrome -creepy videodrome chamber, green room -discovery of murder, dogman -decending the stairwell,
+	#/videodrome -creepy videodrome chamber, green room -discovery of murder, dogman -decending the stairwell
 	our @Fpool_1 =	("Videodrome1","Greenroom1","Dogman2"); 
   #++
 	#/videodrome -newflesh hand merged with gun, green room -mangled hand, dogman -dead body on playground
@@ -205,7 +205,7 @@ use Data::Dumper qw(Dumper);
  #crime - divicive, intimidating, horrifying 
   #+
 	#/black panther -killmongers appartmentblock, requiem for a dream -seaside peir onsett, the host -dark waters of despair
-	our @Fpool_3 =	("Black_Panther1","Dream1","The_Host1");
+	our @Fpool_3 =	("Black_Panther1","Dream1","The_Host1",);
   #++
 	#/black panther -killmongers dream, requiem for a dream -seaside pier clearly visible, the host -the monsters lair, parasyte -flickering lights in the snow
 	our @Fpool_4 =	("Black_Panther5","Dream2","The_Host4","Parasyte1");
@@ -213,35 +213,32 @@ use Data::Dumper qw(Dumper);
 
  #prosecution - unbalanced, selfinterested, unjust 
   #+
-	#/
-	our @Fpool_5 =	("Dogman2", "12_Years_a_Slave2" );
+	#/dogman -decending the stairwell, 12yrs - capitol and dungeon, there will be blood -plainview enjoying the sea
+	our @Fpool_5 =	("Dogman2", "12_Years_a_Slave2", "There_Will_Be_Blood1");
   #++
-	#/
-	our @Fpool_6 =	("Under_The_Skin1", "12_Years_a_Slave1");
+	#/under the skin -burning figure in the forest, 12yrs - window of the illegal dungeon, parasyte -flickering lights in the snow
+	our @Fpool_6 =	("Under_The_Skin1", "12_Years_a_Slave1", "Parasyte1");
   #+++
-	#/
+	#/castle rock -curtains opening to execution chamber, clemency -execution device
 	our @Fpool_7 =	("Castle_Rock1", "Clemency1",);
   #unique
-	#/
-	our @Fpool_unique_3 =	();
+	#/the host -the monsters lair, shin godzilla -readying its maga destructive atomic lazer beam, godzilla -lurking behind a hill menacingly
+	our @Fpool_unique_3 =	("The_Host4", "Shin2", "Godzilla2");
 
  #institutional violence - dispassionate, brutal, deadly 
   #+
-  	#/
-	our @Fpool_8 =	();
+  	#/black panther -tv showing violent police action, videodrome -creepy videodrome chamber, mississipi burning -cop car chasing activists, lovecraft country -sundown car chase
+	our @Fpool_8 =	("Black_Panther2","Videodrome1","Mississipi_Burning1","Lovecraft_Country1",);
   #++	
-  	#/
-	our @Fpool_9 =	();
+  	#/the host -mass protest, lovecraft country -police harassment in underpass, shin godzilla - godzilla in the distance
+	our @Fpool_9 =	("The_Host8","Lovecraft_Country2","Shin1");
   #+++
-	#/
-	our @Fpool_10=	();
-  #unique
-	#/
-	our @Fpool_unique_4 =	();
+	#/ dogman -opening scene, videodrome -newflesh hand merged with gun, green room -mangled hand,
+	our @Fpool_10=	("Dogman1","Videodrome2","Greenroom4");
 		
  #context
 	#/
-	our @Fpool_11 =	(); 
+	our @Fpool_11 =	("Dogman2","Black_Panther2","Videodrome1","Dream1","12_Years_a_Slave2"); 
 	
 #movie specific pools
 #
@@ -249,11 +246,11 @@ use Data::Dumper qw(Dumper);
 	#/stepford -opening scene, stepford -facade room, stepford -closing scene.
 	our @Epool_movie1 =	("Stepford1", "Stepford2", "Stepford3");
  #dogman
-	#/dogman -opening scene, dogman -decending the stairwell, dogman -dead body on playground.
+	#/dogman -opening scene, -decending the stairwell, -dead body on playground.
 	our @Fpool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
  #Requiem for a Dream
-	#/dogman -opening scene, dogman -decending the stairwell, dogman -dead body on playground.
-	our @Fpool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
+	#/requiem for a dream -seaside peir onsett, -seaside pier clearly visible, -seaside pier full view transition, -seaside pier full view but distant, -seaside pier full view but close, -unbeknownst final parting
+	our @Fpool_movie2 =	("Dream1", "Dream2", "Dream3","Dream4", "Dream5", "Dream6");
 sub create_groupingF {
 	#
 	@gun_control = (
