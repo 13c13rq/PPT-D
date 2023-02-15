@@ -181,9 +181,12 @@ use Data::Dumper qw(Dumper);
 	#our @Fpool_1 = ("Out1", "Out2", "Stepford2"); #/surgery scene, teacup on tv scene
 	#our @Fpool_2 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
 	#our @Fpool_3 = ("Dogman1", "Shin2", "Dogman3", "Under_The_Skin1"); #/dog opening - ?? - beach burial
+	
 	#our @Fpool_4 = ("Godzilla1", "Dogman1", "Godzilla2",); #/godzilla suspense scenes
+	
 	#our @Fpool_5 = ("Shin2", "Dogman1"); #/american abominations in full view
 	#our @Fpool_6 = ("Castle_Rock1", "Clemency1", "Under_The_Skin1", "Out2", "Dogman2"); #/execution theartres
+	
 	#our @Fpool_7 = ("Lovecraft_Country1", "Lovecraft_Country2"); #/sundown chase scene - tunnel curse by cop scene
 	#our @Fpool_8 = ("World_War_Z1", "World_War_Z2","Under_The_Skin2"); #/zombie wall
 	#our @Fpool_9 = ("Dogman2", "Stepford2", "Under_The_Skin3", "Out2", "Cure2"); #
@@ -193,31 +196,31 @@ use Data::Dumper qw(Dumper);
 #	---> work in progress!!
  #gun-control - profitable, reckless, deadly.
   #+
-	#/
-	our @Fpool_1 =	(); 
+	#/videodrome -creepy videodrome chamber, green room -discovery of murder, dogman -decending the stairwell,
+	our @Fpool_1 =	("Videodrome1","Greenroom1","Dogman2"); 
   #++
-	#/
-	our @Fpool_2 =	();	
+	#/videodrome -newflesh hand merged with gun, green room -mangled hand, dogman -dead body on playground
+	our @Fpool_2 =	("Videodrome2","Greenroom4","Dogman3");	
 
  #crime - divicive, intimidating, horrifying 
   #+
-	#/
-	our @Fpool_3 =	();
+	#/black panther -killmongers appartmentblock, requiem for a dream -seaside peir onsett, the host -dark waters of despair
+	our @Fpool_3 =	("Black_Panther1","Dream1","The_Host1");
   #++
-	#/
-	our @Fpool_4 =	();
+	#/black panther -killmongers dream, requiem for a dream -seaside pier clearly visible, the host -the monsters lair, parasyte -flickering lights in the snow
+	our @Fpool_4 =	("Black_Panther5","Dream2","The_Host4","Parasyte1");
 
 
  #prosecution - unbalanced, selfinterested, unjust 
   #+
 	#/
-	our @Fpool_5 =	();
+	our @Fpool_5 =	("Dogman2", "12_Years_a_Slave2" );
   #++
 	#/
-	our @Fpool_6 =	();
+	our @Fpool_6 =	("Under_The_Skin1", "12_Years_a_Slave1");
   #+++
 	#/
-	our @Fpool_7 =	();
+	our @Fpool_7 =	("Castle_Rock1", "Clemency1",);
   #unique
 	#/
 	our @Fpool_unique_3 =	();
@@ -248,7 +251,9 @@ use Data::Dumper qw(Dumper);
  #dogman
 	#/dogman -opening scene, dogman -decending the stairwell, dogman -dead body on playground.
 	our @Fpool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
-
+ #Requiem for a Dream
+	#/dogman -opening scene, dogman -decending the stairwell, dogman -dead body on playground.
+	our @Fpool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
 sub create_groupingF {
 	#
 	@gun_control = (
