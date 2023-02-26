@@ -35,4 +35,4 @@ $active_mod is the modifier of the dominant grouping. $prime_em_sett and $sec_em
 
 #
 
-This Project is my attempt at creating a holistic work of art, not so much an objective scientific examination. In the Future when I find the necessary time and resources, I will probably make use of some more advanced methods than simple regex matching (which is sufficient for what I wish to achieve here), too create the substrate from which I create my next visual output. This is something I look forward to (:
+This Project is my attempt at creating a holistic work of art, not so much an objective scientific examination. In the Future when I find the necessary time and resources, I will probably make use of more advanced methods than simple regex matching (which is sufficient for what I wish to achieve here), to create the substrate for my visual output, whatever it may be.
