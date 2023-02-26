@@ -202,8 +202,8 @@ use Data::Dumper qw(Dumper);
 		"null", 					#[1]
 		"11:2020:012021",			#[2] #post election
 		"01:2017:10:2020",			#[3] #pre election
-		"01:2021:01:2021",			#[4] #capitol riot
-		"01:2020:01:2021",			#[5] #election period
+		"01:2021:02:2021",			#[4] #capitol riot
+		"01:2020:02:2021",			#[5] #election period
 	);	
 	
 	
@@ -324,8 +324,8 @@ sub create_groupingE {
 		[" fence ",			"$Eword[5]",	"${$Esig_ref}[2]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_10 [$Erand_three]],
 		[" border patrol ",	"$Eword[5]",	"${$Esig_ref}[16]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[2]",		"$Etime[0]",	$Epool_10 [$Erand_three]],
 		[" caravans ",		"$Eword[6]",	"${$Esig_ref}[4]",	"${$Efunc_ref}[15]",	"${$Estat_ref}[3]",		"$Etime[0]",	$Epool_11 [$Erand_three]],
-		[" ice ",			"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[9]",		"$Etime[0]",	@Epool_unique_3 [0]],
-		[" ICEgov ",		"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[9]",		"$Etime[0]",	@Epool_unique_3 [0]],
+		[" ice ",			"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[9]",		"$Etime[0]",	$Epool_unique_3 [0]],
+		[" ICEgov ",		"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[9]",		"$Etime[0]",	$Epool_unique_3 [0]],
 		[" cbp ",			"$Eword[1]",	"${$Esig_ref}[11]",	"${$Efunc_ref}[30]",	"${$Estat_ref}[2]",		"$Etime[0]",	"null"],
 		[" deport",			"$Eword[3]",	"${$Esig_ref}[23]",	"${$Efunc_ref}[8]",		"${$Estat_ref}[6]",		"$Etime[0]",	"null"],
 		#["  ",				"$Eword[0]",	"${$Esig_ref}[0]",	"${$Efunc_ref}[0]",		"${$Estat_ref}[0]",		"$Etime[0]",	"null"],
@@ -409,9 +409,9 @@ sub create_groupingEo{
 	our $immigration_ref  	= \@immigration;	
 	our $Econtext_ref 		= \@Econtext;
 	our @objectsE = ($racist_content_ref, $border_control_ref,	$immigration_ref, $Econtext_ref);
-	#print Dumper @objectsE;
+	print Dumper @objectsE;
 };
 	
-#create_groupingEo;
+create_groupingEo;
 1;
 END

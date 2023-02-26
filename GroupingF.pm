@@ -157,7 +157,7 @@ use Data::Dumper qw(Dumper);
 	our @Ftime =	(
 		"null", 					#[0]			
 		"null", 					#[1]
-		"01:2020:01:2021",			#[2] #the pandemic
+		"01:2020:02:2021",			#[2] #the pandemic
 		"01:2017:01:2020"			#[3] #before pandemic
 	);	
 	
