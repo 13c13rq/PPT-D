@@ -190,11 +190,11 @@ use Data::Dumper qw(Dumper);
 
  #crime - divicive, intimidating, horrifying 
   #+
-	#/black panther -killmongers appartmentblock, requiem for a dream -seaside peir onsett, the host -dark waters of despair
+	#/black panther -killmongers appartmentblock, requiem for a dream -seaside pier onset, the host -dark waters of despair
 	our @Fpool_3 =	("Black_Panther1","Dream1","The_Host1",);
   #++
 	#/black panther -killmongers dream, requiem for a dream -seaside pier clearly visible, the host -the monsters lair, parasyte -flickering lights in the snow
-	our @Fpool_4 =	("Black_Panther5","Dream2","The_Host4","Parasyte1");
+	our @Fpool_4 =	("Black_Panther5","Dream2","The_Host4","Parasite1");
 
 
  #prosecution - unbalanced, selfinterested, unjust 
@@ -202,8 +202,8 @@ use Data::Dumper qw(Dumper);
 	#/dogman -decending the stairwell, 12yrs - capitol and dungeon, there will be blood -plainview enjoying the sea
 	our @Fpool_5 =	("Dogman2", "12_Years_a_Slave2", "There_Will_Be_Blood1");
   #++
-	#/under the skin -burning figure in the forest, 12yrs - window of the illegal dungeon, parasyte -flickering lights in the snow
-	our @Fpool_6 =	("Under_The_Skin1", "12_Years_a_Slave1", "Parasyte1");
+	#/under the skin -burning figure in the forest, 12yrs - window of the illegal dungeon, parasite -flickering lights in the snow
+	our @Fpool_6 =	("Under_The_Skin1", "12_Years_a_Slave1", "Parasite1");
   #+++
 	#/castle rock -curtains opening to execution chamber, clemency -execution device
 	our @Fpool_7 =	("Castle_Rock1", "Clemency1",);
@@ -226,7 +226,7 @@ use Data::Dumper qw(Dumper);
 	our @Fpool_unique_4 =	();
 
  #context
-	#/dogman -decending the stairwell, black panther -tv showing violent police action, videodrome -creepy videodrome chamber, requiem for a dream -seaside peir onsett,  12yrs - capitol and dungeon,
+	#/dogman -decending the stairwell, black panther -tv showing violent police action, videodrome -creepy videodrome chamber, requiem for a dream -seaside pier onset,  12yrs - capitol and dungeon,
 	our @Fpool_11 =	("Dogman2","Black_Panther2","Videodrome1","Dream1","12_Years_a_Slave2"); 
 
  #movie specific pools
@@ -238,7 +238,7 @@ use Data::Dumper qw(Dumper);
 	#/dogman -opening scene, -decending the stairwell, -dead body on playground.
 	our @Fpool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
  #Requiem for a Dream
-	#/requiem for a dream -seaside peir onsett, -seaside pier clearly visible, -seaside pier full view transition, -seaside pier full view but distant, -seaside pier full view but close, -unbeknownst final parting
+	#/requiem for a dream -seaside pier onset, -seaside pier clearly visible, -seaside pier full view transition, -seaside pier full view but distant, -seaside pier full view but close, -unbeknownst final parting
 	our @Fpool_movie3 =	("Dream1", "Dream2", "Dream3","Dream4", "Dream5", "Dream6");
 #
 	
@@ -372,9 +372,9 @@ sub create_groupingFo{
 	our $Fcontext_ref  				= \@Fcontext;	
 	
 	our @objectsF = ($gun_control_ref, $crime_ref, $prosecution_ref, $institutional_violence_ref,  $Fcontext_ref);
-	print Dumper @objectsF;
+	#print Dumper @objectsF;
 };
 	
-create_groupingFo;
+#create_groupingFo;
 1;
 END

@@ -244,7 +244,7 @@ use Data::Dumper qw(Dumper);
 	#/stepford -opening scene, there will be blood -plainview enjoying the sea, punch drunk love -emerging into the open, punch drunk love -shopping
 	our @Ipool_3 = ("Stepford1", "There_Will_Be_Blood1", "Punch-Drunk2", "Punch-Drunk4");
   #++
-	#/black panther -killmongers dream, punch drunk love -pudding, requiem for a dream -seaside peir onsett -seaside pier clearly visible, stepford -closing scene
+	#/black panther -killmongers dream, punch drunk love -pudding, requiem for a dream -seaside pier onset -seaside pier clearly visible, stepford -closing scene
 	our @Ipool_4 =	("Black_Panther5", "Punch-Drunk5", "Dream1", "Dream2", "Stepford3");
   #unique -precious dreams
 	#/requiem for a dream -seaside pier full view but distant, -seaside pier full view but close, punch drunk love -pudding
@@ -276,7 +276,7 @@ use Data::Dumper qw(Dumper);
 	our @Ipool_10 =	();
 
  #context
-	#/dogman -decending the stairwell, videodrome -creepy videodrome chamber, requiem for a dream -seaside peir onsett, punchdrunk -barry in a dismal environment
+	#/dogman -decending the stairwell, videodrome -creepy videodrome chamber, requiem for a dream -seaside pier onset, punchdrunk -barry in a dismal environment
 	our @Ipool_11 =	("Dogman2","Videodrome1","Dream1","Punch-Drunk1"); 
 
  #movie specific pools
@@ -288,7 +288,7 @@ use Data::Dumper qw(Dumper);
 	#/dogman -opening scene, -decending the stairwell, -dead body on playground.
 	our @Ipool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
  #requiem for a dream
-	#/requiem for a dream -seaside peir onsett, -seaside pier clearly visible, -seaside pier full view transition, -seaside pier full view but distant, -seaside pier full view but close, -unbeknownst final parting
+	#/requiem for a dream -seaside pier onset, -seaside pier clearly visible, -seaside pier full view transition, -seaside pier full view but distant, -seaside pier full view but close, -unbeknownst final parting
 	our @Ipool_movie3 =	("Dream1", "Dream2", "Dream3","Dream4", "Dream5", "Dream6");
  #greenroom
 	#/green room -discovery of murder, -neonazi redlaces gathering, -redlaces at the door, -mangled hand
@@ -438,11 +438,11 @@ sub create_groupingIo{
 	our $jan6_insurection_ref 	= \@jan6_insurection;
 	our $Icontext_ref 			= \@Icontext;
 	our @objectsI = ($divisive_content_ref, $slogans_ref, $election_denial_ref, $jan6_insurection_ref ,$Icontext_ref);
-	print Dumper @objectsI;
+	#print Dumper @objectsI;
 	
 };
 	
-create_groupingIo;
+#create_groupingIo;
 #create_groupingIv;
 1;
 END

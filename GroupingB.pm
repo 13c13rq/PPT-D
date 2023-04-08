@@ -124,14 +124,102 @@ use Data::Dumper qw(Dumper);
 	our $Brand_two 	= int(rand(2));
 	our $Bone		= 1;
 	
-	our @Bpool_1 = ("Looming1", "Looming2", "Inconvinient1"); #forshadowing - planning - executing - ground zero (floding)"WTC",
-	our @Bpool_2 = ("Wolverine1", "Terminator1", "Inconvinient1"); #abstract / diffuse / nuclear -> explicit in last source
+	#our @Bpool_1 = ("Looming1", "Looming2", "Inconvinient1"); #forshadowing - planning - executing - ground zero (floding)"WTC",
+	#our @Bpool_2 = ("Wolverine1", "Terminator1", "Inconvinient1"); #abstract / diffuse / nuclear -> explicit in last source
+	#jarhead, the host, WTC
+
+#defining scene pools for this grouping		
+ #terrorist_attacks -frightening, deadly, traumatizing 
+  #+
+	#/WTC -distant wtc skyline at sunrise, -skyline above highway
+	our @Bpool_1 = ("WTC1", "WTC3"); 
+  #++
+	#/WTC - twin towers from below, -commuter gazing at wtc from a ferry
+	our @Bpool_2 = ("WTC5", "WTC2");	
+  #unique -
+	#/
+	#our @Bpool_unique_1 = ();
+  
+ #terrorist_organizations - threatening, adversarial, exploitable 
+  #+
+	#/the looming tower -9/11 perpetrators using a flight simlator, WTC - shadow of a 747 moving across a building
+	our @Bpool_3 = ("Looming1", "WTC4");
+  #++
+	#/an inconvinient truth  -rising sealevel dramatically illustrated above ground zero, the looming tower -found footage of 9/11 perpetrator at checkin
+	our @Bpool_4 =	("Inconvinient1", "Looming2",);
+  #unique -
+	#/
+	#our @Bpool_unique_2 = ();
+  #unique -
+	#/
+	#our @Bpool_unique_3 = ();
+	
+ #war_on_Terror - retaliatory, profitable, deadly
+  #+
+	#/the wolverine - distant view of b21 aproaching nagasaki bay
+	our @Bpool_5 =	("Wolverine1");
+  #++
+	#/
+	#our @Bpool_6 =	();
+  #+++
+	#/...
+	#our @Bpool_7 =	();
+
+ #islamophobia - racist, divisive, dangerous
+  #+
+  	#/dogman -opening scene, godzilla -lurking behind a hill menacingly
+	our @Bpool_8 =	("Dogman1", "Godzilla2");
+  #++	
+  	#/
+	#our @Bpool_9 =	();
+  #+++
+	#/...
+	#our @Bpool_10 =	();
+	
+ #terror_related_rhetoric - intimidating, frgihtening, exploitable
+  #+
+  	#/the looming tower -9/11 perpetrators using a flight simlator, an inconvinient truth  -rising sealevel dramatically illustrated above ground zero, the looming tower -found footage of 9/11 perpetrator at checkin
+	our @Bpool_11 =	("Looming1","Inconvinient1","Looming2");
+  #++	
+  	#/
+	#our @Bpool_12 =	();
+  #+++
+	#/...
+	#our @Bpool_13 =	();
+
+ #context
+	#/
+	#our @Bpool_14 =	(); 
+
+ #movie specific pools
+ #
+ #stepford wives
+	#/stepford -opening scene, -facade room, -closing scene.
+	our @Bpool_movie1 =	("Stepford1", "Stepford2", "Stepford3");
+ #dogman
+	#/dogman -opening scene, -decending the stairwell, -dead body on playground.
+	our @Bpool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
+ #requiem for a dream
+	#/requiem for a dream -seaside pier onset, -seaside pier clearly visible, -seaside pier full view transition, -seaside pier full view but distant, -seaside pier full view but close, -unbeknownst final parting
+	our @Bpool_movie3 =	("Dream1", "Dream2", "Dream3","Dream4", "Dream5", "Dream6");
+ #greenroom
+	#/green room -discovery of murder, -neonazi redlaces gathering, -redlaces at the door, -mangled hand
+	our @Bpool_movie4 =	("Greenroom1", "Greenroom2", "Greenroom3", "Greenroom4");
+ #tere will blood
+	#/there will be blood -plainview enjoying the sea, -empty bowling alley at plainviews estate, - finished in the bowling alley
+	our @Bpool_movie5 =	("There_Will_Be_Blood1", "There_Will_Be_Blood2", "There_Will_Be_Blood3");
+ #world trade center
+	#/WTC -distant wtc skyline at sunrise, -commuter gazing at wtc from a ferry, -skyline above highway, shadow of plane moving across a building, - twin towers from below
+	our @Bpool_movie6 = ("WTC1","WTC2","WTC3","WTC4","WTC5");
+#
+
+	
 
 sub create_groupingB {
 	#
 	@terrorist_attacks = (
 	##	cluster								object					rating	+ scenearray				++ scenearray	
-		["international_terrorism",			"terrorist_attacks",	"1", 	$Bpool_1 [$Brand_three],	"null"],
+		["international_terrorism",			"terrorist_attacks",	"1", 	$Bpool_1 [$Brand_two],		$Bpool_2 [$Brand_two]],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" 9 11 ",				"$Bword[3]",	"${$Bsig_ref}[7]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[5]",		"$Btime[0]",	"null"],
@@ -142,7 +230,7 @@ sub create_groupingB {
 	#
 	@terrorist_organizations = (
 	##	cluster								object						rating	+ scenearray				++ scenearray	
-		["international_terrorism",			"terrorist organizations",	"1", 	$Bpool_1 [$Brand_three],	"null"],
+		["international_terrorism",			"terrorist organizations",	"1", 	$Bpool_3 [$Brand_two],		$Bpool_4 [$Brand_two]],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" al qaeda ",			"$Bword[1]",	"${$Bsig_ref}[3]",	"${$Bfunc_ref}[6]",	"${$Bstat_ref}[2]",		"$Btime[1]",	"null"],
@@ -163,7 +251,7 @@ sub create_groupingB {
 	#
 	@war_on_Terror = (
 	##	cluster								object				rating	+ scenearray	++ scenearray	
-		["international_terrorism",			"war_on_Terror",	"1", 	$Bpool_2 [0],	"null"],
+		["international_terrorism",			"war_on_Terror",	"1", 	$Bpool_5 [0],	"null"],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" drone ",				"$Bword[5]",	"${$Bsig_ref}[8]",	"${$Bfunc_ref}[7]",	"${$Bstat_ref}[9]",		"$Btime[0]",	"null"],
@@ -172,7 +260,7 @@ sub create_groupingB {
 	#
 	@islamophobia = (
 	##	cluster								object			rating	+ scenearray			++ scenearray	
-		["context and islamophobia",		"islamophobia",	"1", 	$Bpool_1 [$Brand_three], "null"],
+		["context and islamophobia",		"islamophobia",	"1", 	$Bpool_8 [$Brand_two], "null"],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" middle east ",		"$Bword[3]",	"${$Bsig_ref}[4]",	"${$Bfunc_ref}[0]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],
@@ -184,7 +272,7 @@ sub create_groupingB {
 	#
 	@terror_related_rhetoric = (
 	##	cluster								object						rating		+ scenearray				++ scenearray	
-		["context and islamophobia",		"terror_related_rhetoric",	"1", 		$Bpool_1 [$Brand_three],	"null"],
+		["context and islamophobia",		"terror_related_rhetoric",	"1", 		$Bpool_11 [$Brand_three],	"null"],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" extremist ",			"$Bword[3]",	"${$Bsig_ref}[2]",	"${$Bfunc_ref}[4]",	"${$Bstat_ref}[12]",	"$Btime[1]",	"null"],
@@ -198,7 +286,7 @@ sub create_groupingB {
 	#
 	@context = (
 	##	cluster								object					rating		+ scenearray				++ scenearray	
-		["context and islamophobia",		"context",				"2", 		$Bpool_1 [$Brand_three],	"null"],
+		["context and islamophobia",		"context",				"2", 		$Bpool_8 [$Brand_two],	"null"],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" bombing ",			"$Bword[3]",	"${$Bsig_ref}[9]",	"${$Bfunc_ref}[1]",	"${$Bstat_ref}[0]",		"$Btime[0]",	"null"],

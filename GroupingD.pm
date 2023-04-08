@@ -174,7 +174,7 @@ use Data::Dumper qw(Dumper);
 	our @Dtime =	(
 		"null", 					#[0]			
 		"null", 					#[1]
-		"01:2020:01:2021",			#[2] #the pandemic
+		"01:2020:02:2021",			#[2] #the pandemic
 		"01:2017:01:2020"			#[3] #before pandemic
 	);	
 	
@@ -192,22 +192,82 @@ use Data::Dumper qw(Dumper);
 	our $Drand_four 		= int(rand(4));
 	our $Drand_three 		= int(rand(3));
 	our $Drand_two 			= int(rand(2));
-	our @Dpool_1 = ("Requiem1", "Requiem2");
-	our @Dpool_2 = ("Cure2", "Cure3");
-	our @Dpool_3 = ("Covenant1", "Covenant2", "Covenant3");
 	
-	#our $Erand_four 		= int(rand(4));
-	#our $Erand_three 		= int(rand(3));
-	#our $Erand_two 			= int(rand(2));
+	#our @Dpool_1 = ("Requiem1", "Requiem2");
+	#our @Dpool_2 = ("Cure2", "Cure3");
+	#our @Dpool_3 = ("Covenant1", "Covenant2", "Covenant3");
+	#our @Dpool_4 = ("The_Host1", "Covenant2", "Covenant3");
+	
 	#our @Epool_1 = ("Out1", "Out2"); #/surgery scene, teacup on tv scene
 	#our @Epool_2 = ("Stepford1", "Stepford2", "Stepford3"); #/opening scene - facade room scene - supermarket scene
 	#our @Epool_3 = ("Dogman1", "Dogman2", "Lovecraft_Country1"); #/budoir scene - facade room scene - supermarket scene
 	#our @Epool_4 = ("Shin1", "Shin2", "Godzilla1", "Godzilla2");
+	
+#defining scene pools for this grouping		
+ #opioids -
+  #+
+	#/requiem for a dream -seaside pier onset, -seaside pier clearly visible
+	our @Dpool_1 = ("Dream1", "Dream2"); 
+  #++
+	#/requiem for a dream -unbeknownst final parting, parasite -morse code in the snow 
+	our @Dpool_2 = ("Dream6","Parasite1");	
+  #unique -
+	#/
+	our @Dpool_unique_1 = ();
+  
+ #healthcare -
+  #+
+	#/requiem for a dream -seaside pier onset, a cure for wellness -hospital hallway, a cure for wellness - bodies suspended in liquid
+	our @Dpool_3 = ("Cure2", "Dream1", "Cure3");
+  #++
+	#/a cure for wellness - bodies suspended in liquid, requiem for a dream -seaside pier clearly visible, a cure for wellness -hospital hallway
+	our @Dpool_4 =	("Cure3", "Cure2", "Dream2");;
+  #unique -
+	#/
+	our @Dpool_unique_2 = ();
+  #unique -
+	#/
+	our @Dpool_unique_3 = ();
+	
+ #pandemic -
+  #+
+	#/the host - Gang-du quarantined in bag, the host -troops in hazmat suits, alien covenant -spaceship in dock discharging pathogen 
+	our @Dpool_5 =	("The_Host3", "The_Host6", "Covenant1");
+  #++
+	#/the host - Gang-du quarantined in bag, alien covenant -spaceship discharging pathogen from below, alien covenant -pathogen cloud descending upon the engineers
+	our @Dpool_6 =	("The_Host3", "Covenant2", "Covenant3");
+  #+++
+	#/...
+	our @Dpool_7 =	();
+
+ #context
+	#/
+	our @Dpool_8 =	(); 
+
+ #movie specific pools
+ #
+ #stepford wives
+	#/stepford -opening scene, -facade room, -closing scene.
+	our @Dpool_movie1 =	("Stepford1", "Stepford2", "Stepford3");
+ #dogman
+	#/dogman -opening scene, -decending the stairwell, -dead body on playground.
+	our @Dpool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
+ #requiem for a dream
+	#/requiem for a dream -seaside pier onset, -seaside pier clearly visible, -seaside pier full view transition, -seaside pier full view but distant, -seaside pier full view but close, -unbeknownst final parting
+	our @Dpool_movie3 =	("Dream1", "Dream2", "Dream3","Dream4", "Dream5", "Dream6");
+ #greenroom
+	#/green room -discovery of murder, -neonazi redlaces gathering, -redlaces at the door, -mangled hand
+	our @Dpool_movie4 =	("Greenroom1", "Greenroom2", "Greenroom3", "Greenroom4");
+ #tere will blood
+	#/there will be blood -plainview enjoying the sea, -empty bowling alley at plainviews estate, - finished in the bowling alley
+	our @Dpool_movie5 =	("There_Will_Be_Blood1", "There_Will_Be_Blood2", "There_Will_Be_Blood3");
+#
+	
 sub create_groupingD {
 	#
 	@opioids = (
 	##	cluster					object				rating		+ scenearray				++ scenearray	
-		["null",				"opioids",			"1",		$Dpool_1 [0], 				"null"],
+		["null",				"opioids",			"1",		$Dpool_1 [$Drand_two], 		$Dpool_2 [$Drand_two]],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" opioid",				"$Dword[4]",	"${$Dsig_ref}[24]",	"${$Dfunc_ref}[7]",		"${$Dstat_ref}[10]",	"$Dtime[0]",	"null"],
@@ -220,7 +280,7 @@ sub create_groupingD {
 	#
 	@healthcare = (
 	##	cluster					object				rating		+ scenearray				++ scenearray	
-		["null",				"healthcare",		"1",		$Dpool_2 [$Drand_two], 		"null"],
+		["null",				"healthcare",		"1",		$Dpool_3 [$Drand_three], 	$Dpool_4 [$Drand_three]],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" health insurance ",	"$Dword[3]",	"${$Dsig_ref}[27]",	"${$Dfunc_ref}[12]",	"${$Dstat_ref}[5]",		"$Dtime[0]",	"null"],
@@ -242,7 +302,7 @@ sub create_groupingD {
 	#
 	@pandemic = (
 	##	cluster					object				rating		+ scenearray				++ scenearray	
-		["null",				"pandemic",			"1",		$Dpool_3 [$Drand_three], 	"null"],
+		["null",				"pandemic",			"1",		$Dpool_5 [$Drand_three], 	$Dpool_6 [$Drand_three]],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" cdc ",				"$Dword[1]",	"${$Dsig_ref}[5]",	"${$Dfunc_ref}[18]",	"${$Dstat_ref}[12]",	"$Dtime[2]",	"null"],
@@ -267,7 +327,7 @@ sub create_groupingD {
 	#
 	@Dcontext = (
 	##	cluster					object				rating		+ scenearray				++ scenearray	
-		["null",				"context",			"2",		"null",						"null"],
+		["null",				"context",			"2",		$Dpool_5 [$Drand_three],	"null"],
 	#	
 	##	0 match					1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" case",				"$Dword[5]",	"${$Dsig_ref}[15]",	"${$Dfunc_ref}[16]",	"${$Dstat_ref}[2]",		"$Dtime[2]",	"null"],

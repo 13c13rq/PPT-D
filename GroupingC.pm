@@ -139,7 +139,7 @@ use Data::Dumper qw(Dumper);
 		"null", 					#[0]			
 		"null", 					#[1]
 		"03:2020:01:2021",			#[2] # covid crash and post crash period
-		"01:2017:03:2020"			#[3] # pre covid crash
+		"01:2017:03:2020"			#[3] # pre covid
 	);	
 	
 	
@@ -148,9 +148,9 @@ use Data::Dumper qw(Dumper);
 	our $Cfunc_ref			= undef;
 	our $Cstat_ref			= undef;
 	
-	our @Cchina		= undef;
+	our @Cchina				= undef;
 	our @economic_warfare	= undef;
-	our @inflation	= undef;
+	our @inflation			= undef;
 	our @economic_decline	= undef;
 	our @economy_related_rhetoric	= undef;
 	our @fiscal_policy		= undef;
@@ -161,16 +161,95 @@ use Data::Dumper qw(Dumper);
 	our $Crand_two 		= int(rand(2));
 	our $one			= 1;
 	
-	our @Cpool_1 = ("Margin1", "Margin2", "Cure1");	#close up of analyst during discovery - trading flores in cure and Margin.
-	our @Cpool_2 = ("Parasyte1", "Requiem1");	#precarious morsecode signals & mother in red dress
+	#our @Cpool_1 = ("Margin1", "Margin2", "Cure1");	#close up of analyst during discovery - trading flores in cure and Margin.
+	#our @Cpool_2 = ("Parasite1", "Requiem1");	#precarious morsecode signals & mother in red dress
 	#our @Cpool_3 = ("Margin1", "Margin2");	#abstract / diffuse / nuclear -> explicit in last source
+	
+#defining scene pools for this grouping		
+ #Cchina -protective, escalatory, divisive
+  #+
+	#/margin call -office at night before sellout, cure for wellness - body on the trading floor
+	our @Cpool_1 = ("Margin2", "Cure1");	
+  #++
+	#/
+	our @Cpool_2 = ();	
+  #unique -
+	#/
+	our @Cpool_unique_1 = ();
+  
+ #economic_warfare -self-interested, escalatory, threatening
+  #+
+	#/margin call -office at night before sellout, watchmen -dr manhattan projecting power, the host -agent yellow
+	our @Cpool_3 = ("Margin2", "Watchmen2", "The_Host5");
+  #++
+	#/
+	our @Cpool_4 =	();
+  #unique -
+	#/
+	our @Cpool_unique_2 = ();
 
+ #inflation - reckless, greedy, irresponsible
+  #+
+	#/punch drunk love -shopping, requiem for a dream -seaside pier full view but close
+	our @Cpool_5 =	("Punch-Drunk4", "Dream5");
+  #++
+	#/punch drunk love -pudding, stepford -closing scene
+	our @Cpool_6 =	("Punch-Drunk5", "Stepford3");
+  #+++
+	#/...
+	our @Cpool_7 =	();
+
+ #fiscal_policy - frightening, deregulatory, shortsighted
+  #+
+  	#/margin call -office at night before sellout, cure for wellness - body on the trading floor
+	our @Cpool_8 =	("Margin2","Cure1");
+  #++	
+  	#/cure for wellness - body on the trading floor, margin call - peter sullivan discovers the banking crisis, margin call -office at night before sellout
+	our @Cpool_9 =	("Cure1", "Margin1", "Margin2");
+  #+++
+	#/...
+	our @Cpool_10 =	();
+	
+ #economic_decline - frightening, sad, appalling
+  #+
+  	#/requiem for a dream -seaside pier onset, punchdrunk -barry in a dismal environment, parasite -flickering lights in the snow
+	our @Cpool_11 =	("Dream1", "Punch-Drunk1", "The_Host7");
+  #++	
+  	#/requiem for a dream -unbeknownst final parting, parasyte -morsecode in the snow, the host -the monsters lair,
+	our @Cpool_12 =	("Dream6", "Parasite1", "The_Host4");
+  #+++
+	#/...
+	our @Cpool_13 =	();
+
+ #context
+	#/requiem for a dream -seaside pier onset, parasite -flickering lights in the snow, the host -perilous bridgestruct
+	our @Cpool_14 =	("Dream1", "Parasite1", "The_Host7"); 
+
+ #movie specific pools
+ #
+ #stepford wives
+	#/stepford -opening scene, -facade room, -closing scene.
+	our @Cpool_movie1 =	("Stepford1", "Stepford2", "Stepford3");
+ #dogman
+	#/dogman -opening scene, -decending the stairwell, -dead body on playground.
+	our @Cpool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
+ #requiem for a dream
+	#/requiem for a dream -seaside pier onset, -seaside pier clearly visible, -seaside pier full view transition, -seaside pier full view but distant, -seaside pier full view but close, -unbeknownst final parting
+	our @Cpool_movie3 =	("Dream1", "Dream2", "Dream3","Dream4", "Dream5", "Dream6");
+ #greenroom
+	#/green room -discovery of murder, -neonazi redlaces gathering, -redlaces at the door, -mangled hand
+	our @Cpool_movie4 =	("Greenroom1", "Greenroom2", "Greenroom3", "Greenroom4");
+ #tere will blood
+	#/there will be blood -plainview enjoying the sea, -empty bowling alley at plainviews estate, - finished in the bowling alley
+	our @Cpool_movie5 =	("There_Will_Be_Blood1", "There_Will_Be_Blood2", "There_Will_Be_Blood3");
+#
 
 sub create_groupingC {
 	#
+# Government sanctions and tarrifs
 	@Cchina = (
-	##	cluster					object				rating		+ scenearray				++ scenearray	
-		["foreign trade",		"china",			"2", 		$Cpool_1 [$Crand_three],	"null"],
+	##	cluster					object				rating		+ scenearray			++ scenearray	
+		["foreign trade",		"china",			"2", 		$Cpool_1 [$Crand_two],	"null"],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" china ",			"$Cword[1]",	"${$Csig_ref}[1]",	"${$Cfunc_ref}[11]",	"${$Cstat_ref}[5]",	"$Ctime[0]",	"null"],
@@ -183,10 +262,9 @@ sub create_groupingC {
 	
 		);
 		
-		# Government sanctions and tarrifs
-		@economic_warfare = (
-	##	cluster					object				rating		+ scenearray				++ scenearray	
-		["foreign trade",		"economic warfare",	"1", 		$Cpool_1 [$Crand_three],	"null"],
+	@economic_warfare = (
+	##	cluster					object				rating		+ scenearray			++ scenearray	
+		["foreign trade",		"economic warfare",	"1", 		$Cpool_3 [$Crand_three],	"null"],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" sanctions ",		"$Cword[4]",	"${$Csig_ref}[7]",	"${$Cfunc_ref}[2]",		"${$Cstat_ref}[1]",	"$Ctime[0]",	"null"],
@@ -199,8 +277,8 @@ sub create_groupingC {
 	
 #recession and economic decline
 	@inflation = (
-	##	cluster								object				rating		+ scenearray				++ scenearray	
-		["recession and economic decline",	"inflation",		"2",		 $Cpool_1 [$Crand_three],	"null"],
+	##	cluster								object				rating		+ scenearray			++ scenearray	
+		["recession and economic decline",	"inflation",		"2",		 $Cpool_5 [$Crand_two],	$Cpool_6 [$Crand_two]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" cut interest ",	"$Cword[8]",	"${$Csig_ref}[11]",	"${$Cfunc_ref}[1]",		"${$Cstat_ref}[4]",	"$Ctime[0]",	"null"],
@@ -218,8 +296,8 @@ sub create_groupingC {
 	#debt USMCA Relief Bill
 
 	@fiscal_policy = (
-	##	cluster									object				rating			+ scenearray	++ scenearray	
-		["recession and economic decline",		"fiscal_policy",	"1", 			$Cpool_2 [0],	"null"],
+	##	cluster									object				rating		+ scenearray			++ scenearray	
+		["recession and economic decline",		"fiscal_policy",	"1", 		$Cpool_8 [$Crand_two],	$Cpool_9 [$Crand_three]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" tax cut",		"$Cword[4]",	"${$Csig_ref}[4]",	"${$Cfunc_ref}[12]",	"${$Cstat_ref}[4]",	"$Ctime[0]",	"null"],
@@ -238,8 +316,8 @@ sub create_groupingC {
 
 
 	@economic_decline = (
-	##	cluster								object					rating		+ scenearray	++ scenearray	
-		["recession and economic decline",	"economic_decline",		"1", 		$Cpool_2 [0],	"null"],
+	##	cluster								object					rating		+ scenearray			++ scenearray	
+		["recession and economic decline",	"economic_decline",		"1", 		$Cpool_11 [$Crand_three],	$Cpool_12 [$Crand_three]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" eviction ",		"$Cword[3]",	"${$Csig_ref}[12]",	"${$Cfunc_ref}[3]",		"${$Cstat_ref}[6]",	"$Ctime[0]",	"null"],
@@ -263,7 +341,7 @@ sub create_groupingC {
 	
 	@Ccontext = (
 	##	cluster								object			rating		+ scenearray				++ scenearray	
-		["recession and economic decline",	"context",		"2", 		$Cpool_1 [$Crand_three],	"null"],
+		["recession and economic decline",	"context",		"2", 		$Cpool_14 [$Crand_three],	"null"],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" jobs ",			"$Cword[4]",	"${$Csig_ref}[17]",	"${$Cfunc_ref}[9]",		"${$Cstat_ref}[0]",	"$Ctime[3]",	"null"],

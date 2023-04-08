@@ -200,7 +200,7 @@ use Data::Dumper qw(Dumper);
 	our @Etime =	(
 		"null", 					#[0]			
 		"null", 					#[1]
-		"11:2020:012021",			#[2] #post election
+		"11:2020:01:2021",			#[2] #post election
 		"01:2017:10:2020",			#[3] #pre election
 		"01:2021:02:2021",			#[4] #capitol riot
 		"01:2020:02:2021",			#[5] #election period
@@ -253,7 +253,7 @@ use Data::Dumper qw(Dumper);
 
  #institutional rascism - banal, uncaring, violent.
   #+
-	#/black panther -killmongers appartmentblock, under the skin -threshold of the forrest, 12yrs - capitol and dungeon, requiem for a dream -seaside peir onsett 
+	#/black panther -killmongers appartmentblock, under the skin -threshold of the forrest, 12yrs - capitol and dungeon, requiem for a dream -seaside pier onset 
 	our @Epool_8 =	("Black_Panther1", "Under_The_Skin2", "12_Years_a_Slave2", "Dream1");
   #++
 	#/under the skin -burning figure in the forest, no country for old men -opening scene, black panther -killmongers dream
@@ -267,7 +267,7 @@ use Data::Dumper qw(Dumper);
 
  #immigration - dreams, anxities and desires
   #+
-  	#/under the skin -threshold of the forrest, black panther -killmongers dream, requiem for a dream -seaside peir onsett
+  	#/under the skin -threshold of the forrest, black panther -killmongers dream, requiem for a dream -seaside pier onset
 	our @Epool_11 =	("Under_The_Skin2", "Too_Old_Too_Die_Young1","Black_Panther5", "Dream1");
   #++	
   	#/under the skin -burning figure in the forest, dogman -decending the stairwell, requiem for a dream -seaside pier clearly visible
@@ -409,9 +409,9 @@ sub create_groupingEo{
 	our $immigration_ref  	= \@immigration;	
 	our $Econtext_ref 		= \@Econtext;
 	our @objectsE = ($racist_content_ref, $border_control_ref,	$immigration_ref, $Econtext_ref);
-	print Dumper @objectsE;
+	#print Dumper @objectsE;
 };
 	
-create_groupingEo;
+#create_groupingEo;
 1;
 END

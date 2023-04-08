@@ -135,14 +135,111 @@ use Data::Dumper qw(Dumper);
 	our $Grand_four 		= int(rand(4));
 	our $Grand_three 		= int(rand(3));
 	our $Grand_two 			= int(rand(2));
-	our @Gpool_1 = ("Inconvinient2", "Silent_Running1", "Silent_Running2", "Inconvinient1");
-	our @Gpool_2 = ("Inconvinient2",  "Silent_Running1", "The_Day_After_Tomorrow1");
+	
+#defining scene pools for this grouping - this grouping is not relevant frequently so a small amount of scenes is sufficient
+ #climate_change -
+  #+
+	#/an inconvinient truth  -rising sealevel dramatically illustrated above ground zero, an inconvinient truth -sad polarbear drowning pathetically, silent running -opening scene: space freighter with geodesic biodomes attached, silent running -closing scene: abandoned geodesic biodome drifting through space
+	our @Gpool_1 = ("Inconvinient1", "Inconvinient2", "Silent_Running1", "Silent_Running2"); 
+  #++
+	#/same as above.
+	our @Gpool_2 = ("Inconvinient1", "Inconvinient2", "Silent_Running1", "Silent_Running2");	
+  
+ #energy_industry -
+  #+
+	#/there will be blood -plainview enjoying the sea, an inconvinient truth -sad polarbear drowning pathetically, jarhead -soldier spectating distant oilwell plume
+	our @Gpool_3 = ("There_Will_Be_Blood1","Inconvinient2","Jarhead3");
+  #++
+	#/silent running -opening scene: space freighter with geodesic biodomes attached, silent running -closing scene: abandoned geodesic biodome drifting through space, jarhead -close to hellish burning oilwells
+	our @Gpool_4 =	("Silent_Running1", "Silent_Running2","Jarhead4");
+	
+ ##countermeasures -
+  ##+
+	##/
+	#our @Gpool_5 =	();
+  ##++
+	##/
+	#our @Gpool_6 =	();
+  ##+++
+	##/...
+	#our @Gpool_7 =	();
+
+ ##pollution -
+  ##+
+  	##/
+	#our @Gpool_8 =	();
+  ##++	
+  	##/
+	#our @Gpool_9 =	();
+  ##+++
+	##/...
+	#our @Gpool_10 =	();
+	
+ ##natural_catastrophes -
+  ##+
+  	##/
+	our @Gpool_11 =	("Inconvinient2", "The_Day_After_Tomorrow1");
+  ##++	
+  	##/
+	#our @Gpool_12 =	();
+  ##+++
+	##/...
+	#our @Gpool_13 =	();
+	
+ ##environmental_destruction -
+  ##+
+  	##/
+	#our @Gpool_14 =	();
+  ##++	
+  	##/
+	#our @Gpool_15 =	();
+  ##+++
+	##/...
+	#our @Gpool_16 =	();
+	
+ ##rhetoric -
+  ##+
+  	##/
+	#our @Gpool_17 =	();
+  ##++	
+  	##/
+	#our @Gpool_18 =	();
+  ##+++
+	##/...
+	#our @Gpool_19 =	();
+
+ ##context
+	##/
+	#our @Gpool_20 =	(); 
+
+ #movie specific pools
+ #
+ #stepford wives
+	#/stepford -opening scene, -facade room, -closing scene.
+	our @Gpool_movie1 =	("Stepford1", "Stepford2", "Stepford3");
+ #dogman
+	#/dogman -opening scene, -decending the stairwell, -dead body on playground.
+	our @Gpool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
+ #requiem for a dream
+	#/requiem for a dream -seaside pier onset, -seaside pier clearly visible, -seaside pier full view transition, -seaside pier full view but distant, -seaside pier full view but close, -unbeknownst final parting
+	our @Gpool_movie3 =	("Dream1", "Dream2", "Dream3","Dream4", "Dream5", "Dream6");
+ #greenroom
+	#/green room -discovery of murder, -neonazi redlaces gathering, -redlaces at the door, -mangled hand
+	our @Gpool_movie4 =	("Greenroom1", "Greenroom2", "Greenroom3", "Greenroom4");
+ #tere will blood
+	#/there will be blood -plainview enjoying the sea, -empty bowling alley at plainviews estate, - finished in the bowling alley
+	our @Gpool_movie5 =	("There_Will_Be_Blood1", "There_Will_Be_Blood2", "There_Will_Be_Blood3");
+ #silent running
+	#/silent running -opening scene: space freighter with geodesic biodomes attached, silent running -closing scene: abandoned geodesic biodome drifting through space
+	our @Gpool_movie6 =	("Silent_Running1", "Silent_Running2");
+#
+#
 	
 sub create_groupingG {
 	#
 	@climate_change = (
 	##	cluster				object				rating		+ scenearray				++ scenearray	
-		["primary grouping","climate_change","1", $Gpool_1 [$Grand_four], "null"],
+		["primary grouping","climate_change","1", $Gpool_1 [$Grand_four], $Gpool_1 [$Grand_four]],
 	#	
 	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" climate change ",			"$Gword[3]",	"${$Gsig_ref}[8]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
@@ -154,7 +251,7 @@ sub create_groupingG {
 	#
 	@energy_industry = (
 	##	cluster				object				rating		+ scenearray				++ scenearray
-		["primary grouping","energy_industry","1", $Gpool_1 [$Grand_four], "null"],
+		["primary grouping","energy_industry","1", $Gpool_3 [$Grand_three], $Gpool_4 [$Grand_three]],
 	#	
 	##	0 match							1 wordtype		2 signification		3 function				4 status				5 timeperiod	+++ scenearray	
 		[" opec ",						"$Gword[1]",	"${$Gsig_ref}[4]",	"${$Gfunc_ref}[3]",		"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
@@ -175,7 +272,7 @@ sub create_groupingG {
 	#
 	@countermeasures= (
 	##	cluster				object				rating		+ scenearray				++ scenearray
-		["primary grouping","countermeasures","1", $Gpool_1 [$Grand_four], "null"],
+		["primary grouping","countermeasures","1", $Gpool_movie6 [$Grand_two], $Gpool_movie6 [$Grand_two]],
 	#	
 	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" epa ",						"$Gword[1]",	"${$Gsig_ref}[4]",	"${$Gfunc_ref}[4]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
@@ -188,12 +285,12 @@ sub create_groupingG {
 	#
 	@pollution = (
 	##	cluster				object				rating		+ scenearray				++ scenearray
-		["primary grouping","pollution","1", $Gpool_1 [$Grand_three],	"null"],
+		["primary grouping","pollution","1", $Gpool_3 [$Grand_three], $Gpool_4 [$Grand_three]],
 	#	
 	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" automobile industry ",		"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 		[" energy industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
-		[" Steel Industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
+		[" steel industry ",			"$Gword[3]",	"${$Gsig_ref}[14]",	"${$Gfunc_ref}[6]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 		[" emissions ",					"$Gword[6]",	"${$Gsig_ref}[12]",	"${$Gfunc_ref}[2]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 		[" pollution ",					"$Gword[3]",	"${$Gsig_ref}[12]",	"${$Gfunc_ref}[7]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],
 		#["  ",							"$Gword[0]",	"${$Gsig_ref}[0]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[0]",		"$Gtime[0]",	"null"],
@@ -201,7 +298,7 @@ sub create_groupingG {
 	#
 	@natural_catastrophes = (
 	##	cluster				object				rating		+ scenearray				++ scenearray
-		["primary grouping","natural_catastrophes","1", $Gpool_2 [2],	"null"],
+		["primary grouping","natural_catastrophes","2", $Gpool_11 [$Grand_two],	"null"],
 	#	
 	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" hurricane",					"$Gword[5]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[8]",		"${$Gstat_ref}[6]",		"$Gtime[0]",	"null"],
@@ -216,7 +313,7 @@ sub create_groupingG {
 	#
 	@environmental_destruction = (
 	##	cluster				object				rating		+ scenearray				++ scenearray
-		["primary grouping","environmental_destruction","1", $Gpool_2 [1],	"null"],
+		["primary grouping","environmental_destruction","1", $Gpool_movie6 [$Grand_two], $Gpool_movie6 [$Grand_two]],
 	#	
 	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" forest",						"$Gword[5]",	"${$Gsig_ref}[2]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
@@ -228,7 +325,7 @@ sub create_groupingG {
 	#
 	@rhetoric = (
 	##	cluster				object				rating		+ scenearray				++ scenearray
-		["rhetoric and context","misinformation","1", $Gpool_1 [1],	"null"],
+		["rhetoric and context","misinformation","1", $Gpool_3 [$Grand_three], $Gpool_4 [$Grand_three]],
 	#	
 	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" energy independence ",		"$Gword[9]",	"${$Gsig_ref}[9]",	"${$Gfunc_ref}[11]",	"${$Gstat_ref}[8]",		"$Gtime[0]",	"null"],
@@ -242,7 +339,7 @@ sub create_groupingG {
 	#
 	@Gcontext = (
 	##	cluster				object				rating		+ scenearray				++ scenearray
-		["misinformation and context","context","2", $Gpool_2 [$Grand_three],	"null"],
+		["misinformation and context","context","1", $Gpool_1 [$Grand_four], $Gpool_2 [$Grand_four]],
 	#	
 	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" rationing ",					"$Gword[8]",	"${$Gsig_ref}[15]",	"${$Gfunc_ref}[0]",		"${$Gstat_ref}[2]",		"$Gtime[0]",	"null"],

@@ -148,15 +148,130 @@ use Data::Dumper qw(Dumper);
 	our $Arand_two 	= int(rand(2));
 	our $one		= 1;
 	
-	our @Apool_1 = ("Wolverine1", "Terminator1", "Terminator2");	#abstract / diffuse / nuclear -> explicit in last source
-	our @Apool_2 = ("Watchmen1", "Jarhead1", "Jarhead2");			#conventional / brutal
-	our @Apool_3 = ("Jarhead3", "Watchmen2", "Watchmen3");			#threat / military control
+	#our @Apool_1 = ("Wolverine1", "Terminator1", "Terminator2");	#abstract / diffuse / nuclear -> explicit in last source
+	#our @Apool_2 = ("Watchmen1", "Jarhead1", "Jarhead2");			#conventional / brutal
+	#our @Apool_3 = ("Jarhead3", "Watchmen2", "Watchmen3");			#threat / military control
+	
+	
+	#looming, wtc, inconvinient, host
+	
+	#/the looming tower -9/11 perpetrators using a flight simlator, WTC - shadow of a 747 moving across a building, an inconvinient truth  -rising sealevel dramatically illustrated above ground zero, the host -agent yellow,
+	
+#defining scene pools for this grouping		
+ #american wars - 
+  #+
+	#/the host -agent yellow, jarhead -platoon doing chemical attack drill in the desert, jarhead -soldier spectating distant oilwell plume.
+	our @Apool_1 = ("The_Host5", "Jarhead1", "Jarhead3"); 
+  #++
+	#/jarhead -swofford at scene of a war crime, watchmen, -dr manhattan waging war, the wolverine - distant view of b21 aproaching nagasaki bay, jarhead -soldiers under hellish oilwell plumes,
+	our @Apool_2 = ("Jarhead2", "Watchmen1", "Wolverine1", "Jarhead4");	
+  #unique -
+		#/the looming tower -9/11 perpetrators using a flight simlator, the host -agent yellow, an inconvinient truth -rising sealevel dramatically illustrated above ground zero
+	our @Apool_unique_1 = ("Looming1", "The_Host5", "Inconvinient1");
+	
+	our @Apool_unique_2 = ();
+  
+ #ukraine - 
+  #+
+	#/under the skin -threshold of the forrest, the host -the monsters lair, dogman -decending the stairwell
+	our @Apool_3 = ("Under_The_Skin2", "The_Host4", "Dogman2");
+  #++
+	#/the wolverine - distant view of b21 aproaching nagasaki bay, the host -the monster aproaches
+	our @Apool_4 =	("Wolverine1", "The_Host9", "Terminator2");
+  #unique -
+	#/
+	our @Apool_unique_3 = ();
+	
+ #palestine - 
+  #+
+	#/ watchmen -dr manhattan projecting power, the host -the monsters lair
+	our @Apool_5 =	("Watchmen2", "The_Host4", "Shin1");
+  #++
+	#/jarhead -swofford at scene of a war crime, the host -agent yellow, the host -the monster aproaches
+	our @Apool_6 =	("Jarhead2", "The_Host5", "The_Host9");
+  #+++
+	#/...
+	our @Apool_7 =	();
+
+ #adversarial nations -
+  #+
+  	#/watchmen -dr manhattan projecting power, the host -the monsters lair, jarhead -soldier spectating distant oilwell plume
+	our @Apool_8 =	("Watchmen2", "The_Host4", "Jarhead3");
+  #++	
+  	#/
+	our @Apool_9 =	();
+  #+++
+	#/...
+	our @Apool_10 =	();
+	
+ #weapons etc - 
+  #+
+  	#/jarhead -platoon doing chemical attack drill in the desert, jarhead -soldier spectating distant oilwell plume, the host -agent yellow
+	our @Apool_11 =	("Jarhead1", "Jarhead3", "The_Host5");
+  #++	
+  	#/watchmen -dr manhattan waging war, jarhead -swofford at scene of a war crime, watchmen -dr manhattan accepting vietcong surrender
+	our @Apool_12 =	("Watchmen1","Jarhead2", "Watchmen3");
+  #+++
+	#/...
+	our @Apool_13 =	();
+	
+ #nuclear threat - 
+  #+
+  	#/watchmen -dr manhattan waging war, the wolverine - distant view of b21 aproaching nagasaki bay, terminator II - close up of children on a playground before a nuclear strike 
+	our @Apool_14 =	("Watchmen1", "Wolverine1", "Terminator2");
+  #++	
+  	#/terminator II - sarah connor desperately grasping fence between a her and the children on a playground before the nuclear strike, the wolverine - distant view of b21 aproaching nagasaki bay
+	our @Apool_15 =	("Terminator3", "Wolverine1");
+  #+++
+	#/...
+	our @Apool_16 =	();
+	
+ #conflict rethoric - 
+  #+
+  	#/jarhead -soldier spectating distant oilwell plume, the host -agent yellow, watchmen -dr manhattan projecting power
+	our @Apool_17 =	("Jarhead3", "The_Host5", "Watchmen2");
+  #++	
+  	#/watchmen -dr manhattan waging war, jarhead -swofford at scene of a war crime, jarhead -soldiers under hellish oilwell plumes
+	our @Apool_18 =	("Watchmen1", "Jarhead2", "Jarhead4");
+  #+++
+	#/...
+	our @Apool_19 =	();
+
+ #context
+	#/watchmen -dr manhattan projecting power, jarhead -soldier spectating distant oilwell plume, the wolverine - distant view of b21 aproaching nagasaki bay
+	our @Apool_20 =	("Watchmen2","Jarhead3","Wolverine1"); 
+
+ #movie specific pools
+ #
+ #stepford wives
+	#/stepford -opening scene, -facade room, -closing scene.
+	our @Apool_movie1 =	("Stepford1", "Stepford2", "Stepford3");
+ #dogman
+	#/dogman -opening scene, -decending the stairwell, -dead body on playground.
+	our @Apool_movie2 =	("Dogman1", "Dogman2", "Dogman3");
+ #requiem for a dream
+	#/requiem for a dream -seaside pier onset, -seaside pier clearly visible, -seaside pier full view transition, -seaside pier full view but distant, -seaside pier full view but close, -unbeknownst final parting
+	our @Apool_movie3 =	("Dream1", "Dream2", "Dream3","Dream4", "Dream5", "Dream6");
+ #greenroom
+	#/green room -discovery of murder, -neonazi redlaces gathering, -redlaces at the door, -mangled hand
+	our @Apool_movie4 =	("Greenroom1", "Greenroom2", "Greenroom3", "Greenroom4");
+ #tere will blood
+	#/there will be blood -plainview enjoying the sea, -empty bowling alley at plainviews estate, - finished in the bowling alley
+	our @Apool_movie5 =	("There_Will_Be_Blood1", "There_Will_Be_Blood2", "There_Will_Be_Blood3");
+ #jarhead
+	#/jarhead -platoon doing chemical attack drill in the desert, -swofford at scene of a war crime, -soldier spectating distant oilwell plume, -soldiers under hellish oilwell plumes
+	our @Apool_movie6 =	("Jarhead1", "Jarhead2", "Jarhead3", "Jarhead4");
+#
+
+
+	
+	
 	
 sub create_groupingA {
 	#
 	@iraq = (
 	##	cluster		object							rating		+ scenearray				++ scenearray	
-		["US Wars",	"the Iraqi war & civil war",	"1", 		$Apool_3 [$Arand_three], 	"null"],
+		["US Wars",	"the Iraqi war & civil war",	"1", 		$Apool_1 [$Arand_three], 	$Apool_2 [$Arand_three]],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" iraq ",		"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[1]",	"${$Astat_ref}[1]",	"01:2017:12:2017",	$Apool_2 [2]],
@@ -167,13 +282,13 @@ sub create_groupingA {
 		[" iraqis ",	"$Aword[1]",	"${$Asig_ref}[6]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[3]",	"01:2018:01:2021",	"null"],	
 		[" baghdad ",	"$Aword[1]",	"${$Asig_ref}[4]",	"${$Afunc_ref}[2]",	"${$Astat_ref}[3]",	"01:2017:12:2017",	$Apool_2 [2]],
 		[" baghdad ",	"$Aword[1]",	"${$Asig_ref}[4]",	"${$Afunc_ref}[2]",	"${$Astat_ref}[3]",	"01:2018:01:2021",	"null"],
-		[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:12:2017",	$Apool_2 [$Arand_three]],
+		[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:12:2017",	$Apool_unique_1 [$Arand_three]],
 		#["  ",			"$Dword[0]",	"${$Dsig_ref}[0]",	"${$Dfunc_ref}[0]",	"${$Dstat_ref}[0]",	"$Dtime[0]", "null"],
 	);
 	#
 	@afghanistan = (
 	##	cluster		object					rating		+ scenearray				++ scenearray
-		["US Wars",	"the afghanistan war",	"1",		$Apool_3 [$Arand_three], 	"null"],
+		["US Wars",	"the afghanistan war",	"1",		$Apool_unique_1 [$Arand_three], 	"null"],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" afghanistan ","$Aword[1]","${$Asig_ref}[1]",	"${$Afunc_ref}[1]",	"${$Astat_ref}[1]",	"$Atime[0]", "null"], 
@@ -185,7 +300,7 @@ sub create_groupingA {
 	#
 	@syria = (
 	##	cluster		object					rating		+ scenearray				++ scenearray
-		["US Wars",	"the Syrian civil war",	"1", 		$Apool_3 [$Arand_three], 	"null"],
+		["US Wars",	"the Syrian civil war",	"1", 		$Apool_1 [$Arand_three], 	$Apool_2 [$Arand_three]],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" syria ",		"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[1]",	"${$Astat_ref}[1]",	"$Atime[0]", "null"],
@@ -197,17 +312,17 @@ sub create_groupingA {
 		[" idlib ",		"$Aword[1]",	"${$Asig_ref}[4]",	"${$Afunc_ref}[4]",	"${$Astat_ref}[8]",	"$Atime[0]", "null"],	 	
 		[" aleppo ",	"$Aword[1]",	"${$Asig_ref}[4]",	"${$Afunc_ref}[4]",	"${$Astat_ref}[8]",	"$Atime[0]", "null"],	 
 		[" kurds ",		"$Aword[1]",	"${$Asig_ref}[8]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[7]",	"$Atime[0]", "null"],
-		[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:03:2019", $Apool_2 [$Arand_three]],
+		[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:03:2019", $Apool_unique_1 [$Arand_three]],
 		[" isis ", 		"$Aword[1]",	"${$Asig_ref}[7]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[11]","04:2019:01:2021", "null"],
-		[" baghdadi ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[6]",	"${$Astat_ref}[2]",	"01:2017:10-2019", $Apool_2 [$Arand_three]],
+		[" baghdadi ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[6]",	"${$Astat_ref}[2]",	"01:2017:10-2019", $Apool_unique_1 [$Arand_three]],
 		[" baghdadi ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[6]",	"${$Astat_ref}[6]",	"11:2019:01-2021", "null"],
-		[" the caliphate ","$Aword[1]", "${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:04-2019", $Apool_2 [$Arand_three]],
+		[" the caliphate ","$Aword[1]", "${$Asig_ref}[7]",	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"01:2017:04-2019", $Apool_unique_1 [$Arand_three]],
 		[" the caliphate ","$Aword[1]", "${$Asig_ref}[7]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[11]","04:2019:01-2021", "null"],
 	);
 	#
 	@ukraine = (
 	##	cluster									object						rating		+ scenearray				++ scenearray
-		["wars with indirect US involvement",	"the Russo-Ukrainian war",	"1", 		$Apool_1 [$Arand_two], 		"null"],
+		["wars with indirect US involvement",	"the Russo-Ukrainian war",	"1", 		$Apool_3 [$Arand_three], 	$Apool_4 [$Arand_three]],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" ukraine ",	"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[1]",	"${$Astat_ref}[3]",	"$Atime[0]",	"null"],
@@ -218,7 +333,7 @@ sub create_groupingA {
 	#
 	@palestine = (
 	##	cluster									object								rating	+ scenearray			++ scenearray
-		["wars with indirect US involvement",	"the Israeli–Palestinian conflict",	"1", 	$Apool_1 [$Arand_two], 	"null"],
+		["wars with indirect US involvement",	"the Israeli–Palestinian conflict",	"1", 	$Apool_5 [$Arand_three], 	$Apool_6 [$Arand_three]],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" gaza ",		"$Aword[1]",	"${$Asig_ref}[4]",	"${$Afunc_ref}[1]",	"${$Astat_ref}[4]",	"$Atime[0]", "null"],
@@ -232,7 +347,7 @@ sub create_groupingA {
 	#
 	@north_korea = (
 	##	cluster				object			rating		+ scenearray				++ scenearray
-		["rival nations",	"North Korea",	"1", 		$Apool_1 [$Arand_three], 	"null"],
+		["rival nations",	"North Korea",	"1", 		$Apool_14 [$Arand_three], 	$Apool_15 [$Arand_two]],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" north korea ","$Aword[1]","${$Asig_ref}[1]",		"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
@@ -246,7 +361,7 @@ sub create_groupingA {
 	#
 	@china= (
 	##	cluster				object		rating	+ scenearray			++ scenearray
-		["rival nations",	"China",	"1", 	$Apool_1 [$Arand_two], 	"null"],
+		["rival nations",	"China",	"1", 	$Apool_8 [$Arand_three], 	"null"],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" china ",		"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
@@ -260,7 +375,7 @@ sub create_groupingA {
 	#
 	@russia= (
 	##	cluster				object		rating	+ scenearray			++ scenearray
-		["rival nations",	"Russia",	"1", 	$Apool_1 [$Arand_two],	"null"],
+		["rival nations",	"Russia",	"1", 		$Apool_3 [$Arand_three], 	$Apool_4 [$Arand_three]],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" russia ",	"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[8]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
@@ -272,22 +387,22 @@ sub create_groupingA {
 	#
 	@iran = (
 	##	cluster				object		rating	+ scenearray			++ scenearray
-		["rival nations",	"Iran",		"1", 	$Apool_1 [$Arand_two], 	"null"],
+		["rival nations",	"Iran",		"1", 	$Apool_8 [$Arand_three], 	"null"],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" iran ",		"$Aword[1]",	"${$Asig_ref}[1]",	"${$Afunc_ref}[9]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
-		[" soleimani ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[10]","${$Astat_ref}[6]",	"01:2020:01:2021", "null"],
+		[" soleimani ",	"$Aword[1]",	"${$Asig_ref}[5]",	"${$Afunc_ref}[10]","${$Astat_ref}[6]",	"01:2020:01:2021", $Apool_14 [1]],
 		[" iranian ",	"$Aword[2]",	"${$Asig_ref}[2]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", "null"],
 		[" iranians ",	"$Aword[1]",	"${$Asig_ref}[6]",	"${$Afunc_ref}[9]",	"${$Astat_ref}[2]",	"$Atime[0]", "null"],
 	);
 	#
 	@weapons= (
 	##	cluster								object					rating	+ scenearray				++ scenearray
-		["weapons and military armament",	"conventional weapons",	"1", 	$Apool_3 [$Arand_three], 	"null"],
+		["weapons and military armament",	"conventional weapons",	"1", 	$Apool_11 [$Arand_three], 	$Apool_12 [$Arand_three]],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
-		[" chemical weapons ","$Aword[6]","${$Asig_ref}[10]","${$Afunc_ref}[11]","${$Astat_ref}[10]","$Atime[0]", $Apool_2 [$Arand_three]],
-		[" chemical attack ","$Aword[6]","${$Asig_ref}[10]","${$Afunc_ref}[11]","${$Astat_ref}[10]","$Atime[0]", $Apool_2 [$Arand_three]],
+		[" chemical weapons ","$Aword[6]","${$Asig_ref}[10]","${$Afunc_ref}[11]","${$Astat_ref}[10]","$Atime[0]", $Apool_1 [1]],
+		[" chemical attack ","$Aword[6]","${$Asig_ref}[10]","${$Afunc_ref}[11]","${$Astat_ref}[10]","$Atime[0]", $Apool_1 [1]],
 		[" bomb ",		"$Aword[5]",	"${$Asig_ref}[9]",	"${$Afunc_ref}[11]","${$Astat_ref}[9]",	"$Atime[0]", "null"],
 		[" bombs ",		"$Aword[6]",	"${$Asig_ref}[9]",	"${$Afunc_ref}[11]","${$Astat_ref}[9]",	"$Atime[0]", "null"],
 		[" rocket ",	"$Aword[5]",	"${$Asig_ref}[9]",	"${$Afunc_ref}[11]","${$Astat_ref}[9]",	"$Atime[0]", "null"],
@@ -304,7 +419,7 @@ sub create_groupingA {
 	#
 	@nuclear_threat = (
 	##	cluster				object				rating	+ scenearray	++ scenearray
-		["nuclear weapons",	"nuclear weapons",	"1", 	$Apool_1 [2], 	"null"],
+		["nuclear weapons",	"nuclear weapons",	"1", 	$Apool_14 [$Arand_three], 	$Apool_15 [$Arand_two]],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" nato ",		"$Aword[1]",	"${$Asig_ref}[7]", 	"${$Afunc_ref}[3]",	"${$Astat_ref}[2]",	"$Atime[0]", $Apool_1 [$Arand_two]],
@@ -317,7 +432,7 @@ sub create_groupingA {
 	#
 	@conflict_rhetoric = (
 	##	cluster						object					rating	+ scenearray				++ scenearray
-		["context and rhetoric",	"conflict rhetoric",	"1", 	$Apool_3 [$Arand_three], 	"null"],
+		["context and rhetoric",	"conflict rhetoric",	"1", 	$Apool_17 [$Arand_three], 	$Apool_18 [$Arand_three]],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" make america strong again ","$Aword[7]","${$Asig_ref}[1]","${$Afunc_ref}[0]","${$Astat_ref}[0]","$Atime[0]", "null"],
@@ -330,7 +445,7 @@ sub create_groupingA {
 	#
 	@Acontext = (
 	##	cluster						object		rating		+ scenearray				++ scenearray
-		["context and rhetoric",	"context",	"2", 		$Apool_1 [$Arand_three], 	"null"],
+		["context and rhetoric",	"context",	"2", 		$Apool_20 [$Arand_three], 	"null"],
 	#	
 	##	0 match			1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" attack ",	"$Aword[3]",	"${$Asig_ref}[12]",	"${$Afunc_ref}[0]",	"${$Astat_ref}[0]",	"$Atime[0]", $Apool_2 [$Arand_three]],
