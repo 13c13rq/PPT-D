@@ -2,25 +2,22 @@
 use v5.14;
 use strict;
 use warnings;
-use List::Util qw( max );
 use Statistics::Lite qw( mean );
 use List::Util qw( min max sum0 );
 use Config::Tiny;
 use Data::Dumper qw(Dumper);
-use Config::Tiny;
 use File::HomeDir;
 use Term::ANSIColor;
 use Scalar::Util 'blessed';
 use File::Basename qw(dirname);
 use Cwd  qw(abs_path);
-use Data::Dumper qw(Dumper);
 use Switch;
 
 my $home	= File::HomeDir->my_home;
 my $Config 	= Config::Tiny->new;
 
 # reading path strings
-$Config	= Config::Tiny->read("$home/PPT-D/asset_paths.conf");
+$Config	= Config::Tiny->read("$home/PPT-Dread/asset_paths.conf");
 	my $status_path		= $Config->{paths}->{status};
 	my $modules_path 	= $Config->{paths}->{modules};
 	my $em_path 		= $Config->{paths}->{em};
@@ -28,7 +25,7 @@ $Config	= Config::Tiny->read("$home/PPT-D/asset_paths.conf");
 	my $source_path		= $Config->{paths}->{source_path};
 
 #custom modules
-use lib dirname(dirname abs_path $0) . '/PPT-D';
+use lib dirname(dirname abs_path $0) . '/PPT-Dread';
 use Grouping_zero qw( create_grouping_zero_v create_grouping_zero_o );
 use GroupingA qw( create_groupingAv create_groupingAo );
 use GroupingB qw( create_groupingBv create_groupingBo );
@@ -919,30 +916,33 @@ sub assesment {
 		#testing for correlated groupings
 		
 		my $correlation_AB = undef;
-		my $correlation_EFH = undef;
-		my $correlation_EFH_counter = undef;
+		my $correlation_EFHI = undef;
+		my $correlation_EFHI_counter = undef;
 		
 		$correlation_AB = 0;
-		$correlation_EFH = 0;
-		$correlation_EFH_counter = 0;
+		$correlation_EFHI = 0;
+		$correlation_EFHI_counter = 0;
 		
 		if (scalar((@{$findings[1]})) > 1 && scalar((@{$findings[2]})) > 1) {
 			$correlation_AB = 1;
 		};
 		if (scalar((@{$findings[5]})) > 1) {
-			$correlation_EFH_counter ++;
+			$correlation_EFHI_counter ++;
 		};
 		if (scalar((@{$findings[6]})) > 1) {
-			$correlation_EFH_counter ++;
+			$correlation_EFHI_counter ++;
 		};
 		if (scalar((@{$findings[8]})) > 1) {
-			$correlation_EFH_counter ++;
+			$correlation_EFHI_counter ++;
 		};
-		if ($correlation_EFH_counter > 1) {
-			$correlation_EFH = 1;
+		if (scalar((@{$findings[9]})) > 1) {
+			$correlation_EFHI_counter ++;
+		};
+		if ($correlation_EFHI_counter > 1) {
+			$correlation_EFHI = 1;
 		};
 		
-		print "grouping correlation: AB = $correlation_AB, EFH = $correlation_EFH \n";
+		print "grouping correlation: AB = $correlation_AB, EFHI = $correlation_EFHI \n";
 		
 		foreach my $currnent_grouping (@active_groupings) {
 			
@@ -991,14 +991,14 @@ sub assesment {
 							$loop_sum++;
 							};
 						};
-					#EFH filter
-					if ($correlation_EFH == 1) {
-						if ($filter_grouping eq "GroupingF" or $filter_grouping eq "GroupingH") {
-							print "linked groupings (E,F,H), ";
-							print $Hf1 "linked groupings (E,F,H), ";
-							$loop_sum++;
-							};
-						};
+					#EFHI filter
+					#if ($correlation_EFHI == 1) {
+						#if ($filter_grouping eq "GroupingF" or $filter_grouping eq "GroupingH") {
+							#print "linked groupings (E,F,H,I), ";
+							#print $Hf1 "linked groupings (E,F,H,I), ";
+							#$loop_sum++;
+							#};
+						#};
 					
 					my $temp_mention = $mentioned_groupings_count {$g_l [($currnent_grouping -1)]};
 					
@@ -1371,7 +1371,7 @@ or die "Could not open file ' finding_text_I.txt'";
 		}
 		else {print $Hf4 $finding_line;};
 	};
-	
+	print $Hf4 "];\n";
 	print Dumper @emotions;
 #
 	#my $dominant_dread0	= $Config->{content}->{dominant_dread};	
