@@ -137,8 +137,8 @@ $complaint_count 			= 0;
 $standard_incidence_count 	= 0;
 
 my @g_l = ('A'..'I');
-my @g_l_val = (0,1,0,1,0,0,1,1); #high priority groupings
-my @g_c_val = (0,0,0,0,0,0,0,0); #special priority for climate grouping - if needed - seems to be unnecessary
+my @g_l_val = (0,1,0,1,0,0,1,1,1); #high priority groupings
+my @g_c_val = (0,0,0,0,0,0,0,0,0); #special priority for climate grouping - if needed - seems to be unnecessary
 
 my @modifyers = (0, 1.51, 1.81, 1.76, 1.84, 1.71, 1.51, 1.91, 1.87, 1.57); #8;
 my @zero_modifyers = (1.57, 1.41, 1.31); # insult, complaint, boast
@@ -1128,8 +1128,8 @@ my ($highest_loop_result	,
 	$dominant_value	,
 	) = undef;
 $dominant_value	= 0;
-							#(a,b,c,d,e,f,g,h);
-my @dominant_grouping_vals = (0,1,2,3,4,5,6,7); #high priority groupings
+							#(a,b,c,d,e,f,g,h,i);
+my @dominant_grouping_vals = (0,1,2,3,4,5,6,7,8); #high priority groupings
 
 unless ($grouping_count<=0) {
 	print "required!\n";
@@ -1151,7 +1151,7 @@ my ($emotion_incidence	,
 	$mean_intent	,
 	$ultra_mean	,
 	) = undef;
-
+$emotion_incidence = 0;
 foreach my $emotion_test (@emotions) {
 	unless ($emotion_test == 0) {
 		$emotion_incidence++;
