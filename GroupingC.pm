@@ -191,10 +191,10 @@ use Data::Dumper qw(Dumper);
  #inflation - reckless, greedy, irresponsible
   #+
 	#/punch drunk love -shopping, requiem for a dream -seaside pier full view but close
-	our @Cpool_5 =	("Punch-Drunk4", "Dream5");
+	our @Cpool_5 =	("Punch-Drunk4", "Dream5", "Parasite3");
   #++
 	#/punch drunk love -pudding, stepford -closing scene
-	our @Cpool_6 =	("Punch-Drunk5", "Stepford3");
+	our @Cpool_6 =	("Punch-Drunk5", "Stepford3", "Parasite4");
   #+++
 	#/...
 	our @Cpool_7 =	();
@@ -212,11 +212,11 @@ use Data::Dumper qw(Dumper);
 	
  #economic_decline - frightening, sad, appalling
   #+
-  	#/requiem for a dream -seaside pier onset, punchdrunk -barry in a dismal environment, parasite -flickering lights in the snow
-	our @Cpool_11 =	("Dream1", "Punch-Drunk1", "The_Host7");
+  	#/requiem for a dream -seaside pier onset, punchdrunk -barry in a dismal environment, parasite -dorway to the cellar
+	our @Cpool_11 =	("Dream1", "Punch-Drunk1", "The_Host7", "Parasite2");
   #++	
-  	#/requiem for a dream -unbeknownst final parting, parasyte -morsecode in the snow, the host -the monsters lair,
-	our @Cpool_12 =	("Dream6", "Parasite1", "The_Host4");
+  	#/requiem for a dream -unbeknownst final parting, parasyte -morsecode in the snow, the host -the monsters lair, innere glut -cow heard and ashcovered palmtrees 
+	our @Cpool_12 =	("Dream6", "Parasite1", "The_Host4", "Innere_Glut4");
   #+++
 	#/...
 	our @Cpool_13 =	();
@@ -278,7 +278,7 @@ sub create_groupingC {
 #recession and economic decline
 	@inflation = (
 	##	cluster								object				rating		+ scenearray			++ scenearray	
-		["recession and economic decline",	"inflation",		"2",		 $Cpool_5 [$Crand_two],	$Cpool_6 [$Crand_two]],
+		["recession and economic decline",	"inflation",		"2",		 $Cpool_5 [$Crand_three],	$Cpool_6 [$Crand_three]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" cut interest ",	"$Cword[8]",	"${$Csig_ref}[11]",	"${$Cfunc_ref}[1]",		"${$Cstat_ref}[4]",	"$Ctime[0]",	"null"],
@@ -317,7 +317,7 @@ sub create_groupingC {
 
 	@economic_decline = (
 	##	cluster								object					rating		+ scenearray			++ scenearray	
-		["recession and economic decline",	"economic_decline",		"1", 		$Cpool_11 [$Crand_three],	$Cpool_12 [$Crand_three]],
+		["recession and economic decline",	"economic_decline",		"1", 		$Cpool_11 [$Crand_four],	$Cpool_12 [$Crand_four]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status			5 timeperiod	+++ scenearray	
 		[" eviction ",		"$Cword[3]",	"${$Csig_ref}[12]",	"${$Cfunc_ref}[3]",		"${$Cstat_ref}[6]",	"$Ctime[0]",	"null"],
