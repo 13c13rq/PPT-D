@@ -193,17 +193,16 @@ use Data::Dumper qw(Dumper);
 	#/black panther -killmongers appartmentblock, requiem for a dream -seaside pier onset, the host -dark waters of despair
 	our @Fpool_3 =	("Black_Panther1","Dream1","The_Host1",);
   #++
-	#/black panther -killmongers dream, requiem for a dream -seaside pier clearly visible, the host -the monsters lair, parasyte -flickering lights in the snow
-	our @Fpool_4 =	("Black_Panther5","Dream2","The_Host4","Parasite1");
-
+	#/black panther -killmongers dream, requiem for a dream -seaside pier clearly visible, the host -the monsters lair,  parasite - illicit garden celebration
+	our @Fpool_4 =	("Black_Panther5","Dream2","The_Host4","Parasite4");
 
  #prosecution - unbalanced, selfinterested, unjust 
   #+
-	#/dogman -decending the stairwell, 12yrs - capitol and dungeon, there will be blood -plainview enjoying the sea
-	our @Fpool_5 =	("Dogman2", "12_Years_a_Slave2", "There_Will_Be_Blood1");
+	#/dogman -decending the stairwell, 12yrs - capitol and dungeon, there will be blood -plainview enjoying the sea, innere glut - scenic mount unzen
+	our @Fpool_5 =	("Dogman2", "12_Years_a_Slave2", "There_Will_Be_Blood1", "Innere_Glut5");
   #++
-	#/under the skin -burning figure in the forest, 12yrs - window of the illegal dungeon, parasite -flickering lights in the snow
-	our @Fpool_6 =	("Under_The_Skin1", "12_Years_a_Slave1", "Parasite1");
+	#/under the skin -burning figure in the forest, 12yrs - window of the illegal dungeon, parasite -flickering lights in the snow, , innere glut - huddled figures lost to mount unzen
+	our @Fpool_6 =	("Under_The_Skin1", "12_Years_a_Slave1", "Parasite1", "Innere_Glut8");
   #+++
 	#/castle rock -curtains opening to execution chamber, clemency -execution device
 	our @Fpool_7 =	("Castle_Rock1", "Clemency1",);
@@ -216,8 +215,8 @@ use Data::Dumper qw(Dumper);
   	#/black panther -tv showing violent police action, videodrome -creepy videodrome chamber, mississipi burning -cop car chasing activists, lovecraft country -sundown car chase
 	our @Fpool_8 =	("Black_Panther2","Videodrome1","Mississipi_Burning1","Lovecraft_Country1",);
   #++	
-  	#/the host -mass protest, lovecraft country -police harassment in underpass, shin godzilla - godzilla in the distance
-	our @Fpool_9 =	("The_Host8","Lovecraft_Country2","Shin1");
+  	#/the host -mass protest, lovecraft country -police harassment in underpass, shin godzilla - godzilla in the distance, parasite -dorway to the cellar
+	our @Fpool_9 =	("The_Host8","Lovecraft_Country2","Shin1", "Parasite2");
   #+++
 	#/ dogman -opening scene, videodrome -newflesh hand merged with gun, green room -mangled hand,
 	our @Fpool_10=	("Dogman1","Videodrome2","Greenroom4");
@@ -279,7 +278,7 @@ sub create_groupingF {
 	#
 	@prosecution = (
 	##	cluster				object				rating		+ scenearray				++ scenearray	
-		["crime, prosecution & institutional violence", "prosecution", "1", $Fpool_5 [$Frand_three],	$Fpool_6 [$Frand_three]],
+		["crime, prosecution & institutional violence", "prosecution", "1", $Fpool_5 [$Frand_four],	$Fpool_6 [$Frand_four]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" execution ",		"$Fword[3]",	"${$Fsig_ref}[15]",	"${$Ffunc_ref}[20]",	"${$Fstat_ref}[10]",	"$Ftime[0]",	$Fpool_7 [$Frand_two]],
@@ -299,7 +298,7 @@ sub create_groupingF {
 	#
 	@institutional_violence = (
 	##	cluster				object				rating		+ scenearray				++ scenearray	
-		["crime, prosecution & institutional violence", "institutional violence", "1", $Fpool_8 [$Frand_four], $Fpool_9 [$Frand_three]],
+		["crime, prosecution & institutional violence", "institutional violence", "1", $Fpool_8 [$Frand_four], $Fpool_9 [$Frand_four]],
 	#	
 	##	0 match				1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" law and order ",	"$Fword[9]",	"${$Fsig_ref}[14]",	"${$Ffunc_ref}[21]",	"${$Fstat_ref}[2]",		"$Ftime[0]",	"null"],
