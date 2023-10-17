@@ -63,7 +63,7 @@ open( $Hf, '>', "$home/$svg_txt1")
 or die "Could not open file ' textfile VI'";
 binmode $Hf, ':encoding(UTF-8)';
 		
-print"\ncontent_analysis04.pl\n";	
+print"\ncontent_analysis.pl\n";	
 close $Hf;
 
 #title
@@ -102,7 +102,17 @@ read_details;
 	print "lower case all\n";
 	$tweet_txt = lc $tweet_txt;
 	close $Hf0;
-	
+
+open(my $processed_tweet, '>', "$home/$text_data/processed_tweet.txt");
+print "$text_data/processsed_tweet.txt\n";
+truncate $processed_tweet, 0;
+close $processed_tweet;
+
+open(my $processed_tweet, '>>', "$home/$text_data/processed_tweet.txt");
+print $processed_tweet "$tweet_txt\n";
+close $processed_tweet;
+
+
 #setting up various findings arrays
 my @evaluation 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"],["GroupingI"]);
 my @findings 	= (["Grouping_zero"],["GroupingA"],["GroupingB"],["GroupingC"],["GroupingD"],["GroupingE"],["GroupingF"],["GroupingG"],["GroupingH"],["GroupingI"]);
@@ -236,8 +246,8 @@ sub standard_test {
 				#if currently relevant, saving findings hash into mutidimensional array 
 				if ($active_time == 1) {	
 					if ($grouping_displayed == 0){
-						print "\n\n Grouping_$current_grouping \n\n";
-						print $Hf1 "\n\n Grouping_$current_grouping \n\n";
+						print "\n\n Grouping_$current_grouping \n";
+						print $Hf1 "\n\n Grouping_$current_grouping \n";
 						$grouping_displayed =1;
 					};
 
@@ -311,8 +321,8 @@ sub standard_test {
 				#incase of inactive timeperiod
 				else {
 					if ($grouping_displayed == 0){
-						print "\n\n Grouping_$current_grouping \n\n";
-						print $Hf1 "\n\n Grouping_$current_grouping \n\n";
+						print "\n\n Grouping_$current_grouping \n";
+						print $Hf1 "\n\n Grouping_$current_grouping \n";
 						$grouping_displayed =1;	
 						
 					};
@@ -813,33 +823,33 @@ sub standard_analysis {
 	#test for discard matches 
 	if ($query_result==1) {
 		if ($grouping_count == 0) {
-			print "\nlink found - discard is active!\n";
-			print  $Hf1 "\nlink found - discard is active!\n";
+			print "\ndiscard 1 - discard is active!\n";
+			print  $Hf1 "\ndiscard 1 - discard is active!\n";
 			$discard_active = 1;
 			printdebug;
 		}
 		elsif($grouping_count > 0 && $query_count < $irrelevance_count) {
-			print "\nlink + possibly irrelevant match found - discard_filter is active!";
-			print  $Hf1 "\nlink + possibly irrelevant match found - discard_filter is active!";
+			print "\ndiscard 1, link + possibly irrelevant match found";
+			print  $Hf1 "\ndiscard 1, link + possibly irrelevant match found";
 			$discard_filter_active = 1;
 			printdebug;
 		}
 		else {
-			print "\nlink + relevant match found - discard is inactive!";
-			print  $Hf1 "\nlink + relevant match found - discard is inactive!";
+			print "\ndiscard 0, link + relevant match found";
+			print  $Hf1 "\ndiscard 0, link + relevant match found";
 			$discard_active = 0;
 			printdebug;
 		};
 	}
 	elsif ($query_count > $irrelevance_count) {
-			print "\n possibly irrelevant match found - discard_filter is active!";
-			print  $Hf1 "\n possibly irrelevant match found - discard_filter is active!";
+			print "\ndiscard 1, possibly irrelevant match found ";
+			print  $Hf1 "\ndiscard 1, possibly irrelevant match found";
 			$discard_filter_active = 1;
 			printdebug;
 	}
 	else {
-			print "\n0 - discard is inactive!";
-			print  $Hf1 "\n0 - discard is inactive!";
+			print "\ndiscard 0";
+			print  $Hf1 "\ndiscard 0";
 			$discard_active = 0;
 			printdebug;
 	};
@@ -908,10 +918,10 @@ sub assesment {
 			};
 		};
 		unless ($grouping_count<=0){
-			print "\nrelevant groupings:\n";
-			print $Hf1 "\nrelevant groupings:\n";
+			#print "\nrelevant groupings:\n";
+			#print $Hf1 "\nrelevant groupings:\n";
 		};
-		
+		print $Hf1 "\n\n";
 		
 		#testing for correlated groupings
 		
@@ -1139,8 +1149,8 @@ unless ($grouping_count<=0) {
 	
 	$dominant_value	= $dominant_grouping_vals [($required -1)];
 	
-	print "Grouping $highest_grouping_name is dominant! [$dominant_value]\n";
-	print $Hf1 "Grouping $highest_grouping_name is dominant! [$dominant_value]\n ";
+	print "Grouping $highest_grouping_name predominant! [$dominant_value]\n";
+	print $Hf1 "Grouping $highest_grouping_name predominant! [$dominant_value]\n ";
 	$highest_grouping_scalar	= (scalar((@{$findings[$required]})))-1;
 };
 		
@@ -1229,7 +1239,7 @@ if ($emotion_incidence == 0) {
 else {
 	print "\nmodifyer: $content_modifyer \n";
 	print $Hf1 "\nmodifyer: $content_modifyer \n";
-	$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) * $content_modifyer)/8;
+	$ultra_mean = ((($prime_em_sett*$active_mod) + $sec_em_sett) * $content_modifyer)/17
 	};
 
 my ($standard	,
