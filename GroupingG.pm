@@ -139,19 +139,19 @@ use Data::Dumper qw(Dumper);
 #defining scene pools for this grouping - this grouping is not relevant frequently so a small amount of scenes is sufficient
  #climate_change -
   #+
-	#/an inconvinient truth  -rising sealevel dramatically illustrated above ground zero, an inconvinient truth -sad polarbear drowning pathetically, silent running -opening scene: space freighter with geodesic biodomes attached, silent running -closing scene: abandoned geodesic biodome drifting through space
-	our @Gpool_1 = ("Inconvinient1", "Inconvinient2", "Silent_Running1", "Silent_Running2"); 
+	#/an inconvinient truth -sad polarbear drowning pathetically, silent running -opening scene: space freighter with geodesic biodomes attached, innere glut -cow heard and ashcovered palmtrees 
+	our @Gpool_1 = ("Inconvinient2", "Silent_Running1", "Innere_Glut4"); 
   #++
-	#/same as above.
-	our @Gpool_2 = ("Inconvinient1", "Inconvinient2", "Silent_Running1", "Silent_Running2");	
+	#/an inconvinient truth  -rising sealevel dramatically illustrated above ground zero,  silent running -closing scene: abandoned geodesic biodome drifting through space, innere glut -dead forrest
+	our @Gpool_2 = ("Inconvinient1", "Silent_Running2", "Innere_Glut6");	
   
  #energy_industry -
   #+
-	#/there will be blood -plainview enjoying the sea, an inconvinient truth -sad polarbear drowning pathetically, jarhead -soldier spectating distant oilwell plume
-	our @Gpool_3 = ("There_Will_Be_Blood1","Inconvinient2","Jarhead3");
+	#/there will be blood -plainview enjoying the sea, silent running -opening scene: space freighter with geodesic biodomes attached, jarhead -soldier spectating distant oilwell plume
+	our @Gpool_3 = ("There_Will_Be_Blood1","Silent_Running1","Jarhead3");
   #++
-	#/silent running -opening scene: space freighter with geodesic biodomes attached, silent running -closing scene: abandoned geodesic biodome drifting through space, jarhead -close to hellish burning oilwells
-	our @Gpool_4 =	("Silent_Running1", "Silent_Running2","Jarhead4");
+	#/innere glut -dead forrest, silent running -opening scene: space freighter with geodesic biodomes attached, silent running -closing scene: abandoned geodesic biodome drifting through space, jarhead -close to hellish burning oilwells
+	our @Gpool_4 =	("Innere_Glut6", "Silent_Running2","Jarhead4");
 	
  ##countermeasures -
   ##+
@@ -232,6 +232,8 @@ use Data::Dumper qw(Dumper);
  #silent running
 	#/silent running -opening scene: space freighter with geodesic biodomes attached, silent running -closing scene: abandoned geodesic biodome drifting through space
 	our @Gpool_movie6 =	("Silent_Running1", "Silent_Running2");
+#/innere glut -cow heard and ashcovered palmtrees, innere glut -dead forrest
+	our @Gpool_movie7 =	("Innere_Glut4", "Innere_Glut6");
 #
 #
 	
@@ -313,7 +315,7 @@ sub create_groupingG {
 	#
 	@environmental_destruction = (
 	##	cluster				object				rating		+ scenearray				++ scenearray
-		["primary grouping","environmental_destruction","1", $Gpool_movie6 [$Grand_two], $Gpool_movie6 [$Grand_two]],
+		["primary grouping","environmental_destruction","1", $Gpool_movie7 [$Grand_two], $Gpool_movie6 [$Grand_two]],
 	#	
 	##	0 match							1 wordtype		 2 signification	3 function				4 status				5 timeperiod	+++ scenearray	
 		[" forest",						"$Gword[5]",	"${$Gsig_ref}[2]",	"${$Gfunc_ref}[5]",		"${$Gstat_ref}[3]",		"$Gtime[0]",	"null"],
