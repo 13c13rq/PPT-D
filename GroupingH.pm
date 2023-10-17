@@ -129,8 +129,8 @@ use Data::Dumper qw(Dumper);
   #++
 	#/stepford -closing scene, the host -the monsters lair
 	our @Hpool_2 = ("Stepford3", "The_Host4");	
-	#/shin godzilla -readying its maga destructive atomic lazer beam, castle rock -curtains opening to execution chamber, clemency -execution device
-	our @Hpool_unique_1 = ("Shin2","Castle_Rock1", "Clemency1");
+	#/innere glut - mount unzen's pyroclastic flow, castle rock -curtains opening to execution chamber, clemency -execution device
+	our @Hpool_unique_1 = ("Innere_Glut7", "Castle_Rock1", "Clemency1");
   
  #domestic_terrorism -frghtening, deadly, traumatizing 
   #+
@@ -148,11 +148,11 @@ use Data::Dumper qw(Dumper);
 	
  #uk - sad, disapointing, catastrophic
   #+
-	#/ shin godzilla - godzilla in the distance, punchdrunk -barry in a dismal environment, godzilla -monstrous tracks on a beach
-	our @Hpool_5 =	("Shin1", "Punch-Drunk1", "Godzilla1");
+	#/ shin godzilla - godzilla in the distance, punchdrunk -barry in a dismal environment, godzilla -monstrous tracks on a beach, parasite -dorway to the cellar
+	our @Hpool_5 =	("Shin1", "Punch-Drunk1", "Godzilla1", "Parasite2");
   #++
-	#/punchdrunk -barry at the party,  godzilla -lurking behind a hill menacingly, the host -dark waters of despair
-	our @Hpool_6 =	("Punch-Drunk3", "Godzilla2", "The_Host1");
+	#/punchdrunk -barry at the party,  godzilla -lurking behind a hill menacingly, the host -dark waters of despair, innere-glut -ash caked teapot
+	our @Hpool_6 =	("Punch-Drunk3", "Godzilla2", "The_Host1", "Innere_Glut3");
   #+++
 	#/...
 	our @Hpool_7 =	();
@@ -235,9 +235,9 @@ sub create_groupingH {
 		#["  ",				"$Hword[0]",	"${$Hsig_ref}[0]",	"${$Hfunc_ref}[0]",		"${$Hstat_ref}[0]",		"$Htime[0]",	"null"],
 	);
 	#
-	@uk = (
+	@uk = ( #not sure if it deserves it's own grouping, but I was so upset by brexit at the time that I cant help it.
 	##	cluster				object				rating		+ scenearray				++ scenearray
-		["populists, dictators and atrocities","UK (Brexit)","1", $Hpool_5 [$Hrand_three], $Hpool_6 [$Hrand_three]],
+		["populists, dictators and atrocities","UK (Brexit)","1", $Hpool_5 [$Hrand_four], $Hpool_6 [$Hrand_four]],
 	#	
 	##	0 match							1 wordtype		 2 signification	3 function			4 status			5 timeperiod	+++ scenearray	
 		[" brexit ",					"$Hword[7]",	"${$Hsig_ref}[5]",	"${$Hfunc_ref}[6]",	"${$Hstat_ref}[1]",	"$Htime[0]",	"null"],
