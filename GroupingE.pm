@@ -239,14 +239,14 @@ use Data::Dumper qw(Dumper);
 
  #digital facism - menacing, brutal, deadly.
   #+
-	#/green room -discovery of murder, dogman -decending the stairwell
-	our @Epool_4 =	("Green_Room1", "Dogman2");
+	#/green room -discovery of murder, dogman -decending the stairwell, innere-glut -ash caked teapot
+	our @Epool_4 =	("Green_Room1", "Dogman2", "Innere_Glut3"); #3
   #++
-	#/green room -neonazi redlaces gathering, green room -redlaces at the door
-	our @Epool_5 =	("Green_Room2", "Green_Room3");
+	#/green room -neonazi redlaces gathering, green room -redlaces at the door, innere glut - mount unzen's building lava dome
+	our @Epool_5 =	("Green_Room2", "Green_Room3", "Innere_Glut2"); #3
   #+++
-	#/12yrs -patsey is left behind, dogman -opening scene, green room -mangled hand
-	our @Epool_6 =	("12_Years_a_Slave6", "Dogman1", "Green_Room4");
+	#/12yrs -patsey is left behind, dogman -opening scene, green room -mangled hand, innere glut - mount unzen's pyroclastic flow
+	our @Epool_6 =	("12_Years_a_Slave6", "Dogman1", "Green_Room4", "Innere_Glut7"); #4
   #unique
 	#/videodrome -newflesh hand merged with gun, green room -mangled hand
 	our @Epool_unique_2 =	("videodrome2", "Green_Room4");
@@ -268,7 +268,7 @@ use Data::Dumper qw(Dumper);
  #immigration - dreams, anxities and desires
   #+
   	#/under the skin -threshold of the forrest, black panther -killmongers dream, requiem for a dream -seaside pier onset
-	our @Epool_11 =	("Under_The_Skin2", "Too_Old_Too_Die_Young1","Black_Panther5", "Dream1");
+	our @Epool_11 =	("Under_The_Skin2", "Too_Old_Too_Die_Young1", "Black_Panther5", "Dream1");
   #++	
   	#/under the skin -burning figure in the forest, dogman -decending the stairwell, requiem for a dream -seaside pier clearly visible
 	our @Epool_12 =	("Under_The_Skin1","Dogman2", "Dream2");
